@@ -37,12 +37,16 @@ static func raw_stats(form_id: String, level: int, shiny := false) -> Dictionary
 ## Atributos de um monstro selvagem (inimigo) em uma hunt.
 static func enemy_stats(form_id: String, level: int, world := 1, shiny := false) -> Dictionary:
 	var s := raw_stats(form_id, level, shiny)
-	var mods: Dictionary = c().enemy_mods
+	var m1: Dictionary = c().enemy_mods
+	var t := 0.0
+	var m2: Dictionary = m1
 	if world == 2:
-		mods = c().world2.get("enemy_mods", mods)
-	s.hp *= float(mods.hp)
-	s.atk *= float(mods.atk)
-	s.def *= float(mods.def)
+		# o Mundo 2 endurece aos poucos (rampa), para não virar um muro entre 90 e 110
+		var w2: Dictionary = c().world2
+		m2 = w2.get("enemy_mods", m1)
+		t = clampf(float(level - int(w2.start)) / float(w2.get("mods_ramp_levels", 30)), 0.0, 1.0)
+	for k in ["hp", "atk", "def"]:
+		s[k] *= lerpf(float(m1[k]), float(m2[k]), t)
 	return s
 
 

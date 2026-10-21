@@ -254,4 +254,4 @@ func _draw() -> void:
 
 func _visual_height() -> float:
 	var st := int(DataDB.form(form_id).get("stage", 1))
-	return [20.0, 28.0, 38.0][clampi(st - 1, 0, 2)] * size_scale * float(frame_h) / 48.0
+	return [24.0, 32.0, 42.0][clampi(st - 1, 0, 2)] * size_scale * float(frame_h) / 48.0

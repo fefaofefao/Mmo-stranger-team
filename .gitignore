@@ -9,3 +9,4 @@ export/
 __pycache__/
 *.keystore
 !debug.keystore
+!dist/*.apk

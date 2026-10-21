@@ -617,7 +617,7 @@ func _boss_summon(m: Dictionary) -> void:
 		return
 	for i in int(m.count):
 		var cell := nav.nearest_free(boss.cell + Vector2i(rng.randi_range(-2, 2), rng.randi_range(-2, 2)), 4)
-		spawn_enemy(m.form, max(1, int(challenge.boss_level) - 3), cell, -1, true)
+		spawn_enemy(m.form, max(1, int(challenge.boss_level) - int(m.get("level_offset", 8))), cell, -1, true)
 	boss_message.emit("%s invoca reforços!" % boss.display_name)
 
 

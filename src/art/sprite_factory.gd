@@ -40,26 +40,28 @@ static func sheet(form_id: String, shiny := false) -> Texture2D:
 	return tex
 
 
-## Retrato (1 quadro, parado olhando para baixo) para a UI.
+## Retrato (1 quadro, parado olhando para baixo, recortado no conteúdo) para a UI.
 static func portrait(form_id: String, shiny := false) -> Texture2D:
 	var key := form_id + ("_s" if shiny else "")
 	if _portrait_cache.has(key):
 		return _portrait_cache[key]
-	var tex: Texture2D
-	var path := ART_DIR + form_id + ("_shiny" if shiny else "") + ".png"
-	if ResourceLoader.exists(path) or ResourceLoader.exists(ART_DIR + form_id + ".png") or _cache.has(form_id + ("_s" if shiny else "")):
+	var fr: Image
+	var custom := ResourceLoader.exists(ART_DIR + form_id + ("_shiny" if shiny else "") + ".png") or ResourceLoader.exists(ART_DIR + form_id + ".png")
+	if custom:
 		var sh := sheet(form_id, shiny)
-		var at := AtlasTexture.new()
-		at.atlas = sh
-		var fw := sh.get_width() / COLS
-		var fh := sh.get_height() / ROWS
-		at.region = Rect2(0, 0, fw, fh)
-		tex = at
+		var img := sh.get_image()
+		var fw := img.get_width() / COLS
+		var fh := img.get_height() / ROWS
+		fr = img.get_region(Rect2i(0, 0, fw, fh))
 	else:
-		var img := Image.create(FRAME, FRAME, false, Image.FORMAT_RGBA8)
-		var fr := _frame_image(form_id, shiny, DIR_DOWN, 0)
-		img.blit_rect(fr, Rect2i(0, 0, FRAME, FRAME), Vector2i.ZERO)
-		tex = ImageTexture.create_from_image(img)
+		fr = _frame_image(form_id, shiny, DIR_DOWN, 0)
+	var used := fr.get_used_rect()
+	if used.size.x <= 0:
+		used = Rect2i(Vector2i.ZERO, fr.get_size())
+	var side := maxi(used.size.x, used.size.y) + 4
+	var out := Image.create(side, side, false, Image.FORMAT_RGBA8)
+	out.blit_rect(fr, used, Vector2i((side - used.size.x) / 2, (side - used.size.y) / 2))
+	var tex := ImageTexture.create_from_image(out)
 	_portrait_cache[key] = tex
 	return tex
 

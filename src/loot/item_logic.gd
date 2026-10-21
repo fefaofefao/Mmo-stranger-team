@@ -123,7 +123,7 @@ static func describe(item: Dictionary, wearer_type := "") -> Array:
 			lines.append("+%d %s" % [int(round(st[k])), STAT_NAMES[k]])
 		else:
 			lines.append("+%.1f%s" % [st[k], STAT_NAMES.get(k, k)])
-	lines.append("Tema: %s (+%d%% se o monstro for do tipo)" % [DataDB.type_name(b.type), int(float(DataDB.config.items.type_match_bonus) * 100)])
+	lines.append("Tema %s (+%d%% no tipo)" % [DataDB.type_name(b.type), int(float(DataDB.config.items.type_match_bonus) * 100)])
 	if item.get("bound", false):
 		lines.append("Vinculado (não negociável)")
 	return lines

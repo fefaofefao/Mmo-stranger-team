@@ -453,6 +453,12 @@ BOSSES = [
 
 
 def gen_challenges():
+    # preserva a calibração feita por tools/calibrate_bosses.py / challenge_sim.gd
+    prev = {}
+    path = os.path.join(DATA, "challenges.json")
+    if os.path.exists(path):
+        for c in json.load(open(path, encoding="utf-8")).get("challenges", []):
+            prev[c["id"]] = c
     out = []
     for lvl, name, form, biome, mech in BOSSES:
         t = form.split("_")[0]
@@ -465,6 +471,11 @@ def gen_challenges():
             "rewards": {"gold": 500 * lvl, "essence": {t: 40 * lvl // 10}, "item_rarity": reward_rarity},
             "unlocks": ("world2" if lvl == 80 else ""), "map_size": [26, 26], "seed": 1000 + lvl,
         }
+        old = prev.get(c["id"])
+        if old:
+            for k in ("hp_mult", "atk_mult", "def_mult", "mechanics"):
+                if k in old:
+                    c[k] = old[k]
         out.append(c)
     wjson("challenges.json", {
         "_comentario": "Desafios (bosses). Para adicionar desafios acima de 90, inclua novas entradas aqui.",

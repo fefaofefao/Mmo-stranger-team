@@ -75,9 +75,9 @@ func _danger(est: Dictionary) -> String:
 	var d: float = est.deaths_per_hour
 	if est.kills_per_hour < 60:
 		return "Perigosa!"
-	if d > 6:
+	if d > 12:
 		return "Arriscada"
-	if d > 1:
+	if d > 3:
 		return "Desafiadora"
 	return "Segura"
 

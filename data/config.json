@@ -44,10 +44,10 @@
  },
  "xp": {
   "kills_min": 6,
-  "kills_a": 1.53,
+  "kills_a": 2.9,
   "kills_p": 1.5,
   "late_start": 80,
-  "late_slope": 0.04,
+  "late_slope": 0.022,
   "kill_base": 4,
   "kill_q": 1.35,
   "low_level_penalty_start": 10,
@@ -238,7 +238,8 @@
   },
   "rarity_mult": 1.5,
   "gold_mult": 1.5,
-  "xp_mult": 1.0
+  "xp_mult": 1.0,
+  "mods_ramp_levels": 30
  },
  "corruption": {
   "tint": "#4a1a6a",

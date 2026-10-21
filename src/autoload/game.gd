@@ -38,6 +38,7 @@ func _ready() -> void:
 	rng.randomize()
 	DataDB.ensure_loaded()
 	load_local()
+	TranslationServer.set_locale(save.settings.get("locale", "pt_BR"))
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 

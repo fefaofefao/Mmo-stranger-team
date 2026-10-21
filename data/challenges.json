@@ -10,8 +10,8 @@
    "type": "agua",
    "biome": "praia",
    "boss_level": 12,
-   "hp_mult": 30.0,
-   "atk_mult": 1.5,
+   "hp_mult": 34.56,
+   "atk_mult": 0.38,
    "def_mult": 1.2,
    "scale": 1.6,
    "phases": [
@@ -52,8 +52,8 @@
    "type": "fogo",
    "biome": "vulcao",
    "boss_level": 22,
-   "hp_mult": 30.0,
-   "atk_mult": 1.5,
+   "hp_mult": 33.2,
+   "atk_mult": 0.52,
    "def_mult": 1.2,
    "scale": 1.6,
    "phases": [
@@ -69,7 +69,7 @@
      "every": 9,
      "count": 3,
      "radius": 1,
-     "dmg_pct": 0.18,
+     "dmg_pct": 0.15,
      "telegraph": 1.6
     }
    },
@@ -96,8 +96,8 @@
    "type": "planta",
    "biome": "floresta_densa",
    "boss_level": 32,
-   "hp_mult": 30.0,
-   "atk_mult": 1.5,
+   "hp_mult": 33.71,
+   "atk_mult": 0.35,
    "def_mult": 1.2,
    "scale": 1.6,
    "phases": [
@@ -111,14 +111,14 @@
    "mechanics": {
     "summon": {
      "form": "planta_4_2",
-     "every": 11,
+     "every": 12,
      "count": 2
     },
     "aoe": {
      "every": 10,
      "count": 2,
      "radius": 1,
-     "dmg_pct": 0.16,
+     "dmg_pct": 0.15,
      "telegraph": 1.6
     }
    },
@@ -145,8 +145,8 @@
    "type": "terra",
    "biome": "caverna_rochosa",
    "boss_level": 42,
-   "hp_mult": 30.0,
-   "atk_mult": 1.5,
+   "hp_mult": 37.52,
+   "atk_mult": 0.41,
    "def_mult": 1.2,
    "scale": 1.6,
    "phases": [
@@ -162,7 +162,7 @@
      "every": 8,
      "count": 4,
      "radius": 1,
-     "dmg_pct": 0.2,
+     "dmg_pct": 0.15,
      "telegraph": 1.5
     }
    },
@@ -189,8 +189,8 @@
    "type": "gelo",
    "biome": "caverna_congelada",
    "boss_level": 52,
-   "hp_mult": 30.0,
-   "atk_mult": 1.5,
+   "hp_mult": 42.37,
+   "atk_mult": 0.26,
    "def_mult": 1.2,
    "scale": 1.6,
    "phases": [
@@ -204,8 +204,9 @@
    "mechanics": {
     "summon": {
      "form": "gelo_1_2",
-     "every": 10,
-     "count": 3
+     "every": 12,
+     "count": 2,
+     "level_offset": 12
     }
    },
    "time_limit": 240,
@@ -231,8 +232,8 @@
    "type": "eletrico",
    "biome": "ruinas_energizadas",
    "boss_level": 62,
-   "hp_mult": 30.0,
-   "atk_mult": 1.5,
+   "hp_mult": 57.22,
+   "atk_mult": 0.34,
    "def_mult": 1.2,
    "scale": 1.6,
    "phases": [
@@ -246,14 +247,15 @@
    "mechanics": {
     "summon": {
      "form": "eletrico_3_2",
-     "every": 11,
-     "count": 2
+     "every": 12,
+     "count": 2,
+     "level_offset": 12
     },
     "aoe": {
      "every": 8,
      "count": 3,
      "radius": 1,
-     "dmg_pct": 0.2,
+     "dmg_pct": 0.15,
      "telegraph": 1.4
     }
    },
@@ -280,8 +282,8 @@
    "type": "vento",
    "biome": "plataformas_nuvens",
    "boss_level": 72,
-   "hp_mult": 30.0,
-   "atk_mult": 1.5,
+   "hp_mult": 57.41,
+   "atk_mult": 0.46,
    "def_mult": 1.2,
    "scale": 1.6,
    "phases": [
@@ -295,9 +297,9 @@
    "mechanics": {
     "aoe": {
      "every": 7,
-     "count": 5,
+     "count": 4,
      "radius": 1,
-     "dmg_pct": 0.18,
+     "dmg_pct": 0.15,
      "telegraph": 1.4
     }
    },
@@ -324,8 +326,8 @@
    "type": "luz",
    "biome": "templo",
    "boss_level": 82,
-   "hp_mult": 30.0,
-   "atk_mult": 1.5,
+   "hp_mult": 67.88,
+   "atk_mult": 0.34,
    "def_mult": 1.2,
    "scale": 1.6,
    "phases": [
@@ -339,14 +341,15 @@
    "mechanics": {
     "summon": {
      "form": "luz_3_2",
-     "every": 10,
-     "count": 3
+     "every": 12,
+     "count": 2,
+     "level_offset": 12
     },
     "aoe": {
      "every": 7,
      "count": 4,
      "radius": 2,
-     "dmg_pct": 0.16,
+     "dmg_pct": 0.15,
      "telegraph": 1.5
     }
    },
@@ -373,8 +376,8 @@
    "type": "sombra",
    "biome": "cemiterio",
    "boss_level": 92,
-   "hp_mult": 30.0,
-   "atk_mult": 1.5,
+   "hp_mult": 33.08,
+   "atk_mult": 0.18,
    "def_mult": 1.2,
    "scale": 1.6,
    "phases": [
@@ -388,14 +391,15 @@
    "mechanics": {
     "summon": {
      "form": "sombra_2_3",
-     "every": 9,
-     "count": 3
+     "every": 12,
+     "count": 2,
+     "level_offset": 12
     },
     "aoe": {
      "every": 6,
-     "count": 5,
+     "count": 4,
      "radius": 1,
-     "dmg_pct": 0.2,
+     "dmg_pct": 0.15,
      "telegraph": 1.3
     }
    },
