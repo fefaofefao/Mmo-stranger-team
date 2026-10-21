@@ -99,6 +99,7 @@ func _build() -> void:
 		var bid: String = b.id
 		bg.add_child(UI.small_button(b.name.substr(0, 14), func(): _biome(bid)))
 	v.add_child(UI.small_button("Exportar spritesheets placeholder (user://)", _export_art))
+	v.add_child(UI.small_button("RESETAR TUDO (save + servidor mock)", _reset_all))
 	v.add_child(UI.small_button("Fechar", _toggle))
 
 
@@ -167,3 +168,14 @@ func _export_art() -> void:
 	for b in DataDB.biomes:
 		TileFactory.generate_atlas(b).save_png("user://placeholder_art/tilesets/%s.png" % b)
 	main.toast("Exportado para %s" % ProjectSettings.globalize_path("user://placeholder_art"))
+
+
+func _reset_all() -> void:
+	if not await main.confirm("Resetar tudo", "Apaga o save local E o servidor mock (carteira, itens, market). Continuar?"):
+		return
+	if Backend.is_mock():
+		await Backend.request("debug_reset")
+		Backend.persist()
+	Game.reset_all()
+	Game.time_scale = 1.0
+	get_tree().reload_current_scene()

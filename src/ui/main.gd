@@ -82,10 +82,22 @@ func _on_banner(visible_b: bool, h: float) -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		back()
+	elif what == NOTIFICATION_APPLICATION_RESUMED:
+		_on_resumed()
 	elif what == NOTIFICATION_WM_CLOSE_REQUEST:
 		Game.save_local()
 		Backend.persist()
 		get_tree().quit()
+
+
+## No Android o jogo fica pausado em segundo plano: ao voltar, recebe o progresso offline.
+func _on_resumed() -> void:
+	if not Game.session_started or not Game.has_starter() or (hunt_screen and hunt_screen.in_challenge()):
+		return
+	await Game.flush_claims()
+	var s: Dictionary = await Game.claim_offline()
+	if not s.is_empty():
+		await show_offline_summary(s)
 
 
 func ensure_hunt_screen() -> Control:

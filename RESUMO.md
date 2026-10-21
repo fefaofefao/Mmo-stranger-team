@@ -15,7 +15,7 @@ Um RPG idle completo para Android em **Godot 4.3**, todas as 8 fases da especifi
 - Instalar:
   1. No celular: *Configurações → Segurança → permitir instalar apps desconhecidos* (para o app que vai abrir o APK).
   2. Copie o APK para o celular e toque nele; **ou** com cabo e depuração USB: `adb install -r dist/bestiario-idle-debug.apk`.
-- Testar: toque em **Jogar** → aceite o consentimento simulado → escolha um inicial → o monstro começa a caçar sozinho. Use **Hub** para todas as telas. Feche o app e volte depois de alguns minutos para ver o **resumo offline**.
+- Testar: toque em **Jogar** → aceite o consentimento simulado → escolha um inicial → o monstro começa a caçar sozinho. Use **Hub** para todas as telas. Saia do app (ou deixe-o em segundo plano) e volte depois de alguns minutos para ver o **resumo offline**.
 - O APK usa o **servidor mock** (sem credenciais) e **anúncios simulados** (sem plugin AdMob). Tudo funciona offline.
 
 ## Menu de debug (só no APK debug)
@@ -28,6 +28,7 @@ Botão discreto **dbg** no canto inferior esquerdo (acima do painel de ações):
 - **Spawnar monstros** (5 de uma vez, para testar ser cercado e desempenho).
 - **Trocar bioma** do mapa atual (todos os 28 biomas).
 - **Exportar spritesheets placeholder** (modelos PNG para o artista).
+- **RESETAR TUDO** (apaga save local e servidor mock para recomeçar do zero — o "Apagar progresso local" das Configurações restaura da nuvem, como numa reinstalação).
 
 ## Pendências (detalhes em PENDENCIAS.md)
 1. Criar o projeto Supabase, aplicar migrations, publicar a Edge Function e preencher `data/backend.json`.

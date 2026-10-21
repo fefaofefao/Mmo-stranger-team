@@ -205,6 +205,20 @@ func refresh_profile() -> void:
 	var sales: Array = r.get("sales", [])
 	if not sales.is_empty():
 		_apply_sales(sales)
+	# inicial criado sem conexão: registra no servidor agora
+	if save.monsters.has("local_starter"):
+		var m: Dictionary = save.monsters["local_starter"]
+		var rs := await Backend.request("register_starter", {"family": m.family})
+		if rs.get("ok", false):
+			var sid: String = rs.monster.server_id
+			save.monsters.erase("local_starter")
+			m.uid = sid
+			m.server_id = sid
+			save.monsters[sid] = m
+			var idx: int = save.party.find("local_starter")
+			if idx >= 0:
+				save.party[idx] = sid
+			party_changed.emit()
 	inventory_changed.emit()
 	monsters_changed.emit()
 
