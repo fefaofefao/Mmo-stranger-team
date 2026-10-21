@@ -1,0 +1,7 @@
+{
+ "_comentario": "mode: 'auto' usa Supabase se url e anon_key estiverem preenchidos, senão o mock local. 'mock' força o mock. 'supabase' força o Supabase.",
+ "mode": "auto",
+ "supabase_url": "",
+ "supabase_anon_key": "",
+ "google_redirect_url": "monstroidle://auth-callback"
+}

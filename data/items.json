@@ -1,0 +1,3392 @@
+{
+ "_comentario": "Bases de itens (slot x tipo x tier) e afixos. Valores base dos atributos por slot em config.json (items).",
+ "slots": [
+  {
+   "id": "amuleto",
+   "name": "Amuleto",
+   "main_stat": "hp"
+  },
+  {
+   "id": "garra",
+   "name": "Garra",
+   "main_stat": "atk"
+  },
+  {
+   "id": "armadura",
+   "name": "Armadura",
+   "main_stat": "def"
+  },
+  {
+   "id": "reliquia",
+   "name": "Relíquia",
+   "main_stat": "spd"
+  }
+ ],
+ "tiers": [
+  {
+   "tier": 1,
+   "level": 1,
+   "world2": false
+  },
+  {
+   "tier": 2,
+   "level": 12,
+   "world2": false
+  },
+  {
+   "tier": 3,
+   "level": 25,
+   "world2": false
+  },
+  {
+   "tier": 4,
+   "level": 40,
+   "world2": false
+  },
+  {
+   "tier": 5,
+   "level": 60,
+   "world2": false
+  },
+  {
+   "tier": 6,
+   "level": 80,
+   "world2": false
+  },
+  {
+   "tier": 7,
+   "level": 120,
+   "world2": true
+  },
+  {
+   "tier": 8,
+   "level": 170,
+   "world2": true
+  },
+  {
+   "tier": 9,
+   "level": 230,
+   "world2": true
+  }
+ ],
+ "bases": {
+  "amuleto_agua_t1": {
+   "id": "amuleto_agua_t1",
+   "name": "Pingente Coralino",
+   "slot": "amuleto",
+   "type": "agua",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_agua_t1": {
+   "id": "garra_agua_t1",
+   "name": "Garra Coralina",
+   "slot": "garra",
+   "type": "agua",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_agua_t1": {
+   "id": "armadura_agua_t1",
+   "name": "Couraça Coralina",
+   "slot": "armadura",
+   "type": "agua",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_agua_t1": {
+   "id": "reliquia_agua_t1",
+   "name": "Seixo Coralino",
+   "slot": "reliquia",
+   "type": "agua",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_fogo_t1": {
+   "id": "amuleto_fogo_t1",
+   "name": "Pingente Ígneo",
+   "slot": "amuleto",
+   "type": "fogo",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_fogo_t1": {
+   "id": "garra_fogo_t1",
+   "name": "Garra Ígnea",
+   "slot": "garra",
+   "type": "fogo",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_fogo_t1": {
+   "id": "armadura_fogo_t1",
+   "name": "Couraça Ígnea",
+   "slot": "armadura",
+   "type": "fogo",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_fogo_t1": {
+   "id": "reliquia_fogo_t1",
+   "name": "Seixo Ígneo",
+   "slot": "reliquia",
+   "type": "fogo",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_gelo_t1": {
+   "id": "amuleto_gelo_t1",
+   "name": "Pingente Glacial",
+   "slot": "amuleto",
+   "type": "gelo",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_gelo_t1": {
+   "id": "garra_gelo_t1",
+   "name": "Garra Glacial",
+   "slot": "garra",
+   "type": "gelo",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_gelo_t1": {
+   "id": "armadura_gelo_t1",
+   "name": "Couraça Glacial",
+   "slot": "armadura",
+   "type": "gelo",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_gelo_t1": {
+   "id": "reliquia_gelo_t1",
+   "name": "Seixo Glacial",
+   "slot": "reliquia",
+   "type": "gelo",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_planta_t1": {
+   "id": "amuleto_planta_t1",
+   "name": "Pingente Silvestre",
+   "slot": "amuleto",
+   "type": "planta",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_planta_t1": {
+   "id": "garra_planta_t1",
+   "name": "Garra Silvestre",
+   "slot": "garra",
+   "type": "planta",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_planta_t1": {
+   "id": "armadura_planta_t1",
+   "name": "Couraça Silvestre",
+   "slot": "armadura",
+   "type": "planta",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_planta_t1": {
+   "id": "reliquia_planta_t1",
+   "name": "Seixo Silvestre",
+   "slot": "reliquia",
+   "type": "planta",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_terra_t1": {
+   "id": "amuleto_terra_t1",
+   "name": "Pingente Rochoso",
+   "slot": "amuleto",
+   "type": "terra",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_terra_t1": {
+   "id": "garra_terra_t1",
+   "name": "Garra Rochosa",
+   "slot": "garra",
+   "type": "terra",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_terra_t1": {
+   "id": "armadura_terra_t1",
+   "name": "Couraça Rochosa",
+   "slot": "armadura",
+   "type": "terra",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_terra_t1": {
+   "id": "reliquia_terra_t1",
+   "name": "Seixo Rochoso",
+   "slot": "reliquia",
+   "type": "terra",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_eletrico_t1": {
+   "id": "amuleto_eletrico_t1",
+   "name": "Pingente Voltaico",
+   "slot": "amuleto",
+   "type": "eletrico",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_eletrico_t1": {
+   "id": "garra_eletrico_t1",
+   "name": "Garra Voltaica",
+   "slot": "garra",
+   "type": "eletrico",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_eletrico_t1": {
+   "id": "armadura_eletrico_t1",
+   "name": "Couraça Voltaica",
+   "slot": "armadura",
+   "type": "eletrico",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_eletrico_t1": {
+   "id": "reliquia_eletrico_t1",
+   "name": "Seixo Voltaico",
+   "slot": "reliquia",
+   "type": "eletrico",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_vento_t1": {
+   "id": "amuleto_vento_t1",
+   "name": "Pingente Etéreo",
+   "slot": "amuleto",
+   "type": "vento",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_vento_t1": {
+   "id": "garra_vento_t1",
+   "name": "Garra Etérea",
+   "slot": "garra",
+   "type": "vento",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_vento_t1": {
+   "id": "armadura_vento_t1",
+   "name": "Couraça Etérea",
+   "slot": "armadura",
+   "type": "vento",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_vento_t1": {
+   "id": "reliquia_vento_t1",
+   "name": "Seixo Etéreo",
+   "slot": "reliquia",
+   "type": "vento",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_luz_t1": {
+   "id": "amuleto_luz_t1",
+   "name": "Pingente Radiante",
+   "slot": "amuleto",
+   "type": "luz",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_luz_t1": {
+   "id": "garra_luz_t1",
+   "name": "Garra Radiante",
+   "slot": "garra",
+   "type": "luz",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_luz_t1": {
+   "id": "armadura_luz_t1",
+   "name": "Couraça Radiante",
+   "slot": "armadura",
+   "type": "luz",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_luz_t1": {
+   "id": "reliquia_luz_t1",
+   "name": "Seixo Radiante",
+   "slot": "reliquia",
+   "type": "luz",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_sombra_t1": {
+   "id": "amuleto_sombra_t1",
+   "name": "Pingente Umbral",
+   "slot": "amuleto",
+   "type": "sombra",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_sombra_t1": {
+   "id": "garra_sombra_t1",
+   "name": "Garra Umbral",
+   "slot": "garra",
+   "type": "sombra",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_sombra_t1": {
+   "id": "armadura_sombra_t1",
+   "name": "Couraça Umbral",
+   "slot": "armadura",
+   "type": "sombra",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_sombra_t1": {
+   "id": "reliquia_sombra_t1",
+   "name": "Seixo Umbral",
+   "slot": "reliquia",
+   "type": "sombra",
+   "tier": 1,
+   "level": 1,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_agua_t2": {
+   "id": "amuleto_agua_t2",
+   "name": "Amuleto Coralino",
+   "slot": "amuleto",
+   "type": "agua",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_agua_t2": {
+   "id": "garra_agua_t2",
+   "name": "Presa Coralina",
+   "slot": "garra",
+   "type": "agua",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_agua_t2": {
+   "id": "armadura_agua_t2",
+   "name": "Escama Coralina",
+   "slot": "armadura",
+   "type": "agua",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_agua_t2": {
+   "id": "reliquia_agua_t2",
+   "name": "Orbe Coralino",
+   "slot": "reliquia",
+   "type": "agua",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_fogo_t2": {
+   "id": "amuleto_fogo_t2",
+   "name": "Amuleto Ígneo",
+   "slot": "amuleto",
+   "type": "fogo",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_fogo_t2": {
+   "id": "garra_fogo_t2",
+   "name": "Presa Ígnea",
+   "slot": "garra",
+   "type": "fogo",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_fogo_t2": {
+   "id": "armadura_fogo_t2",
+   "name": "Escama Ígnea",
+   "slot": "armadura",
+   "type": "fogo",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_fogo_t2": {
+   "id": "reliquia_fogo_t2",
+   "name": "Orbe Ígneo",
+   "slot": "reliquia",
+   "type": "fogo",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_gelo_t2": {
+   "id": "amuleto_gelo_t2",
+   "name": "Amuleto Glacial",
+   "slot": "amuleto",
+   "type": "gelo",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_gelo_t2": {
+   "id": "garra_gelo_t2",
+   "name": "Presa Glacial",
+   "slot": "garra",
+   "type": "gelo",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_gelo_t2": {
+   "id": "armadura_gelo_t2",
+   "name": "Escama Glacial",
+   "slot": "armadura",
+   "type": "gelo",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_gelo_t2": {
+   "id": "reliquia_gelo_t2",
+   "name": "Orbe Glacial",
+   "slot": "reliquia",
+   "type": "gelo",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_planta_t2": {
+   "id": "amuleto_planta_t2",
+   "name": "Amuleto Silvestre",
+   "slot": "amuleto",
+   "type": "planta",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_planta_t2": {
+   "id": "garra_planta_t2",
+   "name": "Presa Silvestre",
+   "slot": "garra",
+   "type": "planta",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_planta_t2": {
+   "id": "armadura_planta_t2",
+   "name": "Escama Silvestre",
+   "slot": "armadura",
+   "type": "planta",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_planta_t2": {
+   "id": "reliquia_planta_t2",
+   "name": "Orbe Silvestre",
+   "slot": "reliquia",
+   "type": "planta",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_terra_t2": {
+   "id": "amuleto_terra_t2",
+   "name": "Amuleto Rochoso",
+   "slot": "amuleto",
+   "type": "terra",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_terra_t2": {
+   "id": "garra_terra_t2",
+   "name": "Presa Rochosa",
+   "slot": "garra",
+   "type": "terra",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_terra_t2": {
+   "id": "armadura_terra_t2",
+   "name": "Escama Rochosa",
+   "slot": "armadura",
+   "type": "terra",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_terra_t2": {
+   "id": "reliquia_terra_t2",
+   "name": "Orbe Rochoso",
+   "slot": "reliquia",
+   "type": "terra",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_eletrico_t2": {
+   "id": "amuleto_eletrico_t2",
+   "name": "Amuleto Voltaico",
+   "slot": "amuleto",
+   "type": "eletrico",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_eletrico_t2": {
+   "id": "garra_eletrico_t2",
+   "name": "Presa Voltaica",
+   "slot": "garra",
+   "type": "eletrico",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_eletrico_t2": {
+   "id": "armadura_eletrico_t2",
+   "name": "Escama Voltaica",
+   "slot": "armadura",
+   "type": "eletrico",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_eletrico_t2": {
+   "id": "reliquia_eletrico_t2",
+   "name": "Orbe Voltaico",
+   "slot": "reliquia",
+   "type": "eletrico",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_vento_t2": {
+   "id": "amuleto_vento_t2",
+   "name": "Amuleto Etéreo",
+   "slot": "amuleto",
+   "type": "vento",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_vento_t2": {
+   "id": "garra_vento_t2",
+   "name": "Presa Etérea",
+   "slot": "garra",
+   "type": "vento",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_vento_t2": {
+   "id": "armadura_vento_t2",
+   "name": "Escama Etérea",
+   "slot": "armadura",
+   "type": "vento",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_vento_t2": {
+   "id": "reliquia_vento_t2",
+   "name": "Orbe Etéreo",
+   "slot": "reliquia",
+   "type": "vento",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_luz_t2": {
+   "id": "amuleto_luz_t2",
+   "name": "Amuleto Radiante",
+   "slot": "amuleto",
+   "type": "luz",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_luz_t2": {
+   "id": "garra_luz_t2",
+   "name": "Presa Radiante",
+   "slot": "garra",
+   "type": "luz",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_luz_t2": {
+   "id": "armadura_luz_t2",
+   "name": "Escama Radiante",
+   "slot": "armadura",
+   "type": "luz",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_luz_t2": {
+   "id": "reliquia_luz_t2",
+   "name": "Orbe Radiante",
+   "slot": "reliquia",
+   "type": "luz",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_sombra_t2": {
+   "id": "amuleto_sombra_t2",
+   "name": "Amuleto Umbral",
+   "slot": "amuleto",
+   "type": "sombra",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_sombra_t2": {
+   "id": "garra_sombra_t2",
+   "name": "Presa Umbral",
+   "slot": "garra",
+   "type": "sombra",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_sombra_t2": {
+   "id": "armadura_sombra_t2",
+   "name": "Escama Umbral",
+   "slot": "armadura",
+   "type": "sombra",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_sombra_t2": {
+   "id": "reliquia_sombra_t2",
+   "name": "Orbe Umbral",
+   "slot": "reliquia",
+   "type": "sombra",
+   "tier": 2,
+   "level": 12,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_agua_t3": {
+   "id": "amuleto_agua_t3",
+   "name": "Medalhão Coralino",
+   "slot": "amuleto",
+   "type": "agua",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_agua_t3": {
+   "id": "garra_agua_t3",
+   "name": "Ferrão Coralino",
+   "slot": "garra",
+   "type": "agua",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_agua_t3": {
+   "id": "armadura_agua_t3",
+   "name": "Carapaça Coralina",
+   "slot": "armadura",
+   "type": "agua",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_agua_t3": {
+   "id": "reliquia_agua_t3",
+   "name": "Totem Coralino",
+   "slot": "reliquia",
+   "type": "agua",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_fogo_t3": {
+   "id": "amuleto_fogo_t3",
+   "name": "Medalhão Ígneo",
+   "slot": "amuleto",
+   "type": "fogo",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_fogo_t3": {
+   "id": "garra_fogo_t3",
+   "name": "Ferrão Ígneo",
+   "slot": "garra",
+   "type": "fogo",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_fogo_t3": {
+   "id": "armadura_fogo_t3",
+   "name": "Carapaça Ígnea",
+   "slot": "armadura",
+   "type": "fogo",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_fogo_t3": {
+   "id": "reliquia_fogo_t3",
+   "name": "Totem Ígneo",
+   "slot": "reliquia",
+   "type": "fogo",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_gelo_t3": {
+   "id": "amuleto_gelo_t3",
+   "name": "Medalhão Glacial",
+   "slot": "amuleto",
+   "type": "gelo",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_gelo_t3": {
+   "id": "garra_gelo_t3",
+   "name": "Ferrão Glacial",
+   "slot": "garra",
+   "type": "gelo",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_gelo_t3": {
+   "id": "armadura_gelo_t3",
+   "name": "Carapaça Glacial",
+   "slot": "armadura",
+   "type": "gelo",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_gelo_t3": {
+   "id": "reliquia_gelo_t3",
+   "name": "Totem Glacial",
+   "slot": "reliquia",
+   "type": "gelo",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_planta_t3": {
+   "id": "amuleto_planta_t3",
+   "name": "Medalhão Silvestre",
+   "slot": "amuleto",
+   "type": "planta",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_planta_t3": {
+   "id": "garra_planta_t3",
+   "name": "Ferrão Silvestre",
+   "slot": "garra",
+   "type": "planta",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_planta_t3": {
+   "id": "armadura_planta_t3",
+   "name": "Carapaça Silvestre",
+   "slot": "armadura",
+   "type": "planta",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_planta_t3": {
+   "id": "reliquia_planta_t3",
+   "name": "Totem Silvestre",
+   "slot": "reliquia",
+   "type": "planta",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_terra_t3": {
+   "id": "amuleto_terra_t3",
+   "name": "Medalhão Rochoso",
+   "slot": "amuleto",
+   "type": "terra",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_terra_t3": {
+   "id": "garra_terra_t3",
+   "name": "Ferrão Rochoso",
+   "slot": "garra",
+   "type": "terra",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_terra_t3": {
+   "id": "armadura_terra_t3",
+   "name": "Carapaça Rochosa",
+   "slot": "armadura",
+   "type": "terra",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_terra_t3": {
+   "id": "reliquia_terra_t3",
+   "name": "Totem Rochoso",
+   "slot": "reliquia",
+   "type": "terra",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_eletrico_t3": {
+   "id": "amuleto_eletrico_t3",
+   "name": "Medalhão Voltaico",
+   "slot": "amuleto",
+   "type": "eletrico",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_eletrico_t3": {
+   "id": "garra_eletrico_t3",
+   "name": "Ferrão Voltaico",
+   "slot": "garra",
+   "type": "eletrico",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_eletrico_t3": {
+   "id": "armadura_eletrico_t3",
+   "name": "Carapaça Voltaica",
+   "slot": "armadura",
+   "type": "eletrico",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_eletrico_t3": {
+   "id": "reliquia_eletrico_t3",
+   "name": "Totem Voltaico",
+   "slot": "reliquia",
+   "type": "eletrico",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_vento_t3": {
+   "id": "amuleto_vento_t3",
+   "name": "Medalhão Etéreo",
+   "slot": "amuleto",
+   "type": "vento",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_vento_t3": {
+   "id": "garra_vento_t3",
+   "name": "Ferrão Etéreo",
+   "slot": "garra",
+   "type": "vento",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_vento_t3": {
+   "id": "armadura_vento_t3",
+   "name": "Carapaça Etérea",
+   "slot": "armadura",
+   "type": "vento",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_vento_t3": {
+   "id": "reliquia_vento_t3",
+   "name": "Totem Etéreo",
+   "slot": "reliquia",
+   "type": "vento",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_luz_t3": {
+   "id": "amuleto_luz_t3",
+   "name": "Medalhão Radiante",
+   "slot": "amuleto",
+   "type": "luz",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_luz_t3": {
+   "id": "garra_luz_t3",
+   "name": "Ferrão Radiante",
+   "slot": "garra",
+   "type": "luz",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_luz_t3": {
+   "id": "armadura_luz_t3",
+   "name": "Carapaça Radiante",
+   "slot": "armadura",
+   "type": "luz",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_luz_t3": {
+   "id": "reliquia_luz_t3",
+   "name": "Totem Radiante",
+   "slot": "reliquia",
+   "type": "luz",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_sombra_t3": {
+   "id": "amuleto_sombra_t3",
+   "name": "Medalhão Umbral",
+   "slot": "amuleto",
+   "type": "sombra",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_sombra_t3": {
+   "id": "garra_sombra_t3",
+   "name": "Ferrão Umbral",
+   "slot": "garra",
+   "type": "sombra",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_sombra_t3": {
+   "id": "armadura_sombra_t3",
+   "name": "Carapaça Umbral",
+   "slot": "armadura",
+   "type": "sombra",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_sombra_t3": {
+   "id": "reliquia_sombra_t3",
+   "name": "Totem Umbral",
+   "slot": "reliquia",
+   "type": "sombra",
+   "tier": 3,
+   "level": 25,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_agua_t4": {
+   "id": "amuleto_agua_t4",
+   "name": "Talismã Coralino",
+   "slot": "amuleto",
+   "type": "agua",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_agua_t4": {
+   "id": "garra_agua_t4",
+   "name": "Lâmina Coralina",
+   "slot": "garra",
+   "type": "agua",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_agua_t4": {
+   "id": "armadura_agua_t4",
+   "name": "Malha Coralina",
+   "slot": "armadura",
+   "type": "agua",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_agua_t4": {
+   "id": "reliquia_agua_t4",
+   "name": "Ídolo Coralino",
+   "slot": "reliquia",
+   "type": "agua",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_fogo_t4": {
+   "id": "amuleto_fogo_t4",
+   "name": "Talismã Ígneo",
+   "slot": "amuleto",
+   "type": "fogo",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_fogo_t4": {
+   "id": "garra_fogo_t4",
+   "name": "Lâmina Ígnea",
+   "slot": "garra",
+   "type": "fogo",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_fogo_t4": {
+   "id": "armadura_fogo_t4",
+   "name": "Malha Ígnea",
+   "slot": "armadura",
+   "type": "fogo",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_fogo_t4": {
+   "id": "reliquia_fogo_t4",
+   "name": "Ídolo Ígneo",
+   "slot": "reliquia",
+   "type": "fogo",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_gelo_t4": {
+   "id": "amuleto_gelo_t4",
+   "name": "Talismã Glacial",
+   "slot": "amuleto",
+   "type": "gelo",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_gelo_t4": {
+   "id": "garra_gelo_t4",
+   "name": "Lâmina Glacial",
+   "slot": "garra",
+   "type": "gelo",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_gelo_t4": {
+   "id": "armadura_gelo_t4",
+   "name": "Malha Glacial",
+   "slot": "armadura",
+   "type": "gelo",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_gelo_t4": {
+   "id": "reliquia_gelo_t4",
+   "name": "Ídolo Glacial",
+   "slot": "reliquia",
+   "type": "gelo",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_planta_t4": {
+   "id": "amuleto_planta_t4",
+   "name": "Talismã Silvestre",
+   "slot": "amuleto",
+   "type": "planta",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_planta_t4": {
+   "id": "garra_planta_t4",
+   "name": "Lâmina Silvestre",
+   "slot": "garra",
+   "type": "planta",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_planta_t4": {
+   "id": "armadura_planta_t4",
+   "name": "Malha Silvestre",
+   "slot": "armadura",
+   "type": "planta",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_planta_t4": {
+   "id": "reliquia_planta_t4",
+   "name": "Ídolo Silvestre",
+   "slot": "reliquia",
+   "type": "planta",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_terra_t4": {
+   "id": "amuleto_terra_t4",
+   "name": "Talismã Rochoso",
+   "slot": "amuleto",
+   "type": "terra",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_terra_t4": {
+   "id": "garra_terra_t4",
+   "name": "Lâmina Rochosa",
+   "slot": "garra",
+   "type": "terra",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_terra_t4": {
+   "id": "armadura_terra_t4",
+   "name": "Malha Rochosa",
+   "slot": "armadura",
+   "type": "terra",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_terra_t4": {
+   "id": "reliquia_terra_t4",
+   "name": "Ídolo Rochoso",
+   "slot": "reliquia",
+   "type": "terra",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_eletrico_t4": {
+   "id": "amuleto_eletrico_t4",
+   "name": "Talismã Voltaico",
+   "slot": "amuleto",
+   "type": "eletrico",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_eletrico_t4": {
+   "id": "garra_eletrico_t4",
+   "name": "Lâmina Voltaica",
+   "slot": "garra",
+   "type": "eletrico",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_eletrico_t4": {
+   "id": "armadura_eletrico_t4",
+   "name": "Malha Voltaica",
+   "slot": "armadura",
+   "type": "eletrico",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_eletrico_t4": {
+   "id": "reliquia_eletrico_t4",
+   "name": "Ídolo Voltaico",
+   "slot": "reliquia",
+   "type": "eletrico",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_vento_t4": {
+   "id": "amuleto_vento_t4",
+   "name": "Talismã Etéreo",
+   "slot": "amuleto",
+   "type": "vento",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_vento_t4": {
+   "id": "garra_vento_t4",
+   "name": "Lâmina Etérea",
+   "slot": "garra",
+   "type": "vento",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_vento_t4": {
+   "id": "armadura_vento_t4",
+   "name": "Malha Etérea",
+   "slot": "armadura",
+   "type": "vento",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_vento_t4": {
+   "id": "reliquia_vento_t4",
+   "name": "Ídolo Etéreo",
+   "slot": "reliquia",
+   "type": "vento",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_luz_t4": {
+   "id": "amuleto_luz_t4",
+   "name": "Talismã Radiante",
+   "slot": "amuleto",
+   "type": "luz",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_luz_t4": {
+   "id": "garra_luz_t4",
+   "name": "Lâmina Radiante",
+   "slot": "garra",
+   "type": "luz",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_luz_t4": {
+   "id": "armadura_luz_t4",
+   "name": "Malha Radiante",
+   "slot": "armadura",
+   "type": "luz",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_luz_t4": {
+   "id": "reliquia_luz_t4",
+   "name": "Ídolo Radiante",
+   "slot": "reliquia",
+   "type": "luz",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_sombra_t4": {
+   "id": "amuleto_sombra_t4",
+   "name": "Talismã Umbral",
+   "slot": "amuleto",
+   "type": "sombra",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_sombra_t4": {
+   "id": "garra_sombra_t4",
+   "name": "Lâmina Umbral",
+   "slot": "garra",
+   "type": "sombra",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_sombra_t4": {
+   "id": "armadura_sombra_t4",
+   "name": "Malha Umbral",
+   "slot": "armadura",
+   "type": "sombra",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_sombra_t4": {
+   "id": "reliquia_sombra_t4",
+   "name": "Ídolo Umbral",
+   "slot": "reliquia",
+   "type": "sombra",
+   "tier": 4,
+   "level": 40,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_agua_t5": {
+   "id": "amuleto_agua_t5",
+   "name": "Colar Coralino",
+   "slot": "amuleto",
+   "type": "agua",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_agua_t5": {
+   "id": "garra_agua_t5",
+   "name": "Gadanha Coralina",
+   "slot": "garra",
+   "type": "agua",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_agua_t5": {
+   "id": "armadura_agua_t5",
+   "name": "Égide Coralina",
+   "slot": "armadura",
+   "type": "agua",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_agua_t5": {
+   "id": "reliquia_agua_t5",
+   "name": "Cristal Coralino",
+   "slot": "reliquia",
+   "type": "agua",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_fogo_t5": {
+   "id": "amuleto_fogo_t5",
+   "name": "Colar Ígneo",
+   "slot": "amuleto",
+   "type": "fogo",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_fogo_t5": {
+   "id": "garra_fogo_t5",
+   "name": "Gadanha Ígnea",
+   "slot": "garra",
+   "type": "fogo",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_fogo_t5": {
+   "id": "armadura_fogo_t5",
+   "name": "Égide Ígnea",
+   "slot": "armadura",
+   "type": "fogo",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_fogo_t5": {
+   "id": "reliquia_fogo_t5",
+   "name": "Cristal Ígneo",
+   "slot": "reliquia",
+   "type": "fogo",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_gelo_t5": {
+   "id": "amuleto_gelo_t5",
+   "name": "Colar Glacial",
+   "slot": "amuleto",
+   "type": "gelo",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_gelo_t5": {
+   "id": "garra_gelo_t5",
+   "name": "Gadanha Glacial",
+   "slot": "garra",
+   "type": "gelo",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_gelo_t5": {
+   "id": "armadura_gelo_t5",
+   "name": "Égide Glacial",
+   "slot": "armadura",
+   "type": "gelo",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_gelo_t5": {
+   "id": "reliquia_gelo_t5",
+   "name": "Cristal Glacial",
+   "slot": "reliquia",
+   "type": "gelo",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_planta_t5": {
+   "id": "amuleto_planta_t5",
+   "name": "Colar Silvestre",
+   "slot": "amuleto",
+   "type": "planta",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_planta_t5": {
+   "id": "garra_planta_t5",
+   "name": "Gadanha Silvestre",
+   "slot": "garra",
+   "type": "planta",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_planta_t5": {
+   "id": "armadura_planta_t5",
+   "name": "Égide Silvestre",
+   "slot": "armadura",
+   "type": "planta",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_planta_t5": {
+   "id": "reliquia_planta_t5",
+   "name": "Cristal Silvestre",
+   "slot": "reliquia",
+   "type": "planta",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_terra_t5": {
+   "id": "amuleto_terra_t5",
+   "name": "Colar Rochoso",
+   "slot": "amuleto",
+   "type": "terra",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_terra_t5": {
+   "id": "garra_terra_t5",
+   "name": "Gadanha Rochosa",
+   "slot": "garra",
+   "type": "terra",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_terra_t5": {
+   "id": "armadura_terra_t5",
+   "name": "Égide Rochosa",
+   "slot": "armadura",
+   "type": "terra",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_terra_t5": {
+   "id": "reliquia_terra_t5",
+   "name": "Cristal Rochoso",
+   "slot": "reliquia",
+   "type": "terra",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_eletrico_t5": {
+   "id": "amuleto_eletrico_t5",
+   "name": "Colar Voltaico",
+   "slot": "amuleto",
+   "type": "eletrico",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_eletrico_t5": {
+   "id": "garra_eletrico_t5",
+   "name": "Gadanha Voltaica",
+   "slot": "garra",
+   "type": "eletrico",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_eletrico_t5": {
+   "id": "armadura_eletrico_t5",
+   "name": "Égide Voltaica",
+   "slot": "armadura",
+   "type": "eletrico",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_eletrico_t5": {
+   "id": "reliquia_eletrico_t5",
+   "name": "Cristal Voltaico",
+   "slot": "reliquia",
+   "type": "eletrico",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_vento_t5": {
+   "id": "amuleto_vento_t5",
+   "name": "Colar Etéreo",
+   "slot": "amuleto",
+   "type": "vento",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_vento_t5": {
+   "id": "garra_vento_t5",
+   "name": "Gadanha Etérea",
+   "slot": "garra",
+   "type": "vento",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_vento_t5": {
+   "id": "armadura_vento_t5",
+   "name": "Égide Etérea",
+   "slot": "armadura",
+   "type": "vento",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_vento_t5": {
+   "id": "reliquia_vento_t5",
+   "name": "Cristal Etéreo",
+   "slot": "reliquia",
+   "type": "vento",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_luz_t5": {
+   "id": "amuleto_luz_t5",
+   "name": "Colar Radiante",
+   "slot": "amuleto",
+   "type": "luz",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_luz_t5": {
+   "id": "garra_luz_t5",
+   "name": "Gadanha Radiante",
+   "slot": "garra",
+   "type": "luz",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_luz_t5": {
+   "id": "armadura_luz_t5",
+   "name": "Égide Radiante",
+   "slot": "armadura",
+   "type": "luz",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_luz_t5": {
+   "id": "reliquia_luz_t5",
+   "name": "Cristal Radiante",
+   "slot": "reliquia",
+   "type": "luz",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_sombra_t5": {
+   "id": "amuleto_sombra_t5",
+   "name": "Colar Umbral",
+   "slot": "amuleto",
+   "type": "sombra",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_sombra_t5": {
+   "id": "garra_sombra_t5",
+   "name": "Gadanha Umbral",
+   "slot": "garra",
+   "type": "sombra",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_sombra_t5": {
+   "id": "armadura_sombra_t5",
+   "name": "Égide Umbral",
+   "slot": "armadura",
+   "type": "sombra",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_sombra_t5": {
+   "id": "reliquia_sombra_t5",
+   "name": "Cristal Umbral",
+   "slot": "reliquia",
+   "type": "sombra",
+   "tier": 5,
+   "level": 60,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_agua_t6": {
+   "id": "amuleto_agua_t6",
+   "name": "Gargantilha Coralina",
+   "slot": "amuleto",
+   "type": "agua",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_agua_t6": {
+   "id": "garra_agua_t6",
+   "name": "Navalha Coralina",
+   "slot": "garra",
+   "type": "agua",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_agua_t6": {
+   "id": "armadura_agua_t6",
+   "name": "Coura Coralina",
+   "slot": "armadura",
+   "type": "agua",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_agua_t6": {
+   "id": "reliquia_agua_t6",
+   "name": "Fragmento Coralino",
+   "slot": "reliquia",
+   "type": "agua",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_fogo_t6": {
+   "id": "amuleto_fogo_t6",
+   "name": "Gargantilha Ígnea",
+   "slot": "amuleto",
+   "type": "fogo",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_fogo_t6": {
+   "id": "garra_fogo_t6",
+   "name": "Navalha Ígnea",
+   "slot": "garra",
+   "type": "fogo",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_fogo_t6": {
+   "id": "armadura_fogo_t6",
+   "name": "Coura Ígnea",
+   "slot": "armadura",
+   "type": "fogo",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_fogo_t6": {
+   "id": "reliquia_fogo_t6",
+   "name": "Fragmento Ígneo",
+   "slot": "reliquia",
+   "type": "fogo",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_gelo_t6": {
+   "id": "amuleto_gelo_t6",
+   "name": "Gargantilha Glacial",
+   "slot": "amuleto",
+   "type": "gelo",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_gelo_t6": {
+   "id": "garra_gelo_t6",
+   "name": "Navalha Glacial",
+   "slot": "garra",
+   "type": "gelo",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_gelo_t6": {
+   "id": "armadura_gelo_t6",
+   "name": "Coura Glacial",
+   "slot": "armadura",
+   "type": "gelo",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_gelo_t6": {
+   "id": "reliquia_gelo_t6",
+   "name": "Fragmento Glacial",
+   "slot": "reliquia",
+   "type": "gelo",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_planta_t6": {
+   "id": "amuleto_planta_t6",
+   "name": "Gargantilha Silvestre",
+   "slot": "amuleto",
+   "type": "planta",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_planta_t6": {
+   "id": "garra_planta_t6",
+   "name": "Navalha Silvestre",
+   "slot": "garra",
+   "type": "planta",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_planta_t6": {
+   "id": "armadura_planta_t6",
+   "name": "Coura Silvestre",
+   "slot": "armadura",
+   "type": "planta",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_planta_t6": {
+   "id": "reliquia_planta_t6",
+   "name": "Fragmento Silvestre",
+   "slot": "reliquia",
+   "type": "planta",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_terra_t6": {
+   "id": "amuleto_terra_t6",
+   "name": "Gargantilha Rochosa",
+   "slot": "amuleto",
+   "type": "terra",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_terra_t6": {
+   "id": "garra_terra_t6",
+   "name": "Navalha Rochosa",
+   "slot": "garra",
+   "type": "terra",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_terra_t6": {
+   "id": "armadura_terra_t6",
+   "name": "Coura Rochosa",
+   "slot": "armadura",
+   "type": "terra",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_terra_t6": {
+   "id": "reliquia_terra_t6",
+   "name": "Fragmento Rochoso",
+   "slot": "reliquia",
+   "type": "terra",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_eletrico_t6": {
+   "id": "amuleto_eletrico_t6",
+   "name": "Gargantilha Voltaica",
+   "slot": "amuleto",
+   "type": "eletrico",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_eletrico_t6": {
+   "id": "garra_eletrico_t6",
+   "name": "Navalha Voltaica",
+   "slot": "garra",
+   "type": "eletrico",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_eletrico_t6": {
+   "id": "armadura_eletrico_t6",
+   "name": "Coura Voltaica",
+   "slot": "armadura",
+   "type": "eletrico",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_eletrico_t6": {
+   "id": "reliquia_eletrico_t6",
+   "name": "Fragmento Voltaico",
+   "slot": "reliquia",
+   "type": "eletrico",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_vento_t6": {
+   "id": "amuleto_vento_t6",
+   "name": "Gargantilha Etérea",
+   "slot": "amuleto",
+   "type": "vento",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_vento_t6": {
+   "id": "garra_vento_t6",
+   "name": "Navalha Etérea",
+   "slot": "garra",
+   "type": "vento",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_vento_t6": {
+   "id": "armadura_vento_t6",
+   "name": "Coura Etérea",
+   "slot": "armadura",
+   "type": "vento",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_vento_t6": {
+   "id": "reliquia_vento_t6",
+   "name": "Fragmento Etéreo",
+   "slot": "reliquia",
+   "type": "vento",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_luz_t6": {
+   "id": "amuleto_luz_t6",
+   "name": "Gargantilha Radiante",
+   "slot": "amuleto",
+   "type": "luz",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_luz_t6": {
+   "id": "garra_luz_t6",
+   "name": "Navalha Radiante",
+   "slot": "garra",
+   "type": "luz",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_luz_t6": {
+   "id": "armadura_luz_t6",
+   "name": "Coura Radiante",
+   "slot": "armadura",
+   "type": "luz",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_luz_t6": {
+   "id": "reliquia_luz_t6",
+   "name": "Fragmento Radiante",
+   "slot": "reliquia",
+   "type": "luz",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_sombra_t6": {
+   "id": "amuleto_sombra_t6",
+   "name": "Gargantilha Umbral",
+   "slot": "amuleto",
+   "type": "sombra",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "hp"
+  },
+  "garra_sombra_t6": {
+   "id": "garra_sombra_t6",
+   "name": "Navalha Umbral",
+   "slot": "garra",
+   "type": "sombra",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "atk"
+  },
+  "armadura_sombra_t6": {
+   "id": "armadura_sombra_t6",
+   "name": "Coura Umbral",
+   "slot": "armadura",
+   "type": "sombra",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "def"
+  },
+  "reliquia_sombra_t6": {
+   "id": "reliquia_sombra_t6",
+   "name": "Fragmento Umbral",
+   "slot": "reliquia",
+   "type": "sombra",
+   "tier": 6,
+   "level": 80,
+   "world2_only": false,
+   "main_stat": "spd"
+  },
+  "amuleto_agua_t7": {
+   "id": "amuleto_agua_t7",
+   "name": "Insígnia Coralina",
+   "slot": "amuleto",
+   "type": "agua",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_agua_t7": {
+   "id": "garra_agua_t7",
+   "name": "Dente-Rei Coralino",
+   "slot": "garra",
+   "type": "agua",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_agua_t7": {
+   "id": "armadura_agua_t7",
+   "name": "Bastião Coralino",
+   "slot": "armadura",
+   "type": "agua",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_agua_t7": {
+   "id": "reliquia_agua_t7",
+   "name": "Núcleo Coralino",
+   "slot": "reliquia",
+   "type": "agua",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_fogo_t7": {
+   "id": "amuleto_fogo_t7",
+   "name": "Insígnia Ígnea",
+   "slot": "amuleto",
+   "type": "fogo",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_fogo_t7": {
+   "id": "garra_fogo_t7",
+   "name": "Dente-Rei Ígneo",
+   "slot": "garra",
+   "type": "fogo",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_fogo_t7": {
+   "id": "armadura_fogo_t7",
+   "name": "Bastião Ígneo",
+   "slot": "armadura",
+   "type": "fogo",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_fogo_t7": {
+   "id": "reliquia_fogo_t7",
+   "name": "Núcleo Ígneo",
+   "slot": "reliquia",
+   "type": "fogo",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_gelo_t7": {
+   "id": "amuleto_gelo_t7",
+   "name": "Insígnia Glacial",
+   "slot": "amuleto",
+   "type": "gelo",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_gelo_t7": {
+   "id": "garra_gelo_t7",
+   "name": "Dente-Rei Glacial",
+   "slot": "garra",
+   "type": "gelo",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_gelo_t7": {
+   "id": "armadura_gelo_t7",
+   "name": "Bastião Glacial",
+   "slot": "armadura",
+   "type": "gelo",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_gelo_t7": {
+   "id": "reliquia_gelo_t7",
+   "name": "Núcleo Glacial",
+   "slot": "reliquia",
+   "type": "gelo",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_planta_t7": {
+   "id": "amuleto_planta_t7",
+   "name": "Insígnia Silvestre",
+   "slot": "amuleto",
+   "type": "planta",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_planta_t7": {
+   "id": "garra_planta_t7",
+   "name": "Dente-Rei Silvestre",
+   "slot": "garra",
+   "type": "planta",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_planta_t7": {
+   "id": "armadura_planta_t7",
+   "name": "Bastião Silvestre",
+   "slot": "armadura",
+   "type": "planta",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_planta_t7": {
+   "id": "reliquia_planta_t7",
+   "name": "Núcleo Silvestre",
+   "slot": "reliquia",
+   "type": "planta",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_terra_t7": {
+   "id": "amuleto_terra_t7",
+   "name": "Insígnia Rochosa",
+   "slot": "amuleto",
+   "type": "terra",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_terra_t7": {
+   "id": "garra_terra_t7",
+   "name": "Dente-Rei Rochoso",
+   "slot": "garra",
+   "type": "terra",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_terra_t7": {
+   "id": "armadura_terra_t7",
+   "name": "Bastião Rochoso",
+   "slot": "armadura",
+   "type": "terra",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_terra_t7": {
+   "id": "reliquia_terra_t7",
+   "name": "Núcleo Rochoso",
+   "slot": "reliquia",
+   "type": "terra",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_eletrico_t7": {
+   "id": "amuleto_eletrico_t7",
+   "name": "Insígnia Voltaica",
+   "slot": "amuleto",
+   "type": "eletrico",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_eletrico_t7": {
+   "id": "garra_eletrico_t7",
+   "name": "Dente-Rei Voltaico",
+   "slot": "garra",
+   "type": "eletrico",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_eletrico_t7": {
+   "id": "armadura_eletrico_t7",
+   "name": "Bastião Voltaico",
+   "slot": "armadura",
+   "type": "eletrico",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_eletrico_t7": {
+   "id": "reliquia_eletrico_t7",
+   "name": "Núcleo Voltaico",
+   "slot": "reliquia",
+   "type": "eletrico",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_vento_t7": {
+   "id": "amuleto_vento_t7",
+   "name": "Insígnia Etérea",
+   "slot": "amuleto",
+   "type": "vento",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_vento_t7": {
+   "id": "garra_vento_t7",
+   "name": "Dente-Rei Etéreo",
+   "slot": "garra",
+   "type": "vento",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_vento_t7": {
+   "id": "armadura_vento_t7",
+   "name": "Bastião Etéreo",
+   "slot": "armadura",
+   "type": "vento",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_vento_t7": {
+   "id": "reliquia_vento_t7",
+   "name": "Núcleo Etéreo",
+   "slot": "reliquia",
+   "type": "vento",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_luz_t7": {
+   "id": "amuleto_luz_t7",
+   "name": "Insígnia Radiante",
+   "slot": "amuleto",
+   "type": "luz",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_luz_t7": {
+   "id": "garra_luz_t7",
+   "name": "Dente-Rei Radiante",
+   "slot": "garra",
+   "type": "luz",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_luz_t7": {
+   "id": "armadura_luz_t7",
+   "name": "Bastião Radiante",
+   "slot": "armadura",
+   "type": "luz",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_luz_t7": {
+   "id": "reliquia_luz_t7",
+   "name": "Núcleo Radiante",
+   "slot": "reliquia",
+   "type": "luz",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_sombra_t7": {
+   "id": "amuleto_sombra_t7",
+   "name": "Insígnia Umbral",
+   "slot": "amuleto",
+   "type": "sombra",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_sombra_t7": {
+   "id": "garra_sombra_t7",
+   "name": "Dente-Rei Umbral",
+   "slot": "garra",
+   "type": "sombra",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_sombra_t7": {
+   "id": "armadura_sombra_t7",
+   "name": "Bastião Umbral",
+   "slot": "armadura",
+   "type": "sombra",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_sombra_t7": {
+   "id": "reliquia_sombra_t7",
+   "name": "Núcleo Umbral",
+   "slot": "reliquia",
+   "type": "sombra",
+   "tier": 7,
+   "level": 120,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_agua_t8": {
+   "id": "amuleto_agua_t8",
+   "name": "Relicário Coralino",
+   "slot": "amuleto",
+   "type": "agua",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_agua_t8": {
+   "id": "garra_agua_t8",
+   "name": "Ceifadora Coralina",
+   "slot": "garra",
+   "type": "agua",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_agua_t8": {
+   "id": "armadura_agua_t8",
+   "name": "Fortaleza Coralina",
+   "slot": "armadura",
+   "type": "agua",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_agua_t8": {
+   "id": "reliquia_agua_t8",
+   "name": "Coração Coralino",
+   "slot": "reliquia",
+   "type": "agua",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_fogo_t8": {
+   "id": "amuleto_fogo_t8",
+   "name": "Relicário Ígneo",
+   "slot": "amuleto",
+   "type": "fogo",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_fogo_t8": {
+   "id": "garra_fogo_t8",
+   "name": "Ceifadora Ígnea",
+   "slot": "garra",
+   "type": "fogo",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_fogo_t8": {
+   "id": "armadura_fogo_t8",
+   "name": "Fortaleza Ígnea",
+   "slot": "armadura",
+   "type": "fogo",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_fogo_t8": {
+   "id": "reliquia_fogo_t8",
+   "name": "Coração Ígneo",
+   "slot": "reliquia",
+   "type": "fogo",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_gelo_t8": {
+   "id": "amuleto_gelo_t8",
+   "name": "Relicário Glacial",
+   "slot": "amuleto",
+   "type": "gelo",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_gelo_t8": {
+   "id": "garra_gelo_t8",
+   "name": "Ceifadora Glacial",
+   "slot": "garra",
+   "type": "gelo",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_gelo_t8": {
+   "id": "armadura_gelo_t8",
+   "name": "Fortaleza Glacial",
+   "slot": "armadura",
+   "type": "gelo",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_gelo_t8": {
+   "id": "reliquia_gelo_t8",
+   "name": "Coração Glacial",
+   "slot": "reliquia",
+   "type": "gelo",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_planta_t8": {
+   "id": "amuleto_planta_t8",
+   "name": "Relicário Silvestre",
+   "slot": "amuleto",
+   "type": "planta",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_planta_t8": {
+   "id": "garra_planta_t8",
+   "name": "Ceifadora Silvestre",
+   "slot": "garra",
+   "type": "planta",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_planta_t8": {
+   "id": "armadura_planta_t8",
+   "name": "Fortaleza Silvestre",
+   "slot": "armadura",
+   "type": "planta",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_planta_t8": {
+   "id": "reliquia_planta_t8",
+   "name": "Coração Silvestre",
+   "slot": "reliquia",
+   "type": "planta",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_terra_t8": {
+   "id": "amuleto_terra_t8",
+   "name": "Relicário Rochoso",
+   "slot": "amuleto",
+   "type": "terra",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_terra_t8": {
+   "id": "garra_terra_t8",
+   "name": "Ceifadora Rochosa",
+   "slot": "garra",
+   "type": "terra",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_terra_t8": {
+   "id": "armadura_terra_t8",
+   "name": "Fortaleza Rochosa",
+   "slot": "armadura",
+   "type": "terra",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_terra_t8": {
+   "id": "reliquia_terra_t8",
+   "name": "Coração Rochoso",
+   "slot": "reliquia",
+   "type": "terra",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_eletrico_t8": {
+   "id": "amuleto_eletrico_t8",
+   "name": "Relicário Voltaico",
+   "slot": "amuleto",
+   "type": "eletrico",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_eletrico_t8": {
+   "id": "garra_eletrico_t8",
+   "name": "Ceifadora Voltaica",
+   "slot": "garra",
+   "type": "eletrico",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_eletrico_t8": {
+   "id": "armadura_eletrico_t8",
+   "name": "Fortaleza Voltaica",
+   "slot": "armadura",
+   "type": "eletrico",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_eletrico_t8": {
+   "id": "reliquia_eletrico_t8",
+   "name": "Coração Voltaico",
+   "slot": "reliquia",
+   "type": "eletrico",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_vento_t8": {
+   "id": "amuleto_vento_t8",
+   "name": "Relicário Etéreo",
+   "slot": "amuleto",
+   "type": "vento",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_vento_t8": {
+   "id": "garra_vento_t8",
+   "name": "Ceifadora Etérea",
+   "slot": "garra",
+   "type": "vento",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_vento_t8": {
+   "id": "armadura_vento_t8",
+   "name": "Fortaleza Etérea",
+   "slot": "armadura",
+   "type": "vento",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_vento_t8": {
+   "id": "reliquia_vento_t8",
+   "name": "Coração Etéreo",
+   "slot": "reliquia",
+   "type": "vento",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_luz_t8": {
+   "id": "amuleto_luz_t8",
+   "name": "Relicário Radiante",
+   "slot": "amuleto",
+   "type": "luz",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_luz_t8": {
+   "id": "garra_luz_t8",
+   "name": "Ceifadora Radiante",
+   "slot": "garra",
+   "type": "luz",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_luz_t8": {
+   "id": "armadura_luz_t8",
+   "name": "Fortaleza Radiante",
+   "slot": "armadura",
+   "type": "luz",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_luz_t8": {
+   "id": "reliquia_luz_t8",
+   "name": "Coração Radiante",
+   "slot": "reliquia",
+   "type": "luz",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_sombra_t8": {
+   "id": "amuleto_sombra_t8",
+   "name": "Relicário Umbral",
+   "slot": "amuleto",
+   "type": "sombra",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_sombra_t8": {
+   "id": "garra_sombra_t8",
+   "name": "Ceifadora Umbral",
+   "slot": "garra",
+   "type": "sombra",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_sombra_t8": {
+   "id": "armadura_sombra_t8",
+   "name": "Fortaleza Umbral",
+   "slot": "armadura",
+   "type": "sombra",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_sombra_t8": {
+   "id": "reliquia_sombra_t8",
+   "name": "Coração Umbral",
+   "slot": "reliquia",
+   "type": "sombra",
+   "tier": 8,
+   "level": 170,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_agua_t9": {
+   "id": "amuleto_agua_t9",
+   "name": "Coroa-Pingente Coralina",
+   "slot": "amuleto",
+   "type": "agua",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_agua_t9": {
+   "id": "garra_agua_t9",
+   "name": "Garra Ancestral Coralina",
+   "slot": "garra",
+   "type": "agua",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_agua_t9": {
+   "id": "armadura_agua_t9",
+   "name": "Manto Primevo Coralino",
+   "slot": "armadura",
+   "type": "agua",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_agua_t9": {
+   "id": "reliquia_agua_t9",
+   "name": "Essência Viva Coralina",
+   "slot": "reliquia",
+   "type": "agua",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_fogo_t9": {
+   "id": "amuleto_fogo_t9",
+   "name": "Coroa-Pingente Ígnea",
+   "slot": "amuleto",
+   "type": "fogo",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_fogo_t9": {
+   "id": "garra_fogo_t9",
+   "name": "Garra Ancestral Ígnea",
+   "slot": "garra",
+   "type": "fogo",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_fogo_t9": {
+   "id": "armadura_fogo_t9",
+   "name": "Manto Primevo Ígneo",
+   "slot": "armadura",
+   "type": "fogo",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_fogo_t9": {
+   "id": "reliquia_fogo_t9",
+   "name": "Essência Viva Ígnea",
+   "slot": "reliquia",
+   "type": "fogo",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_gelo_t9": {
+   "id": "amuleto_gelo_t9",
+   "name": "Coroa-Pingente Glacial",
+   "slot": "amuleto",
+   "type": "gelo",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_gelo_t9": {
+   "id": "garra_gelo_t9",
+   "name": "Garra Ancestral Glacial",
+   "slot": "garra",
+   "type": "gelo",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_gelo_t9": {
+   "id": "armadura_gelo_t9",
+   "name": "Manto Primevo Glacial",
+   "slot": "armadura",
+   "type": "gelo",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_gelo_t9": {
+   "id": "reliquia_gelo_t9",
+   "name": "Essência Viva Glacial",
+   "slot": "reliquia",
+   "type": "gelo",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_planta_t9": {
+   "id": "amuleto_planta_t9",
+   "name": "Coroa-Pingente Silvestre",
+   "slot": "amuleto",
+   "type": "planta",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_planta_t9": {
+   "id": "garra_planta_t9",
+   "name": "Garra Ancestral Silvestre",
+   "slot": "garra",
+   "type": "planta",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_planta_t9": {
+   "id": "armadura_planta_t9",
+   "name": "Manto Primevo Silvestre",
+   "slot": "armadura",
+   "type": "planta",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_planta_t9": {
+   "id": "reliquia_planta_t9",
+   "name": "Essência Viva Silvestre",
+   "slot": "reliquia",
+   "type": "planta",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_terra_t9": {
+   "id": "amuleto_terra_t9",
+   "name": "Coroa-Pingente Rochosa",
+   "slot": "amuleto",
+   "type": "terra",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_terra_t9": {
+   "id": "garra_terra_t9",
+   "name": "Garra Ancestral Rochosa",
+   "slot": "garra",
+   "type": "terra",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_terra_t9": {
+   "id": "armadura_terra_t9",
+   "name": "Manto Primevo Rochoso",
+   "slot": "armadura",
+   "type": "terra",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_terra_t9": {
+   "id": "reliquia_terra_t9",
+   "name": "Essência Viva Rochosa",
+   "slot": "reliquia",
+   "type": "terra",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_eletrico_t9": {
+   "id": "amuleto_eletrico_t9",
+   "name": "Coroa-Pingente Voltaica",
+   "slot": "amuleto",
+   "type": "eletrico",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_eletrico_t9": {
+   "id": "garra_eletrico_t9",
+   "name": "Garra Ancestral Voltaica",
+   "slot": "garra",
+   "type": "eletrico",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_eletrico_t9": {
+   "id": "armadura_eletrico_t9",
+   "name": "Manto Primevo Voltaico",
+   "slot": "armadura",
+   "type": "eletrico",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_eletrico_t9": {
+   "id": "reliquia_eletrico_t9",
+   "name": "Essência Viva Voltaica",
+   "slot": "reliquia",
+   "type": "eletrico",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_vento_t9": {
+   "id": "amuleto_vento_t9",
+   "name": "Coroa-Pingente Etérea",
+   "slot": "amuleto",
+   "type": "vento",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_vento_t9": {
+   "id": "garra_vento_t9",
+   "name": "Garra Ancestral Etérea",
+   "slot": "garra",
+   "type": "vento",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_vento_t9": {
+   "id": "armadura_vento_t9",
+   "name": "Manto Primevo Etéreo",
+   "slot": "armadura",
+   "type": "vento",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_vento_t9": {
+   "id": "reliquia_vento_t9",
+   "name": "Essência Viva Etérea",
+   "slot": "reliquia",
+   "type": "vento",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_luz_t9": {
+   "id": "amuleto_luz_t9",
+   "name": "Coroa-Pingente Radiante",
+   "slot": "amuleto",
+   "type": "luz",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_luz_t9": {
+   "id": "garra_luz_t9",
+   "name": "Garra Ancestral Radiante",
+   "slot": "garra",
+   "type": "luz",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_luz_t9": {
+   "id": "armadura_luz_t9",
+   "name": "Manto Primevo Radiante",
+   "slot": "armadura",
+   "type": "luz",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_luz_t9": {
+   "id": "reliquia_luz_t9",
+   "name": "Essência Viva Radiante",
+   "slot": "reliquia",
+   "type": "luz",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "spd"
+  },
+  "amuleto_sombra_t9": {
+   "id": "amuleto_sombra_t9",
+   "name": "Coroa-Pingente Umbral",
+   "slot": "amuleto",
+   "type": "sombra",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "hp"
+  },
+  "garra_sombra_t9": {
+   "id": "garra_sombra_t9",
+   "name": "Garra Ancestral Umbral",
+   "slot": "garra",
+   "type": "sombra",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "atk"
+  },
+  "armadura_sombra_t9": {
+   "id": "armadura_sombra_t9",
+   "name": "Manto Primevo Umbral",
+   "slot": "armadura",
+   "type": "sombra",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "def"
+  },
+  "reliquia_sombra_t9": {
+   "id": "reliquia_sombra_t9",
+   "name": "Essência Viva Umbral",
+   "slot": "reliquia",
+   "type": "sombra",
+   "tier": 9,
+   "level": 230,
+   "world2_only": true,
+   "main_stat": "spd"
+  }
+ },
+ "affixes": [
+  {
+   "id": "hp_pct",
+   "name": "+{v}% HP",
+   "stat": "hp_pct",
+   "min": 3,
+   "max": 10
+  },
+  {
+   "id": "atk_pct",
+   "name": "+{v}% Ataque",
+   "stat": "atk_pct",
+   "min": 3,
+   "max": 10
+  },
+  {
+   "id": "def_pct",
+   "name": "+{v}% Defesa",
+   "stat": "def_pct",
+   "min": 3,
+   "max": 10
+  },
+  {
+   "id": "spd_pct",
+   "name": "+{v}% Velocidade",
+   "stat": "spd_pct",
+   "min": 2,
+   "max": 6
+  },
+  {
+   "id": "crit",
+   "name": "+{v}% Crítico",
+   "stat": "crit",
+   "min": 1,
+   "max": 5
+  },
+  {
+   "id": "lifesteal",
+   "name": "+{v}% Roubo de vida",
+   "stat": "lifesteal",
+   "min": 1,
+   "max": 4
+  },
+  {
+   "id": "cdr",
+   "name": "-{v}% Recarga de habilidades",
+   "stat": "cdr",
+   "min": 2,
+   "max": 8
+  },
+  {
+   "id": "xp_pct",
+   "name": "+{v}% XP",
+   "stat": "xp_pct",
+   "min": 1,
+   "max": 5
+  },
+  {
+   "id": "gold_pct",
+   "name": "+{v}% Ouro",
+   "stat": "gold_pct",
+   "min": 2,
+   "max": 8
+  },
+  {
+   "id": "type_dmg",
+   "name": "+{v}% dano contra {t}",
+   "stat": "type_dmg",
+   "min": 4,
+   "max": 12,
+   "per_type": true
+  }
+ ],
+ "shop": {
+  "_comentario": "A loja NPC vende bases Comum dos tiers liberados.",
+  "rarity": "comum",
+  "price_mult": 3.0
+ }
+}

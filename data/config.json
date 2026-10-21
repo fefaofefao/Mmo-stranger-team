@@ -1,0 +1,284 @@
+{
+ "_comentario": "Balanceamento global. Tudo aqui pode ser ajustado sem mexer no código. Veja DECISOES.md para as fórmulas.",
+ "version": 1,
+ "max_level": 300,
+ "starting_level": 1,
+ "stat_growth_per_level": 0.08,
+ "stage_mult": [
+  1.0,
+  1.35,
+  1.8
+ ],
+ "stage_spd_mult": [
+  1.0,
+  1.05,
+  1.1
+ ],
+ "shiny_stat_bonus": 0.05,
+ "shiny_chance": 0.0002,
+ "recruit_chance": 0.002,
+ "shiny_recruit_mult": 10,
+ "recruit_level": 1,
+ "enemy_mods": {
+  "hp": 0.42,
+  "atk": 0.55,
+  "def": 0.7
+ },
+ "enemy_level_spread": 1,
+ "combat": {
+  "crit_chance": 0.05,
+  "crit_mult": 1.5,
+  "damage_variance": 0.1,
+  "base_attack_interval": 1.25,
+  "enemy_attack_interval": 1.6,
+  "base_move_speed": 2.8,
+  "enemy_move_speed": 2.0,
+  "regen_pct_per_sec": 0.008,
+  "aggro_range": 5,
+  "leash_range": 12,
+  "revive_seconds": 5,
+  "corpse_seconds": 6,
+  "wipe_suggest_count": 3,
+  "wipe_window_seconds": 300,
+  "ranged_projectile_speed": 9.0
+ },
+ "xp": {
+  "kills_min": 6,
+  "kills_a": 1.53,
+  "kills_p": 1.5,
+  "late_start": 80,
+  "late_slope": 0.04,
+  "kill_base": 4,
+  "kill_q": 1.35,
+  "low_level_penalty_start": 10,
+  "low_level_penalty_per_level": 0.04,
+  "low_level_penalty_min": 0.2
+ },
+ "gold": {
+  "kill_base": 2.0,
+  "kill_q": 1.15
+ },
+ "party": {
+  "max_size": 3,
+  "unlock_2": 110,
+  "unlock_3": 210,
+  "bench_xp_share": 0.5,
+  "fighting_xp_share": 1.0
+ },
+ "offline": {
+  "max_hours": 8,
+  "efficiency": 0.9,
+  "min_seconds": 60
+ },
+ "killrate": {
+  "_comentario": "Modelo usado no offline, no servidor (anti-trapaça) e na simulação de balanceamento.",
+  "travel_seconds": 2.6,
+  "engaged_enemies": 1.6,
+  "ability_dps_bonus": 0.35,
+  "extra_fighter_travel_mult": 0.85,
+  "max_kills_per_hour": 4000
+ },
+ "rarities": [
+  {
+   "id": "comum",
+   "name": "Comum",
+   "color": "#c8c8c8",
+   "chance": 0.025,
+   "stat_mult": 1.0,
+   "affixes": 0,
+   "server": false,
+   "sell_mult": 1
+  },
+  {
+   "id": "incomum",
+   "name": "Incomum",
+   "color": "#5fd35f",
+   "chance": 0.00625,
+   "stat_mult": 1.2,
+   "affixes": 0,
+   "server": false,
+   "sell_mult": 2.5
+  },
+  {
+   "id": "raro",
+   "name": "Raro",
+   "color": "#4a9cff",
+   "chance": 0.005,
+   "stat_mult": 1.45,
+   "affixes": 0,
+   "server": true,
+   "sell_mult": 8
+  },
+  {
+   "id": "epico",
+   "name": "Épico",
+   "color": "#b05cff",
+   "chance": 0.0005,
+   "stat_mult": 1.75,
+   "affixes": 1,
+   "server": true,
+   "sell_mult": 30
+  },
+  {
+   "id": "lendario",
+   "name": "Lendário",
+   "color": "#ff9a1f",
+   "chance": 5e-05,
+   "stat_mult": 2.1,
+   "affixes": 2,
+   "server": true,
+   "sell_mult": 120
+  },
+  {
+   "id": "mitico",
+   "name": "Mítico",
+   "color": "#ff3a5a",
+   "chance": 4e-06,
+   "stat_mult": 2.6,
+   "affixes": 3,
+   "server": true,
+   "sell_mult": 600
+  }
+ ],
+ "items": {
+  "base_stats": {
+   "hp": 18,
+   "atk": 3.0,
+   "def": 2.6
+  },
+  "reliquia": {
+   "spd_pct_base": 3.0,
+   "spd_pct_per_tier": 0.6,
+   "crit_base": 1.0,
+   "crit_per_tier": 0.3
+  },
+  "type_match_bonus": 0.15,
+  "sell_base": 10,
+  "sell_per_level": 0.15
+ },
+ "inventory": {
+  "base_cap": 60,
+  "expand_step": 10,
+  "expand_cost_base": 1000,
+  "max_cap": 300,
+  "depot_cap": 300
+ },
+ "essence": {
+  "stage_base": [
+   5,
+   15,
+   40
+  ],
+  "level_div": 20,
+  "shiny_mult": 50
+ },
+ "stars": {
+  "max": 5,
+  "cost": [
+   30,
+   90,
+   250,
+   600,
+   1500
+  ],
+  "stat_bonus_per_star": 0.06,
+  "ability_upgrade_stars": [
+   3,
+   5
+  ],
+  "ability_power_per_upgrade": 0.25,
+  "ability_cd_per_upgrade": 0.1
+ },
+ "enhance": {
+  "max": 10,
+  "stat_per_level": 0.08,
+  "success": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   0.75,
+   0.6,
+   0.45,
+   0.3,
+   0.2
+  ],
+  "essence_cost_per_tier": 5,
+  "gold_cost_per_tier": 50
+ },
+ "collection": {
+  "milestones": [
+   100,
+   1000,
+   10000
+  ],
+  "atk_pct_per_milestone": 0.1,
+  "xp_pct_per_milestone": 0.1
+ },
+ "world2": {
+  "start": 90,
+  "end": 300,
+  "step": 10,
+  "hunts_per_level": 3,
+  "unlock_challenge": 80,
+  "map_size": [
+   64,
+   64
+  ],
+  "density": 30,
+  "respawn": 8.0,
+  "types_per_hunt": 3,
+  "monsters_per_hunt": 4,
+  "seed": 9090,
+  "enemy_mods": {
+   "hp": 0.55,
+   "atk": 0.6,
+   "def": 0.75
+  },
+  "rarity_mult": 1.5,
+  "gold_mult": 1.5,
+  "xp_mult": 1.0
+ },
+ "corruption": {
+  "tint": "#4a1a6a",
+  "tint_amount": 0.35,
+  "darken": 0.25,
+  "extra_deco": 0.04
+ },
+ "anti_cheat": {
+  "kill_rate_tolerance": 1.6,
+  "claim_max_seconds": 900,
+  "xp_rate_tolerance": 2.0,
+  "challenge_min_seconds": 15,
+  "npc_sell_budget_per_kill": 0.5,
+  "gear_allowance": 1.8
+ },
+ "market": {
+  "fee": 0.05,
+  "max_listings": 10,
+  "min_price": 1,
+  "max_price": 999999999,
+  "listing_days": 7
+ },
+ "shop": {
+  "price_mult": 3.0
+ },
+ "ads": {
+  "interstitial_min_seconds": 300,
+  "xp_boost_minutes": 30,
+  "xp_boost_mult": 2.0
+ },
+ "sync": {
+  "cloud_interval_seconds": 120,
+  "claim_interval_seconds": 10,
+  "spawn_ticket_batch": 50
+ },
+ "debug": {
+  "time_scales": [
+   1,
+   10,
+   100
+  ]
+ }
+}

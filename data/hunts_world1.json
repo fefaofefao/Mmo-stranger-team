@@ -1,0 +1,8939 @@
+{
+ "_comentario": "Hunts do Mundo 1. density = monstros simultâneos; respawn em segundos; map_size em tiles. Hunts do Mundo 2 são geradas pelo config.json (world2).",
+ "hunts": [
+  {
+   "id": "w1_s1_agua_1",
+   "name": "Baía Profunda",
+   "world": 1,
+   "category": "filhote",
+   "level": 1,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "praia",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_1_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 682508698,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_planta_1",
+   "name": "Colina Dourada",
+   "world": 1,
+   "category": "filhote",
+   "level": 1,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "campo_grama",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_1_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 811767988,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_vento_1",
+   "name": "Pico Dourada",
+   "world": 1,
+   "category": "filhote",
+   "level": 1,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "picos",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_1_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 48233916,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_agua_2",
+   "name": "Lagoa Estreita",
+   "world": 1,
+   "category": "filhote",
+   "level": 2,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "lago",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_2_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 297888148,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_agua_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_planta_2",
+   "name": "Floresta Profunda",
+   "world": 1,
+   "category": "filhote",
+   "level": 2,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "floresta_densa",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_2_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 822124654,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_planta_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_vento_2",
+   "name": "Ninho Esquecida",
+   "world": 1,
+   "category": "filhote",
+   "level": 2,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "plataformas_nuvens",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_2_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 439487679,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_vento_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_agua_3",
+   "name": "Banco de Coral Escondida",
+   "world": 1,
+   "category": "filhote",
+   "level": 3,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "recife",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_3_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 433196562,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_planta_3",
+   "name": "Colina Azulada",
+   "world": 1,
+   "category": "filhote",
+   "level": 3,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "campo_grama",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_3_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 294113115,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_vento_3",
+   "name": "Serra Baixa",
+   "world": 1,
+   "category": "filhote",
+   "level": 3,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "picos",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_3_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 398337507,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_agua_4",
+   "name": "Costa Serena",
+   "world": 1,
+   "category": "filhote",
+   "level": 4,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "praia",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_4_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 395361567,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_planta_4",
+   "name": "Mata Antiga",
+   "world": 1,
+   "category": "filhote",
+   "level": 4,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "floresta_densa",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_4_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 801695203,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_planta_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_vento_4",
+   "name": "Plataforma Silenciosa",
+   "world": 1,
+   "category": "filhote",
+   "level": 4,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "plataformas_nuvens",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_4_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 983357494,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_agua_5",
+   "name": "Margem Rasa",
+   "world": 1,
+   "category": "filhote",
+   "level": 5,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "lago",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_5_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 898383666,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_agua_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_planta_5",
+   "name": "Campina Sussurrante",
+   "world": 1,
+   "category": "filhote",
+   "level": 5,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "campo_grama",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_5_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 887860555,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_vento_5",
+   "name": "Pico Sussurrante",
+   "world": 1,
+   "category": "filhote",
+   "level": 5,
+   "unlock_level": 1,
+   "requires_challenge": 0,
+   "biome": "picos",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_5_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 684491353,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_vento_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_fogo_1",
+   "name": "Encosta Serena",
+   "world": 1,
+   "category": "filhote",
+   "level": 6,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "vulcao",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_1_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 1014410652,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_fogo_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_luz_1",
+   "name": "Templo Encantada",
+   "world": 1,
+   "category": "filhote",
+   "level": 6,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "templo",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_1_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 1063804237,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_terra_1",
+   "name": "Desfiladeiro Velha",
+   "world": 1,
+   "category": "filhote",
+   "level": 6,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "canion",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_1_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 680231861,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_fogo_2",
+   "name": "Planície Selvagem",
+   "world": 1,
+   "category": "filhote",
+   "level": 7,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "campo_lava",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_2_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 148048610,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_luz_2",
+   "name": "Campo Torta",
+   "world": 1,
+   "category": "filhote",
+   "level": 7,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "campo_cristais",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_2_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 517371969,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_terra_2",
+   "name": "Toca Torta",
+   "world": 1,
+   "category": "filhote",
+   "level": 7,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "caverna_rochosa",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_2_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 110554867,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_fogo_3",
+   "name": "Chaminé Velha",
+   "world": 1,
+   "category": "filhote",
+   "level": 8,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "vulcao",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_3_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 917499564,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_luz_3",
+   "name": "Capela Velha",
+   "world": 1,
+   "category": "filhote",
+   "level": 8,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "templo",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_3_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 362884783,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_terra_3",
+   "name": "Desfiladeiro Tranquila",
+   "world": 1,
+   "category": "filhote",
+   "level": 8,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "canion",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_3_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 99629927,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_fogo_4",
+   "name": "Planície Eterna",
+   "world": 1,
+   "category": "filhote",
+   "level": 9,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "campo_lava",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_4_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 1052129738,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_luz_4",
+   "name": "Vale Baixa",
+   "world": 1,
+   "category": "filhote",
+   "level": 9,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "campo_cristais",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_4_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 105360284,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_terra_4",
+   "name": "Toca Bravia",
+   "world": 1,
+   "category": "filhote",
+   "level": 9,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "caverna_rochosa",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_4_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 787811657,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_fogo_5",
+   "name": "Encosta Distante",
+   "world": 1,
+   "category": "filhote",
+   "level": 10,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "vulcao",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_5_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 504198861,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_luz_5",
+   "name": "Templo Esquecida",
+   "world": 1,
+   "category": "filhote",
+   "level": 10,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "templo",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_5_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 641040624,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_terra_5",
+   "name": "Ravina Dourada",
+   "world": 1,
+   "category": "filhote",
+   "level": 10,
+   "unlock_level": 6,
+   "requires_challenge": 0,
+   "biome": "canion",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_5_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 659641419,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t1",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t1",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_eletrico_1",
+   "name": "Planalto Encantada",
+   "world": 1,
+   "category": "filhote",
+   "level": 12,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "planalto_tempestade",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_1_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 661694061,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_gelo_1",
+   "name": "Campina Perdida",
+   "world": 1,
+   "category": "filhote",
+   "level": 12,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "tundra",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_1_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 575107854,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_sombra_1",
+   "name": "Bosque Tranquila",
+   "world": 1,
+   "category": "filhote",
+   "level": 12,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "floresta_sombria",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_1_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 193816141,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_eletrico_2",
+   "name": "Cidadela Selvagem",
+   "world": 1,
+   "category": "filhote",
+   "level": 13,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "ruinas_energizadas",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_2_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 238670228,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_gelo_2",
+   "name": "Gruta Larga",
+   "world": 1,
+   "category": "filhote",
+   "level": 13,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "caverna_congelada",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_2_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 440709484,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_sombra_2",
+   "name": "Campo-Santo Esquecida",
+   "world": 1,
+   "category": "filhote",
+   "level": 13,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "cemiterio",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_2_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 919773578,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_eletrico_3",
+   "name": "Meseta Bravia",
+   "world": 1,
+   "category": "filhote",
+   "level": 14,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "planalto_tempestade",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_3_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 688428816,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_gelo_3",
+   "name": "Estepe Distante",
+   "world": 1,
+   "category": "filhote",
+   "level": 14,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "tundra",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_3_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 546473817,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_sombra_3",
+   "name": "Floresta Estreita",
+   "world": 1,
+   "category": "filhote",
+   "level": 14,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "floresta_sombria",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_3_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 1010555774,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_eletrico_4",
+   "name": "Ruína Eterna",
+   "world": 1,
+   "category": "filhote",
+   "level": 15,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "ruinas_energizadas",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_4_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 885620310,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_eletrico_5",
+   "name": "Meseta Eterna",
+   "world": 1,
+   "category": "filhote",
+   "level": 15,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "planalto_tempestade",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_5_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 241783303,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_gelo_4",
+   "name": "Galeria Nova",
+   "world": 1,
+   "category": "filhote",
+   "level": 15,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "caverna_congelada",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_4_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 837331563,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_gelo_5",
+   "name": "Planície Sombria",
+   "world": 1,
+   "category": "filhote",
+   "level": 15,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "tundra",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_5_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 547644476,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_sombra_4",
+   "name": "Cripta Esquecida",
+   "world": 1,
+   "category": "filhote",
+   "level": 15,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "cemiterio",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_4_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 290791943,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s1_sombra_5",
+   "name": "Bosque Sussurrante",
+   "world": 1,
+   "category": "filhote",
+   "level": 15,
+   "unlock_level": 12,
+   "requires_challenge": 10,
+   "biome": "floresta_sombria",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_5_1",
+     "weight": 1
+    }
+   ],
+   "density": 14,
+   "respawn": 10.0,
+   "map_size": [
+    40,
+    40
+   ],
+   "seed": 637029575,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_agua_1",
+   "name": "Baía Larga",
+   "world": 1,
+   "category": "adolescente",
+   "level": 16,
+   "unlock_level": 16,
+   "requires_challenge": 10,
+   "biome": "praia",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_1_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 395663881,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_agua_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_fogo_1",
+   "name": "Planície Velha",
+   "world": 1,
+   "category": "adolescente",
+   "level": 16,
+   "unlock_level": 16,
+   "requires_challenge": 10,
+   "biome": "campo_lava",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_1_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 1028856841,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_fogo_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_gelo_1",
+   "name": "Estepe Brilhante",
+   "world": 1,
+   "category": "adolescente",
+   "level": 16,
+   "unlock_level": 16,
+   "requires_challenge": 10,
+   "biome": "tundra",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_1_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 104134932,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_gelo_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_planta_1",
+   "name": "Floresta Esquecida",
+   "world": 1,
+   "category": "adolescente",
+   "level": 17,
+   "unlock_level": 16,
+   "requires_challenge": 10,
+   "biome": "floresta_densa",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_1_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 856150229,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_planta_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_planta_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_terra_1",
+   "name": "Garganta Silenciosa",
+   "world": 1,
+   "category": "adolescente",
+   "level": 17,
+   "unlock_level": 16,
+   "requires_challenge": 10,
+   "biome": "canion",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_1_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 390342540,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_terra_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_terra_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_terra_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_eletrico_1",
+   "name": "Usina Dourada",
+   "world": 1,
+   "category": "adolescente",
+   "level": 18,
+   "unlock_level": 16,
+   "requires_challenge": 10,
+   "biome": "ruinas_energizadas",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_1_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 705454214,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_eletrico_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_luz_1",
+   "name": "Jazida Nova",
+   "world": 1,
+   "category": "adolescente",
+   "level": 18,
+   "unlock_level": 16,
+   "requires_challenge": 10,
+   "biome": "campo_cristais",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_1_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 471822964,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_luz_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_luz_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_luz_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_luz_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_luz_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_vento_1",
+   "name": "Serra Profunda",
+   "world": 1,
+   "category": "adolescente",
+   "level": 18,
+   "unlock_level": 16,
+   "requires_challenge": 10,
+   "biome": "picos",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_1_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 606849374,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_vento_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_vento_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_vento_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_vento_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_vento_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_vento_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_agua_2",
+   "name": "Enseada Alta",
+   "world": 1,
+   "category": "adolescente",
+   "level": 19,
+   "unlock_level": 17,
+   "requires_challenge": 10,
+   "biome": "praia",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_2_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 107493624,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_sombra_1",
+   "name": "Floresta Rasa",
+   "world": 1,
+   "category": "adolescente",
+   "level": 19,
+   "unlock_level": 17,
+   "requires_challenge": 10,
+   "biome": "floresta_sombria",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_1_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 389210553,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_mix_pantano",
+   "name": "Pântano Profunda",
+   "world": 1,
+   "category": "mista",
+   "level": 20,
+   "unlock_level": 17,
+   "requires_challenge": 10,
+   "biome": "pantano",
+   "types": [
+    "agua",
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "agua_5_2",
+     "weight": 1
+    },
+    {
+     "form": "agua_3_2",
+     "weight": 1
+    },
+    {
+     "form": "planta_4_2",
+     "weight": 1
+    },
+    {
+     "form": "planta_2_2",
+     "weight": 1
+    }
+   ],
+   "density": 20,
+   "respawn": 9.0,
+   "map_size": [
+    52,
+    52
+   ],
+   "seed": 680419787,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_planta_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_fogo_2",
+   "name": "Chaminé Tranquila",
+   "world": 1,
+   "category": "adolescente",
+   "level": 20,
+   "unlock_level": 18,
+   "requires_challenge": 10,
+   "biome": "vulcao",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_2_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 1013088281,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_gelo_2",
+   "name": "Galeria Dourada",
+   "world": 1,
+   "category": "adolescente",
+   "level": 20,
+   "unlock_level": 18,
+   "requires_challenge": 10,
+   "biome": "caverna_congelada",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_2_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 558857424,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_eletrico_2",
+   "name": "Meseta Distante",
+   "world": 1,
+   "category": "adolescente",
+   "level": 21,
+   "unlock_level": 19,
+   "requires_challenge": 20,
+   "biome": "planalto_tempestade",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_2_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 997637494,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_planta_2",
+   "name": "Colina Esquecida",
+   "world": 1,
+   "category": "adolescente",
+   "level": 21,
+   "unlock_level": 19,
+   "requires_challenge": 20,
+   "biome": "campo_grama",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_2_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 17288342,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_planta_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_planta_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_terra_2",
+   "name": "Toca Perdida",
+   "world": 1,
+   "category": "adolescente",
+   "level": 21,
+   "unlock_level": 19,
+   "requires_challenge": 20,
+   "biome": "caverna_rochosa",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_2_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 14026489,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_terra_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_terra_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_terra_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_terra_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_luz_2",
+   "name": "Templo Tranquila",
+   "world": 1,
+   "category": "adolescente",
+   "level": 22,
+   "unlock_level": 20,
+   "requires_challenge": 20,
+   "biome": "templo",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_2_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 238738798,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_luz_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_luz_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_luz_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_luz_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_luz_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_vento_2",
+   "name": "Ninho Rubra",
+   "world": 1,
+   "category": "adolescente",
+   "level": 22,
+   "unlock_level": 20,
+   "requires_challenge": 20,
+   "biome": "plataformas_nuvens",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_2_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 9412793,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_vento_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_vento_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_vento_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_vento_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_agua_3",
+   "name": "Enseada Larga",
+   "world": 1,
+   "category": "adolescente",
+   "level": 23,
+   "unlock_level": 21,
+   "requires_challenge": 20,
+   "biome": "praia",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_3_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 150794743,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_sombra_2",
+   "name": "Campo-Santo Distante",
+   "world": 1,
+   "category": "adolescente",
+   "level": 23,
+   "unlock_level": 21,
+   "requires_challenge": 20,
+   "biome": "cemiterio",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_2_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 163899632,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_sombra_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_mix_fontes_termais",
+   "name": "Nascente Rubra",
+   "world": 1,
+   "category": "mista",
+   "level": 24,
+   "unlock_level": 21,
+   "requires_challenge": 20,
+   "biome": "fontes_termais",
+   "types": [
+    "agua",
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "agua_3_2",
+     "weight": 1
+    },
+    {
+     "form": "agua_1_2",
+     "weight": 1
+    },
+    {
+     "form": "fogo_1_2",
+     "weight": 1
+    },
+    {
+     "form": "fogo_3_2",
+     "weight": 1
+    }
+   ],
+   "density": 20,
+   "respawn": 9.0,
+   "map_size": [
+    52,
+    52
+   ],
+   "seed": 795307386,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_agua_t1",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_agua_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_fogo_3",
+   "name": "Fenda Estreita",
+   "world": 1,
+   "category": "adolescente",
+   "level": 24,
+   "unlock_level": 22,
+   "requires_challenge": 20,
+   "biome": "campo_lava",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_3_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 1020174261,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_fogo_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_gelo_3",
+   "name": "Campina Alta",
+   "world": 1,
+   "category": "adolescente",
+   "level": 24,
+   "unlock_level": 22,
+   "requires_challenge": 20,
+   "biome": "tundra",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_3_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 32294820,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t2",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t2",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_planta_3",
+   "name": "Clareira Dourada",
+   "world": 1,
+   "category": "adolescente",
+   "level": 24,
+   "unlock_level": 22,
+   "requires_challenge": 20,
+   "biome": "floresta_densa",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_3_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 757802942,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "garra_planta_t2",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t1",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t2",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t2",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t1",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_eletrico_3",
+   "name": "Ruína Esquecida",
+   "world": 1,
+   "category": "adolescente",
+   "level": 25,
+   "unlock_level": 23,
+   "requires_challenge": 20,
+   "biome": "ruinas_energizadas",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_3_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 243114012,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_eletrico_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_eletrico_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t2",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_terra_3",
+   "name": "Ravina Esquecida",
+   "world": 1,
+   "category": "adolescente",
+   "level": 25,
+   "unlock_level": 23,
+   "requires_challenge": 20,
+   "biome": "canion",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_3_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 275012218,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_terra_t2",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_luz_3",
+   "name": "Campo Eterna",
+   "world": 1,
+   "category": "adolescente",
+   "level": 26,
+   "unlock_level": 24,
+   "requires_challenge": 20,
+   "biome": "campo_cristais",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_3_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 648220783,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_luz_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_luz_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_luz_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_luz_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t2",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_sombra_3",
+   "name": "Floresta Rubra",
+   "world": 1,
+   "category": "adolescente",
+   "level": 26,
+   "unlock_level": 24,
+   "requires_challenge": 20,
+   "biome": "floresta_sombria",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_3_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 121059572,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_vento_3",
+   "name": "Crista Nova",
+   "world": 1,
+   "category": "adolescente",
+   "level": 26,
+   "unlock_level": 24,
+   "requires_challenge": 20,
+   "biome": "picos",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_3_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 469038021,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_vento_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_vento_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_agua_4",
+   "name": "Enseada Antiga",
+   "world": 1,
+   "category": "adolescente",
+   "level": 27,
+   "unlock_level": 25,
+   "requires_challenge": 20,
+   "biome": "praia",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_4_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 856900827,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_agua_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_agua_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_agua_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_agua_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_agua_t2",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_fogo_4",
+   "name": "Encosta Rasa",
+   "world": 1,
+   "category": "adolescente",
+   "level": 27,
+   "unlock_level": 25,
+   "requires_challenge": 20,
+   "biome": "vulcao",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_4_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 853192508,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_fogo_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_fogo_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_fogo_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_fogo_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_mix_deserto_cinzas",
+   "name": "Planície Encantada",
+   "world": 1,
+   "category": "mista",
+   "level": 28,
+   "unlock_level": 25,
+   "requires_challenge": 20,
+   "biome": "deserto_cinzas",
+   "types": [
+    "fogo",
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_2_2",
+     "weight": 1
+    },
+    {
+     "form": "fogo_5_2",
+     "weight": 1
+    },
+    {
+     "form": "terra_1_2",
+     "weight": 1
+    },
+    {
+     "form": "terra_5_2",
+     "weight": 1
+    }
+   ],
+   "density": 20,
+   "respawn": 9.0,
+   "map_size": [
+    52,
+    52
+   ],
+   "seed": 1006814777,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_fogo_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_gelo_4",
+   "name": "Caverna Eterna",
+   "world": 1,
+   "category": "adolescente",
+   "level": 28,
+   "unlock_level": 26,
+   "requires_challenge": 20,
+   "biome": "caverna_congelada",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_4_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 30447958,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_gelo_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_gelo_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_planta_4",
+   "name": "Campina Rubra",
+   "world": 1,
+   "category": "adolescente",
+   "level": 28,
+   "unlock_level": 26,
+   "requires_challenge": 20,
+   "biome": "campo_grama",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_4_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 935454508,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_planta_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_planta_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_planta_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_planta_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_eletrico_4",
+   "name": "Meseta Nova",
+   "world": 1,
+   "category": "adolescente",
+   "level": 29,
+   "unlock_level": 27,
+   "requires_challenge": 20,
+   "biome": "planalto_tempestade",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_4_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 84676914,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_eletrico_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_eletrico_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_terra_4",
+   "name": "Caverna Antiga",
+   "world": 1,
+   "category": "adolescente",
+   "level": 29,
+   "unlock_level": 27,
+   "requires_challenge": 20,
+   "biome": "caverna_rochosa",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_4_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 691856322,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t2",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_vento_4",
+   "name": "Plataforma Bravia",
+   "world": 1,
+   "category": "adolescente",
+   "level": 29,
+   "unlock_level": 27,
+   "requires_challenge": 20,
+   "biome": "plataformas_nuvens",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_4_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 620831437,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_vento_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_vento_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_luz_4",
+   "name": "Santuário Antiga",
+   "world": 1,
+   "category": "adolescente",
+   "level": 30,
+   "unlock_level": 28,
+   "requires_challenge": 20,
+   "biome": "templo",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_4_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 963217164,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_luz_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_luz_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_luz_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_luz_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_luz_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_sombra_4",
+   "name": "Necrópole Eterna",
+   "world": 1,
+   "category": "adolescente",
+   "level": 30,
+   "unlock_level": 28,
+   "requires_challenge": 20,
+   "biome": "cemiterio",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_4_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 257753308,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_sombra_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_sombra_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_agua_5",
+   "name": "Costa Esquecida",
+   "world": 1,
+   "category": "adolescente",
+   "level": 31,
+   "unlock_level": 29,
+   "requires_challenge": 30,
+   "biome": "praia",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_5_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 119269407,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_agua_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_agua_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_agua_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_agua_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_fogo_5",
+   "name": "Planície Brilhante",
+   "world": 1,
+   "category": "adolescente",
+   "level": 31,
+   "unlock_level": 29,
+   "requires_challenge": 30,
+   "biome": "campo_lava",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_5_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 332271203,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_fogo_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_fogo_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_mix_geleira_rochosa",
+   "name": "Morena Alta",
+   "world": 1,
+   "category": "mista",
+   "level": 32,
+   "unlock_level": 29,
+   "requires_challenge": 30,
+   "biome": "geleira_rochosa",
+   "types": [
+    "gelo",
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_1_2",
+     "weight": 1
+    },
+    {
+     "form": "gelo_5_2",
+     "weight": 1
+    },
+    {
+     "form": "terra_5_2",
+     "weight": 1
+    },
+    {
+     "form": "terra_4_2",
+     "weight": 1
+    }
+   ],
+   "density": 20,
+   "respawn": 9.0,
+   "map_size": [
+    52,
+    52
+   ],
+   "seed": 462737672,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_gelo_5",
+   "name": "Planície Estreita",
+   "world": 1,
+   "category": "adolescente",
+   "level": 32,
+   "unlock_level": 30,
+   "requires_challenge": 30,
+   "biome": "tundra",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_5_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 36330888,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_gelo_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_planta_5",
+   "name": "Clareira Perdida",
+   "world": 1,
+   "category": "adolescente",
+   "level": 32,
+   "unlock_level": 30,
+   "requires_challenge": 30,
+   "biome": "floresta_densa",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_5_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 875008806,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_planta_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_planta_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_planta_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_terra_5",
+   "name": "Desfiladeiro Alta",
+   "world": 1,
+   "category": "adolescente",
+   "level": 32,
+   "unlock_level": 30,
+   "requires_challenge": 30,
+   "biome": "canion",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_5_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 576032441,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_eletrico_5",
+   "name": "Cidadela Dourada",
+   "world": 1,
+   "category": "adolescente",
+   "level": 33,
+   "unlock_level": 31,
+   "requires_challenge": 30,
+   "biome": "ruinas_energizadas",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_5_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 467172996,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_eletrico_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_eletrico_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t2",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_vento_5",
+   "name": "Pico Rasa",
+   "world": 1,
+   "category": "adolescente",
+   "level": 33,
+   "unlock_level": 31,
+   "requires_challenge": 30,
+   "biome": "picos",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_5_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 654910380,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_vento_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_luz_5",
+   "name": "Vale Rasa",
+   "world": 1,
+   "category": "adolescente",
+   "level": 34,
+   "unlock_level": 32,
+   "requires_challenge": 30,
+   "biome": "campo_cristais",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_5_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 1011551307,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_luz_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_luz_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_luz_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_luz_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t2",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s2_sombra_5",
+   "name": "Bosque Dourada",
+   "world": 1,
+   "category": "adolescente",
+   "level": 34,
+   "unlock_level": 32,
+   "requires_challenge": 30,
+   "biome": "floresta_sombria",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_5_2",
+     "weight": 1
+    }
+   ],
+   "density": 16,
+   "respawn": 10.0,
+   "map_size": [
+    44,
+    44
+   ],
+   "seed": 356917847,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_sombra_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_agua_1",
+   "name": "Açude Distante",
+   "world": 1,
+   "category": "adulto",
+   "level": 35,
+   "unlock_level": 35,
+   "requires_challenge": 30,
+   "biome": "lago",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_1_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 387020663,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_agua_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_agua_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_agua_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_agua_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_fogo_1",
+   "name": "Chaminé Rasa",
+   "world": 1,
+   "category": "adulto",
+   "level": 36,
+   "unlock_level": 35,
+   "requires_challenge": 30,
+   "biome": "vulcao",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_1_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 794361364,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_fogo_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_fogo_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_gelo_1",
+   "name": "Gruta Profunda",
+   "world": 1,
+   "category": "adulto",
+   "level": 37,
+   "unlock_level": 35,
+   "requires_challenge": 30,
+   "biome": "caverna_congelada",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_1_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 755360466,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_gelo_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t3",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_gelo_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t2",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_planta_1",
+   "name": "Pradaria Larga",
+   "world": 1,
+   "category": "adulto",
+   "level": 38,
+   "unlock_level": 35,
+   "requires_challenge": 30,
+   "biome": "campo_grama",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_1_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 1014101665,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_planta_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t2",
+     "weight": 1
+    },
+    {
+     "base": "armadura_planta_t3",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_terra_1",
+   "name": "Caverna Serena",
+   "world": 1,
+   "category": "adulto",
+   "level": 39,
+   "unlock_level": 36,
+   "requires_challenge": 30,
+   "biome": "caverna_rochosa",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_1_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 323778126,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "garra_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t3",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t2",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t2",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_eletrico_1",
+   "name": "Chapada Escondida",
+   "world": 1,
+   "category": "adulto",
+   "level": 40,
+   "unlock_level": 37,
+   "requires_challenge": 30,
+   "biome": "planalto_tempestade",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_1_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 390530888,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_eletrico_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_eletrico_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t4",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_vento_1",
+   "name": "Ninho Perdida",
+   "world": 1,
+   "category": "adulto",
+   "level": 41,
+   "unlock_level": 38,
+   "requires_challenge": 40,
+   "biome": "plataformas_nuvens",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_1_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 1008930247,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_vento_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_mix_brejo_sombrio",
+   "name": "Lodaçal Sombria",
+   "world": 1,
+   "category": "mista",
+   "level": 42,
+   "unlock_level": 39,
+   "requires_challenge": 40,
+   "biome": "brejo_sombrio",
+   "types": [
+    "sombra",
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_4_3",
+     "weight": 1
+    },
+    {
+     "form": "sombra_3_3",
+     "weight": 1
+    },
+    {
+     "form": "planta_3_3",
+     "weight": 1
+    },
+    {
+     "form": "planta_4_3",
+     "weight": 1
+    }
+   ],
+   "density": 20,
+   "respawn": 9.0,
+   "map_size": [
+    52,
+    52
+   ],
+   "seed": 757298275,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_planta_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_planta_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_planta_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_luz_1",
+   "name": "Santuário Esquecida",
+   "world": 1,
+   "category": "adulto",
+   "level": 42,
+   "unlock_level": 39,
+   "requires_challenge": 40,
+   "biome": "templo",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_1_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 178910739,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_luz_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_luz_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_luz_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_luz_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_luz_t4",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_sombra_1",
+   "name": "Necrópole Distante",
+   "world": 1,
+   "category": "adulto",
+   "level": 43,
+   "unlock_level": 40,
+   "requires_challenge": 40,
+   "biome": "cemiterio",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_1_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 764024356,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_sombra_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_sombra_t4",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_agua_2",
+   "name": "Lagoa Antiga",
+   "world": 1,
+   "category": "adulto",
+   "level": 44,
+   "unlock_level": 41,
+   "requires_challenge": 40,
+   "biome": "lago",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_2_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 23534236,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_agua_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_agua_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_agua_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_agua_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_agua_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_agua_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_fogo_2",
+   "name": "Fenda Tranquila",
+   "world": 1,
+   "category": "adulto",
+   "level": 45,
+   "unlock_level": 42,
+   "requires_challenge": 40,
+   "biome": "campo_lava",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_2_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 771380614,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_fogo_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_fogo_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_fogo_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_fogo_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_fogo_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_fogo_t4",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_gelo_2",
+   "name": "Campina Rasa",
+   "world": 1,
+   "category": "adulto",
+   "level": 46,
+   "unlock_level": 43,
+   "requires_challenge": 40,
+   "biome": "tundra",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_2_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 889137908,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_gelo_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_gelo_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_gelo_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_planta_2",
+   "name": "Mata Escondida",
+   "world": 1,
+   "category": "adulto",
+   "level": 47,
+   "unlock_level": 44,
+   "requires_challenge": 40,
+   "biome": "floresta_densa",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_2_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 385028214,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_planta_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_planta_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_planta_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_planta_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_terra_2",
+   "name": "Garganta Alta",
+   "world": 1,
+   "category": "adulto",
+   "level": 48,
+   "unlock_level": 45,
+   "requires_challenge": 40,
+   "biome": "canion",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_2_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 276329110,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_terra_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_terra_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_eletrico_2",
+   "name": "Ruína Silenciosa",
+   "world": 1,
+   "category": "adulto",
+   "level": 49,
+   "unlock_level": 46,
+   "requires_challenge": 40,
+   "biome": "ruinas_energizadas",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_2_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 367698781,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_eletrico_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_eletrico_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t4",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_vento_2",
+   "name": "Pico Torta",
+   "world": 1,
+   "category": "adulto",
+   "level": 50,
+   "unlock_level": 47,
+   "requires_challenge": 40,
+   "biome": "picos",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_2_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 505490460,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_vento_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_vento_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_vento_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_luz_2",
+   "name": "Campo Azulada",
+   "world": 1,
+   "category": "adulto",
+   "level": 51,
+   "unlock_level": 48,
+   "requires_challenge": 50,
+   "biome": "campo_cristais",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_2_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 661268744,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_luz_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_luz_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_luz_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_luz_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_mix_crepusculo",
+   "name": "Claustro Bravia",
+   "world": 1,
+   "category": "mista",
+   "level": 52,
+   "unlock_level": 49,
+   "requires_challenge": 50,
+   "biome": "crepusculo",
+   "types": [
+    "luz",
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "luz_5_3",
+     "weight": 1
+    },
+    {
+     "form": "luz_3_3",
+     "weight": 1
+    },
+    {
+     "form": "sombra_4_3",
+     "weight": 1
+    },
+    {
+     "form": "sombra_2_3",
+     "weight": 1
+    }
+   ],
+   "density": 20,
+   "respawn": 9.0,
+   "map_size": [
+    52,
+    52
+   ],
+   "seed": 82756306,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_luz_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_luz_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_luz_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t4",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_sombra_2",
+   "name": "Bosque Velha",
+   "world": 1,
+   "category": "adulto",
+   "level": 52,
+   "unlock_level": 49,
+   "requires_challenge": 50,
+   "biome": "floresta_sombria",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_2_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 270103402,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_sombra_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_agua_3",
+   "name": "Lagoa Tranquila",
+   "world": 1,
+   "category": "adulto",
+   "level": 53,
+   "unlock_level": 50,
+   "requires_challenge": 50,
+   "biome": "lago",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_3_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 893618584,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_agua_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_agua_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_agua_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_agua_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_agua_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t4",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_fogo_3",
+   "name": "Chaminé Selvagem",
+   "world": 1,
+   "category": "adulto",
+   "level": 54,
+   "unlock_level": 51,
+   "requires_challenge": 50,
+   "biome": "vulcao",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_3_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 694373381,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_fogo_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_fogo_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_fogo_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_fogo_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_fogo_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_fogo_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_fogo_t4",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_gelo_3",
+   "name": "Caverna Perdida",
+   "world": 1,
+   "category": "adulto",
+   "level": 55,
+   "unlock_level": 52,
+   "requires_challenge": 50,
+   "biome": "caverna_congelada",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_3_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 582278823,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_gelo_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_gelo_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_gelo_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_planta_3",
+   "name": "Colina Velha",
+   "world": 1,
+   "category": "adulto",
+   "level": 56,
+   "unlock_level": 53,
+   "requires_challenge": 50,
+   "biome": "campo_grama",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_3_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 765270794,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_planta_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_planta_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_planta_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_planta_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_planta_t4",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_terra_3",
+   "name": "Toca Baixa",
+   "world": 1,
+   "category": "adulto",
+   "level": 57,
+   "unlock_level": 54,
+   "requires_challenge": 50,
+   "biome": "caverna_rochosa",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_3_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 379719791,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_terra_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_terra_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_terra_t3",
+     "weight": 1
+    },
+    {
+     "base": "garra_terra_t4",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_eletrico_3",
+   "name": "Planalto Distante",
+   "world": 1,
+   "category": "adulto",
+   "level": 58,
+   "unlock_level": 55,
+   "requires_challenge": 50,
+   "biome": "planalto_tempestade",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_3_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 778569084,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_eletrico_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t4",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t4",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t3",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_eletrico_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_vento_3",
+   "name": "Plataforma Azulada",
+   "world": 1,
+   "category": "adulto",
+   "level": 59,
+   "unlock_level": 56,
+   "requires_challenge": 50,
+   "biome": "plataformas_nuvens",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_3_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 1034778995,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t3",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_vento_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t4",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t3",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t3",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_luz_3",
+   "name": "Templo Baixa",
+   "world": 1,
+   "category": "adulto",
+   "level": 60,
+   "unlock_level": 57,
+   "requires_challenge": 50,
+   "biome": "templo",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_3_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 16539313,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_luz_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_luz_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_sombra_3",
+   "name": "Cripta Sombria",
+   "world": 1,
+   "category": "adulto",
+   "level": 61,
+   "unlock_level": 58,
+   "requires_challenge": 60,
+   "biome": "cemiterio",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_3_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 1048021204,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_sombra_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_sombra_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_mix_geleira_eterea",
+   "name": "Campo Distante",
+   "world": 1,
+   "category": "mista",
+   "level": 62,
+   "unlock_level": 59,
+   "requires_challenge": 60,
+   "biome": "geleira_eterea",
+   "types": [
+    "gelo",
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_1_3",
+     "weight": 1
+    },
+    {
+     "form": "gelo_3_3",
+     "weight": 1
+    },
+    {
+     "form": "vento_4_3",
+     "weight": 1
+    },
+    {
+     "form": "vento_5_3",
+     "weight": 1
+    }
+   ],
+   "density": 20,
+   "respawn": 9.0,
+   "map_size": [
+    52,
+    52
+   ],
+   "seed": 967798847,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_gelo_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_vento_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_vento_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_agua_4",
+   "name": "Margem Estreita",
+   "world": 1,
+   "category": "adulto",
+   "level": 62,
+   "unlock_level": 59,
+   "requires_challenge": 60,
+   "biome": "lago",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_4_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 256007666,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_agua_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_agua_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_agua_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_agua_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_agua_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_agua_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_agua_t5",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_fogo_4",
+   "name": "Fenda Rasa",
+   "world": 1,
+   "category": "adulto",
+   "level": 63,
+   "unlock_level": 60,
+   "requires_challenge": 60,
+   "biome": "campo_lava",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_4_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 79106912,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_fogo_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_fogo_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_fogo_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_fogo_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_fogo_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_gelo_4",
+   "name": "Campina Tranquila",
+   "world": 1,
+   "category": "adulto",
+   "level": 64,
+   "unlock_level": 61,
+   "requires_challenge": 60,
+   "biome": "tundra",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_4_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 660902984,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_gelo_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_gelo_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_gelo_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_gelo_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_planta_4",
+   "name": "Floresta Ventosa",
+   "world": 1,
+   "category": "adulto",
+   "level": 65,
+   "unlock_level": 62,
+   "requires_challenge": 60,
+   "biome": "floresta_densa",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_4_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 2466834,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_planta_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_planta_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_planta_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_planta_t5",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_terra_4",
+   "name": "Desfiladeiro Rubra",
+   "world": 1,
+   "category": "adulto",
+   "level": 66,
+   "unlock_level": 63,
+   "requires_challenge": 60,
+   "biome": "canion",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_4_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 160595478,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_terra_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_terra_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_terra_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_eletrico_4",
+   "name": "Usina Encantada",
+   "world": 1,
+   "category": "adulto",
+   "level": 67,
+   "unlock_level": 64,
+   "requires_challenge": 60,
+   "biome": "ruinas_energizadas",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_4_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 428083195,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_eletrico_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t5",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_vento_4",
+   "name": "Pico Encantada",
+   "world": 1,
+   "category": "adulto",
+   "level": 68,
+   "unlock_level": 65,
+   "requires_challenge": 60,
+   "biome": "picos",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_4_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 1027604798,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_vento_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_vento_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_vento_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_vento_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_vento_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_vento_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_vento_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_luz_4",
+   "name": "Vale Antiga",
+   "world": 1,
+   "category": "adulto",
+   "level": 69,
+   "unlock_level": 66,
+   "requires_challenge": 60,
+   "biome": "campo_cristais",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_4_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 874213612,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_luz_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_luz_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_mix_tempestade_luminosa",
+   "name": "Planalto Azulada",
+   "world": 1,
+   "category": "mista",
+   "level": 70,
+   "unlock_level": 67,
+   "requires_challenge": 60,
+   "biome": "tempestade_luminosa",
+   "types": [
+    "eletrico",
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_4_3",
+     "weight": 1
+    },
+    {
+     "form": "eletrico_5_3",
+     "weight": 1
+    },
+    {
+     "form": "luz_2_3",
+     "weight": 1
+    },
+    {
+     "form": "luz_5_3",
+     "weight": 1
+    }
+   ],
+   "density": 20,
+   "respawn": 9.0,
+   "map_size": [
+    52,
+    52
+   ],
+   "seed": 618302556,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_eletrico_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_luz_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_sombra_4",
+   "name": "Mata Encantada",
+   "world": 1,
+   "category": "adulto",
+   "level": 70,
+   "unlock_level": 67,
+   "requires_challenge": 60,
+   "biome": "floresta_sombria",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_4_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 76713189,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_sombra_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_agua_5",
+   "name": "Margem Antiga",
+   "world": 1,
+   "category": "adulto",
+   "level": 71,
+   "unlock_level": 68,
+   "requires_challenge": 70,
+   "biome": "lago",
+   "types": [
+    "agua"
+   ],
+   "monsters": [
+    {
+     "form": "agua_5_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 54150191,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "garra_agua_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_agua_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_agua_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_agua_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_agua_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_agua_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_agua_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_agua_t5",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_fogo_5",
+   "name": "Cratera Baixa",
+   "world": 1,
+   "category": "adulto",
+   "level": 72,
+   "unlock_level": 69,
+   "requires_challenge": 70,
+   "biome": "vulcao",
+   "types": [
+    "fogo"
+   ],
+   "monsters": [
+    {
+     "form": "fogo_5_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 474246403,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_fogo_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_fogo_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_fogo_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_fogo_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_fogo_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_fogo_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_fogo_t5",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_gelo_5",
+   "name": "Gruta Antiga",
+   "world": 1,
+   "category": "adulto",
+   "level": 73,
+   "unlock_level": 70,
+   "requires_challenge": 70,
+   "biome": "caverna_congelada",
+   "types": [
+    "gelo"
+   ],
+   "monsters": [
+    {
+     "form": "gelo_5_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 833133292,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_gelo_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_gelo_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_gelo_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_gelo_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_gelo_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_gelo_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_gelo_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_planta_5",
+   "name": "Pradaria Brilhante",
+   "world": 1,
+   "category": "adulto",
+   "level": 74,
+   "unlock_level": 71,
+   "requires_challenge": 70,
+   "biome": "campo_grama",
+   "types": [
+    "planta"
+   ],
+   "monsters": [
+    {
+     "form": "planta_5_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 696442511,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_planta_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_planta_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_planta_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_planta_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_planta_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_planta_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_planta_t5",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_terra_5",
+   "name": "Mina Velha",
+   "world": 1,
+   "category": "adulto",
+   "level": 75,
+   "unlock_level": 72,
+   "requires_challenge": 70,
+   "biome": "caverna_rochosa",
+   "types": [
+    "terra"
+   ],
+   "monsters": [
+    {
+     "form": "terra_5_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 311013749,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_terra_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_terra_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_terra_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_terra_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_terra_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_eletrico_5",
+   "name": "Planalto Estreita",
+   "world": 1,
+   "category": "adulto",
+   "level": 76,
+   "unlock_level": 73,
+   "requires_challenge": 70,
+   "biome": "planalto_tempestade",
+   "types": [
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "eletrico_5_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 597771836,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_eletrico_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_eletrico_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t5",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_vento_5",
+   "name": "Plataforma Ventosa",
+   "world": 1,
+   "category": "adulto",
+   "level": 77,
+   "unlock_level": 74,
+   "requires_challenge": 70,
+   "biome": "plataformas_nuvens",
+   "types": [
+    "vento"
+   ],
+   "monsters": [
+    {
+     "form": "vento_5_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 597289294,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "amuleto_vento_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_vento_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_vento_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_vento_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_vento_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_vento_t5",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_mix_cordilheira_ventosa",
+   "name": "Cordilheira Alta",
+   "world": 1,
+   "category": "mista",
+   "level": 78,
+   "unlock_level": 75,
+   "requires_challenge": 70,
+   "biome": "cordilheira_ventosa",
+   "types": [
+    "vento",
+    "terra",
+    "eletrico"
+   ],
+   "monsters": [
+    {
+     "form": "vento_3_3",
+     "weight": 1
+    },
+    {
+     "form": "vento_1_3",
+     "weight": 1
+    },
+    {
+     "form": "terra_3_3",
+     "weight": 1
+    },
+    {
+     "form": "terra_5_3",
+     "weight": 1
+    },
+    {
+     "form": "eletrico_4_3",
+     "weight": 1
+    },
+    {
+     "form": "eletrico_3_3",
+     "weight": 1
+    }
+   ],
+   "density": 20,
+   "respawn": 9.0,
+   "map_size": [
+    52,
+    52
+   ],
+   "seed": 875622177,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "reliquia_vento_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_terra_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_terra_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_terra_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_vento_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_eletrico_t4",
+     "weight": 1
+    },
+    {
+     "base": "amuleto_terra_t4",
+     "weight": 1
+    },
+    {
+     "base": "armadura_terra_t5",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_luz_5",
+   "name": "Capela Torta",
+   "world": 1,
+   "category": "adulto",
+   "level": 78,
+   "unlock_level": 75,
+   "requires_challenge": 70,
+   "biome": "templo",
+   "types": [
+    "luz"
+   ],
+   "monsters": [
+    {
+     "form": "luz_5_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 653309606,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "garra_luz_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_luz_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_luz_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_luz_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_luz_t4",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "id": "w1_s3_sombra_5",
+   "name": "Necrópole Selvagem",
+   "world": 1,
+   "category": "adulto",
+   "level": 79,
+   "unlock_level": 76,
+   "requires_challenge": 70,
+   "biome": "cemiterio",
+   "types": [
+    "sombra"
+   ],
+   "monsters": [
+    {
+     "form": "sombra_5_3",
+     "weight": 1
+    }
+   ],
+   "density": 18,
+   "respawn": 10.0,
+   "map_size": [
+    48,
+    48
+   ],
+   "seed": 543272577,
+   "recruit": true,
+   "recruit_mult": 1.0,
+   "xp_mult": 1.0,
+   "gold_mult": 1.0,
+   "drops": [
+    {
+     "base": "armadura_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "reliquia_sombra_t4",
+     "weight": 1
+    },
+    {
+     "base": "reliquia_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "armadura_sombra_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t4",
+     "weight": 1
+    },
+    {
+     "base": "garra_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t5",
+     "weight": 3
+    },
+    {
+     "base": "amuleto_sombra_t4",
+     "weight": 1
+    }
+   ]
+  }
+ ]
+}

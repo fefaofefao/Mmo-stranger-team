@@ -1,0 +1,65 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+
+config/name="Bestiário Idle"
+config/description="RPG idle de monstros com visual em tiles, ranking online e market."
+config/version="0.1.0"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+run/low_processor_mode=false
+
+[autoload]
+
+Data="*res://src/autoload/data.gd"
+Backend="*res://src/autoload/backend.gd"
+Game="*res://src/autoload/game.gd"
+Ads="*res://src/autoload/ads.gd"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/size/window_width_override=405
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://locale/translations.en.translation")
+locale/fallback="pt_BR"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0
+2d/snap/snap_2d_transforms_to_pixel=true
+environment/defaults/default_clear_color=Color(0.07, 0.07, 0.09, 1)
+
+[debug]
+
+gdscript/warnings/inference_on_variant=0
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_variable=0
+gdscript/warnings/integer_division=0
+gdscript/warnings/narrowing_conversion=0
+gdscript/warnings/return_value_discarded=0
+gdscript/warnings/unused_signal=0
+gdscript/warnings/shadowed_variable=0
+gdscript/warnings/shadowed_variable_base_class=0
+gdscript/warnings/confusable_local_declaration=0
+gdscript/warnings/untyped_declaration=0
+gdscript/warnings/unsafe_call_argument=0

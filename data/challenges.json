@@ -1,0 +1,418 @@
+{
+ "_comentario": "Desafios (bosses). Para adicionar desafios acima de 90, inclua novas entradas aqui.",
+ "fail_cooldown_seconds": 60,
+ "challenges": [
+  {
+   "id": "c10",
+   "level": 10,
+   "name": "Gotelão, o Rei das Poças",
+   "boss_form": "agua_1_2",
+   "type": "agua",
+   "biome": "praia",
+   "boss_level": 12,
+   "hp_mult": 30.0,
+   "atk_mult": 1.5,
+   "def_mult": 1.2,
+   "scale": 1.6,
+   "phases": [
+    {
+     "hp_below": 0.5,
+     "atk_mult": 1.3,
+     "spd_mult": 1.2,
+     "say": "Fase 2: o chefe se enfurece!"
+    }
+   ],
+   "mechanics": {
+    "summon": {
+     "form": "agua_2_1",
+     "every": 12,
+     "count": 2
+    }
+   },
+   "time_limit": 240,
+   "rewards": {
+    "gold": 5000,
+    "essence": {
+     "agua": 40
+    },
+    "item_rarity": "raro"
+   },
+   "unlocks": "",
+   "map_size": [
+    26,
+    26
+   ],
+   "seed": 1010
+  },
+  {
+   "id": "c20",
+   "level": 20,
+   "name": "Brasalfa, Lobo-Tocha",
+   "boss_form": "fogo_1_2",
+   "type": "fogo",
+   "biome": "vulcao",
+   "boss_level": 22,
+   "hp_mult": 30.0,
+   "atk_mult": 1.5,
+   "def_mult": 1.2,
+   "scale": 1.6,
+   "phases": [
+    {
+     "hp_below": 0.5,
+     "atk_mult": 1.3,
+     "spd_mult": 1.2,
+     "say": "Fase 2: o chefe se enfurece!"
+    }
+   ],
+   "mechanics": {
+    "aoe": {
+     "every": 9,
+     "count": 3,
+     "radius": 1,
+     "dmg_pct": 0.18,
+     "telegraph": 1.6
+    }
+   },
+   "time_limit": 240,
+   "rewards": {
+    "gold": 10000,
+    "essence": {
+     "fogo": 80
+    },
+    "item_rarity": "raro"
+   },
+   "unlocks": "",
+   "map_size": [
+    26,
+    26
+   ],
+   "seed": 1020
+  },
+  {
+   "id": "c30",
+   "level": 30,
+   "name": "Ramagueira Anciã",
+   "boss_form": "planta_1_2",
+   "type": "planta",
+   "biome": "floresta_densa",
+   "boss_level": 32,
+   "hp_mult": 30.0,
+   "atk_mult": 1.5,
+   "def_mult": 1.2,
+   "scale": 1.6,
+   "phases": [
+    {
+     "hp_below": 0.5,
+     "atk_mult": 1.3,
+     "spd_mult": 1.2,
+     "say": "Fase 2: o chefe se enfurece!"
+    }
+   ],
+   "mechanics": {
+    "summon": {
+     "form": "planta_4_2",
+     "every": 11,
+     "count": 2
+    },
+    "aoe": {
+     "every": 10,
+     "count": 2,
+     "radius": 1,
+     "dmg_pct": 0.16,
+     "telegraph": 1.6
+    }
+   },
+   "time_limit": 240,
+   "rewards": {
+    "gold": 15000,
+    "essence": {
+     "planta": 120
+    },
+    "item_rarity": "raro"
+   },
+   "unlocks": "",
+   "map_size": [
+    26,
+    26
+   ],
+   "seed": 1030
+  },
+  {
+   "id": "c40",
+   "level": 40,
+   "name": "Monolitauro Desperto",
+   "boss_form": "terra_1_3",
+   "type": "terra",
+   "biome": "caverna_rochosa",
+   "boss_level": 42,
+   "hp_mult": 30.0,
+   "atk_mult": 1.5,
+   "def_mult": 1.2,
+   "scale": 1.6,
+   "phases": [
+    {
+     "hp_below": 0.5,
+     "atk_mult": 1.3,
+     "spd_mult": 1.2,
+     "say": "Fase 2: o chefe se enfurece!"
+    }
+   ],
+   "mechanics": {
+    "aoe": {
+     "every": 8,
+     "count": 4,
+     "radius": 1,
+     "dmg_pct": 0.2,
+     "telegraph": 1.5
+    }
+   },
+   "time_limit": 240,
+   "rewards": {
+    "gold": 20000,
+    "essence": {
+     "terra": 160
+    },
+    "item_rarity": "epico"
+   },
+   "unlocks": "",
+   "map_size": [
+    26,
+    26
+   ],
+   "seed": 1040
+  },
+  {
+   "id": "c50",
+   "level": 50,
+   "name": "Glaciafera Branca",
+   "boss_form": "gelo_2_3",
+   "type": "gelo",
+   "biome": "caverna_congelada",
+   "boss_level": 52,
+   "hp_mult": 30.0,
+   "atk_mult": 1.5,
+   "def_mult": 1.2,
+   "scale": 1.6,
+   "phases": [
+    {
+     "hp_below": 0.5,
+     "atk_mult": 1.3,
+     "spd_mult": 1.2,
+     "say": "Fase 2: o chefe se enfurece!"
+    }
+   ],
+   "mechanics": {
+    "summon": {
+     "form": "gelo_1_2",
+     "every": 10,
+     "count": 3
+    }
+   },
+   "time_limit": 240,
+   "rewards": {
+    "gold": 25000,
+    "essence": {
+     "gelo": 200
+    },
+    "item_rarity": "epico"
+   },
+   "unlocks": "",
+   "map_size": [
+    26,
+    26
+   ],
+   "seed": 1050
+  },
+  {
+   "id": "c60",
+   "level": 60,
+   "name": "Trovajante Tirano",
+   "boss_form": "eletrico_1_3",
+   "type": "eletrico",
+   "biome": "ruinas_energizadas",
+   "boss_level": 62,
+   "hp_mult": 30.0,
+   "atk_mult": 1.5,
+   "def_mult": 1.2,
+   "scale": 1.6,
+   "phases": [
+    {
+     "hp_below": 0.5,
+     "atk_mult": 1.3,
+     "spd_mult": 1.2,
+     "say": "Fase 2: o chefe se enfurece!"
+    }
+   ],
+   "mechanics": {
+    "summon": {
+     "form": "eletrico_3_2",
+     "every": 11,
+     "count": 2
+    },
+    "aoe": {
+     "every": 8,
+     "count": 3,
+     "radius": 1,
+     "dmg_pct": 0.2,
+     "telegraph": 1.4
+    }
+   },
+   "time_limit": 240,
+   "rewards": {
+    "gold": 30000,
+    "essence": {
+     "eletrico": 240
+    },
+    "item_rarity": "epico"
+   },
+   "unlocks": "",
+   "map_size": [
+    26,
+    26
+   ],
+   "seed": 1060
+  },
+  {
+   "id": "c70",
+   "level": 70,
+   "name": "Furacondor Ancestral",
+   "boss_form": "vento_1_3",
+   "type": "vento",
+   "biome": "plataformas_nuvens",
+   "boss_level": 72,
+   "hp_mult": 30.0,
+   "atk_mult": 1.5,
+   "def_mult": 1.2,
+   "scale": 1.6,
+   "phases": [
+    {
+     "hp_below": 0.5,
+     "atk_mult": 1.3,
+     "spd_mult": 1.2,
+     "say": "Fase 2: o chefe se enfurece!"
+    }
+   ],
+   "mechanics": {
+    "aoe": {
+     "every": 7,
+     "count": 5,
+     "radius": 1,
+     "dmg_pct": 0.18,
+     "telegraph": 1.4
+    }
+   },
+   "time_limit": 240,
+   "rewards": {
+    "gold": 35000,
+    "essence": {
+     "vento": 280
+    },
+    "item_rarity": "lendario"
+   },
+   "unlocks": "",
+   "map_size": [
+    26,
+    26
+   ],
+   "seed": 1070
+  },
+  {
+   "id": "c80",
+   "level": 80,
+   "name": "Auréolux, o Juiz",
+   "boss_form": "luz_1_3",
+   "type": "luz",
+   "biome": "templo",
+   "boss_level": 82,
+   "hp_mult": 30.0,
+   "atk_mult": 1.5,
+   "def_mult": 1.2,
+   "scale": 1.6,
+   "phases": [
+    {
+     "hp_below": 0.5,
+     "atk_mult": 1.3,
+     "spd_mult": 1.2,
+     "say": "Fase 2: o chefe se enfurece!"
+    }
+   ],
+   "mechanics": {
+    "summon": {
+     "form": "luz_3_2",
+     "every": 10,
+     "count": 3
+    },
+    "aoe": {
+     "every": 7,
+     "count": 4,
+     "radius": 2,
+     "dmg_pct": 0.16,
+     "telegraph": 1.5
+    }
+   },
+   "time_limit": 240,
+   "rewards": {
+    "gold": 40000,
+    "essence": {
+     "luz": 320
+    },
+    "item_rarity": "lendario"
+   },
+   "unlocks": "world2",
+   "map_size": [
+    26,
+    26
+   ],
+   "seed": 1080
+  },
+  {
+   "id": "c90",
+   "level": 90,
+   "name": "Eclipsauro Primordial",
+   "boss_form": "sombra_1_3",
+   "type": "sombra",
+   "biome": "cemiterio",
+   "boss_level": 92,
+   "hp_mult": 30.0,
+   "atk_mult": 1.5,
+   "def_mult": 1.2,
+   "scale": 1.6,
+   "phases": [
+    {
+     "hp_below": 0.5,
+     "atk_mult": 1.3,
+     "spd_mult": 1.2,
+     "say": "Fase 2: o chefe se enfurece!"
+    }
+   ],
+   "mechanics": {
+    "summon": {
+     "form": "sombra_2_3",
+     "every": 9,
+     "count": 3
+    },
+    "aoe": {
+     "every": 6,
+     "count": 5,
+     "radius": 1,
+     "dmg_pct": 0.2,
+     "telegraph": 1.3
+    }
+   },
+   "time_limit": 240,
+   "rewards": {
+    "gold": 45000,
+    "essence": {
+     "sombra": 360
+    },
+    "item_rarity": "lendario"
+   },
+   "unlocks": "",
+   "map_size": [
+    26,
+    26
+   ],
+   "seed": 1090
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "_comentario": "Ciclo: cada tipo é forte contra o próximo da lista e fraco contra o anterior. Reordene 'types' para mudar o ciclo.",
+ "strong_mult": 1.5,
+ "weak_mult": 0.67,
+ "neutral_mult": 1.0,
+ "types": [
+  {
+   "id": "agua",
+   "name": "Água",
+   "color": "#3b7fd9"
+  },
+  {
+   "id": "fogo",
+   "name": "Fogo",
+   "color": "#e0522b"
+  },
+  {
+   "id": "gelo",
+   "name": "Gelo",
+   "color": "#7fd6e8"
+  },
+  {
+   "id": "planta",
+   "name": "Planta",
+   "color": "#4caf3f"
+  },
+  {
+   "id": "terra",
+   "name": "Terra",
+   "color": "#a8743a"
+  },
+  {
+   "id": "eletrico",
+   "name": "Elétrico",
+   "color": "#f2d023"
+  },
+  {
+   "id": "vento",
+   "name": "Vento",
+   "color": "#b9c9d6"
+  },
+  {
+   "id": "luz",
+   "name": "Luz",
+   "color": "#fff1a8"
+  },
+  {
+   "id": "sombra",
+   "name": "Sombra",
+   "color": "#6a3d9a"
+  }
+ ]
+}

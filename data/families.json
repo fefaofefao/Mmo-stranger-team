@@ -1,0 +1,2300 @@
+{
+ "_comentario": "45 famílias, 3 estágios cada. 'base' = atributos no nível 1 do Filhote. Crescimento por nível e bônus por estágio ficam em config.json.",
+ "families": [
+  {
+   "id": "agua_1",
+   "type": "agua",
+   "shape": "blob",
+   "style": "magic",
+   "starter": true,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.5,
+   "hue_shift": -0.07,
+   "base": {
+    "hp": 49.85,
+    "atk": 13.12,
+    "def": 7.54,
+    "spd": 91.2,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "agua_1_1",
+     "name": "Gotelo",
+     "stage": 1,
+     "desc": "Filhote: uma gota de água viva que brilha quando está feliz.",
+     "abilities": [
+      "agua_blast"
+     ]
+    },
+    {
+     "form_id": "agua_1_2",
+     "name": "Gotalume",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "agua_blast",
+      "agua_heal"
+     ]
+    },
+    {
+     "form_id": "agua_1_3",
+     "name": "Marevolto",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "agua_dot",
+      "agua_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "agua_2",
+   "type": "agua",
+   "shape": "fish",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.09,
+   "hue_shift": -0.035,
+   "base": {
+    "hp": 61.06,
+    "atk": 11.52,
+    "def": 10.24,
+    "spd": 102.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "agua_2_1",
+     "name": "Escamim",
+     "stage": 1,
+     "desc": "Filhote: um peixinho de escamas duras que morde tudo que se mexe.",
+     "abilities": [
+      "agua_strike"
+     ]
+    },
+    {
+     "form_id": "agua_2_2",
+     "name": "Escamarco",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "agua_strike",
+      "agua_burst"
+     ]
+    },
+    {
+     "form_id": "agua_2_3",
+     "name": "Abissarpão",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "agua_burst",
+      "agua_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "agua_3",
+   "type": "agua",
+   "shape": "serpent",
+   "style": "ranged",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.99,
+   "hue_shift": 0.0,
+   "base": {
+    "hp": 50.44,
+    "atk": 11.97,
+    "def": 8.08,
+    "spd": 104,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "agua_3_1",
+     "name": "Enguilha",
+     "stage": 1,
+     "desc": "Filhote: uma enguia que dispara jatos de água pressurizada.",
+     "abilities": [
+      "agua_bolt"
+     ]
+    },
+    {
+     "form_id": "agua_3_2",
+     "name": "Enguirreal",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "agua_bolt",
+      "agua_blast"
+     ]
+    },
+    {
+     "form_id": "agua_3_3",
+     "name": "Leviaguar",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "agua_blast",
+      "agua_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "agua_4",
+   "type": "agua",
+   "shape": "quadruped",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.97,
+   "hue_shift": 0.035,
+   "base": {
+    "hp": 57.2,
+    "atk": 12.83,
+    "def": 9.67,
+    "spd": 106.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "agua_4_1",
+     "name": "Lontrel",
+     "stage": 1,
+     "desc": "Filhote: uma lontra brincalhona que nada contra qualquer correnteza.",
+     "abilities": [
+      "agua_strike"
+     ]
+    },
+    {
+     "form_id": "agua_4_2",
+     "name": "Lontrávio",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "agua_strike",
+      "agua_burst"
+     ]
+    },
+    {
+     "form_id": "agua_4_3",
+     "name": "Correntauro",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "agua_burst",
+      "agua_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "agua_5",
+   "type": "agua",
+   "shape": "insect",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.13,
+   "hue_shift": 0.07,
+   "base": {
+    "hp": 54.89,
+    "atk": 13.18,
+    "def": 10.12,
+    "spd": 100,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "agua_5_1",
+     "name": "Siricó",
+     "stage": 1,
+     "desc": "Filhote: um siri de pinças afiadas que vive entre os corais.",
+     "abilities": [
+      "agua_strike"
+     ]
+    },
+    {
+     "form_id": "agua_5_2",
+     "name": "Siriguerra",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "agua_strike",
+      "agua_burst"
+     ]
+    },
+    {
+     "form_id": "agua_5_3",
+     "name": "Carapaçal",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "agua_burst",
+      "agua_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fogo_1",
+   "type": "fogo",
+   "shape": "quadruped",
+   "style": "melee",
+   "starter": true,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.5,
+   "hue_shift": -0.07,
+   "base": {
+    "hp": 61.22,
+    "atk": 12.88,
+    "def": 10.04,
+    "spd": 106.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "fogo_1_1",
+     "name": "Brasito",
+     "stage": 1,
+     "desc": "Filhote: um filhote de lobo com brasas no lugar do pelo.",
+     "abilities": [
+      "fogo_strike"
+     ]
+    },
+    {
+     "form_id": "fogo_1_2",
+     "name": "Brasalobo",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "fogo_strike",
+      "fogo_burst"
+     ]
+    },
+    {
+     "form_id": "fogo_1_3",
+     "name": "Infernauro",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "fogo_burst",
+      "fogo_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fogo_2",
+   "type": "fogo",
+   "shape": "bird",
+   "style": "ranged",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.03,
+   "hue_shift": -0.035,
+   "base": {
+    "hp": 46.35,
+    "atk": 11.72,
+    "def": 8.22,
+    "spd": 114.4,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "fogo_2_1",
+     "name": "Faísco",
+     "stage": 1,
+     "desc": "Filhote: um passarinho que solta faíscas ao bater as asas.",
+     "abilities": [
+      "fogo_bolt"
+     ]
+    },
+    {
+     "form_id": "fogo_2_2",
+     "name": "Fagulhavo",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "fogo_bolt",
+      "fogo_blast"
+     ]
+    },
+    {
+     "form_id": "fogo_2_3",
+     "name": "Fenígneo",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "fogo_blast",
+      "fogo_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fogo_3",
+   "type": "fogo",
+   "shape": "blob",
+   "style": "magic",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.06,
+   "hue_shift": 0.0,
+   "base": {
+    "hp": 50.44,
+    "atk": 13.77,
+    "def": 7.13,
+    "spd": 91.2,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "fogo_3_1",
+     "name": "Lavinha",
+     "stage": 1,
+     "desc": "Filhote: uma bolha de lava que borbulha quando pensa.",
+     "abilities": [
+      "fogo_blast"
+     ]
+    },
+    {
+     "form_id": "fogo_3_2",
+     "name": "Lavorbe",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "fogo_blast",
+      "fogo_heal"
+     ]
+    },
+    {
+     "form_id": "fogo_3_3",
+     "name": "Magmastro",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "fogo_dot",
+      "fogo_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fogo_4",
+   "type": "fogo",
+   "shape": "serpent",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.14,
+   "hue_shift": 0.035,
+   "base": {
+    "hp": 62.69,
+    "atk": 12.05,
+    "def": 9.45,
+    "spd": 100,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "fogo_4_1",
+     "name": "Cinzobra",
+     "stage": 1,
+     "desc": "Filhote: uma cobra de cinzas quentes que deixa trilhas fumegantes.",
+     "abilities": [
+      "fogo_strike"
+     ]
+    },
+    {
+     "form_id": "fogo_4_2",
+     "name": "Cinzerpe",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "fogo_strike",
+      "fogo_burst"
+     ]
+    },
+    {
+     "form_id": "fogo_4_3",
+     "name": "Vulcanaga",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "fogo_burst",
+      "fogo_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fogo_5",
+   "type": "fogo",
+   "shape": "golem",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.19,
+   "hue_shift": 0.07,
+   "base": {
+    "hp": 67.9,
+    "atk": 12.11,
+    "def": 11.31,
+    "spd": 86.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "fogo_5_1",
+     "name": "Carvãozinho",
+     "stage": 1,
+     "desc": "Filhote: um pedaço de carvão que ganhou vida dentro de um vulcão.",
+     "abilities": [
+      "fogo_strike"
+     ]
+    },
+    {
+     "form_id": "fogo_5_2",
+     "name": "Carvoluto",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "fogo_strike",
+      "fogo_burst"
+     ]
+    },
+    {
+     "form_id": "fogo_5_3",
+     "name": "Fornalhão",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "fogo_burst",
+      "fogo_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gelo_1",
+   "type": "gelo",
+   "shape": "bird",
+   "style": "ranged",
+   "starter": true,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.5,
+   "hue_shift": -0.07,
+   "base": {
+    "hp": 47.21,
+    "atk": 11.48,
+    "def": 8.27,
+    "spd": 114.4,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "gelo_1_1",
+     "name": "Flocote",
+     "stage": 1,
+     "desc": "Filhote: uma ave de penas de neve que atira flocos cortantes.",
+     "abilities": [
+      "gelo_bolt"
+     ]
+    },
+    {
+     "form_id": "gelo_1_2",
+     "name": "Flocário",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "gelo_bolt",
+      "gelo_blast"
+     ]
+    },
+    {
+     "form_id": "gelo_1_3",
+     "name": "Nevascor",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "gelo_blast",
+      "gelo_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gelo_2",
+   "type": "gelo",
+   "shape": "quadruped",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.95,
+   "hue_shift": -0.035,
+   "base": {
+    "hp": 57.02,
+    "atk": 12.21,
+    "def": 10.09,
+    "spd": 106.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "gelo_2_1",
+     "name": "Geladim",
+     "stage": 1,
+     "desc": "Filhote: um felino de pelagem congelada e passos silenciosos.",
+     "abilities": [
+      "gelo_strike"
+     ]
+    },
+    {
+     "form_id": "gelo_2_2",
+     "name": "Gelopardo",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "gelo_strike",
+      "gelo_burst"
+     ]
+    },
+    {
+     "form_id": "gelo_2_3",
+     "name": "Glaciafera",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "gelo_burst",
+      "gelo_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gelo_3",
+   "type": "gelo",
+   "shape": "spirit",
+   "style": "magic",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.13,
+   "hue_shift": 0.0,
+   "base": {
+    "hp": 42.36,
+    "atk": 13.66,
+    "def": 7.34,
+    "spd": 99.8,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "gelo_3_1",
+     "name": "Brumito",
+     "stage": 1,
+     "desc": "Filhote: um espírito de névoa gelada que canta ao amanhecer.",
+     "abilities": [
+      "gelo_blast"
+     ]
+    },
+    {
+     "form_id": "gelo_3_2",
+     "name": "Brumálgido",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "gelo_blast",
+      "gelo_heal"
+     ]
+    },
+    {
+     "form_id": "gelo_3_3",
+     "name": "Aurorgelo",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "gelo_dot",
+      "gelo_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gelo_4",
+   "type": "gelo",
+   "shape": "golem",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.09,
+   "hue_shift": 0.035,
+   "base": {
+    "hp": 66.47,
+    "atk": 12.07,
+    "def": 11.48,
+    "spd": 86.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "gelo_4_1",
+     "name": "Cristelo",
+     "stage": 1,
+     "desc": "Filhote: um ursinho de cristal de gelo, pesado e teimoso.",
+     "abilities": [
+      "gelo_strike"
+     ]
+    },
+    {
+     "form_id": "gelo_4_2",
+     "name": "Cristalurso",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "gelo_strike",
+      "gelo_burst"
+     ]
+    },
+    {
+     "form_id": "gelo_4_3",
+     "name": "Permagelo",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "gelo_burst",
+      "gelo_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gelo_5",
+   "type": "gelo",
+   "shape": "fish",
+   "style": "ranged",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.92,
+   "hue_shift": 0.07,
+   "base": {
+    "hp": 50.23,
+    "atk": 12.41,
+    "def": 7.77,
+    "spd": 106.1,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "gelo_5_1",
+     "name": "Focuxo",
+     "stage": 1,
+     "desc": "Filhote: uma foca que cospe bolas de gelo com precisão.",
+     "abilities": [
+      "gelo_bolt"
+     ]
+    },
+    {
+     "form_id": "gelo_5_2",
+     "name": "Focalante",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "gelo_bolt",
+      "gelo_blast"
+     ]
+    },
+    {
+     "form_id": "gelo_5_3",
+     "name": "Morsagelo",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "gelo_blast",
+      "gelo_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "planta_1",
+   "type": "planta",
+   "shape": "biped",
+   "style": "melee",
+   "starter": true,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.5,
+   "hue_shift": -0.07,
+   "base": {
+    "hp": 64.73,
+    "atk": 11.48,
+    "def": 10.27,
+    "spd": 100,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "planta_1_1",
+     "name": "Brotim",
+     "stage": 1,
+     "desc": "Filhote: um broto que aprendeu a andar e a dar cabeçadas.",
+     "abilities": [
+      "planta_strike"
+     ]
+    },
+    {
+     "form_id": "planta_1_2",
+     "name": "Ramagueiro",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "planta_strike",
+      "planta_burst"
+     ]
+    },
+    {
+     "form_id": "planta_1_3",
+     "name": "Silvatronco",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "planta_burst",
+      "planta_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "planta_2",
+   "type": "planta",
+   "shape": "insect",
+   "style": "ranged",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.94,
+   "hue_shift": -0.035,
+   "base": {
+    "hp": 48.93,
+    "atk": 12.22,
+    "def": 7.81,
+    "spd": 104,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "planta_2_1",
+     "name": "Joaninho",
+     "stage": 1,
+     "desc": "Filhote: um besouro que lança sementes como projéteis.",
+     "abilities": [
+      "planta_bolt"
+     ]
+    },
+    {
+     "form_id": "planta_2_2",
+     "name": "Besourama",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "planta_bolt",
+      "planta_blast"
+     ]
+    },
+    {
+     "form_id": "planta_2_3",
+     "name": "Escaravelva",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "planta_blast",
+      "planta_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "planta_3",
+   "type": "planta",
+   "shape": "blob",
+   "style": "magic",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.98,
+   "hue_shift": 0.0,
+   "base": {
+    "hp": 49.4,
+    "atk": 12.96,
+    "def": 7.74,
+    "spd": 91.2,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "planta_3_1",
+     "name": "Musguinho",
+     "stage": 1,
+     "desc": "Filhote: um tufo de musgo que solta esporos sonolentos.",
+     "abilities": [
+      "planta_blast"
+     ]
+    },
+    {
+     "form_id": "planta_3_2",
+     "name": "Musgolento",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "planta_blast",
+      "planta_heal"
+     ]
+    },
+    {
+     "form_id": "planta_3_3",
+     "name": "Fungimor",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "planta_dot",
+      "planta_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "planta_4",
+   "type": "planta",
+   "shape": "serpent",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.06,
+   "hue_shift": 0.035,
+   "base": {
+    "hp": 59.58,
+    "atk": 12.78,
+    "def": 10.14,
+    "spd": 100,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "planta_4_1",
+     "name": "Cipolim",
+     "stage": 1,
+     "desc": "Filhote: um cipó vivo que se enrola nos inimigos.",
+     "abilities": [
+      "planta_strike"
+     ]
+    },
+    {
+     "form_id": "planta_4_2",
+     "name": "Cipovenha",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "planta_strike",
+      "planta_burst"
+     ]
+    },
+    {
+     "form_id": "planta_4_3",
+     "name": "Lianaconda",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "planta_burst",
+      "planta_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "planta_5",
+   "type": "planta",
+   "shape": "bird",
+   "style": "ranged",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.96,
+   "hue_shift": 0.07,
+   "base": {
+    "hp": 44.59,
+    "atk": 12.27,
+    "def": 8.14,
+    "spd": 114.4,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "planta_5_1",
+     "name": "Pétalim",
+     "stage": 1,
+     "desc": "Filhote: um beija-flor feito de pétalas e pólen.",
+     "abilities": [
+      "planta_bolt"
+     ]
+    },
+    {
+     "form_id": "planta_5_2",
+     "name": "Floricolibri",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "planta_bolt",
+      "planta_blast"
+     ]
+    },
+    {
+     "form_id": "planta_5_3",
+     "name": "Orquidália",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "planta_blast",
+      "planta_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "terra_1",
+   "type": "terra",
+   "shape": "golem",
+   "style": "melee",
+   "starter": true,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.5,
+   "hue_shift": -0.07,
+   "base": {
+    "hp": 66.78,
+    "atk": 11.83,
+    "def": 11.32,
+    "spd": 86.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "terra_1_1",
+     "name": "Seixinho",
+     "stage": 1,
+     "desc": "Filhote: uma pedrinha teimosa que nunca recua.",
+     "abilities": [
+      "terra_strike"
+     ]
+    },
+    {
+     "form_id": "terra_1_2",
+     "name": "Pedregão",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "terra_strike",
+      "terra_burst"
+     ]
+    },
+    {
+     "form_id": "terra_1_3",
+     "name": "Monolitauro",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "terra_burst",
+      "terra_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "terra_2",
+   "type": "terra",
+   "shape": "quadruped",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.16,
+   "hue_shift": -0.035,
+   "base": {
+    "hp": 59.07,
+    "atk": 12.78,
+    "def": 9.54,
+    "spd": 106.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "terra_2_1",
+     "name": "Toupeirim",
+     "stage": 1,
+     "desc": "Filhote: uma toupeira que cava túneis em segundos.",
+     "abilities": [
+      "terra_strike"
+     ]
+    },
+    {
+     "form_id": "terra_2_2",
+     "name": "Cavadouro",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "terra_strike",
+      "terra_burst"
+     ]
+    },
+    {
+     "form_id": "terra_2_3",
+     "name": "Escavassauro",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "terra_burst",
+      "terra_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "terra_3",
+   "type": "terra",
+   "shape": "insect",
+   "style": "ranged",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.93,
+   "hue_shift": 0.0,
+   "base": {
+    "hp": 48.37,
+    "atk": 12.39,
+    "def": 7.94,
+    "spd": 104,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "terra_3_1",
+     "name": "Formigal",
+     "stage": 1,
+     "desc": "Filhote: uma formiga que arremessa grãos de areia endurecida.",
+     "abilities": [
+      "terra_bolt"
+     ]
+    },
+    {
+     "form_id": "terra_3_2",
+     "name": "Formigarra",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "terra_bolt",
+      "terra_blast"
+     ]
+    },
+    {
+     "form_id": "terra_3_3",
+     "name": "Cupinzarca",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "terra_blast",
+      "terra_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "terra_4",
+   "type": "terra",
+   "shape": "serpent",
+   "style": "magic",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.93,
+   "hue_shift": 0.035,
+   "base": {
+    "hp": 46.4,
+    "atk": 14.19,
+    "def": 7.12,
+    "spd": 96,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "terra_4_1",
+     "name": "Grãozinho",
+     "stage": 1,
+     "desc": "Filhote: uma serpente de areia que comanda pequenos redemoinhos.",
+     "abilities": [
+      "terra_blast"
+     ]
+    },
+    {
+     "form_id": "terra_4_2",
+     "name": "Areiaga",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "terra_blast",
+      "terra_heal"
+     ]
+    },
+    {
+     "form_id": "terra_4_3",
+     "name": "Dunaserpe",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "terra_dot",
+      "terra_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "terra_5",
+   "type": "terra",
+   "shape": "biped",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.1,
+   "hue_shift": 0.07,
+   "base": {
+    "hp": 59.12,
+    "atk": 11.81,
+    "def": 9.85,
+    "spd": 100,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "terra_5_1",
+     "name": "Lamacim",
+     "stage": 1,
+     "desc": "Filhote: um bonequinho de barro moldado pela chuva.",
+     "abilities": [
+      "terra_strike"
+     ]
+    },
+    {
+     "form_id": "terra_5_2",
+     "name": "Barrolem",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "terra_strike",
+      "terra_burst"
+     ]
+    },
+    {
+     "form_id": "terra_5_3",
+     "name": "Argilossauro",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "terra_burst",
+      "terra_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "eletrico_1",
+   "type": "eletrico",
+   "shape": "quadruped",
+   "style": "ranged",
+   "starter": true,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.5,
+   "hue_shift": -0.07,
+   "base": {
+    "hp": 47.89,
+    "atk": 12.62,
+    "def": 7.8,
+    "spd": 110.2,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "eletrico_1_1",
+     "name": "Choquito",
+     "stage": 1,
+     "desc": "Filhote: um bichinho de pelo arrepiado que dispara choques.",
+     "abilities": [
+      "eletrico_bolt"
+     ]
+    },
+    {
+     "form_id": "eletrico_1_2",
+     "name": "Voltífera",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "eletrico_bolt",
+      "eletrico_blast"
+     ]
+    },
+    {
+     "form_id": "eletrico_1_3",
+     "name": "Trovajante",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "eletrico_blast",
+      "eletrico_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "eletrico_2",
+   "type": "eletrico",
+   "shape": "bird",
+   "style": "magic",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.99,
+   "hue_shift": -0.035,
+   "base": {
+    "hp": 40.28,
+    "atk": 12.91,
+    "def": 7.16,
+    "spd": 105.6,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "eletrico_2_1",
+     "name": "Pardalume",
+     "stage": 1,
+     "desc": "Filhote: um pardal que atrai relâmpagos com o canto.",
+     "abilities": [
+      "eletrico_blast"
+     ]
+    },
+    {
+     "form_id": "eletrico_2_2",
+     "name": "Raioave",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "eletrico_blast",
+      "eletrico_heal"
+     ]
+    },
+    {
+     "form_id": "eletrico_2_3",
+     "name": "Trovoréu",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "eletrico_dot",
+      "eletrico_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "eletrico_3",
+   "type": "eletrico",
+   "shape": "insect",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.15,
+   "hue_shift": 0.0,
+   "base": {
+    "hp": 55.13,
+    "atk": 13.24,
+    "def": 9.76,
+    "spd": 100,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "eletrico_3_1",
+     "name": "Vespeta",
+     "stage": 1,
+     "desc": "Filhote: uma vespa elétrica de ferrão faiscante.",
+     "abilities": [
+      "eletrico_strike"
+     ]
+    },
+    {
+     "form_id": "eletrico_3_2",
+     "name": "Vespacorrente",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "eletrico_strike",
+      "eletrico_burst"
+     ]
+    },
+    {
+     "form_id": "eletrico_3_3",
+     "name": "Zumbitrão",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "eletrico_burst",
+      "eletrico_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "eletrico_4",
+   "type": "eletrico",
+   "shape": "fish",
+   "style": "ranged",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.05,
+   "hue_shift": 0.035,
+   "base": {
+    "hp": 49.67,
+    "atk": 11.66,
+    "def": 8.16,
+    "spd": 106.1,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "eletrico_4_1",
+     "name": "Enguitilo",
+     "stage": 1,
+     "desc": "Filhote: uma raia que acumula estática nas nadadeiras.",
+     "abilities": [
+      "eletrico_bolt"
+     ]
+    },
+    {
+     "form_id": "eletrico_4_2",
+     "name": "Amperaia",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "eletrico_bolt",
+      "eletrico_blast"
+     ]
+    },
+    {
+     "form_id": "eletrico_4_3",
+     "name": "Tesloraia",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "eletrico_blast",
+      "eletrico_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "eletrico_5",
+   "type": "eletrico",
+   "shape": "golem",
+   "style": "magic",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.97,
+   "hue_shift": 0.07,
+   "base": {
+    "hp": 51.55,
+    "atk": 12.87,
+    "def": 8.89,
+    "spd": 82.6,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "eletrico_5_1",
+     "name": "Pilhote",
+     "stage": 1,
+     "desc": "Filhote: uma pilha antiga que despertou com um raio.",
+     "abilities": [
+      "eletrico_blast"
+     ]
+    },
+    {
+     "form_id": "eletrico_5_2",
+     "name": "Bobinardo",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "eletrico_blast",
+      "eletrico_heal"
+     ]
+    },
+    {
+     "form_id": "eletrico_5_3",
+     "name": "Dínamorgo",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "eletrico_dot",
+      "eletrico_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vento_1",
+   "type": "vento",
+   "shape": "bird",
+   "style": "ranged",
+   "starter": true,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.5,
+   "hue_shift": -0.07,
+   "base": {
+    "hp": 47.73,
+    "atk": 11.67,
+    "def": 7.91,
+    "spd": 114.4,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "vento_1_1",
+     "name": "Plumito",
+     "stage": 1,
+     "desc": "Filhote: um filhote de ave que vive pegando carona nas brisas.",
+     "abilities": [
+      "vento_bolt"
+     ]
+    },
+    {
+     "form_id": "vento_1_2",
+     "name": "Brisavo",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "vento_bolt",
+      "vento_blast"
+     ]
+    },
+    {
+     "form_id": "vento_1_3",
+     "name": "Furacondor",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "vento_blast",
+      "vento_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vento_2",
+   "type": "vento",
+   "shape": "spirit",
+   "style": "magic",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.98,
+   "hue_shift": -0.035,
+   "base": {
+    "hp": 40.98,
+    "atk": 14.78,
+    "def": 7.83,
+    "spd": 99.8,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "vento_2_1",
+     "name": "Sopradinho",
+     "stage": 1,
+     "desc": "Filhote: um pequeno redemoinho com olhos curiosos.",
+     "abilities": [
+      "vento_blast"
+     ]
+    },
+    {
+     "form_id": "vento_2_2",
+     "name": "Redemoinhal",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "vento_blast",
+      "vento_heal"
+     ]
+    },
+    {
+     "form_id": "vento_2_3",
+     "name": "Ciclonarca",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "vento_dot",
+      "vento_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vento_3",
+   "type": "vento",
+   "shape": "insect",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.14,
+   "hue_shift": 0.0,
+   "base": {
+    "hp": 56.63,
+    "atk": 12.69,
+    "def": 10.13,
+    "spd": 100,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "vento_3_1",
+     "name": "Libelim",
+     "stage": 1,
+     "desc": "Filhote: uma libélula de asas afiadas como lâminas.",
+     "abilities": [
+      "vento_strike"
+     ]
+    },
+    {
+     "form_id": "vento_3_2",
+     "name": "Libelâmina",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "vento_strike",
+      "vento_burst"
+     ]
+    },
+    {
+     "form_id": "vento_3_3",
+     "name": "Ceifavento",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "vento_burst",
+      "vento_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vento_4",
+   "type": "vento",
+   "shape": "quadruped",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.07,
+   "hue_shift": 0.035,
+   "base": {
+    "hp": 61.16,
+    "atk": 12.54,
+    "def": 10.42,
+    "spd": 106.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "vento_4_1",
+     "name": "Lebrisco",
+     "stage": 1,
+     "desc": "Filhote: uma lebre tão rápida que deixa rastros de vento.",
+     "abilities": [
+      "vento_strike"
+     ]
+    },
+    {
+     "form_id": "vento_4_2",
+     "name": "Corrisopro",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "vento_strike",
+      "vento_burst"
+     ]
+    },
+    {
+     "form_id": "vento_4_3",
+     "name": "Galerauro",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "vento_burst",
+      "vento_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vento_5",
+   "type": "vento",
+   "shape": "serpent",
+   "style": "ranged",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.97,
+   "hue_shift": 0.07,
+   "base": {
+    "hp": 50.01,
+    "atk": 13.08,
+    "def": 7.7,
+    "spd": 104,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "vento_5_1",
+     "name": "Nuvélio",
+     "stage": 1,
+     "desc": "Filhote: uma serpente de nuvem que dispara rajadas de ar.",
+     "abilities": [
+      "vento_bolt"
+     ]
+    },
+    {
+     "form_id": "vento_5_2",
+     "name": "Nimbosserpe",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "vento_bolt",
+      "vento_blast"
+     ]
+    },
+    {
+     "form_id": "vento_5_3",
+     "name": "Dragonimbo",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "vento_blast",
+      "vento_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "luz_1",
+   "type": "luz",
+   "shape": "spirit",
+   "style": "magic",
+   "starter": true,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.5,
+   "hue_shift": -0.07,
+   "base": {
+    "hp": 43.45,
+    "atk": 13.88,
+    "def": 7.4,
+    "spd": 99.8,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "luz_1_1",
+     "name": "Lumito",
+     "stage": 1,
+     "desc": "Filhote: uma pequena chama de luz pura que espanta pesadelos.",
+     "abilities": [
+      "luz_blast"
+     ]
+    },
+    {
+     "form_id": "luz_1_2",
+     "name": "Lumiário",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "luz_blast",
+      "luz_heal"
+     ]
+    },
+    {
+     "form_id": "luz_1_3",
+     "name": "Auréolux",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "luz_dot",
+      "luz_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "luz_2",
+   "type": "luz",
+   "shape": "bird",
+   "style": "ranged",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.96,
+   "hue_shift": -0.035,
+   "base": {
+    "hp": 44.5,
+    "atk": 12.19,
+    "def": 8.2,
+    "spd": 114.4,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "luz_2_1",
+     "name": "Pombrilho",
+     "stage": 1,
+     "desc": "Filhote: uma pomba de penas reluzentes que dispara raios de sol.",
+     "abilities": [
+      "luz_bolt"
+     ]
+    },
+    {
+     "form_id": "luz_2_2",
+     "name": "Resplume",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "luz_bolt",
+      "luz_blast"
+     ]
+    },
+    {
+     "form_id": "luz_2_3",
+     "name": "Solárion",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "luz_blast",
+      "luz_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "luz_3",
+   "type": "luz",
+   "shape": "golem",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.18,
+   "hue_shift": 0.0,
+   "base": {
+    "hp": 66.2,
+    "atk": 12.19,
+    "def": 11.5,
+    "spd": 86.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "luz_3_1",
+     "name": "Prismito",
+     "stage": 1,
+     "desc": "Filhote: um cristal prismático que decompõe a luz em golpes.",
+     "abilities": [
+      "luz_strike"
+     ]
+    },
+    {
+     "form_id": "luz_3_2",
+     "name": "Prismalião",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "luz_strike",
+      "luz_burst"
+     ]
+    },
+    {
+     "form_id": "luz_3_3",
+     "name": "Vitralossus",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "luz_burst",
+      "luz_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "luz_4",
+   "type": "luz",
+   "shape": "quadruped",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.92,
+   "hue_shift": 0.035,
+   "base": {
+    "hp": 58.48,
+    "atk": 12.25,
+    "def": 10.38,
+    "spd": 106.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "luz_4_1",
+     "name": "Potrilume",
+     "stage": 1,
+     "desc": "Filhote: um potro de crina luminosa que galopa ao nascer do sol.",
+     "abilities": [
+      "luz_strike"
+     ]
+    },
+    {
+     "form_id": "luz_4_2",
+     "name": "Corcelux",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "luz_strike",
+      "luz_burst"
+     ]
+    },
+    {
+     "form_id": "luz_4_3",
+     "name": "Alvorcorno",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "luz_burst",
+      "luz_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "luz_5",
+   "type": "luz",
+   "shape": "blob",
+   "style": "magic",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.98,
+   "hue_shift": 0.07,
+   "base": {
+    "hp": 48.32,
+    "atk": 13.89,
+    "def": 7.57,
+    "spd": 91.2,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "luz_5_1",
+     "name": "Cintilim",
+     "stage": 1,
+     "desc": "Filhote: uma bolinha de luz estelar que pulsa como uma estrela.",
+     "abilities": [
+      "luz_blast"
+     ]
+    },
+    {
+     "form_id": "luz_5_2",
+     "name": "Cintilóide",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "luz_blast",
+      "luz_heal"
+     ]
+    },
+    {
+     "form_id": "luz_5_3",
+     "name": "Supernovo",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "luz_dot",
+      "luz_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sombra_1",
+   "type": "sombra",
+   "shape": "quadruped",
+   "style": "melee",
+   "starter": true,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.5,
+   "hue_shift": -0.07,
+   "base": {
+    "hp": 59.86,
+    "atk": 12.85,
+    "def": 9.83,
+    "spd": 106.0,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "sombra_1_1",
+     "name": "Breuzinho",
+     "stage": 1,
+     "desc": "Filhote: um filhote feito de breu que só aparece à noite.",
+     "abilities": [
+      "sombra_strike"
+     ]
+    },
+    {
+     "form_id": "sombra_1_2",
+     "name": "Breulobo",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "sombra_strike",
+      "sombra_burst"
+     ]
+    },
+    {
+     "form_id": "sombra_1_3",
+     "name": "Eclipsauro",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "sombra_burst",
+      "sombra_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sombra_2",
+   "type": "sombra",
+   "shape": "spirit",
+   "style": "magic",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.05,
+   "hue_shift": -0.035,
+   "base": {
+    "hp": 43.16,
+    "atk": 14.62,
+    "def": 7.66,
+    "spd": 99.8,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "sombra_2_1",
+     "name": "Assombrim",
+     "stage": 1,
+     "desc": "Filhote: um fantasminha tímido que sussurra maldições.",
+     "abilities": [
+      "sombra_blast"
+     ]
+    },
+    {
+     "form_id": "sombra_2_2",
+     "name": "Espectrélio",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "sombra_blast",
+      "sombra_heal"
+     ]
+    },
+    {
+     "form_id": "sombra_2_3",
+     "name": "Penumbrarca",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "sombra_dot",
+      "sombra_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sombra_3",
+   "type": "sombra",
+   "shape": "bird",
+   "style": "ranged",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 0.97,
+   "hue_shift": 0.0,
+   "base": {
+    "hp": 47.48,
+    "atk": 11.74,
+    "def": 8.02,
+    "spd": 114.4,
+    "rng": 4
+   },
+   "stages": [
+    {
+     "form_id": "sombra_3_1",
+     "name": "Corvito",
+     "stage": 1,
+     "desc": "Filhote: um corvo de olhos vermelhos que arremessa penas sombrias.",
+     "abilities": [
+      "sombra_bolt"
+     ]
+    },
+    {
+     "form_id": "sombra_3_2",
+     "name": "Corvoturvo",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, acerta alvos distantes com facilidade.",
+     "abilities": [
+      "sombra_bolt",
+      "sombra_blast"
+     ]
+    },
+    {
+     "form_id": "sombra_3_3",
+     "name": "Nocturnave",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, um atirador implacável de longo alcance.",
+     "abilities": [
+      "sombra_blast",
+      "sombra_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sombra_4",
+   "type": "sombra",
+   "shape": "insect",
+   "style": "melee",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.02,
+   "hue_shift": 0.035,
+   "base": {
+    "hp": 55.64,
+    "atk": 13.34,
+    "def": 10.21,
+    "spd": 100,
+    "rng": 1
+   },
+   "stages": [
+    {
+     "form_id": "sombra_4_1",
+     "name": "Aranhoca",
+     "stage": 1,
+     "desc": "Filhote: uma aranha que tece teias de escuridão.",
+     "abilities": [
+      "sombra_strike"
+     ]
+    },
+    {
+     "form_id": "sombra_4_2",
+     "name": "Tecelúgubre",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, agora parte para o corpo a corpo sem hesitar.",
+     "abilities": [
+      "sombra_strike",
+      "sombra_burst"
+     ]
+    },
+    {
+     "form_id": "sombra_4_3",
+     "name": "Viúvanoite",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, capaz de derrubar grupos inteiros em combate próximo.",
+     "abilities": [
+      "sombra_burst",
+      "sombra_ult"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sombra_5",
+   "type": "sombra",
+   "shape": "serpent",
+   "style": "magic",
+   "starter": false,
+   "evo_levels": [
+    16,
+    35
+   ],
+   "essence_mult": 1.2,
+   "hue_shift": 0.07,
+   "base": {
+    "hp": 46.24,
+    "atk": 13.61,
+    "def": 6.98,
+    "spd": 96,
+    "rng": 3
+   },
+   "stages": [
+    {
+     "form_id": "sombra_5_1",
+     "name": "Vultinho",
+     "stage": 1,
+     "desc": "Filhote: uma serpente de vulto que surge das sombras.",
+     "abilities": [
+      "sombra_blast"
+     ]
+    },
+    {
+     "form_id": "sombra_5_2",
+     "name": "Vultoserpe",
+     "stage": 2,
+     "desc": "Adolescente: mais forte e confiante, domina feitiços de área.",
+     "abilities": [
+      "sombra_blast",
+      "sombra_heal"
+     ]
+    },
+    {
+     "form_id": "sombra_5_3",
+     "name": "Abismorgo",
+     "stage": 3,
+     "desc": "Adulto: forma plena e temida, sua magia transforma o campo de batalha.",
+     "abilities": [
+      "sombra_dot",
+      "sombra_ult"
+     ]
+    }
+   ]
+  }
+ ]
+}

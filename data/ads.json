@@ -1,0 +1,18 @@
+{
+ "_comentario": "ÚNICO arquivo com os IDs do AdMob. Os valores abaixo são os IDs de TESTE oficiais do Google. Troque pelos seus IDs reais antes de publicar (veja PENDENCIAS.md).",
+ "use_test_ids": true,
+ "android": {
+  "app_id": "ca-app-pub-3940256099942544~3347511713",
+  "banner": "ca-app-pub-3940256099942544/6300978111",
+  "interstitial": "ca-app-pub-3940256099942544/1033173712",
+  "rewarded": "ca-app-pub-3940256099942544/5224354917"
+ },
+ "real": {
+  "app_id": "",
+  "banner": "",
+  "interstitial": "",
+  "rewarded": ""
+ },
+ "test_device_ids": [],
+ "tag_for_under_age_of_consent": false
+}

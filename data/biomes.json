@@ -1,0 +1,575 @@
+{
+ "_comentario": "Paletas e estilos de geração por bioma. Mundo 2 aplica 'corruption' do config.json sobre estas paletas.",
+ "biomes": [
+  {
+   "id": "praia",
+   "name": "Praia",
+   "types": [
+    "agua"
+   ],
+   "gen": "islands",
+   "wall_style": "water",
+   "deco_style": "shell",
+   "floor": [
+    "#e8d9a0",
+    "#dfcf92",
+    "#efe2ae"
+   ],
+   "wall": "#2f6fb5",
+   "deco": [
+    "#f4f0e0",
+    "#d98c6a"
+   ]
+  },
+  {
+   "id": "lago",
+   "name": "Lago",
+   "types": [
+    "agua"
+   ],
+   "gen": "islands",
+   "wall_style": "water",
+   "deco_style": "grass",
+   "floor": [
+    "#6aa84f",
+    "#5f9a46",
+    "#76b55a"
+   ],
+   "wall": "#2a5f9e",
+   "deco": [
+    "#9fd18a",
+    "#e9e27a"
+   ]
+  },
+  {
+   "id": "recife",
+   "name": "Recife",
+   "types": [
+    "agua"
+   ],
+   "gen": "cave",
+   "wall_style": "coral",
+   "deco_style": "shell",
+   "floor": [
+    "#3f8fae",
+    "#378299",
+    "#4a9cbb"
+   ],
+   "wall": "#c2566f",
+   "deco": [
+    "#f2a9b8",
+    "#9be0e8"
+   ]
+  },
+  {
+   "id": "vulcao",
+   "name": "Vulcão",
+   "types": [
+    "fogo"
+   ],
+   "gen": "cave",
+   "wall_style": "rock",
+   "deco_style": "ember",
+   "floor": [
+    "#4a3a34",
+    "#41332e",
+    "#55443d"
+   ],
+   "wall": "#2a1e1b",
+   "deco": [
+    "#ff7a2a",
+    "#ffd04a"
+   ]
+  },
+  {
+   "id": "campo_lava",
+   "name": "Campo de Lava",
+   "types": [
+    "fogo"
+   ],
+   "gen": "islands",
+   "wall_style": "lava",
+   "deco_style": "ember",
+   "floor": [
+    "#5b4036",
+    "#523a31",
+    "#66493e"
+   ],
+   "wall": "#e04a1a",
+   "deco": [
+    "#ffb03a",
+    "#3a2a24"
+   ]
+  },
+  {
+   "id": "tundra",
+   "name": "Tundra",
+   "types": [
+    "gelo"
+   ],
+   "gen": "open",
+   "wall_style": "ice",
+   "deco_style": "snow",
+   "floor": [
+    "#e6f0f5",
+    "#dbe8ef",
+    "#f0f6f9"
+   ],
+   "wall": "#8fbcd4",
+   "deco": [
+    "#ffffff",
+    "#b5d7e6"
+   ]
+  },
+  {
+   "id": "caverna_congelada",
+   "name": "Caverna Congelada",
+   "types": [
+    "gelo"
+   ],
+   "gen": "cave",
+   "wall_style": "ice",
+   "deco_style": "crystal",
+   "floor": [
+    "#a9c9da",
+    "#9dbfd1",
+    "#b6d3e2"
+   ],
+   "wall": "#5d8aa8",
+   "deco": [
+    "#e8fbff",
+    "#7fd6e8"
+   ]
+  },
+  {
+   "id": "campo_grama",
+   "name": "Campo de Grama",
+   "types": [
+    "planta"
+   ],
+   "gen": "open",
+   "wall_style": "tree",
+   "deco_style": "flower",
+   "floor": [
+    "#5fa843",
+    "#569c3c",
+    "#68b34b"
+   ],
+   "wall": "#2e6b23",
+   "deco": [
+    "#f5e050",
+    "#e86a8a"
+   ]
+  },
+  {
+   "id": "floresta_densa",
+   "name": "Floresta Densa",
+   "types": [
+    "planta"
+   ],
+   "gen": "cave",
+   "wall_style": "tree",
+   "deco_style": "mushroom",
+   "floor": [
+    "#3f7d33",
+    "#38722d",
+    "#47883a"
+   ],
+   "wall": "#1f4a1a",
+   "deco": [
+    "#d94a3a",
+    "#c9e07a"
+   ]
+  },
+  {
+   "id": "canion",
+   "name": "Cânion",
+   "types": [
+    "terra"
+   ],
+   "gen": "open",
+   "wall_style": "rock",
+   "deco_style": "pebble",
+   "floor": [
+    "#c98a52",
+    "#bd7f49",
+    "#d4955c"
+   ],
+   "wall": "#7a4a28",
+   "deco": [
+    "#8a5a35",
+    "#e0b07a"
+   ]
+  },
+  {
+   "id": "caverna_rochosa",
+   "name": "Caverna Rochosa",
+   "types": [
+    "terra"
+   ],
+   "gen": "cave",
+   "wall_style": "rock",
+   "deco_style": "pebble",
+   "floor": [
+    "#7b6a5a",
+    "#706050",
+    "#857463"
+   ],
+   "wall": "#3d332a",
+   "deco": [
+    "#a89880",
+    "#5a4a3a"
+   ]
+  },
+  {
+   "id": "planalto_tempestade",
+   "name": "Planalto da Tempestade",
+   "types": [
+    "eletrico"
+   ],
+   "gen": "open",
+   "wall_style": "rock",
+   "deco_style": "spark",
+   "floor": [
+    "#5d6b4a",
+    "#536042",
+    "#677553"
+   ],
+   "wall": "#2f3528",
+   "deco": [
+    "#f2d023",
+    "#a8e0ff"
+   ]
+  },
+  {
+   "id": "ruinas_energizadas",
+   "name": "Ruínas Energizadas",
+   "types": [
+    "eletrico"
+   ],
+   "gen": "rooms",
+   "wall_style": "pillar",
+   "deco_style": "spark",
+   "floor": [
+    "#6a6a7a",
+    "#60606f",
+    "#747485"
+   ],
+   "wall": "#3a3a48",
+   "deco": [
+    "#f2d023",
+    "#7af0ff"
+   ]
+  },
+  {
+   "id": "picos",
+   "name": "Picos Montanhosos",
+   "types": [
+    "vento"
+   ],
+   "gen": "open",
+   "wall_style": "rock",
+   "deco_style": "feather",
+   "floor": [
+    "#9aa59a",
+    "#8f9a8f",
+    "#a5b0a5"
+   ],
+   "wall": "#5a625a",
+   "deco": [
+    "#ffffff",
+    "#c9d6e0"
+   ]
+  },
+  {
+   "id": "plataformas_nuvens",
+   "name": "Plataformas nas Nuvens",
+   "types": [
+    "vento"
+   ],
+   "gen": "islands",
+   "wall_style": "cloud",
+   "deco_style": "feather",
+   "floor": [
+    "#e9eef5",
+    "#dfe6ef",
+    "#f2f5fa"
+   ],
+   "wall": "#9fc3e8",
+   "deco": [
+    "#ffffff",
+    "#ffe9a8"
+   ]
+  },
+  {
+   "id": "templo",
+   "name": "Templo",
+   "types": [
+    "luz"
+   ],
+   "gen": "rooms",
+   "wall_style": "pillar",
+   "deco_style": "crystal",
+   "floor": [
+    "#e8dcc0",
+    "#ddd0b2",
+    "#f0e6cc"
+   ],
+   "wall": "#a89060",
+   "deco": [
+    "#fff1a8",
+    "#ffffff"
+   ]
+  },
+  {
+   "id": "campo_cristais",
+   "name": "Campo de Cristais",
+   "types": [
+    "luz"
+   ],
+   "gen": "open",
+   "wall_style": "crystal",
+   "deco_style": "crystal",
+   "floor": [
+    "#d8e6c8",
+    "#cddcbc",
+    "#e2efd3"
+   ],
+   "wall": "#f0e080",
+   "deco": [
+    "#fff8c8",
+    "#bff0ff"
+   ]
+  },
+  {
+   "id": "floresta_sombria",
+   "name": "Floresta Sombria",
+   "types": [
+    "sombra"
+   ],
+   "gen": "cave",
+   "wall_style": "tree",
+   "deco_style": "mushroom",
+   "floor": [
+    "#2f3a2c",
+    "#293326",
+    "#354232"
+   ],
+   "wall": "#121a12",
+   "deco": [
+    "#8a5ad0",
+    "#4a6a3a"
+   ]
+  },
+  {
+   "id": "cemiterio",
+   "name": "Cemitério Antigo",
+   "types": [
+    "sombra"
+   ],
+   "gen": "rooms",
+   "wall_style": "tomb",
+   "deco_style": "bone",
+   "floor": [
+    "#4a4a40",
+    "#424238",
+    "#535348"
+   ],
+   "wall": "#2a2a28",
+   "deco": [
+    "#d8d8c8",
+    "#6a3d9a"
+   ]
+  },
+  {
+   "id": "pantano",
+   "name": "Pântano",
+   "types": [
+    "agua",
+    "planta"
+   ],
+   "gen": "islands",
+   "wall_style": "water",
+   "deco_style": "mushroom",
+   "floor": [
+    "#5a6e3a",
+    "#526534",
+    "#627844"
+   ],
+   "wall": "#2f4a3a",
+   "deco": [
+    "#9ab04a",
+    "#c9a0d0"
+   ]
+  },
+  {
+   "id": "fontes_termais",
+   "name": "Fontes Termais",
+   "types": [
+    "agua",
+    "fogo"
+   ],
+   "gen": "islands",
+   "wall_style": "water",
+   "deco_style": "ember",
+   "floor": [
+    "#8a7a6a",
+    "#807060",
+    "#958575"
+   ],
+   "wall": "#4aa0b0",
+   "deco": [
+    "#ffffff",
+    "#ff9a5a"
+   ]
+  },
+  {
+   "id": "deserto_cinzas",
+   "name": "Deserto de Cinzas",
+   "types": [
+    "fogo",
+    "terra"
+   ],
+   "gen": "open",
+   "wall_style": "rock",
+   "deco_style": "ember",
+   "floor": [
+    "#8a7060",
+    "#806656",
+    "#957a6a"
+   ],
+   "wall": "#4a3a30",
+   "deco": [
+    "#ff7a2a",
+    "#c0a080"
+   ]
+  },
+  {
+   "id": "geleira_rochosa",
+   "name": "Geleira Rochosa",
+   "types": [
+    "gelo",
+    "terra"
+   ],
+   "gen": "cave",
+   "wall_style": "ice",
+   "deco_style": "pebble",
+   "floor": [
+    "#b8c4c8",
+    "#adb9bd",
+    "#c3cfd3"
+   ],
+   "wall": "#6a7a80",
+   "deco": [
+    "#ffffff",
+    "#8a7a6a"
+   ]
+  },
+  {
+   "id": "cordilheira_ventosa",
+   "name": "Cordilheira Ventosa",
+   "types": [
+    "vento",
+    "terra",
+    "eletrico"
+   ],
+   "gen": "open",
+   "wall_style": "rock",
+   "deco_style": "feather",
+   "floor": [
+    "#8a9a8a",
+    "#809080",
+    "#95a595"
+   ],
+   "wall": "#4a5a4a",
+   "deco": [
+    "#f2d023",
+    "#ffffff"
+   ]
+  },
+  {
+   "id": "crepusculo",
+   "name": "Vale do Crepúsculo",
+   "types": [
+    "luz",
+    "sombra"
+   ],
+   "gen": "rooms",
+   "wall_style": "pillar",
+   "deco_style": "crystal",
+   "floor": [
+    "#7a6a8a",
+    "#706080",
+    "#857595"
+   ],
+   "wall": "#3a2a4a",
+   "deco": [
+    "#fff1a8",
+    "#6a3d9a"
+   ]
+  },
+  {
+   "id": "brejo_sombrio",
+   "name": "Brejo Sombrio",
+   "types": [
+    "sombra",
+    "planta"
+   ],
+   "gen": "cave",
+   "wall_style": "tree",
+   "deco_style": "mushroom",
+   "floor": [
+    "#3a4a30",
+    "#33422a",
+    "#425236"
+   ],
+   "wall": "#1a221a",
+   "deco": [
+    "#8a5ad0",
+    "#9ab04a"
+   ]
+  },
+  {
+   "id": "geleira_eterea",
+   "name": "Geleira Etérea",
+   "types": [
+    "gelo",
+    "vento"
+   ],
+   "gen": "open",
+   "wall_style": "ice",
+   "deco_style": "feather",
+   "floor": [
+    "#dce8f0",
+    "#d0dee8",
+    "#e6f0f6"
+   ],
+   "wall": "#8fbcd4",
+   "deco": [
+    "#ffffff",
+    "#c9d6e0"
+   ]
+  },
+  {
+   "id": "tempestade_luminosa",
+   "name": "Tempestade Luminosa",
+   "types": [
+    "eletrico",
+    "luz"
+   ],
+   "gen": "open",
+   "wall_style": "crystal",
+   "deco_style": "spark",
+   "floor": [
+    "#c8c890",
+    "#bebe86",
+    "#d2d29a"
+   ],
+   "wall": "#8a8a40",
+   "deco": [
+    "#f2d023",
+    "#ffffff"
+   ]
+  }
+ ]
+}
