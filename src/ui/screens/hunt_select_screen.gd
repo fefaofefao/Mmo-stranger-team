@@ -3,6 +3,7 @@ extends Screen
 
 const CATS := ["filhote", "adolescente", "adulto", "mista", "mundo2"]
 var tab := -1
+var type_filter := ""
 
 
 func build() -> void:
@@ -11,6 +12,7 @@ func build() -> void:
 		var cur: Dictionary = DataDB.hunts.get(Game.save.current_hunt, {})
 		tab = maxi(0, CATS.find(cur.get("category", "filhote")))
 	b.add_child(tabs([Loc.t("Filhotes"), Loc.t("Adolesc."), Loc.t("Adultos"), Loc.t("Mistas"), Loc.t("Mundo 2")], tab, func(i): tab = i; rebuild()))
+	b.add_child(_type_filter())
 	var fighters := Game.fighter_stats()
 	var main_lvl := Game.main_level()
 	var info := UI.hbox(8)
@@ -26,9 +28,47 @@ func build() -> void:
 		list.add_child(empty_note(Loc.t("O Mundo 2 é desbloqueado ao vencer o Desafio de nível 80: biomas corrompidos, grupos mistos, sem recrutamento e drops exclusivos."), "lock"))
 	var cat: String = CATS[tab]
 	var rec := Game.recommended_hunt()
+	var shown := 0
 	for h in DataDB.hunt_list:
-		if h.category == cat:
+		if h.category == cat and (type_filter == "" or h.types.has(type_filter)):
 			list.add_child(_hunt_row(h, fighters, main_lvl, rec))
+			shown += 1
+	if shown == 0 and not (tab == 4 and not Game.world2_unlocked()):
+		list.add_child(empty_note(Loc.t("Nenhuma hunt de %s nesta aba. Tente outra aba ou tire o filtro.") % DataDB.type_name(type_filter), "map"))
+
+
+## Barra com os 9 tipos: tocar filtra as hunts que têm monstros daquele tipo.
+func _type_filter() -> Control:
+	var row := UI.hbox(4)
+	var all := UI.button(Loc.t("Todos"), func(): type_filter = ""; rebuild(), 16, 58, "tab_on" if type_filter == "" else "tab")
+	all.custom_minimum_size = Vector2(84, 58)
+	row.add_child(all)
+	for t in DataDB.type_ids:
+		var tid: String = t
+		var on := type_filter == tid
+		var b := UI.button("", func(): type_filter = "" if type_filter == tid else tid; rebuild(), 16, 58, "tab_on" if on else "tab")
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		b.custom_minimum_size = Vector2(0, 58)
+		b.tooltip_text = DataDB.type_name(tid)
+		var ic := UI.icon("t_" + tid, 38)
+		ic.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		ic.offset_left = 4
+		ic.offset_right = -4
+		ic.offset_top = 6
+		ic.offset_bottom = -6
+		if type_filter != "" and not on:
+			ic.modulate = Color(1, 1, 1, 0.45)
+		b.add_child(ic)
+		if on:
+			var sb := StyleBoxFlat.new()
+			sb.bg_color = DataDB.type_color(tid).darkened(0.55)
+			sb.border_color = DataDB.type_color(tid)
+			sb.set_border_width_all(3)
+			sb.set_corner_radius_all(6)
+			for st in ["normal", "hover", "pressed", "focus"]:
+				b.add_theme_stylebox_override(st, sb)
+		row.add_child(b)
+	return row
 
 
 func _hunt_row(h: Dictionary, fighters: Array, main_lvl: int, rec: Dictionary) -> Control:
@@ -60,7 +100,7 @@ func _hunt_row(h: Dictionary, fighters: Array, main_lvl: int, rec: Dictionary) -
 	var trow := UI.hbox(4)
 	info.add_child(trow)
 	for t in h.types:
-		trow.add_child(UI.type_badge(t, 14))
+		trow.add_child(UI.icon("t_" + t, 26))
 	var bl := UI.label(DataDB.biome_name(h.biome), 15, UI.C_MUTED)
 	bl.clip_text = true
 	bl.size_flags_horizontal = Control.SIZE_EXPAND_FILL

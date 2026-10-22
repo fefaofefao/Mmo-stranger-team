@@ -19,7 +19,7 @@ func build() -> void:
 		var card := UI.button("", func(): selected = fam_id; rebuild(), 20, 168, "tab_on" if selected == fam_id else "tab")
 		card.custom_minimum_size = Vector2(220, 168)
 		var cv := UI.vbox(2)
-		cv.set_anchors_preset(Control.PRESET_FULL_RECT)
+		cv.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		cv.alignment = BoxContainer.ALIGNMENT_CENTER
 		cv.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		var p := UI.portrait(fid, false, 92)

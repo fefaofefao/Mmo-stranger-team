@@ -36,14 +36,14 @@ var banner_h := 0.0
 func _ready() -> void:
 	theme = UI.theme()
 	ThemeDB.fallback_font = UI.font()
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(UI.background())
 	content = Control.new()
-	content.set_anchors_preset(Control.PRESET_FULL_RECT)
+	content.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	content.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(content)
 	host = Control.new()
-	host.set_anchors_preset(Control.PRESET_FULL_RECT)
+	host.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	host.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	content.add_child(host)
 	banner_area = UI.panel("card_dim")
@@ -55,7 +55,7 @@ func _ready() -> void:
 	banner_area.add_child(bl)
 	add_child(banner_area)
 	overlay = Control.new()
-	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(overlay)
 	notify = NotifyCenter.new()

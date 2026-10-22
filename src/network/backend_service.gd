@@ -9,7 +9,7 @@ extends Node
 ##
 ## Ações: login, link_google, set_name, get_profile, touch, register_starter, spawn_tickets,
 ## claim_kills, claim_offline, double_offline, claim_challenge, challenge_status, convert_monster,
-## buy_star, spend, npc_sell, npc_buy, enhance_item, sync_save, cloud_save_put, cloud_save_get,
+## convert_monsters, buy_star, spend, npc_sell, npc_sell_many, npc_buy, enhance_item, sync_save, cloud_save_put, cloud_save_get,
 ## rankings, market_search, market_list_item, market_list_essence, market_buy, market_cancel,
 ## market_my, debug_* (somente mock em build debug).
 

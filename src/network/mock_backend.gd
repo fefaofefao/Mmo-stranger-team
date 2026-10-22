@@ -113,6 +113,10 @@ func _dispatch(action: String, a: Dictionary) -> Dictionary:
 			return L.spend(int(a.get("gold", 0)), a.get("essences", {}), a.get("reason", ""))
 		"npc_sell":
 			return L.npc_sell(a.get("item", {}))
+		"npc_sell_many":
+			return L.npc_sell_many(a.get("items", []))
+		"convert_monsters":
+			return L.convert_monsters(a.get("list", []))
 		"npc_buy":
 			return L.npc_buy(a.get("base", ""))
 		"enhance_item":

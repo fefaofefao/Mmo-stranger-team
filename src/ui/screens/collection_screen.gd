@@ -1,5 +1,5 @@
 extends Screen
-## Coleção das 135 formas: vistas, abates, obtidas e shiny. Marcos de abates dão bônus.
+## Coleção das 135 formas: vistas, abates, obtidas e shiny + resumo dos Marcos de Caça (bônus da conta).
 
 var type_tab := 0
 
@@ -20,18 +20,46 @@ func build() -> void:
 	chips.add_child(UI.chip("check", Loc.t("Obtidas %d/135") % Game.collection_count(), UI.C_GOOD, 17))
 	chips.add_child(UI.chip("sparkle", Loc.t("Shiny %d") % shiny, UI.C_GOLD, 17))
 	b.add_child(chips)
-	b.add_child(UI.label(Loc.t("Marcos de abates: %d (+%.1f%% ataque e +%.1f%% XP permanentes)") % [int(bon.milestones), bon.atk_pct, bon.xp_pct], 17, UI.C_MUTED, true))
-	var row1: Array = []
+	# resumo dos Marcos de Caça: um bônus por tipo
+	var mp := UI.panel("inset")
+	b.add_child(mp)
+	var mv := UI.vbox(4)
+	mp.add_child(mv)
+	mv.add_child(UI.label(Loc.t("Marcos de Caça: %d marcos · bônus permanentes da conta") % int(bon.tiers), 17, UI.C_GOLD))
+	var mg := UI.grid(3, 4)
+	mv.add_child(mg)
 	for t in DataDB.type_ids:
-		row1.append(DataDB.type_name(t).substr(0, 4))
-	b.add_child(tabs(row1.slice(0, 5), type_tab if type_tab < 5 else -1, func(i): type_tab = i; rebuild()))
-	b.add_child(tabs(row1.slice(5), type_tab - 5 if type_tab >= 5 else -1, func(i): type_tab = i + 5; rebuild()))
+		var st: Dictionary = Mastery.stat_of_type(t)
+		var cell := UI.hbox(4)
+		cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		cell.add_child(UI.icon(Mastery.stat_icon(st.stat), 24))
+		var val: float = bon.get(st.stat, 0.0)
+		var l := UI.label(Mastery.fmt_bonus(st.stat, val), 15, UI.C_GOOD if val > 0 else UI.C_MUTED)
+		l.clip_text = true
+		l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		cell.add_child(l)
+		mg.add_child(cell)
+	# abas por tipo com o ícone do elemento
+	var trow := UI.hbox(4)
+	b.add_child(trow)
+	for i in DataDB.type_ids.size():
+		var idx := i
+		var t: String = DataDB.type_ids[i]
+		var tb := UI.button("", func(): type_tab = idx; rebuild(), 16, 56, "tab_on" if i == type_tab else "tab")
+		tb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var ic := UI.icon("t_" + t, 34)
+		ic.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		ic.offset_top = 6
+		ic.offset_bottom = -6
+		tb.add_child(ic)
+		trow.add_child(tb)
+	var st_t: Dictionary = Mastery.stat_of_type(DataDB.type_ids[type_tab])
+	b.add_child(UI.label(Loc.t("%s: cada marco de uma forma deste tipo dá %s por ponto.") % [DataDB.type_name(DataDB.type_ids[type_tab]), Mastery.fmt_bonus(st_t.stat, float(st_t.per_point))], 15, UI.C_MUTED, true))
 	var sc := UI.scroll(8)
 	b.add_child(sc[0])
 	var g := UI.grid(3, 8)
 	sc[1].add_child(g)
 	var tid: String = DataDB.type_ids[type_tab]
-	var ms: Array = DataDB.config.collection.milestones
 	for f in DataDB.form_list:
 		if f.type != tid:
 			continue
@@ -48,16 +76,21 @@ func build() -> void:
 		nm.clip_text = true
 		v.add_child(nm)
 		var k := int(c.get("kills", 0))
-		var stars := 0
-		for m in ms:
-			if k >= int(m):
-				stars += 1
-		var sr := UI.hbox(2)
+		var info := Mastery.form_info(f.form_id, k)
+		var sr := UI.hbox(4)
 		sr.alignment = BoxContainer.ALIGNMENT_CENTER
-		sr.add_child(UI.label(UI.fmt(k), 15, UI.C_MUTED))
-		for i in 3:
-			sr.add_child(UI.icon("star" if i < stars else "star_empty", 16))
+		if int(info.tier) > 0:
+			sr.add_child(UI.pill(Mastery.tier_name(info.tier), Mastery.tier_color(info.tier), 13))
+		sr.add_child(UI.label(UI.fmt(k) if info.max else "%s/%s" % [UI.fmt(k), UI.fmt(info.next_at)], 14, UI.C_MUTED))
 		v.add_child(sr)
+		var pb := UI.bar(info.progress, Mastery.tier_color(mini(int(info.tier) + 1, 6)), 180, 7)
+		pb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		v.add_child(pb)
+		if int(info.tier) > 0:
+			var el := UI.label(Mastery.fmt_bonus(info.stat, info.earned), 13, UI.C_GOOD)
+			el.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			el.clip_text = true
+			v.add_child(el)
 		var fr := UI.hbox(4)
 		fr.alignment = BoxContainer.ALIGNMENT_CENTER
 		if c.get("recruited", false):

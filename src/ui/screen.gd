@@ -9,7 +9,7 @@ var gold_chip: PanelContainer
 
 
 func _init() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
 
@@ -33,7 +33,7 @@ func build() -> void:
 ## Cabeçalho + corpo com margem. Retorna o VBox do corpo.
 func make_layout(p_title: String, icon_name := "", show_back := true) -> VBoxContainer:
 	var root := UI.vbox(0)
-	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(root)
 	var head := UI.panel("header")
 	root.add_child(head)

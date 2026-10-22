@@ -24,6 +24,27 @@ func _gear_for(level: int) -> Dictionary:
 	return items
 
 
+## Bônus típicos de Marcos de Caça no nível do desafio (média da simulação de balanceamento).
+## "-- sem-marcos" desliga, para comparar.
+func _typical_mastery(level: int) -> Dictionary:
+	var pts := [[10, 0.3], [20, 0.8], [30, 1.5], [40, 2.5], [50, 3.5], [60, 4.5], [70, 5.5], [80, 7.0], [90, 8.0], [100, 9.0]]
+	var x := 0.0
+	for p in pts:
+		if level >= int(p[0]):
+			x = float(p[1])
+	var b := {"points": 0, "tiers": 0}
+	for s in Mastery.STATS:
+		b[s] = 0.0
+	if OS.get_cmdline_user_args().has("sem-marcos"):
+		return b
+	b.hp_pct = x
+	b.atk_pct = x
+	b.def_pct = x
+	b.spd_pct = x * 0.15
+	b.crit = x * 0.1
+	return b
+
+
 func _run() -> void:
 	G = root.get_node("Game")
 	var world = load("res://src/world/hunt_world.gd").new()
@@ -62,6 +83,7 @@ func _run() -> void:
 					G.save.items = gear
 					G.save.monsters = {"sim": m}
 					G.save.party = ["sim"]
+					G._bonus_cache = _typical_mastery(lvl)
 					world.setup_challenge(c)
 					var done := [false, false, 0.0]
 					var cb := func(won, s): done[0] = true; done[1] = won; done[2] = s

@@ -100,7 +100,8 @@ static func equipment_stats(m: Dictionary, items_by_uid: Dictionary) -> Dictiona
 	return acc
 
 
-## Atributos finais para combate. bonuses: {atk_pct, xp_pct} da Coleção (conta).
+## Atributos finais para combate. bonuses: bônus da conta (Marcos de Caça, ver Mastery.bonuses):
+## {hp_pct, atk_pct, def_pct, xp_pct, gold_pct, spd_pct, crit} — drop/recrutamento ficam no servidor.
 static func compute_stats(m: Dictionary, items_by_uid: Dictionary = {}, bonuses: Dictionary = {}) -> Dictionary:
 	var fid := form_id(m)
 	var raw := Formulas.raw_stats(fid, int(m.level), bool(m.get("shiny", false)), int(m.get("quality", 0)))
@@ -114,15 +115,15 @@ static func compute_stats(m: Dictionary, items_by_uid: Dictionary = {}, bonuses:
 		"form_id": fid,
 		"type": type_of(m),
 		"level": int(m.level),
-		"hp": (raw.hp * star_mult + float(eq.get("hp", 0.0))) * (1.0 + float(eq.get("hp_pct", 0.0)) / 100.0),
+		"hp": (raw.hp * star_mult + float(eq.get("hp", 0.0))) * (1.0 + (float(eq.get("hp_pct", 0.0)) + float(bonuses.get("hp_pct", 0.0))) / 100.0),
 		"atk": (raw.atk * star_mult + float(eq.get("atk", 0.0))) * (1.0 + atk_pct / 100.0),
-		"def": (raw.def * star_mult + float(eq.get("def", 0.0))) * (1.0 + float(eq.get("def_pct", 0.0)) / 100.0),
-		"spd": raw.spd * (1.0 + 0.02 * stars) * (1.0 + float(eq.get("spd_pct", 0.0)) / 100.0),
+		"def": (raw.def * star_mult + float(eq.get("def", 0.0))) * (1.0 + (float(eq.get("def_pct", 0.0)) + float(bonuses.get("def_pct", 0.0))) / 100.0),
+		"spd": raw.spd * (1.0 + 0.02 * stars) * (1.0 + (float(eq.get("spd_pct", 0.0)) + float(bonuses.get("spd_pct", 0.0))) / 100.0),
 		"rng": raw.rng,
-		"crit": float(cb.crit_chance) + float(eq.get("crit", 0.0)) / 100.0,
+		"crit": float(cb.crit_chance) + (float(eq.get("crit", 0.0)) + float(bonuses.get("crit", 0.0))) / 100.0,
 		"lifesteal": float(eq.get("lifesteal", 0.0)) / 100.0,
 		"xp_pct": float(eq.get("xp_pct", 0.0)) + float(bonuses.get("xp_pct", 0.0)),
-		"gold_pct": float(eq.get("gold_pct", 0.0)),
+		"gold_pct": float(eq.get("gold_pct", 0.0)) + float(bonuses.get("gold_pct", 0.0)),
 		"type_dmg": eq.type_dmg,
 		"ability_power_mult": 1.0 + float(DataDB.config.stars.ability_power_per_upgrade) * up,
 		"ability_cd_mult": (1.0 - float(DataDB.config.stars.ability_cd_per_upgrade) * up) * (1.0 - float(eq.get("cdr", 0.0)) / 100.0),

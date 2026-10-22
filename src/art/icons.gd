@@ -1,7 +1,8 @@
 class_name Icons
 extends RefCounted
-## Ícones pixel art 12x12 desenhados em texto (cada letra = uma cor). Para trocar, salve
-## res://assets/ui/icons/<nome>.png com qualquer tamanho.
+## Ícones da interface. Os oficiais são os PNGs 64x64 de res://assets/ui/icons/ (gerados por
+## tools/gen_icons.py, com contorno e sombreamento; substitua à vontade). Se faltar um PNG,
+## usa a versão pixel art 12x12 abaixo (cada letra = uma cor).
 
 const PAL := {
 	"k": Color("#1a1410"), "y": Color("#f6cf5a"), "Y": Color("#b8862a"), "w": Color("#ffffff"), "g": Color("#b4b0a8"),

@@ -10,14 +10,14 @@ var line_edit: LineEdit
 
 
 func build(p_title: String, text: String, buttons: Array, with_input := false, input_default := "", icon_name := "") -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	var bg := ColorRect.new()
 	bg.color = Color(0, 0, 0, 0.7)
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(center)
 	var p := UI.panel("panel_gold")
 	p.custom_minimum_size = Vector2(640, 0)

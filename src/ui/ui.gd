@@ -165,7 +165,7 @@ static func background() -> TextureRect:
 	var t := TextureRect.new()
 	t.texture = bg_texture()
 	t.stretch_mode = TextureRect.STRETCH_TILE
-	t.set_anchors_preset(Control.PRESET_FULL_RECT)
+	t.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	t.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return t
 
@@ -307,13 +307,30 @@ static func small_button(text: String, cb: Callable = Callable(), variant := "")
 	return button(text, cb, 20, 56.0, variant)
 
 
+## Caixa de seleção (usada nas ações em lote). Atualize com set_checked.
+static func check_box(on: bool, cb: Callable) -> Button:
+	var b := button("", cb, 18, 56, "tab_on" if on else "tab")
+	b.custom_minimum_size = Vector2(60, 56)
+	b.expand_icon = true
+	b.add_theme_constant_override("icon_max_width", 34)
+	b.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	b.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	set_checked(b, on)
+	return b
+
+
+static func set_checked(b: Button, on: bool) -> void:
+	b.icon = Icons.tex("check") if on else null
+	set_variant(b, "tab_on" if on else "tab")
+
+
 static func icon_button(icon_name: String, text: String, cb: Callable = Callable(), size := 22, min_h := 68.0, variant := "") -> Button:
 	var b := button(text, cb, size, min_h, variant)
 	b.icon = Icons.tex(icon_name)
 	b.expand_icon = true
 	b.add_theme_constant_override("icon_max_width", 32)
 	b.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
-	b.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	b.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	return b
 
 
@@ -323,7 +340,7 @@ static func tile_button(icon_name: String, text: String, cb: Callable, icon_px :
 	b.custom_minimum_size = min_size
 	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var v := vbox(4)
-	v.set_anchors_preset(Control.PRESET_FULL_RECT)
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	v.alignment = BoxContainer.ALIGNMENT_CENTER
 	v.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var ic := icon(icon_name, icon_px)
@@ -453,7 +470,9 @@ static func tex(t: Texture2D, size := 64.0) -> TextureRect:
 
 
 static func icon(name: String, size := 36.0) -> TextureRect:
-	return tex(Icons.tex(name), size)
+	var r := tex(Icons.tex(name), size)
+	r.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	return r
 
 
 static func portrait(form_id: String, shiny := false, size := 64.0) -> TextureRect:

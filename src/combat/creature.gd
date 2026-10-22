@@ -49,6 +49,10 @@ var atk_mult := 1.0
 var spd_mult := 1.0
 
 var sprite: Sprite2D
+# posição lógica (passo fixo) e anterior: o desenho interpola entre as duas para andar liso a 60 fps
+var vis_prev := Vector2.ZERO
+var vis_cur := Vector2.ZERO
+var _carry := 0.0
 var _anim_t := 0.0
 var _attack_anim := 0.0
 var _hurt_flash := 0.0
@@ -98,7 +102,10 @@ func place(c: Vector2i) -> void:
 	from_cell = c
 	move_t = 1.0
 	moving = false
+	_carry = 0.0
 	position = world.cell_center(c)
+	vis_prev = position
+	vis_cur = position
 
 
 func attack_range() -> int:
@@ -145,14 +152,26 @@ func start_move(to: Vector2i) -> void:
 
 func tick_move(dt: float) -> void:
 	if not moving:
+		_carry = 0.0
 		return
+	# um passo que começa logo após outro aproveita o tempo que "sobrou" do anterior (sem micro-paradas)
+	if move_t == 0.0:
+		dt += _carry
+		_carry = 0.0
 	var diag := (cell - from_cell).abs()
 	var len := 1.41 if diag.x + diag.y == 2 else 1.0
-	move_t += dt * move_speed() / len
+	var spd := move_speed() / len
+	move_t += dt * spd
 	if move_t >= 1.0:
+		_carry = minf((move_t - 1.0) / maxf(spd, 0.001), 0.1)
 		move_t = 1.0
 		moving = false
-	position = world.cell_center(from_cell).lerp(world.cell_center(cell), move_t)
+	vis_cur = world.cell_center(from_cell).lerp(world.cell_center(cell), move_t)
+
+
+## Posição desenhada: interpola entre os dois últimos passos da simulação.
+func interp_position(alpha: float) -> Vector2:
+	return vis_prev.lerp(vis_cur, alpha)
 
 
 func play_attack() -> void:
@@ -186,6 +205,13 @@ func revive_at(c: Vector2i) -> void:
 
 func _process(delta: float) -> void:
 	_anim_t += delta
+	if world:
+		position = interp_position(world.interp_alpha())
+	if moving:
+		_walk_phase = fmod(_walk_phase + delta * move_speed() * (world.sim_speed() if world else 1.0), 1.0)
+		_walk_anim = 0.12
+	elif _walk_anim > 0.0:
+		_walk_anim -= delta
 	if _attack_anim > 0.0:
 		_attack_anim -= delta
 	if _hurt_flash > 0.0:
@@ -206,14 +232,18 @@ func _process(delta: float) -> void:
 		queue_redraw()
 
 
+var _walk_phase := 0.0
+var _walk_anim := 0.0
+
+
 func _update_frame() -> void:
 	var col := 0
 	if not alive:
 		col = _death_frame
 	elif _attack_anim > 0.0:
 		col = 5 if _attack_anim > 0.15 else 6
-	elif moving:
-		col = 2 + int(move_t * 3.0) % 3
+	elif moving or _walk_anim > 0.0:
+		col = 2 + int(_walk_phase * 3.0) % 3
 	else:
 		col = int(_anim_t * 2.0) % 2
 	sprite.frame = facing * SpriteFactory.COLS + col

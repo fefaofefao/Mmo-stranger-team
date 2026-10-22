@@ -111,11 +111,11 @@ func _simulated_fullscreen(text: String, seconds: float, skippable: bool) -> boo
 		return true
 	var layer := ColorRect.new()
 	layer.color = Color(0, 0, 0, 0.92)
-	layer.set_anchors_preset(Control.PRESET_FULL_RECT)
+	layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	layer.mouse_filter = Control.MOUSE_FILTER_STOP
 	_overlay_parent.add_child(layer)
 	var lbl := UI.label(text, 30, Color(1, 0.9, 0.5))
-	lbl.set_anchors_preset(Control.PRESET_FULL_RECT)
+	lbl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART

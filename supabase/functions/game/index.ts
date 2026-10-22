@@ -73,12 +73,23 @@ async function partyUpperStats(ctx: Ctx, party: any[]) {
     if (!D.families[fam]) continue;
     const lvl = Math.min(pm.level ?? 1, ctx.player.validated_level + 10);
     const stage = Math.max(L.stageForLevel(fam, lvl), pm.stage ?? 1);
-    const s: any = L.computeStats(fam, Math.min(stage, 3), lvl, rec?.stars ?? 0, rec?.shiny ?? false, rec?.quality ?? 100);
+    const s: any = L.computeStats(fam, Math.min(stage, 3), lvl, rec?.stars ?? 0, rec?.shiny ?? false, rec?.quality ?? 100, mastery(ctx));
     s.hp *= allowance; s.atk *= allowance; s.def *= allowance; s.spd *= 1.25; s.crit += 0.1;
     out.push(s);
   }
   return out;
 }
+
+// Marcos de Caça: abates validados por forma (players.mastery) -> bônus da conta
+function mastery(ctx: Ctx) {
+  return L.masteryBonuses(ctx.player.mastery ?? {});
+}
+function addMastery(ctx: Ctx, byForm: Record<string, number>) {
+  const m = { ...(ctx.player.mastery ?? {}) };
+  for (const f in byForm) m[f] = (m[f] ?? 0) + byForm[f];
+  set(ctx, "mastery", m);
+}
+const goldMult = (ctx: Ctx, goldPct: number) => 1 + Math.min(Math.max(goldPct ?? 0, 0), 100) / 100 + mastery(ctx).gold_pct / 100;
 
 function capStats(upper: any[], client: any[]) {
   return upper.map((u, i) => {
@@ -99,7 +110,7 @@ async function insertItem(ctx: Ctx, it: any) {
 
 async function rollRecruit(ctx: Ctx, hunt: any, form: string, shiny: boolean) {
   if (hunt.world !== 1 || !hunt.recruit) return null;
-  let ch = C.recruit_chance * (hunt.recruit_mult ?? 1);
+  let ch = C.recruit_chance * (hunt.recruit_mult ?? 1) * (1 + mastery(ctx).recruit_pct / 100);
   if (shiny) ch *= C.shiny_recruit_mult ?? 10;
   if (L.rand() >= ch) return null;
   const f = D.forms[form];
@@ -117,7 +128,9 @@ async function bulkKills(ctx: Ctx, hunt: any, kills: number, goldPct: number) {
     byForm[m.form] = (byForm[m.form] ?? 0) + Math.max(0, n);
     assigned += Math.max(0, n);
   });
-  const gold = Math.floor(kills * L.goldForKill(hunt.level) * (hunt.gold_mult ?? 1) * (1 + Math.min(Math.max(goldPct, 0), 100) / 100));
+  const mb = mastery(ctx);
+  const gold = Math.floor(kills * L.goldForKill(hunt.level) * (hunt.gold_mult ?? 1) * goldMult(ctx, goldPct));
+  addMastery(ctx, byForm);
   addGold(ctx, gold);
   set(ctx, "npc_budget", Number(ctx.player.npc_budget) + kills * C.anti_cheat.npc_sell_budget_per_kill * (1 + 0.15 * hunt.level));
   const stats = { ...(ctx.player.stats ?? {}) };
@@ -126,13 +139,13 @@ async function bulkKills(ctx: Ctx, hunt: any, kills: number, goldPct: number) {
   const items: any[] = [];
   for (const r of C.rarities) {
     if (!r.server) continue;
-    const n = L.binomial(kills, r.chance * (hunt.rarity_mult ?? 1));
+    const n = L.binomial(kills, r.chance * (hunt.rarity_mult ?? 1) * (1 + mb.drop_pct / 100));
     for (let i = 0; i < Math.min(n, 50); i++) items.push(await insertItem(ctx, L.createItem(L.pickBase(hunt.drops), r.id, false)));
   }
   const shinies = L.binomial(kills, C.shiny_chance);
   const recruits: any[] = [];
   if (hunt.world === 1 && hunt.recruit) {
-    const ch = C.recruit_chance * (hunt.recruit_mult ?? 1);
+    const ch = C.recruit_chance * (hunt.recruit_mult ?? 1) * (1 + mb.recruit_pct / 100);
     const sr = L.binomial(shinies, Math.min(1, ch * (C.shiny_recruit_mult ?? 10)));
     const nr = L.binomial(kills - shinies, ch);
     const forms = Object.keys(byForm);
@@ -176,7 +189,7 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     const monsters: Record<string, any> = {};
     for (const m of mons ?? []) monsters[m.server_id] = m;
     return ok({ player_id: ctx.uid, name: ctx.player.name, wallet: wallet(ctx.player), items: (items ?? []).map((r: any) => r.data),
-      monsters, sales: sales ?? [], server_time: nowS(), google_linked: ctx.player.google_linked });
+      monsters, sales: sales ?? [], server_time: nowS(), google_linked: ctx.player.google_linked, mastery: ctx.player.mastery ?? {} });
   },
   async touch(ctx) {
     set(ctx, "last_seen_at", iso(nowS()));
@@ -218,21 +231,26 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     for (const tk of tks ?? []) tmap[tk.id] = tk;
     let gold = 0, shinies = 0, budget = Number(ctx.player.npc_budget);
     const items: any[] = [], recruits: any[] = [], usedT: string[] = [];
+    const gm = goldMult(ctx, a.gold_pct ?? 0);
+    const luck = 1 + mastery(ctx).drop_pct / 100;
+    const byForm: Record<string, number> = {};
     for (const k of kills) {
       if (!valid.has(k.form)) continue;
+      byForm[k.form] = (byForm[k.form] ?? 0) + 1;
       const lvl = Math.min(Math.max(k.level ?? hunt.level, lmin), lmax);
-      gold += Math.floor(L.goldForKill(lvl) * (hunt.gold_mult ?? 1) * (1 + Math.min(Math.max(a.gold_pct ?? 0, 0), 100) / 100));
+      gold += Math.floor(L.goldForKill(lvl) * (hunt.gold_mult ?? 1) * gm);
       budget += C.anti_cheat.npc_sell_budget_per_kill * (1 + 0.15 * lvl);
       let shiny = false;
       const tk = k.ticket && tmap[k.ticket];
       if (tk && tk.hunt === a.hunt) { shiny = tk.shiny; usedT.push(tk.id); delete tmap[k.ticket]; }
       if (shiny) shinies++;
-      const rar = L.rollServerRarity(hunt.rarity_mult ?? 1);
+      const rar = L.rollServerRarity((hunt.rarity_mult ?? 1) * luck);
       if (rar) items.push(await insertItem(ctx, L.createItem(L.pickBase(hunt.drops), rar, false)));
       const rec = await rollRecruit(ctx, hunt, k.form, shiny);
       if (rec) recruits.push(rec);
     }
     if (usedT.length) await admin.from("spawn_tickets").update({ used: true }).in("id", usedT);
+    addMastery(ctx, byForm);
     addGold(ctx, gold);
     set(ctx, "npc_budget", budget);
     const stats = { ...(ctx.player.stats ?? {}) };
@@ -357,6 +375,18 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     addEss(ctx, t, amount);
     return ok({ essence_type: t, amount, wallet: wallet(ctx.player) });
   },
+  async convert_monsters(ctx, a) {
+    const results: any[] = [];
+    const totals: Record<string, number> = {};
+    for (const e of (a.list ?? []).slice(0, 50)) {
+      const r: any = await actions.convert_monster(ctx, e);
+      delete r.wallet;
+      r.server_id = e.server_id;
+      results.push(r);
+      if (r.ok) totals[r.essence_type] = (totals[r.essence_type] ?? 0) + r.amount;
+    }
+    return ok({ results, totals, wallet: wallet(ctx.player) });
+  },
   async buy_star(ctx, a) {
     const { data: rec } = await admin.from("monsters").select("*").eq("server_id", a.server_id).eq("owner", ctx.uid).maybeSingle();
     if (!rec || rec.converted) return err("Monstro inválido");
@@ -392,6 +422,18 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     }
     addGold(ctx, price);
     return ok({ gold_gained: price, wallet: wallet(ctx.player) });
+  },
+  async npc_sell_many(ctx, a) {
+    const sold: string[] = [];
+    let gold = 0;
+    for (const it of (a.items ?? []).slice(0, 100)) {
+      const r: any = await actions.npc_sell(ctx, { item: it });
+      if (r.ok) {
+        sold.push(it.uid);
+        gold += r.gold_gained;
+      }
+    }
+    return ok({ sold, gold_gained: gold, wallet: wallet(ctx.player) });
   },
   async npc_buy(ctx, a) {
     const b = D.item_bases[a.base];

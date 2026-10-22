@@ -13,6 +13,8 @@ signal boosts_changed
 signal sales_received(sales: Array)
 signal session_ready
 signal fighting_changed
+signal mastery_reached(form_id: String, tier: int)
+signal mastery_progress(form_id: String)
 
 const SAVE_PATH := "user://save.json"
 const SAVE_VERSION := 1
@@ -96,12 +98,14 @@ func new_save() -> Dictionary:
 
 func load_local() -> void:
 	save = new_save()
+	_bonus_cache = {}
 	if FileAccess.file_exists(SAVE_PATH):
 		var f := FileAccess.open(SAVE_PATH, FileAccess.READ)
 		var parsed = JSON.parse_string(f.get_as_text())
 		if parsed is Dictionary and parsed.has("version"):
 			_merge_defaults(parsed, save)
 			save = parsed
+			_bonus_cache = {}
 	_fix_types()
 
 
@@ -140,6 +144,7 @@ func has_starter() -> bool:
 
 func reset_all() -> void:
 	save = new_save()
+	_bonus_cache = {}
 	save_local()
 	session_started = false
 
@@ -162,6 +167,7 @@ func start_session() -> Dictionary:
 				var restored: Dictionary = cs.save
 				_merge_defaults(restored, new_save())
 				save = restored
+				_bonus_cache = {}
 				_fix_types()
 				feed.emit(Loc.t("Progresso restaurado da nuvem."), Color.LIGHT_GREEN)
 		await refresh_profile()
@@ -206,6 +212,14 @@ func refresh_profile() -> void:
 		if not rec.is_empty():
 			m.stars = int(rec.get("stars", 0))
 			m.quality = int(rec.get("quality", m.get("quality", 0)))
+	# Marcos: o servidor guarda os abates validados (recupera progresso após reinstalar sem nuvem)
+	var srv_mastery: Dictionary = r.get("mastery", {})
+	for fid in srv_mastery:
+		if DataDB.forms.has(fid) and int(srv_mastery[fid]) > form_kills(fid):
+			var c := _coll(fid)
+			c.seen = true
+			c.kills = int(srv_mastery[fid])
+			_bonus_cache = {}
 	var sales: Array = r.get("sales", [])
 	if not sales.is_empty():
 		_apply_sales(sales)
@@ -260,11 +274,12 @@ func party_stats_snapshot() -> Array:
 	return out
 
 
+## Bônus de ouro do EQUIPAMENTO do principal (enviado ao servidor, que soma o bônus de Marcos dele).
 func gold_bonus_pct() -> float:
 	var main := main_monster()
 	if main.is_empty():
 		return 0.0
-	return monster_stats(main).gold_pct
+	return MonsterLogic.compute_stats(main, save.items).gold_pct
 
 
 func flush_claims() -> void:
@@ -325,17 +340,13 @@ func apply_bulk_kills(hunt: Dictionary, r: Dictionary) -> Dictionary:
 	for i in party.size():
 		xp_total.append(0.0)
 	var boost := xp_boost_mult()
-	var bonus = account_bonuses().xp_pct
-	if not party.is_empty():
-		bonus += monster_stats(party[0]).xp_pct
+	var bonus: float = monster_stats(party[0]).xp_pct if not party.is_empty() else float(account_bonuses().xp_pct)
 	var kbf: Dictionary = r.get("kills_by_form", {})
 	for fid in kbf:
 		var n := int(kbf[fid])
 		if n <= 0:
 			continue
-		var c := _coll(fid)
-		c.seen = true
-		c.kills = int(c.kills) + n
+		_add_form_kills(fid, n, false)
 		var base := Formulas.xp_for_kill(int(hunt.level)) * float(hunt.get("xp_mult", 1.0)) * boost * n
 		var shares := PartyLogic.split_xp(party, base, int(hunt.level), bonus)
 		for i in party.size():
@@ -349,7 +360,7 @@ func apply_bulk_kills(hunt: Dictionary, r: Dictionary) -> Dictionary:
 	for rr in DataDB.rarities:
 		if rr.server:
 			continue
-		var n := LootTable.binomial(kills, float(rr.chance), rng)
+		var n := LootTable.binomial(kills, float(rr.chance) * (1.0 + float(account_bonuses().drop_pct) / 100.0), rng)
 		for j in mini(n, 200):
 			var it := ItemLogic.create(LootTable.pick_base(hunt, rng), rr.id, rng, true)
 			if add_item(it, false):
@@ -441,15 +452,42 @@ func items_dict() -> Dictionary:
 	return save.items
 
 
+var _bonus_cache: Dictionary = {}
+
+
+## Bônus permanentes da conta (Marcos de Caça), a partir dos abates por forma da Coleção.
 func account_bonuses() -> Dictionary:
-	var cc: Dictionary = DataDB.config.collection
-	var milestones := 0
-	for fid in save.collection:
-		var k := int(save.collection[fid].get("kills", 0))
-		for ms in cc.milestones:
-			if k >= int(ms):
-				milestones += 1
-	return {"atk_pct": milestones * float(cc.atk_pct_per_milestone), "xp_pct": milestones * float(cc.xp_pct_per_milestone), "milestones": milestones}
+	if _bonus_cache.is_empty():
+		var kbf := {}
+		for fid in save.collection:
+			kbf[fid] = int(save.collection[fid].get("kills", 0))
+		_bonus_cache = Mastery.bonuses(kbf)
+	return _bonus_cache
+
+
+func invalidate_bonuses() -> void:
+	_bonus_cache = {}
+
+
+func form_kills(form_id: String) -> int:
+	return int(save.collection.get(form_id, {}).get("kills", 0))
+
+
+## Soma abates numa forma e avisa quando um marco é atingido.
+func _add_form_kills(form_id: String, n: int, notify := true) -> void:
+	var c := _coll(form_id)
+	c.seen = true
+	var before := int(c.kills)
+	c.kills = before + n
+	var t0 := Mastery.tier_of(before)
+	var t1 := Mastery.tier_of(int(c.kills))
+	if t1 > t0:
+		invalidate_bonuses()
+		if notify:
+			var info := Mastery.form_info(form_id, int(c.kills))
+			feed.emit(Loc.t("Marco %s: %s · %s") % [Mastery.tier_name(t1), DataDB.form_name(form_id), Mastery.fmt_bonus(info.stat, float(Mastery.points_at(t1) - Mastery.points_at(t1 - 1)) * float(Mastery.stat_of_form(form_id).per_point))], Color.GOLD)
+			mastery_reached.emit(form_id, t1)
+	mastery_progress.emit(form_id)
 
 
 func monster_stats(m: Dictionary) -> Dictionary:
@@ -563,6 +601,46 @@ func convert_monster(uid: String) -> Dictionary:
 	return r
 
 
+## Troca vários monstros do Depot de uma vez (em pedidos de até 50).
+func convert_monsters(uids: Array) -> Dictionary:
+	var totals := {}
+	var done := 0
+	var fails := 0
+	var list: Array = []
+	var by_sid := {}
+	for uid in uids:
+		var m := monster(uid)
+		if m.is_empty() or save.party.has(uid):
+			continue
+		list.append({"server_id": m.server_id, "level": m.level, "stage": m.stage, "stars": m.stars})
+		by_sid[m.server_id] = uid
+	var i := 0
+	while i < list.size():
+		var r := await Backend.request("convert_monsters", {"list": list.slice(i, i + 50)})
+		i += 50
+		if not r.get("ok", false):
+			return r
+		for res in r.results:
+			var uid: String = by_sid.get(res.server_id, "")
+			if not res.get("ok", false) or uid == "":
+				fails += 1
+				continue
+			var m := monster(uid)
+			for slot in m.equip.keys():
+				var iu: String = m.equip[slot]
+				if save.items.has(iu):
+					save.items[iu].loc = "inv"
+			save.monsters.erase(uid)
+			_mark_obtained(MonsterLogic.form_id(m), bool(m.shiny))
+			done += 1
+		for t in r.totals:
+			totals[t] = int(totals.get(t, 0)) + int(r.totals[t])
+		_apply_wallet(r.wallet)
+	monsters_changed.emit()
+	inventory_changed.emit()
+	return {"ok": true, "converted": done, "failed": fails, "totals": totals}
+
+
 func buy_star(uid: String) -> Dictionary:
 	var m := monster(uid)
 	var r := await Backend.request("buy_star", {"server_id": m.server_id})
@@ -626,17 +704,11 @@ func mark_seen(form_id: String) -> void:
 ## Retorna {xp: Array, drop: Dictionary}
 func on_kill(hunt: Dictionary, form_id: String, level: int, ticket: String, shiny: bool, participants: Array = []) -> Dictionary:
 	var c := _coll(form_id)
-	c.seen = true
-	var before := int(c.kills)
-	c.kills = before + 1
-	for ms in DataDB.config.collection.milestones:
-		if before < int(ms) and int(c.kills) >= int(ms):
-			feed.emit(Loc.t("Marco da Coleção: %d abates de %s! Bônus permanente.") % [int(ms), DataDB.form_name(form_id)], Color.GOLD)
+	_add_form_kills(form_id, 1)
 	save.stats.kills = int(save.stats.kills) + 1
 	var party := party_monsters()
-	var bonus = account_bonuses().xp_pct
-	if not party.is_empty():
-		bonus += monster_stats(party[0]).xp_pct
+	# xp_pct dos stats do principal já inclui o bônus dos Marcos
+	var bonus: float = monster_stats(party[0]).xp_pct if not party.is_empty() else float(account_bonuses().xp_pct)
 	var base := Formulas.xp_for_kill(level) * float(hunt.get("xp_mult", 1.0)) * xp_boost_mult()
 	var shares := PartyLogic.split_xp(party, base, level, bonus, participants)
 	var fc_before := PartyLogic.fighting_count(main_level(), party.size())
@@ -646,7 +718,7 @@ func on_kill(hunt: Dictionary, form_id: String, level: int, ticket: String, shin
 	if PartyLogic.fighting_count(main_level(), party.size()) != fc_before:
 		fighting_changed.emit()
 	var drop := {}
-	var rar := LootTable.roll_rarity(rng, false)
+	var rar := LootTable.roll_rarity(rng, false, 1.0, 1.0 + float(account_bonuses().drop_pct) / 100.0)
 	if debug_force_local_drop != "":
 		rar = debug_force_local_drop
 		debug_force_local_drop = ""
@@ -835,6 +907,30 @@ func sell_item(uid: String) -> Dictionary:
 		remove_item(uid)
 		_apply_wallet(r.wallet)
 	return r
+
+
+## Vende vários itens ao NPC de uma vez (ignora travados e equipados).
+func sell_items(uids: Array) -> Dictionary:
+	var items: Array = []
+	for uid in uids:
+		var it: Dictionary = save.items.get(uid, {})
+		if it.is_empty() or it.get("locked", false) or it.loc == "equip":
+			continue
+		items.append(it)
+	var gold := 0
+	var sold := 0
+	var i := 0
+	while i < items.size():
+		var r := await Backend.request("npc_sell_many", {"items": items.slice(i, i + 100)})
+		i += 100
+		if not r.get("ok", false):
+			return r
+		for u in r.sold:
+			remove_item(u)
+			sold += 1
+		gold += int(r.gold_gained)
+		_apply_wallet(r.wallet)
+	return {"ok": true, "sold": sold, "gold_gained": gold}
 
 
 func buy_from_shop(base_id: String) -> Dictionary:

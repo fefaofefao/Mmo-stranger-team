@@ -5,13 +5,18 @@ extends SceneTree
 
 func _initialize() -> void:
 	DataDB.load_all()
-	var out := {"xp": {}, "gold": {}, "kills": {}, "essence": [], "reach": [], "daily": [], "quality": []}
+	var out := {"xp": {}, "gold": {}, "kills": {}, "essence": [], "reach": [], "daily": [], "quality": [], "mastery": []}
 	for d in [[20000, 40], [20001, 150], [20123, 300]]:
 		var b := ServerLogic.daily_boss_def(d[0], d[1])
 		out.daily.append({"in": d, "form": b.form, "hp": b.hp})
 	for q in [0, 37, 100]:
 		var mq := MonsterLogic.create("luz_2", 77, q == 100, "q", "", q)
 		out.quality.append({"q": q, "shiny": q == 100, "atk": MonsterLogic.compute_stats(mq).atk, "ess": EssenceLogic.essence_value(mq)})
+	for kb in [{"agua_1_1": 60, "fogo_2_2": 1200}, {"sombra_3_3": 20000, "vento_1_1": 9, "luz_2_1": 250, "eletrico_1_2": 4000}]:
+		var b := Mastery.bonuses(kb)
+		var mm2 := MonsterLogic.create("terra_1", 90, false, "mm", "", 40)
+		mm2.stage = 3
+		out.mastery.append({"in": kb, "b": b, "stats": MonsterLogic.compute_stats(mm2, {}, b)})
 	for l in [1, 2, 5, 9, 10, 11, 50, 80, 120, 210, 299]:
 		out.xp[str(l)] = Formulas.xp_to_next(l)
 		out.gold[str(l)] = Formulas.gold_for_kill(l)

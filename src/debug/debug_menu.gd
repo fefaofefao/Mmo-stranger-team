@@ -7,7 +7,7 @@ var btn: Button
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	btn = Button.new()
 	btn.text = "dbg"
@@ -82,6 +82,7 @@ func _build() -> void:
 	v.add_child(UI.small_button("Recrutar 3 monstros aleatórios", _recruit3))
 	v.add_child(UI.small_button("Recrutar 1 SHINY (próximo abate)", func(): _force({"shiny": 1, "recruit": 1}, "Próximo spawn shiny + recrutamento")))
 	v.add_child(UI.small_button("Chefe Diário: restaurar entradas", _daily_reset))
+	v.add_child(UI.small_button("Marcos: +500 abates nas formas desta hunt", _mastery_boost))
 	v.add_child(UI.label("Spawnar monstro na hunt", 20, UI.C_GOLD))
 	var sp_grid := UI.grid(3, 6)
 	v.add_child(sp_grid)
@@ -189,3 +190,13 @@ func _daily_reset() -> void:
 	var p: Dictionary = (Backend.impl as MockBackend).logic.p()
 	p.erase("daily")
 	main.toast("Entradas do Chefe Diário restauradas")
+
+
+## Soma 500 abates em cada forma da hunt atual (cliente e servidor mock) para testar os Marcos.
+func _mastery_boost() -> void:
+	var h: Dictionary = DataDB.hunts.get(Game.save.current_hunt, {})
+	for m in h.get("monsters", []):
+		Game._add_form_kills(m.form, 500)
+		if Backend.is_mock():
+			(Backend.impl as MockBackend).logic._add_mastery(m.form, 500)
+	main.toast("Marcos: +500 abates em cada forma da hunt")

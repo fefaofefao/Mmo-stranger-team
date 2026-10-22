@@ -1,7 +1,6 @@
 extends Screen
 ## Grupo: ordem, substituição e comportamento da IA.
 
-var picking := -1
 
 
 func build() -> void:
@@ -30,8 +29,6 @@ func build() -> void:
 		var btn := UI.button(opt[1], func(): Game.set_ai_behavior(key); rebuild(), 20, 64, "tab_on" if cur == key else "tab")
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(btn)
-	if picking >= 0:
-		_picker(list)
 
 
 func _slot(i: int, party: Array, fighting: int) -> Control:
@@ -43,7 +40,7 @@ func _slot(i: int, party: Array, fighting: int) -> Control:
 		var l := UI.label(Loc.t("Vaga %d livre") % (i + 1), 22, UI.C_MUTED)
 		l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(l)
-		row.add_child(UI.small_button(Loc.t("Adicionar"), func(): picking = i; rebuild(), "primary"))
+		row.add_child(UI.small_button(Loc.t("Adicionar"), func(): _pick(i, {}), "primary"))
 		return p
 	var m: Dictionary = party[i]
 	row.add_child(UI.portrait_frame(MonsterLogic.form_id(m), bool(m.shiny), 72))
@@ -71,33 +68,17 @@ func _slot(i: int, party: Array, fighting: int) -> Control:
 	dn.disabled = i >= party.size() - 1
 	btns.add_child(dn)
 	btns.add_child(UI.small_button(Loc.t("Ver"), func(): main.goto("monster", {"uid": m.uid})))
-	btns.add_child(UI.small_button(Loc.t("Trocar"), func(): picking = i; rebuild()))
+	btns.add_child(UI.small_button(Loc.t("Trocar"), func(): _pick(i, m)))
 	if party.size() > 1:
 		var rm := UI.small_button(Loc.t("Tirar"), func(): Game.remove_from_party(m.uid); rebuild(), "danger")
 		btns.add_child(rm)
 	return p
 
 
-func _picker(list: VBoxContainer) -> void:
-	list.add_child(UI.section(Loc.t("Escolha do Depot para a vaga %d") % (picking + 1), "chest"))
-	var dep := Game.depot_monsters()
-	if dep.is_empty():
-		list.add_child(empty_note(Loc.t("Nenhum monstro no Depot. Cada abate no Mundo 1 tem chance de recrutar o monstro.")))
-	for m in dep:
-		var p := UI.card()
-		var row := UI.hbox(8)
-		p.add_child(row)
-		row.add_child(UI.portrait_frame(MonsterLogic.form_id(m), bool(m.shiny), 52))
-		var v := UI.vbox(2)
-		v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row.add_child(v)
-		v.add_child(UI.label(MonsterLogic.display_name(m), 20))
-		var r := UI.hbox(4)
-		r.add_child(UI.pill(Loc.t("Nv %d") % int(m.level), UI.C_GOLD, 14))
-		r.add_child(UI.type_badge(MonsterLogic.type_of(m), 14))
-		r.add_child(UI.quality_badge(m, 14))
-		v.add_child(r)
-		var uid: String = m.uid
-		row.add_child(UI.small_button(Loc.t("Escolher"), func(): Game.set_party_slot(picking, uid); picking = -1; rebuild(), "primary"))
-		list.add_child(p)
-	list.add_child(UI.small_button(Loc.t("Fechar"), func(): picking = -1; rebuild()))
+func _pick(slot: int, cur: Dictionary) -> void:
+	var t := Loc.t("Trocar %s") % MonsterLogic.display_name(cur) if not cur.is_empty() else Loc.t("Escolha do Depot para a vaga %d") % (slot + 1)
+	var picker := MonsterPicker.open(main.overlay, t, cur)
+	var uid: String = await picker.chosen
+	if uid != "":
+		Game.set_party_slot(slot, uid)
+		rebuild()

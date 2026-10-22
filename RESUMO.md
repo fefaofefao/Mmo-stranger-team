@@ -1,5 +1,22 @@
 # Resumo da entrega — Bestiário Idle
 
+## Revisão 3 — o que mudou (segundo pedido de melhorias)
+| Pedido | Como ficou | Como testar |
+|---|---|---|
+| Trocar monstro tocando nele na caça | Toque no monstro do HUD → lista do Depot por Poder → substitui na hora | Tela de caça, toque numa linha do grupo |
+| Mensagens e notificações desalinhadas | Corrigido na raiz (bug de âncoras do Godot): avisos no **centro** da tela; todos os diálogos centralizados | Qualquer aviso / "Bem-vindo de volta" |
+| Filtro por tipo nas hunts | Barra com os 9 elementos + Todos | Hub → Hunts |
+| Andar "lagado" | Desenho interpolado a 60 fps e sem pausas entre tiles | Caça |
+| Troca/venda em lote | Altar: marcar vários (ou "Todos sem shiny", "Qualidade < 40%/70%"); Inventário: "Comuns", "Até Incomum", "Até Raro" | Altar e Inventário |
+| "Lutar" fora da tela nos Desafios | Botão numa linha própria do card | Desafios |
+| Ícones melhores | 50 ícones novos com contorno e sombreamento (`docs/icons_preview.png`) | Hub e todas as abas |
+| Hub: personagens pequenos, fundo grande | Cenário baixo + seus monstros grandes e animados | Hub |
+| Marco na tela de caça | Faixa com abates/próximo marco, bônus do próximo e bônus conquistado; tocar mostra todas as formas da hunt | Caça (debug: "Marcos: +500 abates") |
+| Marcos como mecânica + recalibrar | **Marcos de Caça**: 6 marcos por forma (10 → 15.000 abates); cada tipo fortalece um atributo da conta (Água Vida, Fogo Ataque, Gelo Defesa, Planta XP, Terra Ouro, Elétrico Velocidade, Vento Drop, Luz Recrutamento, Sombra Crítico). Servidor conta e aplica ouro/drop/recrutamento. Curva final e chefes recalibrados | Coleção (resumo e marco de cada forma) |
+
+Validação: 7.316 asserções, smoke test sem falhas, paridade GDScript × TypeScript, simulação 1→300 (10 ≈ 20 min, 80 ≈ 62 h, 210 ≈ 1.110 h, 300 ≈ 3.460 h) e Desafios com o combate real (`docs/RELATORIO_BALANCEAMENTO.md`).
+
+
 ## Revisão 2 — o que mudou (pedido de melhorias)
 | Pedido | Como ficou | Como testar |
 |---|---|---|
@@ -25,7 +42,7 @@ Um RPG idle completo para Android em **Godot 4.3**, todas as 8 fases da especifi
 
 - **Combate em mapa** (nada de "dois bonecos parados"): tiles 32x32 em pixel art, câmera seguindo o monstro, zoom, criaturas andando tile a tile em 4 direções, barras de HP, números de dano coloridos, efeitos de ataque/habilidade, corpos no chão e loot coletado automaticamente. IA 100% automática com AStarGrid2D; o jogador só decide estratégia (hunt, grupo, itens, estrelas e "focar/espalhar").
 - **Conteúdo**: 9 tipos em ciclo, 45 famílias animal + elemento / 135 formas com nomes e descrições originais (PT-BR, EN, ES), 63 habilidades, 28 biomas (incluindo 9 de transição e versões corrompidas), 144 hunts no Mundo 1 + 66 no Mundo 2 (90→300, geradas por config), 9 Desafios com chefes, 324 bases de item com afixos.
-- **Progressão**: grupo de 3 (2 lutando no 110, 3 no 210), offline de até 8 h, recrutamento, shiny, Coleção com marcos, Altar de Essências, Estrelas, aprimoramento +10, inventário/Depot/Loja NPC.
+- **Progressão**: grupo de 3 (2 lutando no 110, 3 no 210), offline de até 8 h, recrutamento, shiny, Marcos de Caça, Altar de Essências, Estrelas, aprimoramento +10, inventário/Depot/Loja NPC.
 - **Online**: camada de serviço única com **mock local completo** (servidor, ranking e market com jogadores fictícios) e **Supabase real** (migrations, RLS, funções atômicas do market, Edge Function com todas as regras anti-trapaça).
 - **Monetização**: banner fora do mapa, 3 rewarded opcionais, intersticial com limite de 5 min, consentimento UMP — com modo simulado quando o plugin não está instalado.
 - **Qualidade**: 7.275 asserções em testes unitários, smoke test que joga de verdade (combate real bate com o modelo de abates/hora: ~855 vs ~821/h), paridade das fórmulas GDScript × TypeScript, simulação de balanceamento 1→300, calibração dos chefes com o combate real, screenshots automáticos (`docs/screenshots/`).
@@ -44,7 +61,7 @@ Botão discreto **dbg** no canto inferior esquerdo (acima do painel de ações):
 - **Velocidade do tempo**: x1, x10, x100 (o combate roda mais passos; o servidor mock acompanha o relógio).
 - **Simular 8h offline agora**.
 - **Forçar**: próximo shiny, próximo recrutamento, próximo drop Raro/Épico/Lendário/Mítico, drop Incomum.
-- **Recursos**: +100k ouro, +1000 de cada Essência; **desbloquear todas as hunts e desafios**; recrutar 3; **recrutar 1 shiny**; **restaurar entradas do Chefe Diário**.
+- **Recursos**: +100k ouro, +1000 de cada Essência; **desbloquear todas as hunts e desafios**; recrutar 3; **recrutar 1 shiny**; **restaurar entradas do Chefe Diário**; **Marcos: +500 abates nas formas da hunt atual**.
 - **Spawnar monstros** (5 de uma vez, para testar ser cercado e desempenho).
 - **Trocar bioma** do mapa atual (todos os 28 biomas).
 - **Exportar spritesheets placeholder** (modelos PNG para o artista).
@@ -61,13 +78,14 @@ Botão discreto **dbg** no canto inferior esquerdo (acima do painel de ações):
 Todos em `data/*.json` (sem recompilar nada; para o servidor real, rode `tools/export_server_data.gd` e faça o deploy da função).
 
 1. **Ritmo do início** (`config.xp.early_levels` 15 e `early_mult_start` 0,14): nível 10 em ~20 min, 16 em ~1 h. Para ainda mais rápido, 0,10; o resto da curva usa `kills_a` (2,9).
-2. **Mundo 1 → 80** (~65 h de caça ≈ 1 semana casual): para alongar/encurtar mexa em `kills_a`; para mexer só no endgame use `late_slope` (0,022).
+2. **Mundo 1 → 80** (~65 h de caça ≈ 1 semana casual): para alongar/encurtar mexa em `kills_a`; para mexer só no endgame use `late_slope` (0,026).
 3. **210 em ~1.150 h** (≈2 a 4,5 meses): ajuste `late_slope` (+0,005 ≈ +15% de tempo no endgame).
 4. **Dificuldade das hunts**: `enemy_mods` (HP 0,42 / ATQ 0,55 / DEF 0,7). Se o monstro morrer demais nas hunts recomendadas, baixe ATQ para 0,5.
 5. **Mundo 2**: `world2.enemy_mods` e `mods_ramp_levels` (30) controlam a transição 90→120; `world2.density` (30) e `respawn` (8 s) controlam o ritmo.
 6. **Desafios**: `challenges.json` → `hp_mult`/`atk_mult` por chefe. O 50 e o 60 ficaram justos para tipos neutros; o 90 é propositalmente o mais difícil. Teste com `tools/challenge_sim.gd -- 50`.
 7. **Drops** (`rarities[].chance`): reduzidos na revisão 2 (Comum 1/80). Se o Market ficar vazio, suba Raro/Épico antes dos comuns.
 13. **Qualidade** (`quality.exponent` 1,8): maior = qualidades altas mais raras. **Chefe Diário** (`daily_boss`): `hp_mult` 22, `gold_kills` 120, chances de item.
+14. **Marcos de Caça** (`mastery`): `per_point` de cada tipo e os limites `tiers`. Se o fim de jogo ficar rápido demais, suba `xp.late_slope` (hoje 0,026).
 8. **Recrutamento** 0,2%: dá ~2 recrutas por hora de caça. Para colecionadores, 0,3%; para escassez, 0,1%.
 9. **Essência/Estrelas**: a 5ª estrela (1.500) exige ~40 monstros adultos trocados; se ficar pesado, baixe para 1.000.
 10. **Aprimoramento**: chances do +6 ao +10 (75/60/45/30/20%). Para um market mais aquecido, reduza o +9/+10.

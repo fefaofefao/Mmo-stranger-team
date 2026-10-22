@@ -377,17 +377,26 @@ func _process(delta: float) -> void:
 	if not headless:
 		fx.update_fx(delta * min(sim_speed(), 3.0))
 		if _cam_target and is_instance_valid(_cam_target):
-			camera.position = _cam_target.position
+			camera.position = _cam_target.interp_position(interp_alpha())
 	_ui_timer += delta
 	if _ui_timer > 0.2:
 		_ui_timer = 0.0
 		party_updated.emit()
 
 
+## Fração do próximo passo fixo já decorrida (0..1), para interpolar o desenho.
+func interp_alpha() -> float:
+	return clampf(_accum / STEP, 0.0, 1.0)
+
+
 func step(dt: float) -> void:
 	if finished:
 		return
 	elapsed += dt
+	for c in party:
+		c.vis_prev = c.vis_cur
+	for e in enemies:
+		e.vis_prev = e.vis_cur
 	var regen := float(DataDB.config.combat.regen_pct_per_sec)
 	if _team_revive_timer >= 0.0:
 		_team_revive_timer -= dt

@@ -8,17 +8,20 @@ const CHECKPOINTS := [5, 10, 16, 20, 30, 35, 50, 60, 80, 90, 100, 110, 130, 150,
 const STARTERS := ["fogo_1", "agua_1", "luz_1"]
 
 var report: Array = []
+var use_mastery := true
 
 
 func _initialize() -> void:
 	DataDB.load_all()
+	use_mastery = not OS.get_cmdline_user_args().has("sem-marcos")
 	report.append("# Relatório de balanceamento (simulação 1 → 300)\n")
 	report.append("Gerado por `tools/balance_sim.gd` com o modelo analítico `KillRate` (o mesmo do progresso offline e do servidor). ")
 	report.append("O smoke test compara esse modelo com o combate real em tempo real (diferença típica < 10%).\n")
 	report.append("**Premissas do jogador simulado:** escolhe sempre a hunt liberada com mais XP/h que não seja perigosa; ")
 	report.append("vence cada Desafio ao atingir nível do desafio + 3; recruta 2 monstros extras (após ~500 e ~1000 abates); ")
 	report.append("equipamento do tier do nível (Incomum até 40, Raro até 110, Épico até 210, Lendário depois) com aprimoramento crescente; ")
-	report.append("estrelas no principal a cada 30 níveis (máx. 5). Sem boost de 2x XP.\n")
+	report.append("estrelas no principal a cada 30 níveis (máx. 5). Sem boost de 2x XP. ")
+	report.append("**Marcos de Caça** %s: os abates de cada forma são contados e os bônus da conta (Vida, Ataque, Defesa, XP, Velocidade, Crítico...) entram nos atributos e na XP.\n" % ("ligados" if use_mastery else "DESLIGADOS (comparação)"))
 	var summary := {}
 	for st in STARTERS:
 		summary[st] = simulate(st)
@@ -97,9 +100,10 @@ func simulate(starter: String) -> Dictionary:
 	var log_rows: Array = []
 	var last_hunt := ""
 	var recruits := [["planta_2", 500.0], ["terra_3", 1000.0]]
+	var kbf := {}
 	report.append("\n## Inicial: %s\n" % DataDB.form(starter + "_1").name)
-	report.append("| Nível | Horas acumuladas | Hunt escolhida | Abates/h | XP/h | Em campo |")
-	report.append("|---|---|---|---|---|---|")
+	report.append("| Nível | Horas acumuladas | Hunt escolhida | Abates/h | XP/h | Em campo | Marcos | Vida/Ataque/Defesa/XP |")
+	report.append("|---|---|---|---|---|---|---|---|")
 	while int(main.level) < 300 and hours < 200000.0:
 		var lvl := int(main.level)
 		for m in party:
@@ -115,10 +119,12 @@ func simulate(starter: String) -> Dictionary:
 			_gear(int(m.level), its, m)
 			all_items.merge(its)
 		items = all_items
+		var bon: Dictionary = Mastery.bonuses(kbf) if use_mastery else {}
+		var xpb := float(bon.get("xp_pct", 0.0))
 		var fighters: Array = []
 		var nf := PartyLogic.fighting_count(lvl, party.size())
 		for i in nf:
-			fighters.append(MonsterLogic.compute_stats(party[i], items))
+			fighters.append(MonsterLogic.compute_stats(party[i], items, bon))
 		# melhor hunt
 		var best := {}
 		var best_xph := 0.0
@@ -132,7 +138,7 @@ func simulate(starter: String) -> Dictionary:
 			var est := KillRate.estimate(fighters, h)
 			if est.deaths_per_hour > 4.0 or est.kills_per_hour < 60:
 				continue
-			var xph := KillRate.xp_per_hour(fighters, h, lvl)
+			var xph := KillRate.xp_per_hour(fighters, h, lvl, xpb)
 			if xph > best_xph:
 				best_xph = xph
 				best = h
@@ -140,14 +146,19 @@ func simulate(starter: String) -> Dictionary:
 		if best.is_empty():
 			best = DataDB.hunt_list[0]
 			best_est = KillRate.estimate(fighters, best)
-			best_xph = max(1.0, KillRate.xp_per_hour(fighters, best, lvl))
+			best_xph = max(1.0, KillRate.xp_per_hour(fighters, best, lvl, xpb))
 		var need := Formulas.xp_to_next(lvl) - float(main.xp)
 		var dt := need / best_xph
 		hours += dt
 		var k: float = best_est.kills_per_hour * dt
 		kills += k
 		var base_xp := Formulas.xp_for_kill(int(best.level)) * float(best.get("xp_mult", 1.0))
-		var shares := PartyLogic.split_xp(party, base_xp * k, int(best.level))
+		var tw := 0.0
+		for mm in best.monsters:
+			tw += float(mm.weight)
+		for mm in best.monsters:
+			kbf[mm.form] = float(kbf.get(mm.form, 0.0)) + k * float(mm.weight) / tw
+		var shares := PartyLogic.split_xp(party, base_xp * k, int(best.level), xpb)
 		for i in party.size():
 			MonsterLogic.add_xp(party[i], shares[i] if i > 0 else need + 0.001)
 		for r in recruits.duplicate():
@@ -156,5 +167,6 @@ func simulate(starter: String) -> Dictionary:
 				recruits.erase(r)
 		if CHECKPOINTS.has(int(main.level)) and not reached.has(int(main.level)):
 			reached[int(main.level)] = hours
-			report.append("| %d | %s | %s (Nv %d) | %s | %s | %d |" % [int(main.level), _h(hours), best.name, int(best.level), UI.fmt(best_est.kills_per_hour), UI.fmt(best_xph), nf])
+			report.append("| %d | %s | %s (Nv %d) | %s | %s | %d | %d | %.1f%% / %.1f%% / %.1f%% / %.1f%% |" % [int(main.level), _h(hours), DataDB.hunt_name(best), int(best.level), UI.fmt(best_est.kills_per_hour), UI.fmt(best_xph), nf,
+				int(bon.get("tiers", 0)), float(bon.get("hp_pct", 0.0)), float(bon.get("atk_pct", 0.0)), float(bon.get("def_pct", 0.0)), xpb])
 	return reached

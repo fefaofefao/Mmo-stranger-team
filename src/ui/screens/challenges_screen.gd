@@ -13,7 +13,7 @@ func build() -> void:
 		var p := UI.card(rec.get("cleared", false), lock != "")
 		var row := UI.hbox(10)
 		p.add_child(row)
-		row.add_child(UI.portrait_frame(c.boss_form, false, 80))
+		row.add_child(UI.portrait_frame(c.boss_form, false, 76))
 		var v := UI.vbox(3)
 		v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(v)
@@ -31,24 +31,38 @@ func build() -> void:
 		if m.has("aoe"):
 			mech.append(Loc.t("áreas de dano"))
 		mech.append(Loc.t("enfurece em 50%"))
-		var tr := UI.hbox(4)
-		tr.add_child(UI.type_badge(c.type, 14))
-		tr.add_child(UI.label(", ".join(mech), 15, UI.C_MUTED))
+		var tr := UI.hbox(6)
+		tr.add_child(UI.icon("t_" + c.type, 24))
+		var ml := UI.label(", ".join(mech), 15, UI.C_MUTED, true)
+		ml.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		ml.custom_minimum_size.x = 100
+		tr.add_child(ml)
 		v.add_child(tr)
 		var rw: Dictionary = c.rewards
-		v.add_child(UI.label(Loc.t("Recompensa: %s ouro, Essência e item %s") % [UI.fmt(rw.gold), DataDB.rarity_name(rw.item_rarity)] + (" · " + Loc.t("abre o MUNDO 2") if c.get("unlocks", "") == "world2" else ""), 15, UI.C_TEXT, true))
+		var rl := UI.label(Loc.t("Recompensa: %s ouro, Essência e item %s") % [UI.fmt(rw.gold), DataDB.rarity_name(rw.item_rarity)] + (" · " + Loc.t("abre o MUNDO 2") if c.get("unlocks", "") == "world2" else ""), 15, UI.C_TEXT, true)
+		rl.custom_minimum_size.x = 100
+		v.add_child(rl)
+		# linha de ação: estado à esquerda, botão à direita (sempre dentro da tela)
+		var ar := UI.hbox(8)
+		v.add_child(ar)
+		var stl: Label
 		if rec.get("cleared", false):
-			v.add_child(UI.label(Loc.t("Vencido · melhor tempo %s") % UI.fmt_time(float(rec.get("best", 0))), 15, UI.C_GOOD))
+			stl = UI.label(Loc.t("Vencido · melhor tempo %s") % UI.fmt_time(float(rec.get("best", 0))), 15, UI.C_GOOD, true)
+		elif lock != "":
+			stl = UI.label(Loc.t(lock) if not lock.begins_with("Aguarde") else lock, 15, UI.C_BAD, true)
+		else:
+			stl = UI.label(Loc.t("Disponível"), 15, UI.C_GOOD)
+		stl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		stl.custom_minimum_size.x = 80
+		stl.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		ar.add_child(stl)
 		if lock == "":
 			var cc: Dictionary = c
-			row.add_child(UI.small_button(Loc.t("Lutar"), func(): _start(cc), "primary"))
+			var fb := UI.icon_button("sword", Loc.t("Lutar"), func(): _start(cc), 20, 56, "primary")
+			fb.custom_minimum_size = Vector2(160, 56)
+			ar.add_child(fb)
 		else:
-			var lv := UI.vbox(2)
-			lv.add_child(UI.icon("lock", 30))
-			var l := UI.label(Loc.t(lock) if not lock.begins_with("Aguarde") else lock, 15, UI.C_BAD, true)
-			l.custom_minimum_size = Vector2(120, 0)
-			lv.add_child(l)
-			row.add_child(lv)
+			ar.add_child(UI.icon("lock", 34))
 		sc[1].add_child(p)
 
 

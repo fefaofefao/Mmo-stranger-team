@@ -3,7 +3,7 @@ extends Screen
 
 func build() -> void:
 	var v := UI.vbox(22)
-	v.set_anchors_preset(Control.PRESET_FULL_RECT)
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	v.alignment = BoxContainer.ALIGNMENT_CENTER
 	add_child(v)
 	var art := UI.tex(HubArt.texture(), 360)

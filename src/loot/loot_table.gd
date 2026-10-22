@@ -7,13 +7,14 @@ extends RefCounted
 
 ## Sorteia uma raridade entre as permitidas. Retorna "" se não houver drop.
 ## server_side=true considera apenas raridades "server"; false apenas as locais.
-static func roll_rarity(rng: RandomNumberGenerator, server_side: bool, rarity_mult := 1.0) -> String:
+## luck: multiplicador de sorte (Marcos de vento), vale para todas as raridades.
+static func roll_rarity(rng: RandomNumberGenerator, server_side: bool, rarity_mult := 1.0, luck := 1.0) -> String:
 	var rs := DataDB.rarities
 	for i in range(rs.size() - 1, -1, -1):
 		var r: Dictionary = rs[i]
 		if bool(r.server) != server_side:
 			continue
-		var ch := float(r.chance) * (rarity_mult if server_side else 1.0)
+		var ch := float(r.chance) * (rarity_mult if server_side else 1.0) * luck
 		if rng.randf() < ch:
 			return r.id
 	return ""

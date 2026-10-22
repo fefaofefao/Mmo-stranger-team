@@ -74,7 +74,7 @@ func login(device_id: String) -> Dictionary:
 				"created_at": t, "last_claim_at": t, "last_seen_at": t, "gold": 0, "essences": {},
 				"npc_budget": 0.0, "validated_level": 1, "validated_at": t, "monsters": {}, "tickets": {},
 				"challenges": {}, "items": {}, "stats": {"kills": 0}, "weekly": {}, "google_linked": false,
-				"last_offline": {},
+				"last_offline": {}, "mastery": {},
 			}
 			for tid in DataDB.type_ids:
 				p().essences[tid] = 0
@@ -103,7 +103,8 @@ func get_profile() -> Dictionary:
 	var sales: Array = state.get("sales_log", [])
 	state.sales_log = []
 	return _ok({"player_id": p().id, "name": p().name, "wallet": wallet(), "items": p().items.values(),
-		"monsters": p().monsters, "sales": sales, "server_time": now(), "google_linked": p().google_linked})
+		"monsters": p().monsters, "sales": sales, "server_time": now(), "google_linked": p().google_linked,
+		"mastery": p().get("mastery", {})})
 
 
 func touch() -> void:
@@ -140,7 +141,7 @@ func _party_upper_stats(party: Array) -> Array:
 		var m := MonsterLogic.create(fam_id, lvl, bool(rec.get("shiny", false)), "tmp", "", int(rec.get("quality", 100)))
 		m.stage = maxi(int(m.stage), int(pm.get("stage", 1)))
 		m.stars = int(rec.get("stars", 0))
-		var s := MonsterLogic.compute_stats(m)
+		var s := MonsterLogic.compute_stats(m, {}, _mastery())
 		s.hp *= allowance
 		s.atk *= allowance
 		s.def *= allowance
@@ -197,7 +198,7 @@ func request_spawn_tickets(hunt_id: String, n: int) -> Dictionary:
 func _roll_recruit(hunt: Dictionary, form_id: String, shiny: bool) -> Dictionary:
 	if int(hunt.get("world", 1)) != 1 or not hunt.get("recruit", true):
 		return {}
-	var ch := float(DataDB.config.recruit_chance) * float(hunt.get("recruit_mult", 1.0))
+	var ch := float(DataDB.config.recruit_chance) * float(hunt.get("recruit_mult", 1.0)) * (1.0 + float(_mastery().recruit_pct) / 100.0)
 	if shiny:
 		ch *= float(DataDB.config.get("shiny_recruit_mult", 10.0))
 	var forced := int(debug_force.get("recruit", 0)) > 0
@@ -213,8 +214,8 @@ func _roll_recruit(hunt: Dictionary, form_id: String, shiny: bool) -> Dictionary
 	return rec
 
 
-func _roll_server_drop(hunt: Dictionary) -> Dictionary:
-	var rar := LootTable.roll_rarity(rng, true, float(hunt.get("rarity_mult", 1.0)))
+func _roll_server_drop(hunt: Dictionary, luck := 1.0) -> Dictionary:
+	var rar := LootTable.roll_rarity(rng, true, float(hunt.get("rarity_mult", 1.0)), luck)
 	var forced: String = debug_force.get("drop", "")
 	if forced != "":
 		rar = forced
@@ -229,8 +230,20 @@ func _roll_server_drop(hunt: Dictionary) -> Dictionary:
 	return it
 
 
+## Ouro: bônus do equipamento informado pelo cliente (limitado) + Marcos validados pelo servidor.
 func _gold_mult(gold_pct: float) -> float:
-	return 1.0 + clampf(gold_pct, 0.0, 100.0) / 100.0
+	return 1.0 + clampf(gold_pct, 0.0, 100.0) / 100.0 + float(_mastery().gold_pct) / 100.0
+
+
+## Bônus dos Marcos de Caça a partir dos abates aceitos pelo servidor.
+func _mastery() -> Dictionary:
+	return Mastery.bonuses(p().get("mastery", {}))
+
+
+func _add_mastery(form_id: String, n: int) -> void:
+	if not p().has("mastery"):
+		p().mastery = {}
+	p().mastery[form_id] = int(p().mastery.get(form_id, 0)) + n
 
 
 ## Abates em tempo real (enviados em lote pelo cliente).
@@ -258,13 +271,17 @@ func claim_kills(hunt_id: String, kills: Array, party: Array, client_stats: Arra
 	var lvl_min := int(hunt.level) - int(DataDB.config.enemy_level_spread) - 1
 	var lvl_max := int(hunt.level) + int(DataDB.config.enemy_level_spread) + 1
 	var npc_budget_per := float(ac.npc_sell_budget_per_kill)
+	var mb := _mastery()
+	var luck := 1.0 + float(mb.drop_pct) / 100.0
+	var gm := _gold_mult(gold_pct)
+	var by_form := {}
 	for i in accepted:
 		var k: Dictionary = kills[i]
 		var form_id: String = k.get("form", "")
 		if not valid_forms.has(form_id):
 			continue
 		var lvl := clampi(int(k.get("level", hunt.level)), lvl_min, lvl_max)
-		gold += int(Formulas.gold_for_kill(lvl) * float(hunt.get("gold_mult", 1.0)) * _gold_mult(gold_pct))
+		gold += int(Formulas.gold_for_kill(lvl) * float(hunt.get("gold_mult", 1.0)) * gm)
 		p().npc_budget = float(p().npc_budget) + npc_budget_per * (1.0 + 0.15 * lvl)
 		var shiny := false
 		var tk: String = k.get("ticket", "")
@@ -275,12 +292,15 @@ func claim_kills(hunt_id: String, kills: Array, party: Array, client_stats: Arra
 				shiny = bool(ticket.shiny)
 		if shiny:
 			shinies += 1
-		var it := _roll_server_drop(hunt)
+		by_form[form_id] = int(by_form.get(form_id, 0)) + 1
+		var it := _roll_server_drop(hunt, luck)
 		if not it.is_empty():
 			items.append(it)
 		var rec := _roll_recruit(hunt, form_id, shiny)
 		if not rec.is_empty():
 			recruits.append(rec)
+	for fid in by_form:
+		_add_mastery(fid, int(by_form[fid]))
 	p().gold = int(p().gold) + gold
 	p().stats.kills = int(p().stats.get("kills", 0)) + accepted
 	return _ok({"accepted": accepted, "rejected": kills.size() - accepted, "gold_gained": gold, "wallet": wallet(),
@@ -329,8 +349,11 @@ func _grant_bulk_kills(hunt: Dictionary, kills: int, gold_pct: float) -> Diction
 		n = maxi(0, n)
 		kills_by_form[m.form] = int(kills_by_form.get(m.form, 0)) + n
 		assigned += n
+	var mb := _mastery()
 	var lvl := int(hunt.level)
 	var gold := int(kills * Formulas.gold_for_kill(lvl) * float(hunt.get("gold_mult", 1.0)) * _gold_mult(gold_pct))
+	for fid in kills_by_form:
+		_add_mastery(fid, int(kills_by_form[fid]))
 	p().gold = int(p().gold) + gold
 	p().npc_budget = float(p().npc_budget) + kills * float(DataDB.config.anti_cheat.npc_sell_budget_per_kill) * (1.0 + 0.15 * lvl)
 	p().stats.kills = int(p().stats.get("kills", 0)) + kills
@@ -338,7 +361,7 @@ func _grant_bulk_kills(hunt: Dictionary, kills: int, gold_pct: float) -> Diction
 	for r in DataDB.rarities:
 		if not r.server:
 			continue
-		var n := LootTable.binomial(kills, LootTable.chance(r.id, float(hunt.get("rarity_mult", 1.0))), rng)
+		var n := LootTable.binomial(kills, LootTable.chance(r.id, float(hunt.get("rarity_mult", 1.0))) * (1.0 + float(mb.drop_pct) / 100.0), rng)
 		for i in mini(n, 50):
 			var base_id := LootTable.pick_base(hunt, rng)
 			var it := ItemLogic.create(base_id, r.id, rng, false, _id("s"))
@@ -347,7 +370,7 @@ func _grant_bulk_kills(hunt: Dictionary, kills: int, gold_pct: float) -> Diction
 	var shinies := LootTable.binomial(kills, float(DataDB.config.shiny_chance), rng)
 	var recruits: Array = []
 	if int(hunt.get("world", 1)) == 1 and hunt.get("recruit", true):
-		var ch := float(DataDB.config.recruit_chance) * float(hunt.get("recruit_mult", 1.0))
+		var ch := float(DataDB.config.recruit_chance) * float(hunt.get("recruit_mult", 1.0)) * (1.0 + float(mb.recruit_pct) / 100.0)
 		var shiny_rec := LootTable.binomial(shinies, minf(1.0, ch * float(DataDB.config.get("shiny_recruit_mult", 10.0))), rng)
 		var normal_rec := LootTable.binomial(kills - shinies, ch, rng)
 		for i in mini(normal_rec + shiny_rec, 30):
@@ -524,6 +547,20 @@ func convert_monster(server_id: String, level: int, stage: int, stars_client: in
 	return _ok({"essence_type": t, "amount": amount, "wallet": wallet()})
 
 
+## Troca em lote (até 50 por pedido). Cada item: {server_id, level, stage, stars}.
+func convert_monsters(list: Array) -> Dictionary:
+	var results: Array = []
+	var totals := {}
+	for e in list.slice(0, 50):
+		var r := convert_monster(str(e.get("server_id", "")), int(e.get("level", 1)), int(e.get("stage", 1)), int(e.get("stars", 0)))
+		r.erase("wallet")
+		r["server_id"] = str(e.get("server_id", ""))
+		results.append(r)
+		if r.get("ok", false):
+			totals[r.essence_type] = int(totals.get(r.essence_type, 0)) + int(r.amount)
+	return _ok({"results": results, "totals": totals, "wallet": wallet()})
+
+
 func buy_star(server_id: String) -> Dictionary:
 	var rec: Dictionary = p().monsters.get(server_id, {})
 	if rec.is_empty() or rec.converted:
@@ -570,6 +607,18 @@ func npc_sell(item: Dictionary) -> Dictionary:
 		p().npc_budget = float(p().npc_budget) - price
 	p().gold = int(p().gold) + price
 	return _ok({"gold_gained": price, "wallet": wallet()})
+
+
+## Venda em lote ao NPC (até 100 itens por pedido).
+func npc_sell_many(items: Array) -> Dictionary:
+	var sold: Array = []
+	var gold := 0
+	for it in items.slice(0, 100):
+		var r := npc_sell(it)
+		if r.get("ok", false):
+			sold.append(str(it.get("uid", "")))
+			gold += int(r.gold_gained)
+	return _ok({"sold": sold, "gold_gained": gold, "wallet": wallet()})
 
 
 func npc_buy(base_id: String) -> Dictionary:

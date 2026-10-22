@@ -152,9 +152,11 @@ Opcional `<bioma>_corrupted.png` para o Mundo 2 (senão a paleta corrompida é a
 `assets/ui/hub.png` substitui a ilustração do Hub/título.
 
 ### Ícones da interface
-Os 33 ícones pixel art são gerados em `src/art/icons.gd`; um PNG em `assets/ui/icons/<nome>.png` (ex.: `coin.png`, `skull.png`) substitui o gerado. Os sprites placeholder de monstros usam quadro de 56 px (filhote 25, jovem 34, adulto 45 px de altura).
+Os 50 ícones ficam em `assets/ui/icons/<nome>.png` (64x64), gerados por `python3 tools/gen_icons.py --sheet` (prévia em `docs/icons_preview.png`). Substitua qualquer PNG pelo seu (mesmo nome, qualquer tamanho quadrado) e rode `godot --headless --path . --import`. Sem o PNG, o jogo usa a versão pixel art 12x12 de `src/art/icons.gd`. Os sprites placeholder de monstros usam quadro de 56 px (filhote 25, jovem 34, adulto 45 px de altura).
 
 ## 7. Ajustar o balanceamento
+
+**Marcos de Caça** (`config.mastery`): `tiers` (abates por marco), `points` (pontos de cada marco) e `by_type` (atributo e valor por ponto de cada tipo). O mesmo cálculo está em `src/progression/mastery.gd` e `supabase/functions/_shared/logic.ts` (rode `tools/export_server_data.gd` e o teste de paridade depois de mudar). `tools/balance_sim.gd -- sem-marcos` e `tools/challenge_sim.gd -- sem-marcos` comparam sem a mecânica.
 
 Tudo em `data/*.json` (ver `DECISOES.md` para as fórmulas). Para regerar o conteúdo base (nomes, hunts, itens): `python3 tools/gen_data.py` — **sobrescreve** os JSON de conteúdo (não toca em `config.json`, `ads.json`, `backend.json`). Depois de mexer na curva, rode `tools/balance_sim.gd` para ver o novo tempo por faixa de nível.
 

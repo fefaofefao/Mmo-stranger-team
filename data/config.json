@@ -92,7 +92,7 @@
   "kills_a": 2.9,
   "kills_p": 1.5,
   "late_start": 80,
-  "late_slope": 0.022,
+  "late_slope": 0.026,
   "kill_base": 4,
   "kill_q": 1.35,
   "low_level_penalty_start": 10,
@@ -278,15 +278,6 @@
   "essence_cost_per_tier": 5,
   "gold_cost_per_tier": 50
  },
- "collection": {
-  "milestones": [
-   100,
-   1000,
-   10000
-  ],
-  "atk_pct_per_milestone": 0.1,
-  "xp_pct_per_milestone": 0.1
- },
  "world2": {
   "start": 90,
   "end": 300,
@@ -403,5 +394,176 @@
   "pt_BR",
   "en",
   "es"
- ]
+ ],
+ "mastery": {
+  "_comentario": "Marcos de Caça: abates de cada forma liberam marcos; cada marco dá pontos no atributo ligado ao TIPO da forma (bônus permanente da conta). O servidor conta os abates validados e aplica drop/recrutamento/ouro do lado dele.",
+  "tiers": [
+   10,
+   50,
+   250,
+   1000,
+   4000,
+   15000
+  ],
+  "points": [
+   1,
+   1,
+   2,
+   2,
+   3,
+   3
+  ],
+  "tier_names": [
+   {
+    "pt_BR": "Bronze",
+    "en": "Bronze",
+    "es": "Bronce"
+   },
+   {
+    "pt_BR": "Prata",
+    "en": "Silver",
+    "es": "Plata"
+   },
+   {
+    "pt_BR": "Ouro",
+    "en": "Gold",
+    "es": "Oro"
+   },
+   {
+    "pt_BR": "Platina",
+    "en": "Platinum",
+    "es": "Platino"
+   },
+   {
+    "pt_BR": "Diamante",
+    "en": "Diamond",
+    "es": "Diamante"
+   },
+   {
+    "pt_BR": "Lenda",
+    "en": "Legend",
+    "es": "Leyenda"
+   }
+  ],
+  "tier_colors": [
+   "#c8834a",
+   "#c8ccd4",
+   "#f4c542",
+   "#7fe0d8",
+   "#8fc8ff",
+   "#ff8a5a"
+  ],
+  "by_type": {
+   "agua": {
+    "stat": "hp_pct",
+    "per_point": 0.25
+   },
+   "fogo": {
+    "stat": "atk_pct",
+    "per_point": 0.25
+   },
+   "gelo": {
+    "stat": "def_pct",
+    "per_point": 0.3
+   },
+   "planta": {
+    "stat": "xp_pct",
+    "per_point": 0.25
+   },
+   "terra": {
+    "stat": "gold_pct",
+    "per_point": 0.5
+   },
+   "eletrico": {
+    "stat": "spd_pct",
+    "per_point": 0.12
+   },
+   "vento": {
+    "stat": "drop_pct",
+    "per_point": 0.4
+   },
+   "luz": {
+    "stat": "recruit_pct",
+    "per_point": 0.5
+   },
+   "sombra": {
+    "stat": "crit",
+    "per_point": 0.08
+   }
+  },
+  "stat_info": {
+   "hp_pct": {
+    "icon": "heart",
+    "name": {
+     "pt_BR": "Vida",
+     "en": "Health",
+     "es": "Vida"
+    }
+   },
+   "atk_pct": {
+    "icon": "sword",
+    "name": {
+     "pt_BR": "Ataque",
+     "en": "Attack",
+     "es": "Ataque"
+    }
+   },
+   "def_pct": {
+    "icon": "shield",
+    "name": {
+     "pt_BR": "Defesa",
+     "en": "Defense",
+     "es": "Defensa"
+    }
+   },
+   "xp_pct": {
+    "icon": "xp",
+    "name": {
+     "pt_BR": "XP",
+     "en": "XP",
+     "es": "XP"
+    }
+   },
+   "gold_pct": {
+    "icon": "coin",
+    "name": {
+     "pt_BR": "Ouro",
+     "en": "Gold",
+     "es": "Oro"
+    }
+   },
+   "spd_pct": {
+    "icon": "speed",
+    "name": {
+     "pt_BR": "Velocidade",
+     "en": "Speed",
+     "es": "Velocidad"
+    }
+   },
+   "drop_pct": {
+    "icon": "clover",
+    "name": {
+     "pt_BR": "Sorte de drop",
+     "en": "Drop luck",
+     "es": "Suerte de botín"
+    }
+   },
+   "recruit_pct": {
+    "icon": "egg",
+    "name": {
+     "pt_BR": "Recrutamento",
+     "en": "Recruiting",
+     "es": "Reclutamiento"
+    }
+   },
+   "crit": {
+    "icon": "target",
+    "name": {
+     "pt_BR": "Crítico",
+     "en": "Critical",
+     "es": "Crítico"
+    }
+   }
+  }
+ }
 }

@@ -65,6 +65,15 @@ func _run() -> void:
 	await B.request("debug_force", {"recruit": 2})
 	await G.set_current_hunt("w1_s3_fogo_2")
 	G.save.debug_unlock_all = true
+	# progresso de Marcos de Caça para o painel e a Coleção
+	var hk := [320, 1300, 60, 4100]
+	var hi := 0
+	for mm in DataDB.hunts["w1_s3_fogo_2"].monsters:
+		G.save.collection[mm.form] = {"seen": true, "kills": hk[hi % hk.size()], "recruited": false, "shiny": false}
+		hi += 1
+	for fid in ["agua_1_1", "gelo_2_1", "planta_1_2", "terra_3_1", "vento_2_2", "luz_1_1", "sombra_2_1", "eletrico_1_1"]:
+		G.save.collection[fid] = {"seen": true, "kills": 1100, "recruited": false, "shiny": false}
+	G.invalidate_bonuses()
 	hs.load_current_hunt()
 	G.time_scale = 4.0
 	await frames(300)
@@ -79,18 +88,37 @@ func _run() -> void:
 	await shot("hub")
 	main.goto("hunts")
 	await shot("selecao_hunts")
+	main.current.type_filter = "fogo"
+	main.current.rebuild()
+	await shot("hunts_filtro_fogo")
+	main.goto("hunt")
+	var pk = load("res://src/ui/monster_picker.gd").open(main.overlay, Loc.t("Trocar %s") % MonsterLogic.display_name(G.main_monster()), G.main_monster())
+	await shot("troca_rapida")
+	pk._close("")
 	main.goto("party")
 	await shot("grupo")
 	main.goto("monster", {"uid": G.main_monster().uid})
 	await shot("monstro")
 	main.goto("collection")
 	await shot("colecao")
+	# itens e monstros no Depot para mostrar as ações em lote
+	var irng := RandomNumberGenerator.new()
+	irng.seed = 7
+	var rars := ["comum", "comum", "incomum", "comum", "raro", "incomum", "epico", "comum"]
+	var bases := DataDB.item_bases.keys()
+	for i in rars.size():
+		G.add_item(ItemLogic.create(bases[(i * 37) % bases.size()], rars[i], irng, rars[i] in ["comum", "incomum"]), false)
+	var fams := ["planta_2", "terra_3", "vento_1", "luz_2"]
+	for i in fams.size():
+		G.add_recruit({"server_id": "shot_m%d" % i, "family": fams[i], "form": fams[i] + "_1", "shiny": i == 3, "stars": 0, "quality": [12, 35, 64, 81][i]}, false)
 	main.goto("inventory")
+	main.current._select_upto(1)
 	await shot("inventario")
 	main.goto("market")
 	await frames(10)
 	await shot("market")
 	main.goto("altar")
+	main.current._select_quality(G.depot_monsters(), 101)
 	await shot("altar")
 	main.goto("rankings")
 	await frames(10)
@@ -104,6 +132,9 @@ func _run() -> void:
 	main.goto("party")
 	await frames(3)
 	await shot("grupo_toast")
+	var dlg = main.dialog(Loc.t("Bem-vindo de volta!"), "Fogarito +3 níveis\n1.234 abates\n+45.6k ouro", [Loc.t("Dobrar ▶"), Loc.t("Coletar")], "chest")
+	await shot("dialogo")
+	dlg._choose(1)
 	await G.debug_set_level(215)
 	await G.set_current_hunt("w2_210_1")
 	hs.load_current_hunt()

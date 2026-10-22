@@ -30,7 +30,7 @@ Registro das decisões tomadas sem consulta (modo autônomo), com o motivo.
 
 ## Curva de XP e tempo de jogo
 
-- Abates necessários por nível: `K(L) = 6 + 2,9·L^1,5 · (1 + 0,022·max(0, L−80))`
+- Abates necessários por nível: `K(L) = 6 + 2,9·L^1,5 · (1 + 0,026·max(0, L−80))` (0,022 até a revisão 3)
 - XP por abate de inimigo nível `Le`: `xp(Le) = ⌊4·Le^1,35⌋`
 - XP para subir: `xp_to_next(L) = ⌈K(L) · xp(L)⌉`
 - Penalidade por caçar muito abaixo: −4% por nível de diferença além de 10 (mínimo 20%).
@@ -76,7 +76,7 @@ Registro das decisões tomadas sem consulta (modo autônomo), com o motivo.
 - Essência ao trocar monstro: `base_estágio[5; 15; 40] × (1 + nível/20) × mult_família × (1 + 0,2·estrelas) × (50 se shiny)`. Shiny pede confirmação dupla.
 - Estrelas: custos 30/90/250/600/1500 Essência do tipo; +6% atributos cada; 3ª e 5ª: habilidades +25% poder e −10% recarga.
 - Inventário 60 (+10 por expansão, custo crescente, máx. 300); Depot de itens 300. Itens negociáveis nunca se perdem por inventário cheio (vão para o Depot). Trava contra venda, confirmação para vender Raro+, auto-venda opcional de Comum/Incomum.
-- Coleção: marcos de 100 / 1.000 / 10.000 abates por forma, cada um +0,1% ataque e +0,1% XP permanentes.
+- Coleção: substituída pelos **Marcos de Caça** na revisão 3 (ver R16).
 
 ## Anti-trapaça (servidor autoritativo)
 
@@ -125,3 +125,21 @@ Registro das decisões tomadas sem consulta (modo autônomo), com o motivo.
 | R13 | **Visual refinado**: molduras pixel art 9-patch geradas por código (borda com luz/sombra), botões com relevo e variantes (principal dourado, perigo vermelho, anúncio verde), 33 ícones pixel art, chips, etiquetas de tipo/raridade/qualidade, retratos com moldura da cor do tipo, fundo texturizado. | "Cara de bem feito" e coerente com o jogo. |
 | R14 | **Avisos** num único centro de notificações, centralizado no topo, empilhado (máx. 3) com ícone e animação. | Corrige avisos desalinhados no topo. |
 | R15 | **Rolagem por toque**: cards e botões deixam o toque "atravessar" (`MOUSE_FILTER_PASS`) para o ScrollContainer arrastar; zona morta de 12 px. Reproduzido e validado com evento de toque simulado. | Corrige "lista de hunts não rola". |
+
+
+## Revisão 3 (segundo pedido de melhorias)
+
+| # | Decisão | Por quê |
+|---|---|---|
+| R16 | **Marcos de Caça** (mecânica central de longo prazo): cada forma tem 6 marcos de abates — Bronze 10, Prata 50, Ouro 250, Platina 1.000, Diamante 4.000, Lenda 15.000 — que valem 1/1/2/2/3/3 pontos (12 por forma). Cada ponto dá um bônus **permanente da conta** no atributo ligado ao **tipo** da forma: Água = Vida (0,25%), Fogo = Ataque (0,25%), Gelo = Defesa (0,3%), Planta = XP (0,25%), Terra = Ouro (0,5%), Elétrico = Velocidade (0,12%), Vento = Sorte de drop (0,4%), Luz = Recrutamento (0,5%), Sombra = Crítico (+0,08 ponto). | Pedido: "mais vida, mais XP, mais drop". Dá motivo para caçar tipos diferentes (cada elemento fortalece um atributo) e um "próximo objetivo" a cada poucos minutos — os primeiros marcos chegam rápido (10 e 50 abates). |
+| R17 | O **servidor conta os abates aceitos por forma** (`players.mastery`) e aplica ele mesmo os bônus de **ouro, drop e recrutamento** (o cliente só informa o ouro do equipamento). Os limites anti-trapaça de atributos também incluem os Marcos do servidor. O perfil devolve os Marcos (recupera progresso após reinstalar). | Economia continua autoritativa. |
+| R18 | **Recalibragem**: com os Marcos, a simulação ficou ~11% mais rápida do 80 ao 300. `xp.late_slope` 0,022 → 0,026 devolve os tempos-alvo (80 ≈ 62 h, 210 ≈ 1.110 h, 300 ≈ 3.460 h). O início não mudou (nível 10 ≈ 20 min). Chefes dos Desafios ganharam +0,3% (nível 10) a +8% (nível 90) de Vida/Ataque, iguais aos Marcos típicos de cada faixa; o `challenge_sim` agora roda com esses bônus (tabela no relatório). | Pedido. |
+| R19 | Na tela de caça, a faixa de **Marco** mostra a forma abatida por último: abates/próximo marco, bônus do próximo marco e bônus já conquistado; tocar abre todas as formas da hunt. Coleção mostra o total por atributo e o marco de cada forma. | Pedido. |
+| R20 | **Troca rápida**: tocar num monstro do HUD da caça abre a lista do Depot (ordenada por Poder) e substitui aquele monstro na hora. O mesmo seletor é usado no Grupo. Bloqueado durante chefes. | Pedido. |
+| R21 | **Ações em lote**: Altar troca vários monstros (seleção rápida "Todos sem shiny", "Qualidade < 40%/70%"; shiny pede confirmação extra) e Inventário vende vários itens ("Comuns", "Até Incomum", "Até Raro"; travados e equipados nunca entram). Endpoints `convert_monsters` (até 50) e `npc_sell_many` (até 100) no mock e na Edge Function. Marcar itens não reconstrói a tela (a rolagem não pula). | Pedido. |
+| R22 | **Filtro por tipo** nas Hunts: barra com os 9 elementos + "Todos". | Pedido. |
+| R23 | **Movimento liso**: a simulação continua em passo fixo de 50 ms, mas o desenho interpola entre os dois últimos passos (60 fps) e o tempo que "sobra" ao terminar um tile é usado no próximo (sem micro-paradas). A câmera segue a posição interpolada. | Corrige "andar lagado". |
+| R24 | **Avisos e janelas no centro**: o bug era do Godot 4 — `set_anchors_preset` chamado depois de o nó entrar na árvore mantém o tamanho atual (zero), então diálogos e avisos ficavam presos no canto. Agora tudo usa `set_anchors_and_offsets_preset`; avisos ficam no centro da tela (posicionados a cada quadro). | Pedido ("mensagens desalinhadas"). |
+| R25 | **Ícones novos**: 50 ícones vetoriais com contorno, sombreamento e sombra, gerados por `tools/gen_icons.py` em 64 px (com mipmaps) — inclui os 9 elementos e os ícones dos atributos dos Marcos. | "Ícones mais refinados". |
+| R26 | **Hub**: cenário panorâmico mais baixo e os monstros do grupo grandes, animados, com nome e nível; ícones dos atalhos maiores. | "Personagens pequenos, fundo grande". |
+| R27 | **Desafios**: botão Lutar numa linha própria dentro do card; textos quebram linha. | O botão saía da tela com textos longos. |

@@ -65,3 +65,15 @@ Legenda: [x] concluído · [~] concluído com fallback (ver PENDENCIAS.md)
 - [x] Revezamento do time; caídos ganham XP como participantes; time renasce junto
 - [x] "Ficar" no aviso de hunt difícil silencia por 60 s
 - [x] Testes (7.275 asserções), smoke test, paridade GDScript x TypeScript, desafios recalibrados, APK
+
+## Revisão 3 — segundo pedido de melhorias
+- [x] Troca rápida tocando no monstro do HUD da caça
+- [x] Mensagens, avisos e diálogos centralizados (bug de âncoras corrigido em todo o projeto)
+- [x] Filtro por tipo na lista de hunts
+- [x] Andar sem "lag" (interpolação + sem micro-paradas)
+- [x] Troca de monstros em lote (Altar) e venda de itens em lote (Inventário), com endpoints no servidor
+- [x] Botão "Lutar" dos Desafios sempre visível
+- [x] 50 ícones novos refinados; Hub com monstros grandes e cenário menor
+- [x] Marcos de Caça (6 marcos por forma, bônus por tipo) na hunt e na Coleção, contados no servidor (mock + Edge Function + migration)
+- [x] Recalibragem (curva final e chefes) com simulação e combate real
+- [x] Testes (7.316 asserções), smoke test, paridade GDScript × TypeScript, screenshots PT/EN/ES, APK

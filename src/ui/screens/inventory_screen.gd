@@ -3,6 +3,10 @@ extends Screen
 
 var slot_filter := 0
 var equip_item := ""
+var sel := {}          # uid -> true (venda em lote)
+var sel_boxes := {}
+var sel_bar: Button
+var busy := false
 
 
 func build() -> void:
@@ -27,8 +31,26 @@ func build() -> void:
 			rebuild(), "tab_on" if on else "tab")
 		bt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		auto.add_child(bt)
+	var qs := UI.hbox(6)
+	b.add_child(qs)
+	for q in [[Loc.t("Comuns"), 0], [Loc.t("Até Incomum"), 1], [Loc.t("Até Raro"), 2]]:
+		var lim: int = q[1]
+		var qb := UI.small_button(q[0], func(): _select_upto(lim))
+		qb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		qb.add_theme_font_size_override("font_size", 16)
+		qs.add_child(qb)
+	var cb := UI.small_button(Loc.t("Limpar"), func(): _select_upto(-1))
+	cb.add_theme_font_size_override("font_size", 16)
+	qs.add_child(cb)
 	var sc := UI.scroll(8)
 	b.add_child(sc[0])
+	sel_bar = UI.icon_button("coin", "", _sell_selected, 21, 66, "primary")
+	b.add_child(sel_bar)
+	sel_boxes.clear()
+	for u in sel.keys():
+		var si: Dictionary = Game.save.items.get(u, {})
+		if si.is_empty() or si.get("locked", false) or si.get("loc", "") != "inv":
+			sel.erase(u)
 	if equip_item != "":
 		_equip_picker(sc[1])
 	var items := Game.inv_items()
@@ -42,6 +64,75 @@ func build() -> void:
 		shown += 1
 	if shown == 0:
 		sc[1].add_child(empty_note(Loc.t("Nada aqui. Itens caem dos monstros durante a caçada."), "bag"))
+	_update_bar()
+
+
+## Itens visíveis no filtro atual que podem ser vendidos.
+func _visible_items() -> Array:
+	var out: Array = []
+	for it in Game.inv_items():
+		if it.get("locked", false):
+			continue
+		if slot_filter > 0 and ItemLogic.base(it).slot != DataDB.item_slots[slot_filter - 1].id:
+			continue
+		out.append(it)
+	return out
+
+
+## Seleciona os itens (destravados) até a raridade de índice `max_idx` (-1 = limpar).
+func _select_upto(max_idx: int) -> void:
+	sel.clear()
+	if max_idx >= 0:
+		for it in _visible_items():
+			if int(DataDB.rarity_index.get(it.rarity, 0)) <= max_idx:
+				sel[it.uid] = true
+	for u in sel_boxes:
+		UI.set_checked(sel_boxes[u], sel.has(u))
+	_update_bar()
+
+
+func _toggle(uid: String) -> void:
+	if sel.has(uid):
+		sel.erase(uid)
+	else:
+		sel[uid] = true
+	if sel_boxes.has(uid):
+		UI.set_checked(sel_boxes[uid], sel.has(uid))
+	_update_bar()
+
+
+func _update_bar() -> void:
+	if not is_instance_valid(sel_bar):
+		return
+	var gold := 0
+	for u in sel:
+		gold += ItemLogic.sell_price(Game.save.items.get(u, {}))
+	sel_bar.text = Loc.t("Vender selecionados (%d) · +%s ouro") % [sel.size(), UI.fmt(gold)]
+	sel_bar.disabled = sel.is_empty()
+
+
+func _sell_selected() -> void:
+	if busy or sel.is_empty():
+		return
+	var by_rar := {}
+	for u in sel:
+		var it: Dictionary = Game.save.items.get(u, {})
+		by_rar[it.rarity] = int(by_rar.get(it.rarity, 0)) + 1
+	var lines: Array = []
+	for r in DataDB.rarities:
+		if by_rar.has(r.id):
+			lines.append("%d × %s" % [by_rar[r.id], DataDB.rarity_name(r.id)])
+	if not await main.confirm(Loc.t("Vender em lote"), Loc.t("Vender %d itens?") % sel.size() + "\n" + "\n".join(lines)):
+		return
+	busy = true
+	var r: Dictionary = await Game.sell_items(sel.keys())
+	busy = false
+	sel.clear()
+	if r.get("ok", false):
+		toast(Loc.t("%d itens vendidos · +%s ouro") % [int(r.sold), UI.fmt(r.gold_gained)], UI.C_GOLD, "coin")
+	else:
+		toast(Loc.t(r.get("error", "Falhou")), UI.C_BAD)
+	rebuild()
 
 
 func _row(it: Dictionary) -> Control:
@@ -50,6 +141,12 @@ func _row(it: Dictionary) -> Control:
 	p.add_child(v)
 	var hr := UI.hbox(6)
 	v.add_child(hr)
+	var iu0: String = it.uid
+	if not it.get("locked", false):
+		var box := UI.check_box(sel.has(iu0), func(): _toggle(iu0))
+		box.custom_minimum_size = Vector2(52, 48)
+		sel_boxes[iu0] = box
+		hr.add_child(box)
 	var nl := UI.label(ItemLogic.display_name(it), 21, DataDB.rarity_color(it.rarity))
 	nl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	nl.clip_text = true

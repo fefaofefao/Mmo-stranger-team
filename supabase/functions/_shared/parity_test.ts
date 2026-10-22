@@ -27,5 +27,11 @@ for (const q of ref.quality) {
   near(st.atk, q.atk, 0.01, `atk com qualidade ${q.q}`);
   near(L.essenceValue("luz_2", L.stageForLevel("luz_2", 77), 77, 0, q.shiny, q.q), q.ess, 0.5, `essência com qualidade ${q.q}`);
 }
+for (const m of ref.mastery) {
+  const b = L.masteryBonuses(m.in);
+  for (const k of L.MASTERY_STATS) near(b[k], m.b[k], 1e-6, `marcos ${k}`);
+  const st = L.computeStats("terra_1", 3, 90, 0, false, 40, b);
+  for (const k of ["hp", "atk", "def", "spd", "crit"]) near((st as any)[k], m.stats[k], 1e-3, `stats com marcos ${k}`);
+}
 console.log(fails ? `${fails} falhas` : "paridade GDScript x TypeScript OK");
 if (fails) Deno.exit(1);

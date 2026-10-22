@@ -6,23 +6,7 @@ var _daily_badge := ""
 
 func build() -> void:
 	var b := make_layout(Loc.t("Hub"), "house")
-	var art_panel := UI.panel("inset")
-	b.add_child(art_panel)
-	var art := UI.tex(HubArt.texture(), 280)
-	art.custom_minimum_size = Vector2(0, 280)
-	art_panel.add_child(art)
-	var main_m := Game.main_monster()
-	if not main_m.is_empty():
-		var info := UI.card()
-		b.add_child(info)
-		var row := UI.hbox(10)
-		info.add_child(row)
-		row.add_child(UI.portrait_frame(MonsterLogic.form_id(main_m), bool(main_m.shiny), 56))
-		var col := UI.vbox(2)
-		col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row.add_child(col)
-		col.add_child(UI.label("%s · %s" % [MonsterLogic.display_name(main_m), Loc.t("Nv %d") % int(main_m.level)], 22, UI.C_GOLD))
-		col.add_child(UI.label(Loc.t("Coleção %d/135 · Essências %s") % [Game.collection_count(), _ess_total()], 18, UI.C_MUTED))
+	b.add_child(_showcase())
 	var sc := UI.scroll(10)
 	b.add_child(sc[0])
 	var g := UI.grid(3, 8)
@@ -40,7 +24,7 @@ func build() -> void:
 		var badge := ""
 		if target == "daily":
 			badge = _daily_badge
-		g.add_child(UI.tile_button(it[0], it[1], func(): main.goto(target), 52, Vector2(214, 132), it[3], badge))
+		g.add_child(UI.tile_button(it[0], it[1], func(): main.goto(target), 60, Vector2(214, 128), it[3], badge))
 	if _daily_badge == "":
 		_load_daily()
 
@@ -57,3 +41,62 @@ func _ess_total() -> String:
 	for k in Game.save.essences:
 		t += int(Game.save.essences[k])
 	return UI.fmt(t)
+
+
+## Vitrine do grupo: cenário baixo com os monstros do grupo grandes, andando no lugar.
+func _showcase() -> Control:
+	var frame := UI.panel("inset")
+	var box := Control.new()
+	box.custom_minimum_size = Vector2(0, 250)
+	box.clip_contents = true
+	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	frame.add_child(box)
+	var bg := TextureRect.new()
+	bg.texture = HubArt.texture()
+	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	bg.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	box.add_child(bg)
+	var party := Game.party_monsters()
+	var row := HBoxContainer.new()
+	row.alignment = BoxContainer.ALIGNMENT_CENTER
+	row.add_theme_constant_override("separation", 6)
+	row.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	row.offset_top = -190
+	row.offset_bottom = -8
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	box.add_child(row)
+	for i in party.size():
+		var m: Dictionary = party[i]
+		var px := 176.0 if i == 0 else 138.0
+		var col := VBoxContainer.new()
+		col.alignment = BoxContainer.ALIGNMENT_END
+		col.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		col.custom_minimum_size = Vector2(px + 40, 0)
+		row.add_child(col)
+		var sz := px * 0.82
+		var holder := Control.new()
+		holder.custom_minimum_size = Vector2(sz, sz)
+		holder.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		col.add_child(holder)
+		var spr := UI.portrait(MonsterLogic.form_id(m), bool(m.shiny), sz)
+		spr.size = Vector2(sz, sz)
+		holder.add_child(spr)
+		var tw := spr.create_tween().set_loops()
+		var amp := 5.0 + i
+		tw.tween_property(spr, "position:y", -amp, 0.55 + 0.1 * i).as_relative().set_trans(Tween.TRANS_SINE)
+		tw.tween_property(spr, "position:y", amp, 0.55 + 0.1 * i).as_relative().set_trans(Tween.TRANS_SINE)
+		var tag := UI.panel("chip")
+		tag.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		var tl := UI.label("%s · %s" % [MonsterLogic.display_name(m), Loc.t("Nv %d") % int(m.level)], 17 if i == 0 else 15, UI.C_GOLD if i == 0 else UI.C_TEXT)
+		tag.add_child(tl)
+		col.add_child(tag)
+	var info := UI.panel("chip")
+	info.position = Vector2(8, 8)
+	var il := UI.label(Loc.t("Coleção %d/135 · Essências %s") % [Game.collection_count(), _ess_total()], 16, UI.C_TEXT)
+	info.add_child(il)
+	box.add_child(info)
+	return frame

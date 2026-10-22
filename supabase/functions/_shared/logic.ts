@@ -92,15 +92,49 @@ export function stageForLevel(familyId: string, level: number): number {
   return 1;
 }
 
-export function computeStats(familyId: string, stage: number, level: number, stars: number, shiny: boolean, quality = 0) {
+// ---- Marcos de Caça (espelho de src/progression/mastery.gd)
+export const MASTERY_STATS = ["hp_pct", "atk_pct", "def_pct", "xp_pct", "gold_pct", "spd_pct", "drop_pct", "recruit_pct", "crit"];
+
+export function masteryTier(kills: number): number {
+  let t = 0;
+  for (const need of C.mastery.tiers) if (kills >= need) t++;
+  return t;
+}
+
+export function masteryPoints(tier: number): number {
+  let p = 0;
+  for (let i = 0; i < Math.min(tier, C.mastery.points.length); i++) p += C.mastery.points[i];
+  return p;
+}
+
+export function masteryBonuses(killsByForm: Record<string, number>): Record<string, number> {
+  const out: Record<string, number> = { points: 0, tiers: 0 };
+  for (const s of MASTERY_STATS) out[s] = 0;
+  for (const fid in killsByForm ?? {}) {
+    const k = Number(killsByForm[fid]) || 0;
+    const f = D.forms[fid];
+    if (!f || k < C.mastery.tiers[0]) continue;
+    const tier = masteryTier(k);
+    const pts = masteryPoints(tier);
+    const st = C.mastery.by_type[f.type];
+    out[st.stat] += pts * st.per_point;
+    out.points += pts;
+    out.tiers += tier;
+  }
+  return out;
+}
+
+export function computeStats(familyId: string, stage: number, level: number, stars: number, shiny: boolean, quality = 0, bonuses: Record<string, number> = {}) {
   const fid = `${familyId}_${stage}`;
   const raw = rawStats(fid, level, shiny, quality);
   const starMult = 1 + C.stars.stat_bonus_per_star * stars;
   let up = 0;
   for (const s of C.stars.ability_upgrade_stars) if (stars >= s) up++;
+  const b = (k: string) => bonuses[k] ?? 0;
   return {
-    type: D.families[familyId].type, hp: raw.hp * starMult, atk: raw.atk * starMult, def: raw.def * starMult,
-    spd: raw.spd * (1 + 0.02 * stars), crit: C.combat.crit_chance, lifesteal: 0, type_dmg: {} as Record<string, number>,
+    type: D.families[familyId].type, hp: raw.hp * starMult * (1 + b("hp_pct") / 100), atk: raw.atk * starMult * (1 + b("atk_pct") / 100),
+    def: raw.def * starMult * (1 + b("def_pct") / 100), spd: raw.spd * (1 + 0.02 * stars) * (1 + b("spd_pct") / 100),
+    crit: C.combat.crit_chance + b("crit") / 100, lifesteal: 0, type_dmg: {} as Record<string, number>,
     ability_power_mult: 1 + C.stars.ability_power_per_upgrade * up, ability_cd_mult: 1 - C.stars.ability_cd_per_upgrade * up,
   };
 }

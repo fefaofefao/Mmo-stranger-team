@@ -3,6 +3,9 @@ extends Screen
 
 var tab := 0
 var busy := false
+var sel := {}          # uid -> true (troca em lote)
+var sel_bar: Button
+var sel_boxes := {}    # uid -> Button
 
 
 func build() -> void:
@@ -26,24 +29,50 @@ func build() -> void:
 	b.add_child(sc[0])
 	if tab == 0:
 		var dep := Game.depot_monsters()
+		sel_boxes.clear()
+		for u in sel.keys():
+			if Game.monster(u).is_empty() or Game.save.party.has(u):
+				sel.erase(u)
 		if dep.is_empty():
 			sc[1].add_child(empty_note(Loc.t("Nenhum monstro no Depot. Monstros do grupo precisam sair do grupo antes."), "altar"))
+		else:
+			# seleção rápida + ação em lote fixa (fora da rolagem)
+			var qs := UI.hbox(6)
+			for q in [[Loc.t("Todos (sem shiny)"), 101], [Loc.t("Qualidade < 40%"), 40], [Loc.t("Qualidade < 70%"), 70]]:
+				var lim: int = q[1]
+				var qb := UI.small_button(q[0], func(): _select_quality(dep, lim))
+				qb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				qb.add_theme_font_size_override("font_size", 16)
+				qs.add_child(qb)
+			var cb := UI.small_button(Loc.t("Limpar"), func(): _set_all(dep, false))
+			cb.add_theme_font_size_override("font_size", 16)
+			qs.add_child(cb)
+			b.add_child(qs)
+			b.move_child(qs, sc[0].get_index())
+			sel_bar = UI.icon_button("gem", "", _convert_selected, 21, 66, "primary")
+			b.add_child(sel_bar)
 		for m in dep:
 			var p := UI.card(bool(m.shiny))
 			var row := UI.hbox(8)
 			p.add_child(row)
+			var uid: String = m.uid
+			var box := UI.check_box(sel.has(uid), func(): _toggle(uid))
+			sel_boxes[uid] = box
+			row.add_child(box)
 			row.add_child(UI.portrait_frame(MonsterLogic.form_id(m), bool(m.shiny), 52))
 			var v := UI.vbox(2)
 			v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			row.add_child(v)
-			v.add_child(UI.label("%s · %s" % [MonsterLogic.display_name(m), Loc.t("Nv %d") % int(m.level)], 19, Color(1, 0.88, 0.45) if m.shiny else UI.C_TEXT))
+			var nl := UI.label("%s · %s" % [MonsterLogic.display_name(m), Loc.t("Nv %d") % int(m.level)], 19, Color(1, 0.88, 0.45) if m.shiny else UI.C_TEXT)
+			nl.clip_text = true
+			v.add_child(nl)
 			var r := UI.hbox(4)
 			r.add_child(UI.quality_badge(m, 14))
 			r.add_child(UI.label("→ %d %s" % [EssenceLogic.essence_value(m), Loc.t("Essência de %s") % DataDB.type_name(MonsterLogic.type_of(m))], 16, DataDB.type_color(MonsterLogic.type_of(m)).lightened(0.3)))
 			v.add_child(r)
-			var uid: String = m.uid
 			row.add_child(UI.small_button(Loc.t("Trocar"), func(): _convert(uid), "danger" if m.shiny else ""))
 			sc[1].add_child(p)
+		_update_bar()
 	else:
 		var items: Array = []
 		for it in Game.save.items.values():
@@ -72,6 +101,87 @@ func build() -> void:
 			bt.disabled = enh >= int(DataDB.config.enhance.max)
 			row.add_child(bt)
 			sc[1].add_child(p)
+
+
+func _toggle(uid: String) -> void:
+	if sel.has(uid):
+		sel.erase(uid)
+	else:
+		sel[uid] = true
+	if sel_boxes.has(uid):
+		UI.set_checked(sel_boxes[uid], sel.has(uid))
+	_update_bar()
+
+
+func _set_all(dep: Array, on: bool) -> void:
+	for m in dep:
+		if on:
+			sel[m.uid] = true
+		else:
+			sel.erase(m.uid)
+		if sel_boxes.has(m.uid):
+			UI.set_checked(sel_boxes[m.uid], sel.has(m.uid))
+	_update_bar()
+
+
+## Seleciona todos os não-shiny com qualidade abaixo do limite (101 = todos).
+func _select_quality(dep: Array, limit: int) -> void:
+	for m in dep:
+		var on: bool = not m.shiny and int(m.get("quality", 0)) < limit
+		if on:
+			sel[m.uid] = true
+		else:
+			sel.erase(m.uid)
+		if sel_boxes.has(m.uid):
+			UI.set_checked(sel_boxes[m.uid], on)
+	_update_bar()
+
+
+func _selection_totals() -> Dictionary:
+	var totals := {}
+	for uid in sel:
+		var m := Game.monster(uid)
+		if m.is_empty():
+			continue
+		var t := MonsterLogic.type_of(m)
+		totals[t] = int(totals.get(t, 0)) + EssenceLogic.essence_value(m)
+	return totals
+
+
+func _update_bar() -> void:
+	if not is_instance_valid(sel_bar):
+		return
+	var total := 0
+	for v in _selection_totals().values():
+		total += int(v)
+	sel_bar.text = Loc.t("Trocar selecionados (%d) → %s Essência") % [sel.size(), UI.fmt(total)]
+	sel_bar.disabled = sel.is_empty()
+
+
+func _convert_selected() -> void:
+	if busy or sel.is_empty():
+		return
+	var lines: Array = []
+	var shinies := 0
+	for uid in sel:
+		if Game.monster(uid).get("shiny", false):
+			shinies += 1
+	var totals := _selection_totals()
+	for t in totals:
+		lines.append("+%s %s" % [UI.fmt(totals[t]), Loc.t("Essência de %s") % DataDB.type_name(t)])
+	if not await main.confirm(Loc.t("Trocar em lote"), Loc.t("Trocar %d monstros?") % sel.size() + "\n" + "\n".join(lines) + "\n" + Loc.t("Todos ficam registrados na Coleção.")):
+		return
+	if shinies > 0 and not await main.confirm(Loc.t("ATENÇÃO: SHINY"), Loc.t("A seleção tem %d SHINY! Tem certeza ABSOLUTA? Não há como desfazer.") % shinies, Loc.t("Trocar mesmo"), Loc.t("Cancelar")):
+		return
+	busy = true
+	var r: Dictionary = await Game.convert_monsters(sel.keys())
+	busy = false
+	sel.clear()
+	if r.get("ok", false):
+		toast(Loc.t("%d monstros trocados por Essência!") % int(r.converted), UI.C_GOLD, "gem")
+	else:
+		toast(Loc.t(r.get("error", "Falhou")), UI.C_BAD)
+	rebuild()
 
 
 func _convert(uid: String) -> void:

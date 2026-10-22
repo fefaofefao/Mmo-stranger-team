@@ -27,10 +27,21 @@ var _hud_timer := 0.0
 var _suggest_open := false
 var _suggest_mute_until := 0
 var _daily_left := -1
+# painel de Marcos de Caça
+var mastery_panel: PanelContainer
+var m_port: TextureRect
+var m_name: Label
+var m_count: Label
+var m_bar: ProgressBar
+var m_next: Label
+var m_earned: Label
+var m_icon: TextureRect
+var _m_form := ""
+var _m_dirty := true
 
 
 func _init() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 
 func _ready() -> void:
@@ -42,6 +53,8 @@ func _ready() -> void:
 	Game.boosts_changed.connect(refresh_hud)
 	Game.fighting_changed.connect(_on_party_changed)
 	Game.wallet_changed.connect(_update_gold)
+	Game.mastery_progress.connect(_on_mastery_progress)
+	Game.mastery_reached.connect(_on_mastery_reached)
 	load_current_hunt()
 
 
@@ -55,7 +68,7 @@ func in_boss_fight() -> bool:
 
 func _build() -> void:
 	var root := UI.vbox(0)
-	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(root)
 	# ---------------- HUD superior
 	var top := UI.panel("hud")
@@ -75,6 +88,7 @@ func _build() -> void:
 	trow.add_child(gold_chip)
 	hud_box = UI.vbox(4)
 	tv.add_child(hud_box)
+	_build_mastery(tv)
 	boss_box = UI.vbox(2)
 	boss_box.visible = false
 	tv.add_child(boss_box)
@@ -119,12 +133,13 @@ func _build() -> void:
 		b.modulate = Color(1, 1, 1, 0.85)
 		zbox.add_child(b)
 	# aviso de time caído
+	var dc := CenterContainer.new()
+	dc.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	dc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(dc)
 	down_panel = UI.panel("toast")
 	down_panel.visible = false
-	down_panel.set_anchors_preset(Control.PRESET_CENTER)
-	down_panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	down_panel.grow_vertical = Control.GROW_DIRECTION_BOTH
-	vp_container.add_child(down_panel)
+	dc.add_child(down_panel)
 	var dv := UI.vbox(8)
 	down_panel.add_child(dv)
 	var dh := UI.hbox(8)
@@ -153,6 +168,118 @@ func _build() -> void:
 	nav.add_child(boss_btn)
 	boost_btn = UI.tile_button("play", "2x XP", _on_boost, 36, Vector2(0, 92), "ad")
 	nav.add_child(boost_btn)
+
+
+## Faixa com o Marco de Caça do monstro abatido por último: abates até o próximo marco,
+## bônus que ele dá e bônus já conquistado. Tocar abre a lista das formas da hunt.
+func _build_mastery(parent: Control) -> void:
+	mastery_panel = UI.panel("inset")
+	mastery_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	mastery_panel.gui_input.connect(_on_mastery_tap)
+	parent.add_child(mastery_panel)
+	var row := UI.hbox(8)
+	mastery_panel.add_child(row)
+	m_port = UI.tex(null, 40)
+	row.add_child(m_port)
+	var col := UI.vbox(2)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(col)
+	var r1 := UI.hbox(6)
+	col.add_child(r1)
+	r1.add_child(UI.icon("trophy", 20))
+	m_name = UI.label("", 16, UI.C_GOLD)
+	m_name.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	m_name.clip_text = true
+	r1.add_child(m_name)
+	m_count = UI.label("", 15, UI.C_TEXT)
+	r1.add_child(m_count)
+	m_bar = UI.bar(0.0, Color("#f4c542"), 200, 9)
+	m_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	col.add_child(m_bar)
+	var r2 := UI.hbox(8)
+	col.add_child(r2)
+	m_next = UI.label("", 14, UI.C_GOOD)
+	m_next.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	m_next.clip_text = true
+	r2.add_child(m_next)
+	m_earned = UI.label("", 14, UI.C_MUTED)
+	r2.add_child(m_earned)
+	m_icon = UI.icon("heart", 34)
+	row.add_child(m_icon)
+	for c in [row, col, r1, r2]:
+		_ignore_mouse(c)
+
+
+func _on_mastery_progress(form_id: String) -> void:
+	if mode != "hunt":
+		return
+	_m_form = form_id
+	_m_dirty = true
+
+
+func _on_mastery_reached(form_id: String, tier: int) -> void:
+	if visible and mode == "hunt":
+		var info := Mastery.form_info(form_id, Game.form_kills(form_id))
+		main.toast(Loc.t("Marco %s atingido: %s!") % [Mastery.tier_name(tier), DataDB.form_name(form_id)] + "\n" + Loc.t("Bônus total desta forma: %s") % Mastery.fmt_bonus(info.stat, info.earned), Mastery.tier_color(tier), "trophy")
+
+
+func _update_mastery() -> void:
+	if not is_instance_valid(mastery_panel):
+		return
+	mastery_panel.visible = mode == "hunt"
+	if mode != "hunt" or not _m_dirty:
+		return
+	_m_dirty = false
+	var h: Dictionary = DataDB.hunts.get(Game.save.current_hunt, {})
+	if _m_form == "" or not _hunt_has_form(h, _m_form):
+		_m_form = h.monsters[0].form if not h.is_empty() else ""
+	if _m_form == "":
+		return
+	var info := Mastery.form_info(_m_form, Game.form_kills(_m_form))
+	m_port.texture = SpriteFactory.portrait(_m_form)
+	m_icon.texture = Icons.tex(Mastery.stat_icon(info.stat))
+	var tier: int = info.tier
+	m_name.text = "%s · %s" % [DataDB.form_name(_m_form), Mastery.tier_name(tier) if tier > 0 else Loc.t("rumo ao Bronze")]
+	m_name.add_theme_color_override("font_color", Mastery.tier_color(tier) if tier > 0 else UI.C_TEXT)
+	m_bar.value = info.progress
+	(m_bar.get_theme_stylebox("fill") as StyleBoxFlat).bg_color = Mastery.tier_color(mini(tier + 1, 6))
+	if info.max:
+		m_count.text = Loc.t("%s abates · MÁX") % UI.fmt(info.kills)
+		m_next.text = Loc.t("Todos os marcos conquistados!")
+	else:
+		m_count.text = "%s/%s" % [UI.fmt(info.kills), UI.fmt(info.next_at)]
+		m_next.text = Loc.t("Próximo: %s") % Mastery.fmt_bonus(info.stat, info.next_gain)
+	m_earned.text = Loc.t("Atual: %s") % Mastery.fmt_bonus(info.stat, info.earned) if tier > 0 else Loc.t("Atual: —")
+
+
+func _hunt_has_form(h: Dictionary, fid: String) -> bool:
+	for m in h.get("monsters", []):
+		if m.form == fid:
+			return true
+	return false
+
+
+func _on_mastery_tap(e: InputEvent) -> void:
+	if not (e is InputEventMouseButton) or e.button_index != MOUSE_BUTTON_LEFT:
+		return
+	if e.pressed:
+		_press_pos = e.position
+		return
+	if e.position.distance_to(_press_pos) > 24.0:
+		return
+	var h: Dictionary = DataDB.hunts.get(Game.save.current_hunt, {})
+	var lines: Array = []
+	var seen := {}
+	for m in h.get("monsters", []):
+		if seen.has(m.form):
+			continue
+		seen[m.form] = true
+		var info := Mastery.form_info(m.form, Game.form_kills(m.form))
+		var nxt: String = Loc.t("todos os marcos!") if info.max else Loc.t("%s abates → %s") % [UI.fmt(info.next_at), Mastery.fmt_bonus(info.stat, info.next_gain)]
+		lines.append("%s — %s (%s)\n%s · %s" % [DataDB.form_name(m.form), Mastery.tier_name(info.tier), UI.fmt(info.kills), Loc.t("Atual: %s") % Mastery.fmt_bonus(info.stat, info.earned), Loc.t("Próximo: %s") % nxt])
+	lines.append("")
+	lines.append(Loc.t("Os marcos valem para a conta inteira. Veja o total na Coleção."))
+	main.dialog(Loc.t("Marcos desta hunt"), "\n\n".join(lines), [Loc.t("OK")], "trophy")
 
 
 func set_map_rendering(on: bool) -> void:
@@ -213,6 +340,8 @@ func load_current_hunt(biome_override := "") -> void:
 			h = DataDB.hunt_list[0]
 		Game.save.current_hunt = h.id
 	world.setup_hunt(h, biome_override)
+	_m_form = ""
+	_m_dirty = true
 	world.camera.zoom = Vector2(zoom, zoom)
 	boss_box.visible = false
 	title_label.text = DataDB.hunt_name(h)
@@ -307,9 +436,18 @@ func _on_party_changed() -> void:
 func rebuild_hud() -> void:
 	UI.clear(hud_box)
 	hud_rows.clear()
-	for m in Game.party_monsters():
+	var party := Game.party_monsters()
+	for i in party.size():
+		var m: Dictionary = party[i]
+		var slot := i
+		var tap := PanelContainer.new()
+		tap.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
+		tap.mouse_filter = Control.MOUSE_FILTER_STOP
+		tap.gui_input.connect(func(e): _on_hud_tap(e, slot))
+		hud_box.add_child(tap)
 		var row := UI.hbox(8)
-		hud_box.add_child(row)
+		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tap.add_child(row)
 		row.add_child(UI.portrait_frame(MonsterLogic.form_id(m), bool(m.shiny), 40))
 		var col := UI.vbox(2)
 		col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -328,8 +466,48 @@ func rebuild_hud() -> void:
 		var xp := UI.bar(0.0, Color(0.38, 0.62, 1.0), 300, 7)
 		xp.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		col.add_child(xp)
+		if mode == "hunt":
+			var sw := UI.icon("swap", 28)
+			sw.modulate = Color(1, 1, 1, 0.75)
+			sw.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			row.add_child(sw)
+		_ignore_mouse(row)
 		hud_rows.append({"uid": m.uid, "name": nm, "status": st, "hp": hp, "xp": xp})
 	refresh_hud()
+
+
+func _ignore_mouse(n: Node) -> void:
+	for c in n.get_children():
+		if c is Control:
+			c.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_ignore_mouse(c)
+
+
+var _press_pos := Vector2.ZERO
+
+
+## Tocar num monstro do HUD abre a troca rápida por um monstro do Depot.
+func _on_hud_tap(e: InputEvent, slot: int) -> void:
+	if not (e is InputEventMouseButton) or e.button_index != MOUSE_BUTTON_LEFT:
+		return
+	if e.pressed:
+		_press_pos = e.position
+		return
+	if e.position.distance_to(_press_pos) > 24.0:
+		return
+	if mode != "hunt":
+		main.toast(Loc.t("Não dá para trocar monstros durante a luta contra o chefe."), UI.C_BAD, "lock")
+		return
+	var party := Game.party_monsters()
+	if slot >= party.size():
+		return
+	var cur: Dictionary = party[slot]
+	var picker := MonsterPicker.open(main.overlay, Loc.t("Trocar %s") % MonsterLogic.display_name(cur), cur)
+	var uid: String = await picker.chosen
+	if uid == "":
+		return
+	Game.set_party_slot(slot, uid)
+	main.toast(Loc.t("%s entrou no grupo!") % MonsterLogic.display_name(Game.monster(uid)), UI.C_GOOD, "swap")
 
 
 func refresh_hud() -> void:
@@ -384,6 +562,7 @@ func _update_hud_values() -> void:
 	if mode != "hunt" and world.boss:
 		boss_bar.value = world.boss.hp_ratio()
 		boss_label.text = "%s · %s / %s" % [world.boss.display_name, UI.fmt_time(world.elapsed), UI.fmt_time(float(_challenge.get("time_limit", 240)))]
+	_update_mastery()
 	_hud_timer += 0.2
 	if _hud_timer > 1.0:
 		_hud_timer = 0.0
