@@ -35,11 +35,22 @@ export function typeMult(att: string, def: string): number {
 // ------------------------------------------------------------ fórmulas
 export const levelMult = (l: number) => 1 + C.stat_growth_per_level * (Math.max(l, 1) - 1);
 
-export function rawStats(formId: string, level: number, shiny = false) {
+export const qualityMult = (q: number) => 1 + (C.quality?.max_bonus ?? 0.3) * Math.min(1, Math.max(0, q / 100));
+
+export function rollQuality(shiny: boolean): number {
+  const q = C.quality ?? {};
+  if (shiny) {
+    const mn = q.shiny_min ?? 50;
+    return mn + Math.round((100 - mn) * Math.pow(rand(), 1.3));
+  }
+  return Math.round(100 * Math.pow(rand(), q.exponent ?? 1.8));
+}
+
+export function rawStats(formId: string, level: number, shiny = false, quality = 0) {
   const f = D.forms[formId];
   const fam = D.families[f.family];
   const lm = levelMult(level), sm = C.stage_mult[f.stage - 1], ssm = C.stage_spd_mult[f.stage - 1];
-  const sh = 1 + (shiny ? C.shiny_stat_bonus : 0);
+  const sh = (1 + (shiny ? C.shiny_stat_bonus : 0)) * qualityMult(quality);
   return { hp: fam.base.hp * lm * sm * sh, atk: fam.base.atk * lm * sm * sh, def: fam.base.def * lm * sm * sh, spd: fam.base.spd * ssm * sh, rng: fam.base.rng };
 }
 
@@ -57,6 +68,11 @@ export function killsForLevel(level: number): number {
   let k = x.kills_min + x.kills_a * Math.pow(level, x.kills_p);
   const late = level - x.late_start;
   if (late > 0) k *= 1 + x.late_slope * late;
+  const early = x.early_levels ?? 0;
+  if (level < early) {
+    const a = x.early_mult_start ?? 1;
+    k *= a + (1 - a) * ((level - 1) / (early - 1));
+  }
   return k;
 }
 export const xpForKill = (l: number) => Math.floor(C.xp.kill_base * Math.pow(Math.max(l, 1), C.xp.kill_q));
@@ -76,9 +92,9 @@ export function stageForLevel(familyId: string, level: number): number {
   return 1;
 }
 
-export function computeStats(familyId: string, stage: number, level: number, stars: number, shiny: boolean) {
+export function computeStats(familyId: string, stage: number, level: number, stars: number, shiny: boolean, quality = 0) {
   const fid = `${familyId}_${stage}`;
-  const raw = rawStats(fid, level, shiny);
+  const raw = rawStats(fid, level, shiny, quality);
   const starMult = 1 + C.stars.stat_bonus_per_star * stars;
   let up = 0;
   for (const s of C.stars.ability_upgrade_stars) if (stars >= s) up++;
@@ -228,11 +244,12 @@ export function worldDrops(types: string[], level: number) {
 }
 
 // ------------------------------------------------------------ essência
-export function essenceValue(familyId: string, stage: number, level: number, stars: number, shiny: boolean) {
+export function essenceValue(familyId: string, stage: number, level: number, stars: number, shiny: boolean, quality = 0) {
   const e = C.essence;
   let v = e.stage_base[Math.min(3, Math.max(1, stage)) - 1] * (1 + level / e.level_div);
   v *= D.families[familyId]?.essence_mult ?? 1;
   v *= 1 + 0.2 * stars;
+  v *= 1 + quality / 100;
   if (shiny) v *= e.shiny_mult;
   return Math.round(v);
 }
@@ -262,3 +279,15 @@ export function maxReachableLevel(from: number, seconds: number): number {
 }
 
 export const weekId = (t: number) => Math.floor((t + 3 * 86400) / 604800);
+export const dayId = (t: number) => Math.floor(t / 86400);
+
+// Chefe Diário: rotação determinística entre as formas adultas (mesma regra do ServerLogic.gd)
+export function dailyBossDef(day: number, level: number) {
+  const adults = Object.values(D.forms).filter((f: any) => f.stage === 3).map((f: any) => f.form_id);
+  const formsOrdered = (D.form_order ?? adults) as string[];
+  const form = formsOrdered[(day * 7 + 3) % formsOrdered.length];
+  const cfg = C.daily_boss;
+  const lvl = Math.min(Math.max(level, 5), C.max_level);
+  const st = enemyStats(form, lvl, 1);
+  return { form, type: D.forms[form].type, level: lvl, day, hp: st.hp * cfg.hp_mult, def: st.def * cfg.def_mult };
+}

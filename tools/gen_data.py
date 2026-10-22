@@ -150,10 +150,12 @@ FAMILIES = {
     ],
 }
 
+SPECIES = {'agua_1': ('uma lontra das marés', 'a tide otter', 'una nutria de las mareas'), 'agua_2': ("um sapo-tromba-d'água", 'a waterspout frog', 'una rana tromba de agua'), 'agua_3': ('um axolote abissal', 'an abyssal axolotl', 'un ajolote abisal'), 'agua_4': ('uma tartaruga-maremoto', 'a tidal-wave turtle', 'una tortuga maremoto'), 'agua_5': ('um tubarão das correntezas', 'a riptide shark', 'un tiburón de las corrientes'), 'fogo_1': ('uma raposa incandescente', 'a blazing fox', 'un zorro incandescente'), 'fogo_2': ('um lagarto de magma', 'a magma lizard', 'un lagarto de magma'), 'fogo_3': ('um galo-fênix', 'a phoenix rooster', 'un gallo fénix'), 'fogo_4': ('um javali vulcânico', 'a volcanic boar', 'un jabalí volcánico'), 'fogo_5': ('uma mariposa incendiária', 'an incendiary moth', 'una polilla incendiaria'), 'gelo_1': ('um pinguim imperial do inverno', 'an imperial winter penguin', 'un pingüino imperial del invierno'), 'gelo_2': ('um leopardo das avalanches', 'an avalanche leopard', 'un leopardo de las avalanchas'), 'gelo_3': ('um urso glacial', 'a glacial bear', 'un oso glacial'), 'gelo_4': ('uma morsa das nevascas', 'a blizzard walrus', 'una morsa de las ventiscas'), 'gelo_5': ('uma coruja da nevasca', 'a snowstorm owl', 'una lechuza de la ventisca'), 'planta_1': ('um cervo-floresta', 'a forest stag', 'un ciervo bosque'), 'planta_2': ('uma borboleta de folhagem', 'a foliage butterfly', 'una mariposa de follaje'), 'planta_3': ('um camaleão florido', 'a blooming chameleon', 'un camaleón florido'), 'planta_4': ('um ouriço-cacto gigante', 'a giant cactus hedgehog', 'un erizo-cactus gigante'), 'planta_5': ('um beija-flor orquídea', 'an orchid hummingbird', 'un colibrí orquídea'), 'terra_1': ('um tatu de rocha viva', 'a living-rock armadillo', 'un armadillo de roca viva'), 'terra_2': ('uma toupeira escavadora', 'a burrowing mole', 'un topo excavador'), 'terra_3': ('um rinoceronte-montanha', 'a mountain rhino', 'un rinoceronte montaña'), 'terra_4': ('um escorpião das dunas', 'a dune scorpion', 'un escorpión de las dunas'), 'terra_5': ('um gorila de barro', 'a clay gorilla', 'un gorila de barro'), 'eletrico_1': ('um carneiro de trovão', 'a thunder ram', 'un carnero del trueno'), 'eletrico_2': ('uma enguia-tempestade', 'a storm eel', 'una anguila tormenta'), 'eletrico_3': ('uma vespa-trovão', 'a thunder wasp', 'una avispa trueno'), 'eletrico_4': ('uma águia da tempestade', 'a tempest eagle', 'un águila de la tormenta'), 'eletrico_5': ('uma água-viva de alta voltagem', 'a high-voltage jellyfish', 'una medusa de alto voltaje'), 'vento_1': ('uma lebre-ventania', 'a gale hare', 'una liebre vendaval'), 'vento_2': ('uma andorinha-ciclone', 'a cyclone swallow', 'una golondrina ciclón'), 'vento_3': ('uma libélula ceifadora', 'a reaper dragonfly', 'una libélula segadora'), 'vento_4': ('um bode da tormenta', 'a squall goat', 'un macho cabrío de la tormenta'), 'vento_5': ('um dragão de nuvem', 'a cloud dragon', 'un dragón de nube'), 'luz_1': ('um unicórnio da aurora', 'a dawn unicorn', 'un unicornio del alba'), 'luz_2': ('um pavão solar', 'a solar peacock', 'un pavo real solar'), 'luz_3': ('um vaga-lume estelar', 'a stellar firefly', 'una luciérnaga estelar'), 'luz_4': ('um leão dourado', 'a golden lion', 'un león dorado'), 'luz_5': ('um peixe-lanterna abissal', 'an abyssal lanternfish', 'un pez linterna abisal'), 'sombra_1': ('um lobo do eclipse', 'an eclipse wolf', 'un lobo del eclipse'), 'sombra_2': ('um morcego noturno', 'a nocturnal bat', 'un murciélago nocturno'), 'sombra_3': ('um corvo da noite', 'a night crow', 'un cuervo de la noche'), 'sombra_4': ('uma viúva da noite', 'a night widow', 'una viuda de la noche'), 'sombra_5': ('um kraken das sombras', 'a shadow kraken', 'un kraken de las sombras')}
+
 STAGE_DESC = {
-    "pt_BR": ["Filhote: {c}.", "Adolescente: {c}; {x}.", "Adulto: {c}; {x}."],
-    "en": ["Baby: {c}.", "Teen: {c}; {x}.", "Adult: {c}; {x}."],
-    "es": ["Cría: {c}.", "Adolescente: {c}; {x}.", "Adulto: {c}; {x}."],
+    "pt_BR": ["Filhote: {c}.", "Adolescente: {sp} que {x}.", "Adulto: {sp}, {x}."],
+    "en": ["Baby: {c}.", "Teen: {sp} that {x}.", "Adult: {sp}, {x}."],
+    "es": ["Cría: {c}.", "Adolescente: {sp} que {x}.", "Adulto: {sp}, {x}."],
 }
 STAGE_EXTRA = {
     "pt_BR": [{"melee": "ficou forte e parte para o corpo a corpo sem medo", "ranged": "aprendeu a acertar alvos de longe", "magic": "começou a dominar feitiços de área"},
@@ -380,7 +382,8 @@ def gen_families():
                 desc = {}
                 for lg in LANGS:
                     x = STAGE_EXTRA[lg][s - 1][style] if s > 0 else ""
-                    desc[lg] = STAGE_DESC[lg][s].format(c=concept[lg], x=x)
+                    sp = SPECIES[fid][LANGS.index(lg)]
+                    desc[lg] = STAGE_DESC[lg][s].format(c=concept[lg], x=x, sp=sp)
                 stages.append({"form_id": "%s_%d" % (fid, s + 1), "name": names[s], "stage": s + 1, "desc": desc,
                                "abilities": ["%s_%s" % (t, k) for k in STYLE_ABILITIES[style][s]]})
             fams.append({

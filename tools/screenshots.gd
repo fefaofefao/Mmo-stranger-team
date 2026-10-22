@@ -27,7 +27,8 @@ func shot(name: String) -> void:
 	var img := root.get_texture().get_image()
 	DirAccess.make_dir_recursive_absolute("res://docs/screenshots")
 	n += 1
-	img.save_png("res://docs/screenshots/%02d_%s.png" % [n, name])
+	var suffix := "" if Loc.locale == "pt_BR" else "_" + Loc.locale
+	img.save_png("res://docs/screenshots/%02d_%s%s.png" % [n, name, suffix])
 	print("screenshot ", name)
 
 
@@ -36,6 +37,12 @@ func _run() -> void:
 	B = root.get_node("Backend")
 	G.load_local()
 	G.save.settings.consent_answered = true
+	var lang := "pt_BR"
+	for a in OS.get_cmdline_user_args():
+		if a in ["pt_BR", "en", "es"]:
+			lang = a
+	G.save.settings.locale = lang
+	Loc.set_locale(lang)
 	main = load("res://scenes/main.tscn").instantiate()
 	root.add_child(main)
 	await frames(10)
@@ -43,7 +50,8 @@ func _run() -> void:
 	await G.start_session()
 	main.goto("starter", {}, false)
 	await frames(2)
-	main.current._select("fogo_1")
+	main.current.selected = "fogo_1"
+	main.current.rebuild()
 	await shot("escolha_inicial")
 	await G.choose_starter("fogo_1")
 	G.save.settings.zoom = 2.0
@@ -89,6 +97,13 @@ func _run() -> void:
 	await shot("rankings")
 	main.goto("challenges")
 	await shot("desafios")
+	main.goto("daily")
+	await frames(10)
+	await shot("chefe_diario")
+	main.toast(Loc.t("Recrutado: %s (qualidade %s)!") % ["Marolinho", "87% " + Loc.tx(DataDB.quality_grade(87).name)], UI.C_GOOD)
+	main.goto("party")
+	await frames(3)
+	await shot("grupo_toast")
 	await G.debug_set_level(215)
 	await G.set_current_hunt("w2_210_1")
 	hs.load_current_hunt()

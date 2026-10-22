@@ -45,9 +45,9 @@
      "name": "Marolontra",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma lontrinha brincalhona que surfa nas próprias ondas; começou a dominar feitiços de área.",
-      "en": "Teen: a playful otter pup that surfs on its own waves; began mastering area spells.",
-      "es": "Adolescente: una nutria juguetona que surfea sus propias olas; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: uma lontra das marés que começou a dominar feitiços de área.",
+      "en": "Teen: a tide otter that began mastering area spells.",
+      "es": "Adolescente: una nutria de las mareas que empezó a dominar hechizos de área."
      },
      "abilities": [
       "agua_blast",
@@ -59,9 +59,9 @@
      "name": "Tsunontra",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma lontrinha brincalhona que surfa nas próprias ondas; sua magia transforma o campo de batalha.",
-      "en": "Adult: a playful otter pup that surfs on its own waves; its magic reshapes the battlefield.",
-      "es": "Adulto: una nutria juguetona que surfea sus propias olas; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: uma lontra das marés, sua magia transforma o campo de batalha.",
+      "en": "Adult: a tide otter, its magic reshapes the battlefield.",
+      "es": "Adulto: una nutria de las mareas, su magia transforma el campo de batalla."
      },
      "abilities": [
       "agua_dot",
@@ -112,9 +112,9 @@
      "name": "Sapoça",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um sapinho que cospe jatos d'água certeiros; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a little frog that spits precise water jets; learned to hit targets from afar.",
-      "es": "Adolescente: una ranita que escupe chorros de agua certeros; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: um sapo-tromba-d'água que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a waterspout frog that learned to hit targets from afar.",
+      "es": "Adolescente: una rana tromba de agua que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "agua_bolt",
@@ -126,9 +126,9 @@
      "name": "Trombasapo",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um sapinho que cospe jatos d'água certeiros; um atirador implacável de longo alcance.",
-      "en": "Adult: a little frog that spits precise water jets; a relentless long-range sharpshooter.",
-      "es": "Adulto: una ranita que escupe chorros de agua certeros; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: um sapo-tromba-d'água, um atirador implacável de longo alcance.",
+      "en": "Adult: a waterspout frog, a relentless long-range sharpshooter.",
+      "es": "Adulto: una rana tromba de agua, un tirador implacable de largo alcance."
      },
      "abilities": [
       "agua_blast",
@@ -180,9 +180,9 @@
      "name": "Axolago",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um axolote sorridente que regenera tudo ao seu redor; começou a dominar feitiços de área.",
-      "en": "Teen: a smiling axolotl that heals everything around it; began mastering area spells.",
-      "es": "Adolescente: un ajolote sonriente que regenera todo a su alrededor; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: um axolote abissal que começou a dominar feitiços de área.",
+      "en": "Teen: an abyssal axolotl that began mastering area spells.",
+      "es": "Adolescente: un ajolote abisal que empezó a dominar hechizos de área."
      },
      "abilities": [
       "agua_blast",
@@ -194,9 +194,9 @@
      "name": "Axoceano",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um axolote sorridente que regenera tudo ao seu redor; sua magia transforma o campo de batalha.",
-      "en": "Adult: a smiling axolotl that heals everything around it; its magic reshapes the battlefield.",
-      "es": "Adulto: un ajolote sonriente que regenera todo a su alrededor; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: um axolote abissal, sua magia transforma o campo de batalha.",
+      "en": "Adult: an abyssal axolotl, its magic reshapes the battlefield.",
+      "es": "Adulto: un ajolote abisal, su magia transforma el campo de batalla."
      },
      "abilities": [
       "agua_dot",
@@ -247,9 +247,9 @@
      "name": "Tartaonda",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma tartaruguinha que carrega um aquário no casco; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a tiny turtle carrying an aquarium on its shell; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: una tortuguita que lleva un acuario en el caparazón; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: uma tartaruga-maremoto que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a tidal-wave turtle that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: una tortuga maremoto que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "agua_strike",
@@ -261,9 +261,9 @@
      "name": "Maremotuga",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma tartaruguinha que carrega um aquário no casco; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a tiny turtle carrying an aquarium on its shell; a beast able to topple whole packs.",
-      "es": "Adulto: una tortuguita que lleva un acuario en el caparazón; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: uma tartaruga-maremoto, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a tidal-wave turtle, a beast able to topple whole packs.",
+      "es": "Adulto: una tortuga maremoto, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "agua_burst",
@@ -315,9 +315,9 @@
      "name": "Tuborrão",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um tubarãozinho banguela que morde mesmo assim; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a toothless little shark that bites anyway; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un tiburoncito chimuelo que muerde igual; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um tubarão das correntezas que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a riptide shark that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un tiburón de las corrientes que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "agua_strike",
@@ -329,9 +329,9 @@
      "name": "Megalodágua",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um tubarãozinho banguela que morde mesmo assim; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a toothless little shark that bites anyway; a beast able to topple whole packs.",
-      "es": "Adulto: un tiburoncito chimuelo que muerde igual; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um tubarão das correntezas, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a riptide shark, a beast able to topple whole packs.",
+      "es": "Adulto: un tiburón de las corrientes, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "agua_burst",
@@ -383,9 +383,9 @@
      "name": "Raposbrasa",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um filhote de raposa com a cauda acesa como uma tocha; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a fox cub whose tail burns like a torch; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un zorrito con la cola encendida como una antorcha; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: uma raposa incandescente que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a blazing fox that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un zorro incandescente que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "fogo_strike",
@@ -397,9 +397,9 @@
      "name": "Infernaposa",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um filhote de raposa com a cauda acesa como uma tocha; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a fox cub whose tail burns like a torch; a beast able to topple whole packs.",
-      "es": "Adulto: un zorrito con la cola encendida como una antorcha; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: uma raposa incandescente, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a blazing fox, a beast able to topple whole packs.",
+      "es": "Adulto: un zorro incandescente, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "fogo_burst",
@@ -452,9 +452,9 @@
      "name": "Lagartocha",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um lagartinho que cospe brasas quando espirra; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a little lizard that spits embers when it sneezes; learned to hit targets from afar.",
-      "es": "Adolescente: un lagartito que escupe brasas al estornudar; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: um lagarto de magma que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a magma lizard that learned to hit targets from afar.",
+      "es": "Adolescente: un lagarto de magma que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "fogo_bolt",
@@ -466,9 +466,9 @@
      "name": "Magmagarto",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um lagartinho que cospe brasas quando espirra; um atirador implacável de longo alcance.",
-      "en": "Adult: a little lizard that spits embers when it sneezes; a relentless long-range sharpshooter.",
-      "es": "Adulto: un lagartito que escupe brasas al estornudar; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: um lagarto de magma, um atirador implacável de longo alcance.",
+      "en": "Adult: a magma lizard, a relentless long-range sharpshooter.",
+      "es": "Adulto: un lagarto de magma, un tirador implacable de largo alcance."
      },
      "abilities": [
       "fogo_blast",
@@ -519,9 +519,9 @@
      "name": "Galabrasa",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um pintinho que acorda o vulcão todo dia de manhã; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a chick that wakes the volcano up every morning; learned to hit targets from afar.",
-      "es": "Adolescente: un pollito que despierta al volcán cada mañana; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: um galo-fênix que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a phoenix rooster that learned to hit targets from afar.",
+      "es": "Adolescente: un gallo fénix que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "fogo_bolt",
@@ -533,9 +533,9 @@
      "name": "Fenigalo",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um pintinho que acorda o vulcão todo dia de manhã; um atirador implacável de longo alcance.",
-      "en": "Adult: a chick that wakes the volcano up every morning; a relentless long-range sharpshooter.",
-      "es": "Adulto: un pollito que despierta al volcán cada mañana; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: um galo-fênix, um atirador implacável de longo alcance.",
+      "en": "Adult: a phoenix rooster, a relentless long-range sharpshooter.",
+      "es": "Adulto: un gallo fénix, un tirador implacable de largo alcance."
      },
      "abilities": [
       "fogo_blast",
@@ -588,9 +588,9 @@
      "name": "Javabrasa",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um porquinho de lava que adora rolar nas cinzas; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a lava piglet that loves rolling in ashes; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un cerdito de lava al que le encanta revolcarse en ceniza; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um javali vulcânico que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a volcanic boar that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un jabalí volcánico que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "fogo_strike",
@@ -602,9 +602,9 @@
      "name": "Vulcajavali",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um porquinho de lava que adora rolar nas cinzas; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a lava piglet that loves rolling in ashes; a beast able to topple whole packs.",
-      "es": "Adulto: un cerdito de lava al que le encanta revolcarse en ceniza; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um javali vulcânico, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a volcanic boar, a beast able to topple whole packs.",
+      "es": "Adulto: un jabalí volcánico, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "fogo_burst",
@@ -655,9 +655,9 @@
      "name": "Mariposeira",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma mariposa atraída por qualquer chama, inclusive a própria; começou a dominar feitiços de área.",
-      "en": "Teen: a moth drawn to any flame, even its own; began mastering area spells.",
-      "es": "Adolescente: una polilla atraída por cualquier llama, incluso la suya; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: uma mariposa incendiária que começou a dominar feitiços de área.",
+      "en": "Teen: an incendiary moth that began mastering area spells.",
+      "es": "Adolescente: una polilla incendiaria que empezó a dominar hechizos de área."
      },
      "abilities": [
       "fogo_blast",
@@ -669,9 +669,9 @@
      "name": "Incendiposa",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma mariposa atraída por qualquer chama, inclusive a própria; sua magia transforma o campo de batalha.",
-      "en": "Adult: a moth drawn to any flame, even its own; its magic reshapes the battlefield.",
-      "es": "Adulto: una polilla atraída por cualquier llama, incluso la suya; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: uma mariposa incendiária, sua magia transforma o campo de batalha.",
+      "en": "Adult: an incendiary moth, its magic reshapes the battlefield.",
+      "es": "Adulto: una polilla incendiaria, su magia transforma el campo de batalla."
      },
      "abilities": [
       "fogo_dot",
@@ -721,9 +721,9 @@
      "name": "Pinguelado",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um pinguinzinho que escorrega de barriga em qualquer superfície; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a little penguin that belly-slides on any surface; learned to hit targets from afar.",
-      "es": "Adolescente: un pingüinito que se desliza de panza por cualquier superficie; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: um pinguim imperial do inverno que aprendeu a acertar alvos de longe.",
+      "en": "Teen: an imperial winter penguin that learned to hit targets from afar.",
+      "es": "Adolescente: un pingüino imperial del invierno que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "gelo_bolt",
@@ -735,9 +735,9 @@
      "name": "Imperinverno",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um pinguinzinho que escorrega de barriga em qualquer superfície; um atirador implacável de longo alcance.",
-      "en": "Adult: a little penguin that belly-slides on any surface; a relentless long-range sharpshooter.",
-      "es": "Adulto: un pingüinito que se desliza de panza por cualquier superficie; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: um pinguim imperial do inverno, um atirador implacável de longo alcance.",
+      "en": "Adult: an imperial winter penguin, a relentless long-range sharpshooter.",
+      "es": "Adulto: un pingüino imperial del invierno, un tirador implacable de largo alcance."
      },
      "abilities": [
       "gelo_blast",
@@ -790,9 +790,9 @@
      "name": "Gatoneve",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um gatinho das neves que tira sonecas em montes de gelo; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a snow kitten that naps on piles of ice; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un gatito de las nieves que duerme sobre montones de hielo; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um leopardo das avalanches que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: an avalanche leopard that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un leopardo de las avalanchas que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "gelo_strike",
@@ -804,9 +804,9 @@
      "name": "Leoparvalanche",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um gatinho das neves que tira sonecas em montes de gelo; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a snow kitten that naps on piles of ice; a beast able to topple whole packs.",
-      "es": "Adulto: un gatito de las nieves que duerme sobre montones de hielo; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um leopardo das avalanches, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: an avalanche leopard, a beast able to topple whole packs.",
+      "es": "Adulto: un leopardo de las avalanchas, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "gelo_burst",
@@ -858,9 +858,9 @@
      "name": "Ursofrio",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um ursinho polar com cheiro de sorvete de baunilha; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a polar bear cub that smells like vanilla ice cream; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un osito polar con olor a helado de vainilla; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um urso glacial que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a glacial bear that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un oso glacial que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "gelo_strike",
@@ -872,9 +872,9 @@
      "name": "Glaciursão",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um ursinho polar com cheiro de sorvete de baunilha; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a polar bear cub that smells like vanilla ice cream; a beast able to topple whole packs.",
-      "es": "Adulto: un osito polar con olor a helado de vainilla; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um urso glacial, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a glacial bear, a beast able to topple whole packs.",
+      "es": "Adulto: un oso glacial, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "gelo_burst",
@@ -926,9 +926,9 @@
      "name": "Focagelo",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma foquinha que faz malabarismo com bolas de neve; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a little seal that juggles snowballs; learned to hit targets from afar.",
-      "es": "Adolescente: una focita que hace malabares con bolas de nieve; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: uma morsa das nevascas que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a blizzard walrus that learned to hit targets from afar.",
+      "es": "Adolescente: una morsa de las ventiscas que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "gelo_bolt",
@@ -940,9 +940,9 @@
      "name": "Morsavalanche",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma foquinha que faz malabarismo com bolas de neve; um atirador implacável de longo alcance.",
-      "en": "Adult: a little seal that juggles snowballs; a relentless long-range sharpshooter.",
-      "es": "Adulto: una focita que hace malabares con bolas de nieve; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: uma morsa das nevascas, um atirador implacável de longo alcance.",
+      "en": "Adult: a blizzard walrus, a relentless long-range sharpshooter.",
+      "es": "Adulto: una morsa de las ventiscas, un tirador implacable de largo alcance."
      },
      "abilities": [
       "gelo_blast",
@@ -992,9 +992,9 @@
      "name": "Corugeada",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma corujinha que congela o ar quando pisca; começou a dominar feitiços de área.",
-      "en": "Teen: a tiny owl that freezes the air when it blinks; began mastering area spells.",
-      "es": "Adolescente: una lechucita que congela el aire al parpadear; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: uma coruja da nevasca que começou a dominar feitiços de área.",
+      "en": "Teen: a snowstorm owl that began mastering area spells.",
+      "es": "Adolescente: una lechuza de la ventisca que empezó a dominar hechizos de área."
      },
      "abilities": [
       "gelo_blast",
@@ -1006,9 +1006,9 @@
      "name": "Nevascoruja",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma corujinha que congela o ar quando pisca; sua magia transforma o campo de batalha.",
-      "en": "Adult: a tiny owl that freezes the air when it blinks; its magic reshapes the battlefield.",
-      "es": "Adulto: una lechucita que congela el aire al parpadear; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: uma coruja da nevasca, sua magia transforma o campo de batalha.",
+      "en": "Adult: a snowstorm owl, its magic reshapes the battlefield.",
+      "es": "Adulto: una lechuza de la ventisca, su magia transforma el campo de batalla."
      },
      "abilities": [
       "gelo_dot",
@@ -1061,9 +1061,9 @@
      "name": "Cervilha",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um filhote de cervo com brotos nascendo nos chifres; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a fawn with sprouts growing from its antlers; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un cervatillo con brotes creciendo en sus astas; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um cervo-floresta que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a forest stag that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un ciervo bosque que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "planta_strike",
@@ -1075,9 +1075,9 @@
      "name": "Cervoresta",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um filhote de cervo com brotos nascendo nos chifres; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a fawn with sprouts growing from its antlers; a beast able to topple whole packs.",
-      "es": "Adulto: un cervatillo con brotes creciendo en sus astas; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um cervo-floresta, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a forest stag, a beast able to topple whole packs.",
+      "es": "Adulto: un ciervo bosque, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "planta_burst",
@@ -1129,9 +1129,9 @@
      "name": "Casulhoso",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma lagartinha que se esconde debaixo das folhas; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a little caterpillar that hides under leaves; learned to hit targets from afar.",
-      "es": "Adolescente: una orugita que se esconde bajo las hojas; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: uma borboleta de folhagem que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a foliage butterfly that learned to hit targets from afar.",
+      "es": "Adolescente: una mariposa de follaje que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "planta_bolt",
@@ -1143,9 +1143,9 @@
      "name": "Borbolhagem",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma lagartinha que se esconde debaixo das folhas; um atirador implacável de longo alcance.",
-      "en": "Adult: a little caterpillar that hides under leaves; a relentless long-range sharpshooter.",
-      "es": "Adulto: una orugita que se esconde bajo las hojas; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: uma borboleta de folhagem, um atirador implacável de longo alcance.",
+      "en": "Adult: a foliage butterfly, a relentless long-range sharpshooter.",
+      "es": "Adulto: una mariposa de follaje, un tirador implacable de largo alcance."
      },
      "abilities": [
       "planta_blast",
@@ -1196,9 +1196,9 @@
      "name": "Camaleira",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um camaleão que vira um canteiro de flores quando fica feliz; começou a dominar feitiços de área.",
-      "en": "Teen: a chameleon that turns into a flowerbed when happy; began mastering area spells.",
-      "es": "Adolescente: un camaleón que se vuelve un jardín cuando está feliz; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: um camaleão florido que começou a dominar feitiços de área.",
+      "en": "Teen: a blooming chameleon that began mastering area spells.",
+      "es": "Adolescente: un camaleón florido que empezó a dominar hechizos de área."
      },
      "abilities": [
       "planta_blast",
@@ -1210,9 +1210,9 @@
      "name": "Camaleflora",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um camaleão que vira um canteiro de flores quando fica feliz; sua magia transforma o campo de batalha.",
-      "en": "Adult: a chameleon that turns into a flowerbed when happy; its magic reshapes the battlefield.",
-      "es": "Adulto: un camaleón que se vuelve un jardín cuando está feliz; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: um camaleão florido, sua magia transforma o campo de batalha.",
+      "en": "Adult: a blooming chameleon, its magic reshapes the battlefield.",
+      "es": "Adulto: un camaleón florido, su magia transforma el campo de batalla."
      },
      "abilities": [
       "planta_dot",
@@ -1265,9 +1265,9 @@
      "name": "Espinhouriço",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um ouriço-cacto que dá abraços bem espinhosos; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a cactus hedgehog that gives very prickly hugs; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un erizo-cactus que da abrazos muy espinosos; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um ouriço-cacto gigante que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a giant cactus hedgehog that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un erizo-cactus gigante que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "planta_strike",
@@ -1279,9 +1279,9 @@
      "name": "Cactourão",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um ouriço-cacto que dá abraços bem espinhosos; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a cactus hedgehog that gives very prickly hugs; a beast able to topple whole packs.",
-      "es": "Adulto: un erizo-cactus que da abrazos muy espinosos; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um ouriço-cacto gigante, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a giant cactus hedgehog, a beast able to topple whole packs.",
+      "es": "Adulto: un erizo-cactus gigante, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "planta_burst",
@@ -1331,9 +1331,9 @@
      "name": "Beijaflora",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um beija-flor que planta sementes por onde voa; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a hummingbird that plants seeds wherever it flies; learned to hit targets from afar.",
-      "es": "Adolescente: un colibrí que planta semillas por donde vuela; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: um beija-flor orquídea que aprendeu a acertar alvos de longe.",
+      "en": "Teen: an orchid hummingbird that learned to hit targets from afar.",
+      "es": "Adolescente: un colibrí orquídea que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "planta_bolt",
@@ -1345,9 +1345,9 @@
      "name": "Orquidebico",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um beija-flor que planta sementes por onde voa; um atirador implacável de longo alcance.",
-      "en": "Adult: a hummingbird that plants seeds wherever it flies; a relentless long-range sharpshooter.",
-      "es": "Adulto: un colibrí que planta semillas por donde vuela; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: um beija-flor orquídea, um atirador implacável de longo alcance.",
+      "en": "Adult: an orchid hummingbird, a relentless long-range sharpshooter.",
+      "es": "Adulto: un colibrí orquídea, un tirador implacable de largo alcance."
      },
      "abilities": [
       "planta_blast",
@@ -1400,9 +1400,9 @@
      "name": "Tatupedra",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um tatuzinho que vira uma bola de pedra quando se assusta; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: an armadillo pup that rolls into a stone ball when scared; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un armadillito que se vuelve una bola de piedra al asustarse; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um tatu de rocha viva que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a living-rock armadillo that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un armadillo de roca viva que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "terra_strike",
@@ -1414,9 +1414,9 @@
      "name": "Tatuzólito",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um tatuzinho que vira uma bola de pedra quando se assusta; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: an armadillo pup that rolls into a stone ball when scared; a beast able to topple whole packs.",
-      "es": "Adulto: un armadillito que se vuelve una bola de piedra al asustarse; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um tatu de rocha viva, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a living-rock armadillo, a beast able to topple whole packs.",
+      "es": "Adulto: un armadillo de roca viva, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "terra_burst",
@@ -1470,9 +1470,9 @@
      "name": "Toupeiroca",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma toupeira de óculos que cava túneis em segundos; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a mole with glasses that digs tunnels in seconds; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un topo con gafas que cava túneles en segundos; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: uma toupeira escavadora que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a burrowing mole that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un topo excavador que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "terra_strike",
@@ -1484,9 +1484,9 @@
      "name": "Terratoupe",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma toupeira de óculos que cava túneis em segundos; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a mole with glasses that digs tunnels in seconds; a beast able to topple whole packs.",
-      "es": "Adulto: un topo con gafas que cava túneles en segundos; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: uma toupeira escavadora, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a burrowing mole, a beast able to topple whole packs.",
+      "es": "Adulto: un topo excavador, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "terra_burst",
@@ -1537,9 +1537,9 @@
      "name": "Rinocascalho",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um rinoceronte pequenino com um chifre de quartzo; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a tiny rhino with a quartz horn; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un rinoceronte pequeñito con un cuerno de cuarzo; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um rinoceronte-montanha que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a mountain rhino that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un rinoceronte montaña que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "terra_strike",
@@ -1551,9 +1551,9 @@
      "name": "Rinomonte",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um rinoceronte pequenino com um chifre de quartzo; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a tiny rhino with a quartz horn; a beast able to topple whole packs.",
-      "es": "Adulto: un rinoceronte pequeñito con un cuerno de cuarzo; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um rinoceronte-montanha, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a mountain rhino, a beast able to topple whole packs.",
+      "es": "Adulto: un rinoceronte montaña, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "terra_burst",
@@ -1603,9 +1603,9 @@
      "name": "Escorpedra",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um escorpião de areia que balança a cauda para cumprimentar; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a sand scorpion that waves its tail to say hello; learned to hit targets from afar.",
-      "es": "Adolescente: un escorpión de arena que mueve la cola para saludar; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: um escorpião das dunas que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a dune scorpion that learned to hit targets from afar.",
+      "es": "Adolescente: un escorpión de las dunas que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "terra_bolt",
@@ -1617,9 +1617,9 @@
      "name": "Duneorpião",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um escorpião de areia que balança a cauda para cumprimentar; um atirador implacável de longo alcance.",
-      "en": "Adult: a sand scorpion that waves its tail to say hello; a relentless long-range sharpshooter.",
-      "es": "Adulto: un escorpión de arena que mueve la cola para saludar; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: um escorpião das dunas, um atirador implacável de longo alcance.",
+      "en": "Adult: a dune scorpion, a relentless long-range sharpshooter.",
+      "es": "Adulto: un escorpión de las dunas, un tirador implacable de largo alcance."
      },
      "abilities": [
       "terra_blast",
@@ -1670,9 +1670,9 @@
      "name": "Gorilama",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um macaquinho de barro que bate no peito para tremer o chão; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a clay monkey that beats its chest to shake the ground; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un monito de barro que se golpea el pecho para sacudir el suelo; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um gorila de barro que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a clay gorilla that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un gorila de barro que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "terra_strike",
@@ -1684,9 +1684,9 @@
      "name": "Gorilamonte",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um macaquinho de barro que bate no peito para tremer o chão; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a clay monkey that beats its chest to shake the ground; a beast able to topple whole packs.",
-      "es": "Adulto: un monito de barro que se golpea el pecho para sacudir el suelo; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um gorila de barro, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a clay gorilla, a beast able to topple whole packs.",
+      "es": "Adulto: un gorila de barro, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "terra_burst",
@@ -1738,9 +1738,9 @@
      "name": "Lãmpadão",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma ovelhinha cuja lã acumula estática e acende no escuro; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a lamb whose wool builds up static and glows in the dark; learned to hit targets from afar.",
-      "es": "Adolescente: una ovejita cuya lana acumula estática y brilla en la oscuridad; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: um carneiro de trovão que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a thunder ram that learned to hit targets from afar.",
+      "es": "Adolescente: un carnero del trueno que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "eletrico_bolt",
@@ -1752,9 +1752,9 @@
      "name": "Carneiraio",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma ovelhinha cuja lã acumula estática e acende no escuro; um atirador implacável de longo alcance.",
-      "en": "Adult: a lamb whose wool builds up static and glows in the dark; a relentless long-range sharpshooter.",
-      "es": "Adulto: una ovejita cuya lana acumula estática y brilla en la oscuridad; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: um carneiro de trovão, um atirador implacável de longo alcance.",
+      "en": "Adult: a thunder ram, a relentless long-range sharpshooter.",
+      "es": "Adulto: un carnero del trueno, un tirador implacable de largo alcance."
      },
      "abilities": [
       "eletrico_blast",
@@ -1804,9 +1804,9 @@
      "name": "Enguiraio",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma enguia que dá choquinhos de carinho; aprendeu a acertar alvos de longe.",
-      "en": "Teen: an eel that gives affectionate little shocks; learned to hit targets from afar.",
-      "es": "Adolescente: una anguila que da toquecitos de cariño; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: uma enguia-tempestade que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a storm eel that learned to hit targets from afar.",
+      "es": "Adolescente: una anguila tormenta que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "eletrico_bolt",
@@ -1818,9 +1818,9 @@
      "name": "Trovaenguia",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma enguia que dá choquinhos de carinho; um atirador implacável de longo alcance.",
-      "en": "Adult: an eel that gives affectionate little shocks; a relentless long-range sharpshooter.",
-      "es": "Adulto: una anguila que da toquecitos de cariño; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: uma enguia-tempestade, um atirador implacável de longo alcance.",
+      "en": "Adult: a storm eel, a relentless long-range sharpshooter.",
+      "es": "Adulto: una anguila tormenta, un tirador implacable de largo alcance."
      },
      "abilities": [
       "eletrico_blast",
@@ -1872,9 +1872,9 @@
      "name": "Abelhampère",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma abelhinha que produz mel com gosto de bateria; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a little bee that makes honey that tastes like batteries; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: una abejita que hace miel con sabor a batería; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: uma vespa-trovão que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a thunder wasp that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: una avispa trueno que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "eletrico_strike",
@@ -1886,9 +1886,9 @@
      "name": "Vespatrovão",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma abelhinha que produz mel com gosto de bateria; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a little bee that makes honey that tastes like batteries; a beast able to topple whole packs.",
-      "es": "Adulto: una abejita que hace miel con sabor a batería; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: uma vespa-trovão, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a thunder wasp, a beast able to topple whole packs.",
+      "es": "Adulto: una avispa trueno, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "eletrico_burst",
@@ -1939,9 +1939,9 @@
      "name": "Gaviraio",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um passarinho que pousa nos fios e nunca leva choque; começou a dominar feitiços de área.",
-      "en": "Teen: a little bird that perches on power lines and never gets shocked; began mastering area spells.",
-      "es": "Adolescente: un pajarito que se posa en los cables y nunca se electrocuta; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: uma águia da tempestade que começou a dominar feitiços de área.",
+      "en": "Teen: a tempest eagle that began mastering area spells.",
+      "es": "Adolescente: un águila de la tormenta que empezó a dominar hechizos de área."
      },
      "abilities": [
       "eletrico_blast",
@@ -1953,9 +1953,9 @@
      "name": "Tempestaguia",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um passarinho que pousa nos fios e nunca leva choque; sua magia transforma o campo de batalha.",
-      "en": "Adult: a little bird that perches on power lines and never gets shocked; its magic reshapes the battlefield.",
-      "es": "Adulto: un pajarito que se posa en los cables y nunca se electrocuta; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: uma águia da tempestade, sua magia transforma o campo de batalha.",
+      "en": "Adult: a tempest eagle, its magic reshapes the battlefield.",
+      "es": "Adulto: un águila de la tormenta, su magia transforma el campo de batalla."
      },
      "abilities": [
       "eletrico_dot",
@@ -2005,9 +2005,9 @@
      "name": "Voltaviva",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma água-viva que brilha como lâmpada fluorescente; começou a dominar feitiços de área.",
-      "en": "Teen: a jellyfish that glows like a fluorescent lamp; began mastering area spells.",
-      "es": "Adolescente: una medusa que brilla como lámpara fluorescente; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: uma água-viva de alta voltagem que começou a dominar feitiços de área.",
+      "en": "Teen: a high-voltage jellyfish that began mastering area spells.",
+      "es": "Adolescente: una medusa de alto voltaje que empezó a dominar hechizos de área."
      },
      "abilities": [
       "eletrico_blast",
@@ -2019,9 +2019,9 @@
      "name": "Megaviva",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma água-viva que brilha como lâmpada fluorescente; sua magia transforma o campo de batalha.",
-      "en": "Adult: a jellyfish that glows like a fluorescent lamp; its magic reshapes the battlefield.",
-      "es": "Adulto: una medusa que brilla como lámpara fluorescente; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: uma água-viva de alta voltagem, sua magia transforma o campo de batalha.",
+      "en": "Adult: a high-voltage jellyfish, its magic reshapes the battlefield.",
+      "es": "Adulto: una medusa de alto voltaje, su magia transforma el campo de batalla."
      },
      "abilities": [
       "eletrico_dot",
@@ -2073,9 +2073,9 @@
      "name": "Lebrisa",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um coelhinho tão leve que o vento leva para passear; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a bunny so light the wind takes it for walks; learned to hit targets from afar.",
-      "es": "Adolescente: un conejito tan ligero que el viento lo saca a pasear; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: uma lebre-ventania que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a gale hare that learned to hit targets from afar.",
+      "es": "Adolescente: una liebre vendaval que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "vento_bolt",
@@ -2087,9 +2087,9 @@
      "name": "Lebreventania",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um coelhinho tão leve que o vento leva para passear; um atirador implacável de longo alcance.",
-      "en": "Adult: a bunny so light the wind takes it for walks; a relentless long-range sharpshooter.",
-      "es": "Adulto: un conejito tan ligero que el viento lo saca a pasear; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: uma lebre-ventania, um atirador implacável de longo alcance.",
+      "en": "Adult: a gale hare, a relentless long-range sharpshooter.",
+      "es": "Adulto: una liebre vendaval, un tirador implacable de largo alcance."
      },
      "abilities": [
       "vento_blast",
@@ -2140,9 +2140,9 @@
      "name": "Andorrajada",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma andorinha que desenha redemoinhos no céu; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a swallow that draws whirlwinds in the sky; learned to hit targets from afar.",
-      "es": "Adolescente: una golondrina que dibuja remolinos en el cielo; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: uma andorinha-ciclone que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a cyclone swallow that learned to hit targets from afar.",
+      "es": "Adolescente: una golondrina ciclón que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "vento_bolt",
@@ -2154,9 +2154,9 @@
      "name": "Ciclondor",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma andorinha que desenha redemoinhos no céu; um atirador implacável de longo alcance.",
-      "en": "Adult: a swallow that draws whirlwinds in the sky; a relentless long-range sharpshooter.",
-      "es": "Adulto: una golondrina que dibuja remolinos en el cielo; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: uma andorinha-ciclone, um atirador implacável de longo alcance.",
+      "en": "Adult: a cyclone swallow, a relentless long-range sharpshooter.",
+      "es": "Adulto: una golondrina ciclón, un tirador implacable de largo alcance."
      },
      "abilities": [
       "vento_blast",
@@ -2206,9 +2206,9 @@
      "name": "Libelâmina",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma libélula de asas afiadas como lâminas; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a dragonfly with wings sharp as blades; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: una libélula de alas afiladas como cuchillas; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: uma libélula ceifadora que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a reaper dragonfly that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: una libélula segadora que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "vento_strike",
@@ -2220,9 +2220,9 @@
      "name": "Ceifavento",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma libélula de asas afiadas como lâminas; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a dragonfly with wings sharp as blades; a beast able to topple whole packs.",
-      "es": "Adulto: una libélula de alas afiladas como cuchillas; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: uma libélula ceifadora, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a reaper dragonfly, a beast able to topple whole packs.",
+      "es": "Adulto: una libélula segadora, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "vento_burst",
@@ -2274,9 +2274,9 @@
      "name": "Cabrisopro",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um cabrito que salta de nuvem em nuvem; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a little goat that hops from cloud to cloud; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un cabrito que salta de nube en nube; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um bode da tormenta que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a squall goat that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un macho cabrío de la tormenta que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "vento_strike",
@@ -2288,9 +2288,9 @@
      "name": "Cabritormenta",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um cabrito que salta de nuvem em nuvem; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a little goat that hops from cloud to cloud; a beast able to topple whole packs.",
-      "es": "Adulto: un cabrito que salta de nube en nube; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um bode da tormenta, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a squall goat, a beast able to topple whole packs.",
+      "es": "Adulto: un macho cabrío de la tormenta, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "vento_burst",
@@ -2340,9 +2340,9 @@
      "name": "Nimbosserpe",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma cobrinha feita de nuvem que adora fazer chover; começou a dominar feitiços de área.",
-      "en": "Teen: a little cloud serpent that loves making it rain; began mastering area spells.",
-      "es": "Adolescente: una serpientita de nube a la que le encanta hacer llover; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: um dragão de nuvem que começou a dominar feitiços de área.",
+      "en": "Teen: a cloud dragon that began mastering area spells.",
+      "es": "Adolescente: un dragón de nube que empezó a dominar hechizos de área."
      },
      "abilities": [
       "vento_blast",
@@ -2354,9 +2354,9 @@
      "name": "Dragonimbo",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma cobrinha feita de nuvem que adora fazer chover; sua magia transforma o campo de batalha.",
-      "en": "Adult: a little cloud serpent that loves making it rain; its magic reshapes the battlefield.",
-      "es": "Adulto: una serpientita de nube a la que le encanta hacer llover; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: um dragão de nuvem, sua magia transforma o campo de batalha.",
+      "en": "Adult: a cloud dragon, its magic reshapes the battlefield.",
+      "es": "Adulto: un dragón de nube, su magia transforma el campo de batalla."
      },
      "abilities": [
       "vento_dot",
@@ -2409,9 +2409,9 @@
      "name": "Corcelux",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um potrinho de crina luminosa que galopa ao nascer do sol; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a foal with a glowing mane that gallops at sunrise; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un potrillo de crin luminosa que galopa al amanecer; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um unicórnio da aurora que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a dawn unicorn that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un unicornio del alba que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "luz_strike",
@@ -2423,9 +2423,9 @@
      "name": "Alvorcorno",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um potrinho de crina luminosa que galopa ao nascer do sol; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a foal with a glowing mane that gallops at sunrise; a beast able to topple whole packs.",
-      "es": "Adulto: un potrillo de crin luminosa que galopa al amanecer; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um unicórnio da aurora, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a dawn unicorn, a beast able to topple whole packs.",
+      "es": "Adulto: un unicornio del alba, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "luz_burst",
@@ -2476,9 +2476,9 @@
      "name": "Pavaluz",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um pavãozinho que abre a cauda e ilumina a floresta; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a peachick that fans its tail and lights up the forest; learned to hit targets from afar.",
-      "es": "Adolescente: un pavito que abre la cola e ilumina el bosque; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: um pavão solar que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a solar peacock that learned to hit targets from afar.",
+      "es": "Adolescente: un pavo real solar que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "luz_bolt",
@@ -2490,9 +2490,9 @@
      "name": "Solpavão",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um pavãozinho que abre a cauda e ilumina a floresta; um atirador implacável de longo alcance.",
-      "en": "Adult: a peachick that fans its tail and lights up the forest; a relentless long-range sharpshooter.",
-      "es": "Adulto: un pavito que abre la cola e ilumina el bosque; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: um pavão solar, um atirador implacável de longo alcance.",
+      "en": "Adult: a solar peacock, a relentless long-range sharpshooter.",
+      "es": "Adulto: un pavo real solar, un tirador implacable de largo alcance."
      },
      "abilities": [
       "luz_blast",
@@ -2544,9 +2544,9 @@
      "name": "Vagaluzeiro",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um vaga-lume que guia viajantes perdidos; começou a dominar feitiços de área.",
-      "en": "Teen: a firefly that guides lost travelers; began mastering area spells.",
-      "es": "Adolescente: una luciérnaga que guía a viajeros perdidos; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: um vaga-lume estelar que começou a dominar feitiços de área.",
+      "en": "Teen: a stellar firefly that began mastering area spells.",
+      "es": "Adolescente: una luciérnaga estelar que empezó a dominar hechizos de área."
      },
      "abilities": [
       "luz_blast",
@@ -2558,9 +2558,9 @@
      "name": "Supernovalume",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um vaga-lume que guia viajantes perdidos; sua magia transforma o campo de batalha.",
-      "en": "Adult: a firefly that guides lost travelers; its magic reshapes the battlefield.",
-      "es": "Adulto: una luciérnaga que guía a viajeros perdidos; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: um vaga-lume estelar, sua magia transforma o campo de batalha.",
+      "en": "Adult: a stellar firefly, its magic reshapes the battlefield.",
+      "es": "Adulto: una luciérnaga estelar, su magia transforma el campo de batalla."
      },
      "abilities": [
       "luz_dot",
@@ -2612,9 +2612,9 @@
      "name": "Solião",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um leãozinho com juba de raios de sol; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a lion cub with a mane of sunbeams; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un leoncito con melena de rayos de sol; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um leão dourado que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a golden lion that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un león dorado que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "luz_strike",
@@ -2626,9 +2626,9 @@
      "name": "Aurileão",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um leãozinho com juba de raios de sol; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a lion cub with a mane of sunbeams; a beast able to topple whole packs.",
-      "es": "Adulto: un leoncito con melena de rayos de sol; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um leão dourado, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a golden lion, a beast able to topple whole packs.",
+      "es": "Adulto: un león dorado, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "luz_burst",
@@ -2679,9 +2679,9 @@
      "name": "Lanterpeixe",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um peixe-lanterna que ilumina as profundezas; começou a dominar feitiços de área.",
-      "en": "Teen: a lanternfish that lights up the depths; began mastering area spells.",
-      "es": "Adolescente: un pez linterna que ilumina las profundidades; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: um peixe-lanterna abissal que começou a dominar feitiços de área.",
+      "en": "Teen: an abyssal lanternfish that began mastering area spells.",
+      "es": "Adolescente: un pez linterna abisal que empezó a dominar hechizos de área."
      },
      "abilities": [
       "luz_blast",
@@ -2693,9 +2693,9 @@
      "name": "Abissoluz",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um peixe-lanterna que ilumina as profundezas; sua magia transforma o campo de batalha.",
-      "en": "Adult: a lanternfish that lights up the depths; its magic reshapes the battlefield.",
-      "es": "Adulto: un pez linterna que ilumina las profundidades; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: um peixe-lanterna abissal, sua magia transforma o campo de batalha.",
+      "en": "Adult: an abyssal lanternfish, its magic reshapes the battlefield.",
+      "es": "Adulto: un pez linterna abisal, su magia transforma el campo de batalla."
      },
      "abilities": [
       "luz_dot",
@@ -2747,9 +2747,9 @@
      "name": "Lobreu",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um lobinho feito de breu que uiva para a lua nova; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a wolf pup made of pitch that howls at the new moon; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: un lobezno hecho de brea que aúlla a la luna nueva; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: um lobo do eclipse que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: an eclipse wolf that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: un lobo del eclipse que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "sombra_strike",
@@ -2761,9 +2761,9 @@
      "name": "Eclipsilobo",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um lobinho feito de breu que uiva para a lua nova; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a wolf pup made of pitch that howls at the new moon; a beast able to topple whole packs.",
-      "es": "Adulto: un lobezno hecho de brea que aúlla a la luna nueva; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: um lobo do eclipse, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: an eclipse wolf, a beast able to topple whole packs.",
+      "es": "Adulto: un lobo del eclipse, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "sombra_burst",
@@ -2813,9 +2813,9 @@
      "name": "Morcevulto",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um morceguinho que dorme de cabeça para baixo nas sombras; começou a dominar feitiços de área.",
-      "en": "Teen: a little bat that sleeps upside down in the shadows; began mastering area spells.",
-      "es": "Adolescente: un murcielaguito que duerme boca abajo en las sombras; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: um morcego noturno que começou a dominar feitiços de área.",
+      "en": "Teen: a nocturnal bat that began mastering area spells.",
+      "es": "Adolescente: un murciélago nocturno que empezó a dominar hechizos de área."
      },
      "abilities": [
       "sombra_blast",
@@ -2827,9 +2827,9 @@
      "name": "Noturcego",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um morceguinho que dorme de cabeça para baixo nas sombras; sua magia transforma o campo de batalha.",
-      "en": "Adult: a little bat that sleeps upside down in the shadows; its magic reshapes the battlefield.",
-      "es": "Adulto: un murcielaguito que duerme boca abajo en las sombras; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: um morcego noturno, sua magia transforma o campo de batalha.",
+      "en": "Adult: a nocturnal bat, its magic reshapes the battlefield.",
+      "es": "Adulto: un murciélago nocturno, su magia transforma el campo de batalla."
      },
      "abilities": [
       "sombra_dot",
@@ -2880,9 +2880,9 @@
      "name": "Corvoturvo",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um corvo de olhos vermelhos que coleciona coisas brilhantes; aprendeu a acertar alvos de longe.",
-      "en": "Teen: a red-eyed crow that collects shiny things; learned to hit targets from afar.",
-      "es": "Adolescente: un cuervo de ojos rojos que colecciona cosas brillantes; aprendió a acertar blancos de lejos."
+      "pt_BR": "Adolescente: um corvo da noite que aprendeu a acertar alvos de longe.",
+      "en": "Teen: a night crow that learned to hit targets from afar.",
+      "es": "Adolescente: un cuervo de la noche que aprendió a acertar blancos de lejos."
      },
      "abilities": [
       "sombra_bolt",
@@ -2894,9 +2894,9 @@
      "name": "Nocturnave",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um corvo de olhos vermelhos que coleciona coisas brilhantes; um atirador implacável de longo alcance.",
-      "en": "Adult: a red-eyed crow that collects shiny things; a relentless long-range sharpshooter.",
-      "es": "Adulto: un cuervo de ojos rojos que colecciona cosas brillantes; un tirador implacable de largo alcance."
+      "pt_BR": "Adulto: um corvo da noite, um atirador implacável de longo alcance.",
+      "en": "Adult: a night crow, a relentless long-range sharpshooter.",
+      "es": "Adulto: un cuervo de la noche, un tirador implacable de largo alcance."
      },
      "abilities": [
       "sombra_blast",
@@ -2946,9 +2946,9 @@
      "name": "Tecelúgubre",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: uma aranha que tece teias de escuridão; ficou forte e parte para o corpo a corpo sem medo.",
-      "en": "Teen: a spider that weaves webs of darkness; grew strong and charges into melee fearlessly.",
-      "es": "Adolescente: una araña que teje redes de oscuridad; se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
+      "pt_BR": "Adolescente: uma viúva da noite que ficou forte e parte para o corpo a corpo sem medo.",
+      "en": "Teen: a night widow that grew strong and charges into melee fearlessly.",
+      "es": "Adolescente: una viuda de la noche que se hizo fuerte y se lanza al cuerpo a cuerpo sin miedo."
      },
      "abilities": [
       "sombra_strike",
@@ -2960,9 +2960,9 @@
      "name": "Viúvanoite",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: uma aranha que tece teias de escuridão; uma fera capaz de derrubar grupos inteiros.",
-      "en": "Adult: a spider that weaves webs of darkness; a beast able to topple whole packs.",
-      "es": "Adulto: una araña que teje redes de oscuridad; una bestia capaz de derribar manadas enteras."
+      "pt_BR": "Adulto: uma viúva da noite, uma fera capaz de derrubar grupos inteiros.",
+      "en": "Adult: a night widow, a beast able to topple whole packs.",
+      "es": "Adulto: una viuda de la noche, una bestia capaz de derribar manadas enteras."
      },
      "abilities": [
       "sombra_burst",
@@ -3012,9 +3012,9 @@
      "name": "Polvoscuro",
      "stage": 2,
      "desc": {
-      "pt_BR": "Adolescente: um polvinho que solta tinta de sombra quando fica tímido; começou a dominar feitiços de área.",
-      "en": "Teen: a little octopus that squirts shadow ink when shy; began mastering area spells.",
-      "es": "Adolescente: un pulpito que suelta tinta de sombra cuando se pone tímido; empezó a dominar hechizos de área."
+      "pt_BR": "Adolescente: um kraken das sombras que começou a dominar feitiços de área.",
+      "en": "Teen: a shadow kraken that began mastering area spells.",
+      "es": "Adolescente: un kraken de las sombras que empezó a dominar hechizos de área."
      },
      "abilities": [
       "sombra_blast",
@@ -3026,9 +3026,9 @@
      "name": "Krakenoite",
      "stage": 3,
      "desc": {
-      "pt_BR": "Adulto: um polvinho que solta tinta de sombra quando fica tímido; sua magia transforma o campo de batalha.",
-      "en": "Adult: a little octopus that squirts shadow ink when shy; its magic reshapes the battlefield.",
-      "es": "Adulto: un pulpito que suelta tinta de sombra cuando se pone tímido; su magia transforma el campo de batalla."
+      "pt_BR": "Adulto: um kraken das sombras, sua magia transforma o campo de batalha.",
+      "en": "Adult: a shadow kraken, its magic reshapes the battlefield.",
+      "es": "Adulto: un kraken de las sombras, su magia transforma el campo de batalla."
      },
      "abilities": [
       "sombra_dot",

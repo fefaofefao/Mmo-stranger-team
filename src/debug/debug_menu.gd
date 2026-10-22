@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _process(_d: float) -> void:
 	# mantém o botão acima do banner e do painel inferior
-	btn.position = Vector2(4, get_viewport_rect().size.y - 330)
+	btn.position = Vector2(4, get_viewport_rect().size.y * 0.45)
 
 
 func _toggle() -> void:

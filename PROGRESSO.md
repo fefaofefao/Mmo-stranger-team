@@ -52,3 +52,16 @@ Legenda: [x] concluído · [~] concluído com fallback (ver PENDENCIAS.md)
 - [x] Testes unitários (4.755 asserções), smoke test de integração, paridade GDScript x TypeScript
 - [x] APK debug gerado: dist/bestiario-idle-debug.apk
 - [x] README, DECISOES, PENDENCIAS, RESUMO
+
+## Revisão 2 — melhorias pedidas
+- [x] Rolagem por toque nas listas (hunts e demais telas)
+- [x] Monstros em campo acompanham o nível (bug do nível 200 com 2 ativos e 1 no mapa)
+- [x] 45 famílias novas animal + elemento, nomes carismáticos, sprites com traços e acento do elemento
+- [x] Qualidade 0–100% (até +30%) sorteada no servidor; shiny capturável, +50%, qualidade 50–100%
+- [x] Notificações centralizadas e alinhadas; telas refinadas (molduras, ícones, chips, cards)
+- [x] PT-BR, EN e ES com Market único
+- [x] Drops reduzidos; início acelerado até o nível 10–15
+- [x] Chefe Diário com 3 entradas (servidor mock + Edge Function + SQL)
+- [x] Revezamento do time; caídos ganham XP como participantes; time renasce junto
+- [x] "Ficar" no aviso de hunt difícil silencia por 60 s
+- [x] Testes (7.275 asserções), smoke test, paridade GDScript x TypeScript, desafios recalibrados, APK

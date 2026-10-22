@@ -21,7 +21,7 @@ Registro das decisões tomadas sem consulta (modo autônomo), com o motivo.
 ## Combate
 
 - **Dano** = `ATQ × poder × ATQ / (ATQ + DEF) × tipo × variação(±10%) × crítico(1,5x, 5% base)`. Mínimo 1. A razão ATQ/(ATQ+DEF) é invariante de escala: monstros do mesmo nível sempre levam ~o mesmo número de golpes, em qualquer faixa.
-- **Atributos**: `base_família × (1 + 0,08·(nível−1)) × estágio[1; 1,35; 1,8] × (1 + 6%·estrelas) + itens`, shiny +5%. Velocidade não cresce por nível (só estágio, estrelas e itens); intervalo de ataque = 1,25 s × 100/VEL.
+- **Atributos**: `base_família × (1 + 0,08·(nível−1)) × estágio[1; 1,35; 1,8] × (1 + 6%·estrelas) × qualidade × shiny + itens` — qualidade dá até +30%, shiny +50%. Velocidade não cresce por nível (só estágio, estrelas e itens); intervalo de ataque = 1,25 s × 100/VEL.
 - **Inimigos** usam a mesma fórmula com modificadores (`enemy_mods`: HP 0,42, ATQ 0,55, DEF 0,7) para que o monstro do jogador mate em ~3-4 golpes e possa ser cercado. No Mundo 2 os modificadores sobem gradualmente (rampa de 30 níveis a partir do 90) para não criar um "muro" antes do nível 110.
 - **IA do jogador**: sai de áreas de perigo → escolhe alvo (prioriza quem o ataca; "focar" segue o alvo do líder, "espalhar" penaliza alvos já escolhidos) → usa habilidades (cura <55% HP, área com ≥1-2 inimigos no raio, ataques no alvo) → ataca ou persegue com `AStarGrid2D` (diagonal sem cortar quinas; re-caminho a cada 0,45 s e desvio de criaturas quando bloqueado).
 - **Selvagens**: vagam perto do spawn, *aggro* a 5 tiles, coleira de 12 tiles.
@@ -70,7 +70,7 @@ Registro das decisões tomadas sem consulta (modo autônomo), com o motivo.
 
 ## Itens, Essência e Estrelas
 
-- Raridades e chances por abate: Comum 1/40, Incomum 1/160 (cliente, **vinculados**), Raro 1/200, Épico 1/2.000, Lendário 1/20.000, Mítico 1/250.000 (servidor).
+- Raridades e chances por abate (reduzidas na revisão 2): Comum 1/80, Incomum ~1/333 (cliente, **vinculados**), Raro ~1/333, Épico ~1/3.333, Lendário ~1/33.333, Mítico 1/400.000 (servidor).
 - 4 slots: Amuleto (HP), Garra (ATQ), Armadura (DEF), Relíquia (VEL% + Crítico). 9 tiers (níveis 1, 12, 25, 40, 60, 80, 120, 170, 230), 1 tema por tipo (+15% no atributo principal se o monstro for do mesmo tipo). Afixos aleatórios a partir de Épico (1/2/3 para Épico/Lendário/Mítico).
 - Aprimoramento +1..+10 (+8% por nível); +1..+5 sempre funciona; a partir do +6: 75%, 60%, 45%, 30%, 20%. **Nunca destrói.**
 - Essência ao trocar monstro: `base_estágio[5; 15; 40] × (1 + nível/20) × mult_família × (1 + 0,2·estrelas) × (50 se shiny)`. Shiny pede confirmação dupla.
@@ -104,3 +104,24 @@ Registro das decisões tomadas sem consulta (modo autônomo), com o motivo.
 
 - Login anônimo automático; "Vincular Google" via OAuth do Supabase (linkIdentity). Save na nuvem a cada 2 min (e restauração automática se o save local estiver vazio).
 - Rankings: Nível (validado), Coleção, Shinies, Estrelas e tempo de cada Desafio — global e semanal (semanal = ganho desde o início da semana; para desafios, melhor tempo da semana).
+
+
+## Revisão 2 (pedido de melhorias)
+
+| # | Decisão | Por quê |
+|---|---|---|
+| R1 | **45 famílias novas = animal + elemento** (raposa de fogo, pinguim de gelo, ovelha elétrica, morcego sombrio, polvo das sombras...) com nomes próprios originais em PT-BR (trocadilhos: Picolino, Ursorvete, Lãmpadinha, Torreminho...). Os nomes de monstros são iguais em todos os idiomas, como nomes próprios. | Mais carisma e identidade; nada de nomes genéricos; sem material protegido. |
+| R2 | Sprites placeholder agora têm **traços do animal** (orelhas, caudas, chifres, casco, juba, lã, asas, bico, pinças, tentáculos...) + **acento do elemento** (chama, gota, cristais, folhas, pedra, raio, redemoinho, auréola, fumaça sombria), olhos grandes com brilho, bochechas nos filhotes e sobrancelha brava nos adultos. Prévia em `docs/sprites_preview.png`. | Reconhecível em 32 px e coerente com o tema. |
+| R3 | **Qualidade 0–100%** sorteada no servidor ao recrutar: `100·u^1,8` (maioria baixa — média ~36%; ≥90% ≈ 5%). Bônus de atributos = 30% × qualidade. Faixas: Comum <40, Bom 40–69, Ótimo 70–89, Perfeito 90+. Inicial vem com 50%. Aumenta a Essência no Altar (×(1+q)). | Cria o "caçar um parceiro bom" e retenção de longo prazo. |
+| R4 | **Shiny**: capturável, **+50% de atributos** e qualidade 50–100% (`50 + 50·u^1,3`). Abate de shiny tem chance de recrutamento ×10. | Pedido; shiny vira o grande prêmio. |
+| R5 | **Revezamento do time**: quem cai é substituído pelo próximo membro vivo do grupo; o time só renasce (após 5 s) quando todos caíram. Todo monstro que entrou em campo no ciclo recebe a XP de quem luta (100%), mesmo caído; quem não entrou recebe 50%. Em Desafios/Chefe Diário a substituição também vale, mas não há renascimento. | Pedido; evita "morri e fiquei parado". |
+| R6 | O mundo confere a cada 0,5 s se o número de monstros vivos em campo bate com o nível do principal e **corrige sozinho** (inclusive ao cruzar 110/210 por XP). | Corrige o bug "2 ativos no grupo mas só 1 no mapa". |
+| R7 | **Chefe Diário**: 1 chefe por dia (rotação pelas 45 formas adultas, nível acompanha o principal), **3 entradas/dia** (dia UTC, servidor). Recompensa = ouro (120 abates do nível) e Essência do tipo, proporcional ao dano (mínimo 20%); vitória garante item Raro (22% Épico, 3% Lendário). O servidor limita o dano informado ao máximo plausível do grupo no tempo da luta. | Pedido; dá motivo para voltar todo dia. |
+| R8 | **Início mais rápido**: nos níveis 1–14 os abates necessários são multiplicados de 0,14 (nível 1) até 1 (nível 15). Nível 5 em ~2 min, 10 em ~20 min, 16 em ~1 h. Resto da curva igual. | Ritmo que fisga nos primeiros minutos. |
+| R9 | **Drops menores** (ver tabela acima). | Pedido; valoriza cada drop e o Market. |
+| R10 | Aviso de "hunt difícil": se o jogador escolher **Ficar**, não pergunta de novo por **60 s**. | Pedido. |
+| R11 | **3 idiomas (PT-BR, EN, ES)**. Interface via `Loc.t("texto PT")` + `locale/translations.csv` (gerado por `tools/build_translations.py`, que acusa textos sem tradução); dados (tipos, itens, habilidades, biomas, hunts, raridades, descrições) com objetos `{pt_BR, en, es}` gerados por `tools/gen_data.py`. Idioma inicial detectado pelo sistema. **Um único Market** para todos: as listagens guardam só ids (base, raridade, tipo) e cada jogador vê os nomes no próprio idioma. | Pedido. |
+| R12 | Nomes de hunts com **concordância de gênero** (PT/ES): "Templo Esquecido", "Clareira Selvagem". | Corrige "Templo Esquecida". |
+| R13 | **Visual refinado**: molduras pixel art 9-patch geradas por código (borda com luz/sombra), botões com relevo e variantes (principal dourado, perigo vermelho, anúncio verde), 33 ícones pixel art, chips, etiquetas de tipo/raridade/qualidade, retratos com moldura da cor do tipo, fundo texturizado. | "Cara de bem feito" e coerente com o jogo. |
+| R14 | **Avisos** num único centro de notificações, centralizado no topo, empilhado (máx. 3) com ícone e animação. | Corrige avisos desalinhados no topo. |
+| R15 | **Rolagem por toque**: cards e botões deixam o toque "atravessar" (`MOUSE_FILTER_PASS`) para o ScrollContainer arrastar; zona morta de 12 px. Reproduzido e validado com evento de toque simulado. | Corrige "lista de hunts não rola". |

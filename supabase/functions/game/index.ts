@@ -73,7 +73,7 @@ async function partyUpperStats(ctx: Ctx, party: any[]) {
     if (!D.families[fam]) continue;
     const lvl = Math.min(pm.level ?? 1, ctx.player.validated_level + 10);
     const stage = Math.max(L.stageForLevel(fam, lvl), pm.stage ?? 1);
-    const s: any = L.computeStats(fam, Math.min(stage, 3), lvl, rec?.stars ?? 0, rec?.shiny ?? false);
+    const s: any = L.computeStats(fam, Math.min(stage, 3), lvl, rec?.stars ?? 0, rec?.shiny ?? false, rec?.quality ?? 100);
     s.hp *= allowance; s.atk *= allowance; s.def *= allowance; s.spd *= 1.25; s.crit += 0.1;
     out.push(s);
   }
@@ -103,7 +103,7 @@ async function rollRecruit(ctx: Ctx, hunt: any, form: string, shiny: boolean) {
   if (shiny) ch *= C.shiny_recruit_mult ?? 10;
   if (L.rand() >= ch) return null;
   const f = D.forms[form];
-  const rec = { server_id: L.newId("m"), owner: ctx.uid, family: f.family, form, shiny, stars: 0, converted: false, starter: false };
+  const rec = { server_id: L.newId("m"), owner: ctx.uid, family: f.family, form, shiny, stars: 0, converted: false, starter: false, quality: L.rollQuality(shiny) };
   await admin.from("monsters").insert(rec);
   return rec;
 }
@@ -138,12 +138,19 @@ async function bulkKills(ctx: Ctx, hunt: any, kills: number, goldPct: number) {
     const forms = Object.keys(byForm);
     for (let i = 0; i < Math.min(sr + nr, 30); i++) {
       const fid = forms[Math.floor(L.rand() * forms.length)];
-      const rec = { server_id: L.newId("m"), owner: ctx.uid, family: D.forms[fid].family, form: fid, shiny: i < sr, stars: 0, converted: false, starter: false };
+      const rec = { server_id: L.newId("m"), owner: ctx.uid, family: D.forms[fid].family, form: fid, shiny: i < sr, stars: 0, converted: false, starter: false, quality: L.rollQuality(i < sr) };
       await admin.from("monsters").insert(rec);
       recruits.push(rec);
     }
   }
   return ok({ kills, kills_by_form: byForm, gold_gained: gold, items, recruits, shinies, wallet: wallet(ctx.player) });
+}
+
+function dailyState(ctx: Ctx) {
+  const today = L.dayId(nowS());
+  let d = ctx.player.daily ?? {};
+  if (d.day !== today) d = { day: today, used: 0, tokens: {} };
+  return d;
 }
 
 // ------------------------------------------------------------------ ações
@@ -180,7 +187,7 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     if (!fam?.starter) return err("Inicial inválido");
     const { data: ex } = await admin.from("monsters").select("*").eq("owner", ctx.uid).eq("starter", true).maybeSingle();
     if (ex) return ok({ monster: ex });
-    const rec = { server_id: L.newId("m"), owner: ctx.uid, family: a.family, form: fam.stages[0].form_id, shiny: false, stars: 0, converted: false, starter: true };
+    const rec = { server_id: L.newId("m"), owner: ctx.uid, family: a.family, form: fam.stages[0].form_id, shiny: false, stars: 0, converted: false, starter: true, quality: C.quality?.starter ?? 50 };
     await admin.from("monsters").insert(rec);
     return ok({ monster: rec });
   },
@@ -284,6 +291,53 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     if (first) items.push(await insertItem(ctx, L.createItem(L.pickBase(L.worldDrops([c.type], c.level)), c.rewards.item_rarity, false)));
     return ok({ won: true, first, gold_gained: gold, essence_gained: ess, items, best: rec.best, wallet: wallet(ctx.player), unlocks: c.unlocks ?? "" });
   },
+  async daily_boss_status(ctx, a) {
+    const d = dailyState(ctx);
+    const lvl = Math.min(a.level ?? 1, ctx.player.validated_level + 10);
+    return ok({ boss: L.dailyBossDef(d.day, lvl), used: d.used, entries: C.daily_boss.entries, resets_in: (d.day + 1) * 86400 - nowS() });
+  },
+  async daily_boss_start(ctx, a) {
+    const d = dailyState(ctx);
+    if (d.used >= C.daily_boss.entries) return err("Sem entradas hoje. Volte amanhã!");
+    const lvl = Math.min(a.level ?? 1, ctx.player.validated_level + 10);
+    const token = L.newId("db");
+    d.used += 1;
+    d.tokens[token] = { level: lvl, t: nowS(), done: false };
+    set(ctx, "daily", d);
+    return ok({ token, boss: L.dailyBossDef(d.day, lvl), used: d.used });
+  },
+  async daily_boss_claim(ctx, a) {
+    const d = dailyState(ctx);
+    const tk = d.tokens[a.token];
+    if (!tk || tk.done) return err("Entrada inválida");
+    tk.done = true;
+    set(ctx, "daily", d);
+    const cfg = C.daily_boss;
+    const boss = L.dailyBossDef(d.day, tk.level);
+    const seconds = Math.min(Math.max(Number(a.seconds ?? 0), 0), Math.min(nowS() - tk.t + 5, cfg.time_limit + 5));
+    const party = a.party ?? [];
+    let dps = 0;
+    for (const f of fighters(party, await partyUpperStats(ctx, party))) {
+      dps += (L.expectedDamage(f.atk, boss.def, 1, L.typeMult(f.type, boss.type), f.crit) / L.attackInterval(f.spd)) * 1.6;
+    }
+    const maxFrac = Math.min(1, Math.max(0, (dps * seconds * 1.5) / Math.max(1, boss.hp)));
+    let frac = Math.min(Math.max(Number(a.fraction ?? 0), 0), maxFrac);
+    let won = !!a.won && maxFrac >= 0.95 && seconds >= cfg.min_seconds;
+    if (won) frac = 1;
+    const rf = cfg.min_reward_fraction + (1 - cfg.min_reward_fraction) * frac;
+    const gold = Math.floor(cfg.gold_kills * L.goldForKill(boss.level) * rf);
+    const ess = Math.floor((cfg.essence_base + cfg.essence_per_level * boss.level) * rf);
+    addGold(ctx, gold);
+    addEss(ctx, boss.type, ess);
+    const items: any[] = [];
+    if (won) {
+      let rar = "raro", acc = 0;
+      const r = L.rand();
+      for (const [id, p] of cfg.item_rarity_roll) { acc += p; if (r < acc) { rar = id; break; } }
+      items.push(await insertItem(ctx, L.createItem(L.pickBase(L.worldDrops([boss.type], boss.level)), rar, false)));
+    }
+    return ok({ won, fraction: frac, gold_gained: gold, essence_type: boss.type, essence_gained: ess, items, wallet: wallet(ctx.player) });
+  },
   async challenge_status(ctx) {
     const { data } = await admin.from("challenge_records").select("*").eq("owner", ctx.uid);
     const out: Record<string, any> = {};
@@ -296,7 +350,7 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     if (rec.starter) return err("O inicial não pode ser trocado");
     const level = Math.min(a.level ?? 1, ctx.player.validated_level + 10);
     const stage = Math.min(Math.max(a.stage ?? 1, D.forms[rec.form].stage), 3);
-    const amount = L.essenceValue(rec.family, stage, level, rec.stars, rec.shiny);
+    const amount = L.essenceValue(rec.family, stage, level, rec.stars, rec.shiny, rec.quality ?? 0);
     const t = D.families[rec.family].type;
     const { data: upd } = await admin.from("monsters").update({ converted: true }).eq("server_id", rec.server_id).eq("converted", false).select("server_id");
     if (!upd?.length) return err("Monstro já trocado");
@@ -450,7 +504,7 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
 };
 
 // ações que só leem/escrevem via RPC não devem sobrescrever o jogador com dados antigos
-const NO_PLAYER_WRITE = new Set(["market_search", "market_list_item", "market_list_essence", "market_buy", "market_cancel", "market_my", "rankings", "ranking_categories", "challenge_status"]);
+const NO_PLAYER_WRITE = new Set(["market_search", "market_list_item", "market_list_essence", "market_buy", "market_cancel", "market_my", "rankings", "ranking_categories", "challenge_status", "daily_boss_status"]);
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });

@@ -5,8 +5,14 @@ extends SceneTree
 
 func _initialize() -> void:
 	DataDB.load_all()
-	var out := {"xp": {}, "gold": {}, "kills": {}, "essence": [], "reach": []}
-	for l in [1, 10, 50, 80, 120, 210, 299]:
+	var out := {"xp": {}, "gold": {}, "kills": {}, "essence": [], "reach": [], "daily": [], "quality": []}
+	for d in [[20000, 40], [20001, 150], [20123, 300]]:
+		var b := ServerLogic.daily_boss_def(d[0], d[1])
+		out.daily.append({"in": d, "form": b.form, "hp": b.hp})
+	for q in [0, 37, 100]:
+		var mq := MonsterLogic.create("luz_2", 77, q == 100, "q", "", q)
+		out.quality.append({"q": q, "shiny": q == 100, "atk": MonsterLogic.compute_stats(mq).atk, "ess": EssenceLogic.essence_value(mq)})
+	for l in [1, 2, 5, 9, 10, 11, 50, 80, 120, 210, 299]:
 		out.xp[str(l)] = Formulas.xp_to_next(l)
 		out.gold[str(l)] = Formulas.gold_for_kill(l)
 	for hid in ["w1_s1_agua_1", "w1_s3_fogo_2", "w1_mix_pantano", "w2_150_1", "w2_250_2"]:

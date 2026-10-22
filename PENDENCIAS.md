@@ -13,7 +13,7 @@ O jogo roda completo sem nenhum destes itens (servidor mock + anúncios simulado
    npm i -g supabase
    supabase login
    supabase link --project-ref SEU_PROJECT_REF
-   supabase db push
+   supabase db push          # inclui a migration 20261022000003 (qualidade + Chefe Diário)
    godot --headless --path . -s tools/export_server_data.gd
    supabase functions deploy game
    ```
@@ -58,3 +58,6 @@ O APK debug foi gerado neste ambiente com o template pronto do Godot (sem gradle
 
 ## 5. Arte final
 Substitua os placeholders (ver README, seção 6): 135 spritesheets de monstros, 28 tilesets de bioma, ilustração do Hub.
+
+## 6. Traduções
+EN e ES foram escritos por mim; vale uma revisão por falante nativo antes de publicar (`tools/i18n_table.py` e os textos `{pt_BR, en, es}` em `tools/gen_data.py`). Para um novo idioma: acrescente a coluna nesses dois arquivos, rode `python3 tools/build_translations.py` e `python3 tools/gen_data.py`, inclua o código em `Loc.LANGS` e o `.translation` em `project.godot`.

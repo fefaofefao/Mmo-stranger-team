@@ -38,7 +38,7 @@ func _ready() -> void:
 	_build()
 	Game.feed.connect(_on_feed)
 	Game.party_changed.connect(_on_party_changed)
-	Game.monsters_changed.connect(refresh_hud)
+	Game.monsters_changed.connect(rebuild_hud)
 	Game.boosts_changed.connect(refresh_hud)
 	Game.fighting_changed.connect(_on_party_changed)
 	Game.wallet_changed.connect(_update_gold)

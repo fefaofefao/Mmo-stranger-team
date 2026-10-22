@@ -266,7 +266,6 @@ static func button(text: String, cb: Callable = Callable(), size := 24, min_h :=
 	b.custom_minimum_size = Vector2(0, min_h)
 	b.focus_mode = Control.FOCUS_NONE
 	b.mouse_filter = Control.MOUSE_FILTER_PASS
-	b.clip_text = true
 	if variant != "":
 		set_variant(b, variant)
 	if cb.is_valid():
@@ -311,7 +310,7 @@ static func small_button(text: String, cb: Callable = Callable(), variant := "")
 static func icon_button(icon_name: String, text: String, cb: Callable = Callable(), size := 22, min_h := 68.0, variant := "") -> Button:
 	var b := button(text, cb, size, min_h, variant)
 	b.icon = Icons.tex(icon_name)
-	b.expand_icon = false
+	b.expand_icon = true
 	b.add_theme_constant_override("icon_max_width", 32)
 	b.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	b.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST

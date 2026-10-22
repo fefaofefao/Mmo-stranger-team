@@ -17,5 +17,15 @@ for (const hid in ref.kills) {
 }
 for (const e of ref.essence) near(L.essenceValue(e.in[0], e.in[1], e.in[2], e.in[3], e.in[4]), e.v, 0.5, `essence ${e.in}`);
 for (const r of ref.reach) near(L.maxReachableLevel(r.in[0], r.in[1]), r.v, 0, `reach ${r.in}`);
+for (const d of ref.daily) {
+  const b = L.dailyBossDef(d.in[0], d.in[1]);
+  if (b.form !== d.form) { fails++; console.error("FALHOU chefe diário", d.in, b.form, d.form); }
+  near(b.hp, d.hp, d.hp * 0.0001, `hp chefe diário ${d.in}`);
+}
+for (const q of ref.quality) {
+  const st = L.computeStats("luz_2", L.stageForLevel("luz_2", 77), 77, 0, q.shiny, q.q);
+  near(st.atk, q.atk, 0.01, `atk com qualidade ${q.q}`);
+  near(L.essenceValue("luz_2", L.stageForLevel("luz_2", 77), 77, 0, q.shiny, q.q), q.ess, 0.5, `essência com qualidade ${q.q}`);
+}
 console.log(fails ? `${fails} falhas` : "paridade GDScript x TypeScript OK");
 if (fails) Deno.exit(1);

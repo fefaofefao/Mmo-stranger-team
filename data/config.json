@@ -98,8 +98,8 @@
   "low_level_penalty_start": 10,
   "low_level_penalty_per_level": 0.04,
   "low_level_penalty_min": 0.2,
-  "early_levels": 12,
-  "early_mult_start": 0.22
+  "early_levels": 15,
+  "early_mult_start": 0.14
  },
  "gold": {
   "kill_base": 2.0,

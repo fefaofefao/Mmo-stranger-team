@@ -541,13 +541,14 @@ static func _quadruped(ctx: Dictionary) -> void:
 		var bw := s * 0.4
 		var bh := s * 0.22
 		var bcy := by - leg_h - bh * 0.8
-		_tail(ctx, cx - fx * bw * 0.9, bcy - bh * 0.2, -fx)
-		_legs4(ctx, cx, bcy + bh * 0.5, bw, leg_h)
-		ellipse(img, cx, bcy, bw, bh, pal.base)
+		var bx := cx - fx * s * 0.08
+		_tail(ctx, bx - fx * bw * 0.9, bcy - bh * 0.2, -fx)
+		_legs4(ctx, bx, bcy + bh * 0.5, bw, leg_h)
+		ellipse(img, bx, bcy, bw, bh, pal.base)
 		if _ft(ctx, "belly"):
-			ellipse(img, cx + fx * 2, bcy + bh * 0.45, bw * 0.6, bh * 0.4, pal.belly)
-		_body_decor(ctx, cx, bcy, bw, bh)
-		_head(ctx, cx + fx * bw * 0.85, bcy - bh * 0.9, hr)
+			ellipse(img, bx + fx * 2, bcy + bh * 0.45, bw * 0.6, bh * 0.4, pal.belly)
+		_body_decor(ctx, bx, bcy, bw, bh)
+		_head(ctx, bx + fx * bw * 0.8, bcy - bh * 0.9, hr)
 	else:
 		var bw := s * 0.3
 		var bh := s * 0.24

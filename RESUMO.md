@@ -1,14 +1,34 @@
 # Resumo da entrega — Bestiário Idle
 
+## Revisão 2 — o que mudou (pedido de melhorias)
+| Pedido | Como ficou | Como testar |
+|---|---|---|
+| Lista de hunts não rolava | Toque "atravessa" cards/botões até o ScrollContainer em **todas** as telas | Hub → Hunts → arraste a lista |
+| Nível 200 com 2 ativos e 1 no mapa | O mapa confere a cada 0,5 s quantos devem lutar e corrige sozinho | Debug → Nível 200 / 210 |
+| Nomes genéricos | 45 famílias **animal + elemento** com nomes originais (Fogarito, Picolino, Lãmpadinha, Ursorvete, Breuzinho...) e sprites com traços do bicho + acento do elemento | Coleção |
+| Qualidade 0–100% | Sorteada **no servidor** ao recrutar, até **+30%** de atributos; selo Comum/Bom/Ótimo/Perfeito | Debug → Recrutar 3; tela do monstro |
+| Shiny | Capturável, **+50%** de atributos, qualidade 50–100% | Debug → Recrutar 1 SHINY |
+| Avisos desalinhados | Centro de notificações único, centralizado, empilhado (máx. 3) | Qualquer drop/recruta |
+| Telas mais refinadas | Molduras pixel art, 33 ícones, botões com relevo, chips, cards, retratos com moldura do tipo | Todas as telas (`docs/screenshots/`) |
+| Vários idiomas, 1 Market | PT-BR, EN, ES (detecta do sistema; troca no título/Configurações); Market compartilhado | Configurações → Idioma |
+| Drop menor | Comum 1/80, Incomum/Raro ~1/333, Épico ~1/3.333, Lendário ~1/33.333, Mítico 1/400.000 | — |
+| Início mais rápido | Nível 5 em ~2 min, **10 em ~20 min**, 16 em ~1 h | Comece um perfil novo |
+| Chefe Diário | 3 entradas/dia; ouro + Essência proporcionais ao dano; vitória dá item Raro+ (chance de Épico/Lendário) | Hub → Chefe Diário (debug: restaurar entradas) |
+| Revezamento do time | Quem cai é substituído pelo próximo vivo; time renasce junto quando todos caem; caídos que lutaram recebem XP integral | Hunt difícil com 2+ monstros |
+| "Ficar" no aviso | Não pergunta de novo por 60 s | Hunt bem acima do nível |
+
+Validação: 7.275 asserções em testes, smoke test sem falhas (inclui revezamento, 200→210 e chefe diário), paridade GDScript × TypeScript (servidor real recebeu qualidade e Chefe Diário + migration nova), desafios recalibrados com o combate real.
+
+
 ## O que foi feito
 Um RPG idle completo para Android em **Godot 4.3**, todas as 8 fases da especificação:
 
 - **Combate em mapa** (nada de "dois bonecos parados"): tiles 32x32 em pixel art, câmera seguindo o monstro, zoom, criaturas andando tile a tile em 4 direções, barras de HP, números de dano coloridos, efeitos de ataque/habilidade, corpos no chão e loot coletado automaticamente. IA 100% automática com AStarGrid2D; o jogador só decide estratégia (hunt, grupo, itens, estrelas e "focar/espalhar").
-- **Conteúdo**: 9 tipos em ciclo, 45 famílias / 135 formas com nomes e descrições originais em PT-BR, 63 habilidades, 28 biomas (incluindo 9 de transição e versões corrompidas), 144 hunts no Mundo 1 + 66 no Mundo 2 (90→300, geradas por config), 9 Desafios com chefes, 324 bases de item com afixos.
+- **Conteúdo**: 9 tipos em ciclo, 45 famílias animal + elemento / 135 formas com nomes e descrições originais (PT-BR, EN, ES), 63 habilidades, 28 biomas (incluindo 9 de transição e versões corrompidas), 144 hunts no Mundo 1 + 66 no Mundo 2 (90→300, geradas por config), 9 Desafios com chefes, 324 bases de item com afixos.
 - **Progressão**: grupo de 3 (2 lutando no 110, 3 no 210), offline de até 8 h, recrutamento, shiny, Coleção com marcos, Altar de Essências, Estrelas, aprimoramento +10, inventário/Depot/Loja NPC.
 - **Online**: camada de serviço única com **mock local completo** (servidor, ranking e market com jogadores fictícios) e **Supabase real** (migrations, RLS, funções atômicas do market, Edge Function com todas as regras anti-trapaça).
 - **Monetização**: banner fora do mapa, 3 rewarded opcionais, intersticial com limite de 5 min, consentimento UMP — com modo simulado quando o plugin não está instalado.
-- **Qualidade**: 4.755 asserções em testes unitários, smoke test que joga de verdade (combate real bate com o modelo de abates/hora: ~600 vs ~615/h), paridade das fórmulas GDScript × TypeScript, simulação de balanceamento 1→300, calibração dos chefes com o combate real, screenshots automáticos (`docs/screenshots/`).
+- **Qualidade**: 7.275 asserções em testes unitários, smoke test que joga de verdade (combate real bate com o modelo de abates/hora: ~855 vs ~821/h), paridade das fórmulas GDScript × TypeScript, simulação de balanceamento 1→300, calibração dos chefes com o combate real, screenshots automáticos (`docs/screenshots/`).
 
 ## APK
 - Arquivo: **`dist/bestiario-idle-debug.apk`** (debug, assinado com keystore de debug, armeabi-v7a + arm64-v8a, ~47 MB).
@@ -20,11 +40,11 @@ Um RPG idle completo para Android em **Godot 4.3**, todas as 8 fases da especifi
 
 ## Menu de debug (só no APK debug)
 Botão discreto **dbg** no canto inferior esquerdo (acima do painel de ações):
-- **Nível do grupo**: 1, 10, 16, 35, 60, 80, 110, 150, 210, 300 ou +10 (testa evoluções e o 2º/3º monstro em campo).
+- **Nível do grupo**: 1, 10, 16, 35, 60, 80, 110, 150, 200, 210, 300 ou +10 (testa evoluções e o 2º/3º monstro em campo).
 - **Velocidade do tempo**: x1, x10, x100 (o combate roda mais passos; o servidor mock acompanha o relógio).
 - **Simular 8h offline agora**.
 - **Forçar**: próximo shiny, próximo recrutamento, próximo drop Raro/Épico/Lendário/Mítico, drop Incomum.
-- **Recursos**: +100k ouro, +1000 de cada Essência; **desbloquear todas as hunts e desafios**; recrutar 3.
+- **Recursos**: +100k ouro, +1000 de cada Essência; **desbloquear todas as hunts e desafios**; recrutar 3; **recrutar 1 shiny**; **restaurar entradas do Chefe Diário**.
 - **Spawnar monstros** (5 de uma vez, para testar ser cercado e desempenho).
 - **Trocar bioma** do mapa atual (todos os 28 biomas).
 - **Exportar spritesheets placeholder** (modelos PNG para o artista).
@@ -40,13 +60,14 @@ Botão discreto **dbg** no canto inferior esquerdo (acima do painel de ações):
 ## Ajustes de balanceamento sugeridos para você testar
 Todos em `data/*.json` (sem recompilar nada; para o servidor real, rode `tools/export_server_data.gd` e faça o deploy da função).
 
-1. **Ritmo do início** (`config.xp.kills_a`, hoje 2,9): nível 16 em ~2 h de caça. Se quiser a 1ª evolução na primeira sessão, teste 2,0.
+1. **Ritmo do início** (`config.xp.early_levels` 15 e `early_mult_start` 0,14): nível 10 em ~20 min, 16 em ~1 h. Para ainda mais rápido, 0,10; o resto da curva usa `kills_a` (2,9).
 2. **Mundo 1 → 80** (~65 h de caça ≈ 1 semana casual): para alongar/encurtar mexa em `kills_a`; para mexer só no endgame use `late_slope` (0,022).
 3. **210 em ~1.150 h** (≈2 a 4,5 meses): ajuste `late_slope` (+0,005 ≈ +15% de tempo no endgame).
 4. **Dificuldade das hunts**: `enemy_mods` (HP 0,42 / ATQ 0,55 / DEF 0,7). Se o monstro morrer demais nas hunts recomendadas, baixe ATQ para 0,5.
 5. **Mundo 2**: `world2.enemy_mods` e `mods_ramp_levels` (30) controlam a transição 90→120; `world2.density` (30) e `respawn` (8 s) controlam o ritmo.
 6. **Desafios**: `challenges.json` → `hp_mult`/`atk_mult` por chefe. O 50 e o 60 ficaram justos para tipos neutros; o 90 é propositalmente o mais difícil. Teste com `tools/challenge_sim.gd -- 50`.
-7. **Drops**: Comum 1/40 pode lotar o inventário em sessões longas — teste 1/60 (`rarities[0].chance` = 0,0167) ou deixe a auto-venda ligada por padrão.
+7. **Drops** (`rarities[].chance`): reduzidos na revisão 2 (Comum 1/80). Se o Market ficar vazio, suba Raro/Épico antes dos comuns.
+13. **Qualidade** (`quality.exponent` 1,8): maior = qualidades altas mais raras. **Chefe Diário** (`daily_boss`): `hp_mult` 22, `gold_kills` 120, chances de item.
 8. **Recrutamento** 0,2%: dá ~2 recrutas por hora de caça. Para colecionadores, 0,3%; para escassez, 0,1%.
 9. **Essência/Estrelas**: a 5ª estrela (1.500) exige ~40 monstros adultos trocados; se ficar pesado, baixe para 1.000.
 10. **Aprimoramento**: chances do +6 ao +10 (75/60/45/30/20%). Para um market mais aquecido, reduza o +9/+10.

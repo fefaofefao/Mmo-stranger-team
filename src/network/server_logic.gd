@@ -864,7 +864,7 @@ func _check_listing(price: int) -> Dictionary:
 		if l.seller_id == p().id:
 			mine += 1
 	if mine >= int(m.max_listings):
-		return _err("Limite de %d listagens atingido" % int(m.max_listings))
+		return _err("Limite de listagens atingido")
 	return _ok()
 
 

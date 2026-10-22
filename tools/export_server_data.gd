@@ -15,9 +15,19 @@ func _initialize() -> void:
 		"config": DataDB.config, "types": DataDB.type_ids, "strong_mult": DataDB.strong_mult, "weak_mult": DataDB.weak_mult,
 		"families": DataDB.families, "forms": DataDB.forms, "abilities": DataDB.abilities, "hunts": hunts,
 		"challenges": DataDB.challenges, "challenge_fail_cooldown": DataDB.challenge_fail_cooldown,
-		"item_bases": DataDB.item_bases, "item_tiers": DataDB.item_tiers, "item_slots": DataDB.item_slots, "affixes": DataDB.affixes,
+		"item_bases": DataDB.item_bases,
+		"form_order": _adult_order(), "item_tiers": DataDB.item_tiers, "item_slots": DataDB.item_slots, "affixes": DataDB.affixes,
 	}
 	var f := FileAccess.open("res://supabase/functions/_shared/gamedata.json", FileAccess.WRITE)
 	f.store_string(JSON.stringify(out))
 	print("gamedata.json exportado (%d hunts)" % hunts.size())
 	quit()
+
+
+
+func _adult_order() -> Array:
+	var out: Array = []
+	for f in DataDB.form_list:
+		if int(f.stage) == 3:
+			out.append(f.form_id)
+	return out

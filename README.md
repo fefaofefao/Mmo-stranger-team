@@ -151,13 +151,19 @@ Opcional `<bioma>_corrupted.png` para o Mundo 2 (senão a paleta corrompida é a
 ### Hub
 `assets/ui/hub.png` substitui a ilustração do Hub/título.
 
+### Ícones da interface
+Os 33 ícones pixel art são gerados em `src/art/icons.gd`; um PNG em `assets/ui/icons/<nome>.png` (ex.: `coin.png`, `skull.png`) substitui o gerado. Os sprites placeholder de monstros usam quadro de 56 px (filhote 25, jovem 34, adulto 45 px de altura).
+
 ## 7. Ajustar o balanceamento
 
 Tudo em `data/*.json` (ver `DECISOES.md` para as fórmulas). Para regerar o conteúdo base (nomes, hunts, itens): `python3 tools/gen_data.py` — **sobrescreve** os JSON de conteúdo (não toca em `config.json`, `ads.json`, `backend.json`). Depois de mexer na curva, rode `tools/balance_sim.gd` para ver o novo tempo por faixa de nível.
 
-## 8. Tradução
+## 8. Idiomas (PT-BR, EN, ES)
 
-Os textos fixos dos Controls são traduzidos automaticamente pelo Godot a partir de `locale/translations.csv` (chave = texto em PT-BR). Adicione colunas (`es`, `fr`...) e linhas; o idioma é escolhido em *Configurações*.
+- **Interface**: todo texto passa por `Loc.t("texto em PT-BR")` (`src/core/loc.gd`). As traduções ficam em `tools/i18n_table.py`; `python3 tools/build_translations.py` gera `locale/translations.csv` e acusa textos sem tradução ou com `%s/%d` divergentes (`python3 tools/extract_strings.py` lista os textos usados no código).
+- **Dados** (tipos, itens, habilidades, biomas, hunts, raridades, descrições): objetos `{pt_BR, en, es}` gerados por `tools/gen_data.py` e lidos com `Loc.tx(...)` / helpers do `DataDB` (`hunt_name`, `form_desc`, `ability_name`...).
+- O idioma inicial vem do sistema; o jogador troca em *Configurações* ou na tela de título.
+- **Market único**: as listagens guardam só ids, então jogadores de qualquer idioma compram e vendem no mesmo mercado e cada um lê os nomes no próprio idioma.
 
 ## Licenças
 Fonte DejaVu Sans (licença livre, ver `assets/fonts/DejaVu-LICENSE.txt`). Toda a arte placeholder é gerada por código.

@@ -386,9 +386,9 @@
    "type": "luz",
    "biome": "templo",
    "boss_level": 82,
-   "hp_mult": 67.88,
-   "atk_mult": 0.34,
-   "def_mult": 1.2,
+   "hp_mult": 37.04,
+   "atk_mult": 0.25,
+   "def_mult": 0.9,
    "scale": 1.6,
    "phases": [
     {
@@ -444,8 +444,8 @@
    "type": "sombra",
    "biome": "cemiterio",
    "boss_level": 92,
-   "hp_mult": 33.08,
-   "atk_mult": 0.18,
+   "hp_mult": 34.4,
+   "atk_mult": 0.21,
    "def_mult": 1.2,
    "scale": 1.6,
    "phases": [
@@ -463,9 +463,9 @@
    "mechanics": {
     "summon": {
      "form": "sombra_2_3",
-     "every": 12,
-     "count": 2,
-     "level_offset": 12
+     "every": 14,
+     "count": 1,
+     "level_offset": 20
     },
     "aoe": {
      "every": 6,
