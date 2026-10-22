@@ -3,22 +3,38 @@
  "slots": [
   {
    "id": "amuleto",
-   "name": "Amuleto",
+   "name": {
+    "pt_BR": "Amuleto",
+    "en": "Amulet",
+    "es": "Amuleto"
+   },
    "main_stat": "hp"
   },
   {
    "id": "garra",
-   "name": "Garra",
+   "name": {
+    "pt_BR": "Garra",
+    "en": "Claw",
+    "es": "Garra"
+   },
    "main_stat": "atk"
   },
   {
    "id": "armadura",
-   "name": "Armadura",
+   "name": {
+    "pt_BR": "Armadura",
+    "en": "Armor",
+    "es": "Armadura"
+   },
    "main_stat": "def"
   },
   {
    "id": "reliquia",
-   "name": "Relíquia",
+   "name": {
+    "pt_BR": "Relíquia",
+    "en": "Relic",
+    "es": "Reliquia"
+   },
    "main_stat": "spd"
   }
  ],
@@ -72,7 +88,11 @@
  "bases": {
   "amuleto_agua_t1": {
    "id": "amuleto_agua_t1",
-   "name": "Pingente Coralino",
+   "name": {
+    "pt_BR": "Pingente Coralino",
+    "en": "Coral Pendant",
+    "es": "Colgante Coralino"
+   },
    "slot": "amuleto",
    "type": "agua",
    "tier": 1,
@@ -82,7 +102,11 @@
   },
   "garra_agua_t1": {
    "id": "garra_agua_t1",
-   "name": "Garra Coralina",
+   "name": {
+    "pt_BR": "Garra Coralina",
+    "en": "Coral Claw",
+    "es": "Garra Coralina"
+   },
    "slot": "garra",
    "type": "agua",
    "tier": 1,
@@ -92,7 +116,11 @@
   },
   "armadura_agua_t1": {
    "id": "armadura_agua_t1",
-   "name": "Couraça Coralina",
+   "name": {
+    "pt_BR": "Couraça Coralina",
+    "en": "Coral Cuirass",
+    "es": "Coraza Coralina"
+   },
    "slot": "armadura",
    "type": "agua",
    "tier": 1,
@@ -102,7 +130,11 @@
   },
   "reliquia_agua_t1": {
    "id": "reliquia_agua_t1",
-   "name": "Seixo Coralino",
+   "name": {
+    "pt_BR": "Seixo Coralino",
+    "en": "Coral Pebble",
+    "es": "Guijarro Coralino"
+   },
    "slot": "reliquia",
    "type": "agua",
    "tier": 1,
@@ -112,7 +144,11 @@
   },
   "amuleto_fogo_t1": {
    "id": "amuleto_fogo_t1",
-   "name": "Pingente Ígneo",
+   "name": {
+    "pt_BR": "Pingente Ígneo",
+    "en": "Igneous Pendant",
+    "es": "Colgante Ígneo"
+   },
    "slot": "amuleto",
    "type": "fogo",
    "tier": 1,
@@ -122,7 +158,11 @@
   },
   "garra_fogo_t1": {
    "id": "garra_fogo_t1",
-   "name": "Garra Ígnea",
+   "name": {
+    "pt_BR": "Garra Ígnea",
+    "en": "Igneous Claw",
+    "es": "Garra Ígnea"
+   },
    "slot": "garra",
    "type": "fogo",
    "tier": 1,
@@ -132,7 +172,11 @@
   },
   "armadura_fogo_t1": {
    "id": "armadura_fogo_t1",
-   "name": "Couraça Ígnea",
+   "name": {
+    "pt_BR": "Couraça Ígnea",
+    "en": "Igneous Cuirass",
+    "es": "Coraza Ígnea"
+   },
    "slot": "armadura",
    "type": "fogo",
    "tier": 1,
@@ -142,7 +186,11 @@
   },
   "reliquia_fogo_t1": {
    "id": "reliquia_fogo_t1",
-   "name": "Seixo Ígneo",
+   "name": {
+    "pt_BR": "Seixo Ígneo",
+    "en": "Igneous Pebble",
+    "es": "Guijarro Ígneo"
+   },
    "slot": "reliquia",
    "type": "fogo",
    "tier": 1,
@@ -152,7 +200,11 @@
   },
   "amuleto_gelo_t1": {
    "id": "amuleto_gelo_t1",
-   "name": "Pingente Glacial",
+   "name": {
+    "pt_BR": "Pingente Glacial",
+    "en": "Glacial Pendant",
+    "es": "Colgante Glacial"
+   },
    "slot": "amuleto",
    "type": "gelo",
    "tier": 1,
@@ -162,7 +214,11 @@
   },
   "garra_gelo_t1": {
    "id": "garra_gelo_t1",
-   "name": "Garra Glacial",
+   "name": {
+    "pt_BR": "Garra Glacial",
+    "en": "Glacial Claw",
+    "es": "Garra Glacial"
+   },
    "slot": "garra",
    "type": "gelo",
    "tier": 1,
@@ -172,7 +228,11 @@
   },
   "armadura_gelo_t1": {
    "id": "armadura_gelo_t1",
-   "name": "Couraça Glacial",
+   "name": {
+    "pt_BR": "Couraça Glacial",
+    "en": "Glacial Cuirass",
+    "es": "Coraza Glacial"
+   },
    "slot": "armadura",
    "type": "gelo",
    "tier": 1,
@@ -182,7 +242,11 @@
   },
   "reliquia_gelo_t1": {
    "id": "reliquia_gelo_t1",
-   "name": "Seixo Glacial",
+   "name": {
+    "pt_BR": "Seixo Glacial",
+    "en": "Glacial Pebble",
+    "es": "Guijarro Glacial"
+   },
    "slot": "reliquia",
    "type": "gelo",
    "tier": 1,
@@ -192,7 +256,11 @@
   },
   "amuleto_planta_t1": {
    "id": "amuleto_planta_t1",
-   "name": "Pingente Silvestre",
+   "name": {
+    "pt_BR": "Pingente Silvestre",
+    "en": "Wild Pendant",
+    "es": "Colgante Silvestre"
+   },
    "slot": "amuleto",
    "type": "planta",
    "tier": 1,
@@ -202,7 +270,11 @@
   },
   "garra_planta_t1": {
    "id": "garra_planta_t1",
-   "name": "Garra Silvestre",
+   "name": {
+    "pt_BR": "Garra Silvestre",
+    "en": "Wild Claw",
+    "es": "Garra Silvestre"
+   },
    "slot": "garra",
    "type": "planta",
    "tier": 1,
@@ -212,7 +284,11 @@
   },
   "armadura_planta_t1": {
    "id": "armadura_planta_t1",
-   "name": "Couraça Silvestre",
+   "name": {
+    "pt_BR": "Couraça Silvestre",
+    "en": "Wild Cuirass",
+    "es": "Coraza Silvestre"
+   },
    "slot": "armadura",
    "type": "planta",
    "tier": 1,
@@ -222,7 +298,11 @@
   },
   "reliquia_planta_t1": {
    "id": "reliquia_planta_t1",
-   "name": "Seixo Silvestre",
+   "name": {
+    "pt_BR": "Seixo Silvestre",
+    "en": "Wild Pebble",
+    "es": "Guijarro Silvestre"
+   },
    "slot": "reliquia",
    "type": "planta",
    "tier": 1,
@@ -232,7 +312,11 @@
   },
   "amuleto_terra_t1": {
    "id": "amuleto_terra_t1",
-   "name": "Pingente Rochoso",
+   "name": {
+    "pt_BR": "Pingente Rochoso",
+    "en": "Rocky Pendant",
+    "es": "Colgante Rocoso"
+   },
    "slot": "amuleto",
    "type": "terra",
    "tier": 1,
@@ -242,7 +326,11 @@
   },
   "garra_terra_t1": {
    "id": "garra_terra_t1",
-   "name": "Garra Rochosa",
+   "name": {
+    "pt_BR": "Garra Rochosa",
+    "en": "Rocky Claw",
+    "es": "Garra Rocosa"
+   },
    "slot": "garra",
    "type": "terra",
    "tier": 1,
@@ -252,7 +340,11 @@
   },
   "armadura_terra_t1": {
    "id": "armadura_terra_t1",
-   "name": "Couraça Rochosa",
+   "name": {
+    "pt_BR": "Couraça Rochosa",
+    "en": "Rocky Cuirass",
+    "es": "Coraza Rocosa"
+   },
    "slot": "armadura",
    "type": "terra",
    "tier": 1,
@@ -262,7 +354,11 @@
   },
   "reliquia_terra_t1": {
    "id": "reliquia_terra_t1",
-   "name": "Seixo Rochoso",
+   "name": {
+    "pt_BR": "Seixo Rochoso",
+    "en": "Rocky Pebble",
+    "es": "Guijarro Rocoso"
+   },
    "slot": "reliquia",
    "type": "terra",
    "tier": 1,
@@ -272,7 +368,11 @@
   },
   "amuleto_eletrico_t1": {
    "id": "amuleto_eletrico_t1",
-   "name": "Pingente Voltaico",
+   "name": {
+    "pt_BR": "Pingente Voltaico",
+    "en": "Voltaic Pendant",
+    "es": "Colgante Voltaico"
+   },
    "slot": "amuleto",
    "type": "eletrico",
    "tier": 1,
@@ -282,7 +382,11 @@
   },
   "garra_eletrico_t1": {
    "id": "garra_eletrico_t1",
-   "name": "Garra Voltaica",
+   "name": {
+    "pt_BR": "Garra Voltaica",
+    "en": "Voltaic Claw",
+    "es": "Garra Voltaica"
+   },
    "slot": "garra",
    "type": "eletrico",
    "tier": 1,
@@ -292,7 +396,11 @@
   },
   "armadura_eletrico_t1": {
    "id": "armadura_eletrico_t1",
-   "name": "Couraça Voltaica",
+   "name": {
+    "pt_BR": "Couraça Voltaica",
+    "en": "Voltaic Cuirass",
+    "es": "Coraza Voltaica"
+   },
    "slot": "armadura",
    "type": "eletrico",
    "tier": 1,
@@ -302,7 +410,11 @@
   },
   "reliquia_eletrico_t1": {
    "id": "reliquia_eletrico_t1",
-   "name": "Seixo Voltaico",
+   "name": {
+    "pt_BR": "Seixo Voltaico",
+    "en": "Voltaic Pebble",
+    "es": "Guijarro Voltaico"
+   },
    "slot": "reliquia",
    "type": "eletrico",
    "tier": 1,
@@ -312,7 +424,11 @@
   },
   "amuleto_vento_t1": {
    "id": "amuleto_vento_t1",
-   "name": "Pingente Etéreo",
+   "name": {
+    "pt_BR": "Pingente Etéreo",
+    "en": "Ethereal Pendant",
+    "es": "Colgante Etéreo"
+   },
    "slot": "amuleto",
    "type": "vento",
    "tier": 1,
@@ -322,7 +438,11 @@
   },
   "garra_vento_t1": {
    "id": "garra_vento_t1",
-   "name": "Garra Etérea",
+   "name": {
+    "pt_BR": "Garra Etérea",
+    "en": "Ethereal Claw",
+    "es": "Garra Etérea"
+   },
    "slot": "garra",
    "type": "vento",
    "tier": 1,
@@ -332,7 +452,11 @@
   },
   "armadura_vento_t1": {
    "id": "armadura_vento_t1",
-   "name": "Couraça Etérea",
+   "name": {
+    "pt_BR": "Couraça Etérea",
+    "en": "Ethereal Cuirass",
+    "es": "Coraza Etérea"
+   },
    "slot": "armadura",
    "type": "vento",
    "tier": 1,
@@ -342,7 +466,11 @@
   },
   "reliquia_vento_t1": {
    "id": "reliquia_vento_t1",
-   "name": "Seixo Etéreo",
+   "name": {
+    "pt_BR": "Seixo Etéreo",
+    "en": "Ethereal Pebble",
+    "es": "Guijarro Etéreo"
+   },
    "slot": "reliquia",
    "type": "vento",
    "tier": 1,
@@ -352,7 +480,11 @@
   },
   "amuleto_luz_t1": {
    "id": "amuleto_luz_t1",
-   "name": "Pingente Radiante",
+   "name": {
+    "pt_BR": "Pingente Radiante",
+    "en": "Radiant Pendant",
+    "es": "Colgante Radiante"
+   },
    "slot": "amuleto",
    "type": "luz",
    "tier": 1,
@@ -362,7 +494,11 @@
   },
   "garra_luz_t1": {
    "id": "garra_luz_t1",
-   "name": "Garra Radiante",
+   "name": {
+    "pt_BR": "Garra Radiante",
+    "en": "Radiant Claw",
+    "es": "Garra Radiante"
+   },
    "slot": "garra",
    "type": "luz",
    "tier": 1,
@@ -372,7 +508,11 @@
   },
   "armadura_luz_t1": {
    "id": "armadura_luz_t1",
-   "name": "Couraça Radiante",
+   "name": {
+    "pt_BR": "Couraça Radiante",
+    "en": "Radiant Cuirass",
+    "es": "Coraza Radiante"
+   },
    "slot": "armadura",
    "type": "luz",
    "tier": 1,
@@ -382,7 +522,11 @@
   },
   "reliquia_luz_t1": {
    "id": "reliquia_luz_t1",
-   "name": "Seixo Radiante",
+   "name": {
+    "pt_BR": "Seixo Radiante",
+    "en": "Radiant Pebble",
+    "es": "Guijarro Radiante"
+   },
    "slot": "reliquia",
    "type": "luz",
    "tier": 1,
@@ -392,7 +536,11 @@
   },
   "amuleto_sombra_t1": {
    "id": "amuleto_sombra_t1",
-   "name": "Pingente Umbral",
+   "name": {
+    "pt_BR": "Pingente Umbral",
+    "en": "Umbral Pendant",
+    "es": "Colgante Umbrío"
+   },
    "slot": "amuleto",
    "type": "sombra",
    "tier": 1,
@@ -402,7 +550,11 @@
   },
   "garra_sombra_t1": {
    "id": "garra_sombra_t1",
-   "name": "Garra Umbral",
+   "name": {
+    "pt_BR": "Garra Umbral",
+    "en": "Umbral Claw",
+    "es": "Garra Umbría"
+   },
    "slot": "garra",
    "type": "sombra",
    "tier": 1,
@@ -412,7 +564,11 @@
   },
   "armadura_sombra_t1": {
    "id": "armadura_sombra_t1",
-   "name": "Couraça Umbral",
+   "name": {
+    "pt_BR": "Couraça Umbral",
+    "en": "Umbral Cuirass",
+    "es": "Coraza Umbría"
+   },
    "slot": "armadura",
    "type": "sombra",
    "tier": 1,
@@ -422,7 +578,11 @@
   },
   "reliquia_sombra_t1": {
    "id": "reliquia_sombra_t1",
-   "name": "Seixo Umbral",
+   "name": {
+    "pt_BR": "Seixo Umbral",
+    "en": "Umbral Pebble",
+    "es": "Guijarro Umbrío"
+   },
    "slot": "reliquia",
    "type": "sombra",
    "tier": 1,
@@ -432,7 +592,11 @@
   },
   "amuleto_agua_t2": {
    "id": "amuleto_agua_t2",
-   "name": "Amuleto Coralino",
+   "name": {
+    "pt_BR": "Amuleto Coralino",
+    "en": "Coral Amulet",
+    "es": "Amuleto Coralino"
+   },
    "slot": "amuleto",
    "type": "agua",
    "tier": 2,
@@ -442,7 +606,11 @@
   },
   "garra_agua_t2": {
    "id": "garra_agua_t2",
-   "name": "Presa Coralina",
+   "name": {
+    "pt_BR": "Presa Coralina",
+    "en": "Coral Fang",
+    "es": "Colmillo Coralino"
+   },
    "slot": "garra",
    "type": "agua",
    "tier": 2,
@@ -452,7 +620,11 @@
   },
   "armadura_agua_t2": {
    "id": "armadura_agua_t2",
-   "name": "Escama Coralina",
+   "name": {
+    "pt_BR": "Escama Coralina",
+    "en": "Coral Scale",
+    "es": "Escama Coralina"
+   },
    "slot": "armadura",
    "type": "agua",
    "tier": 2,
@@ -462,7 +634,11 @@
   },
   "reliquia_agua_t2": {
    "id": "reliquia_agua_t2",
-   "name": "Orbe Coralino",
+   "name": {
+    "pt_BR": "Orbe Coralino",
+    "en": "Coral Orb",
+    "es": "Orbe Coralino"
+   },
    "slot": "reliquia",
    "type": "agua",
    "tier": 2,
@@ -472,7 +648,11 @@
   },
   "amuleto_fogo_t2": {
    "id": "amuleto_fogo_t2",
-   "name": "Amuleto Ígneo",
+   "name": {
+    "pt_BR": "Amuleto Ígneo",
+    "en": "Igneous Amulet",
+    "es": "Amuleto Ígneo"
+   },
    "slot": "amuleto",
    "type": "fogo",
    "tier": 2,
@@ -482,7 +662,11 @@
   },
   "garra_fogo_t2": {
    "id": "garra_fogo_t2",
-   "name": "Presa Ígnea",
+   "name": {
+    "pt_BR": "Presa Ígnea",
+    "en": "Igneous Fang",
+    "es": "Colmillo Ígneo"
+   },
    "slot": "garra",
    "type": "fogo",
    "tier": 2,
@@ -492,7 +676,11 @@
   },
   "armadura_fogo_t2": {
    "id": "armadura_fogo_t2",
-   "name": "Escama Ígnea",
+   "name": {
+    "pt_BR": "Escama Ígnea",
+    "en": "Igneous Scale",
+    "es": "Escama Ígnea"
+   },
    "slot": "armadura",
    "type": "fogo",
    "tier": 2,
@@ -502,7 +690,11 @@
   },
   "reliquia_fogo_t2": {
    "id": "reliquia_fogo_t2",
-   "name": "Orbe Ígneo",
+   "name": {
+    "pt_BR": "Orbe Ígneo",
+    "en": "Igneous Orb",
+    "es": "Orbe Ígneo"
+   },
    "slot": "reliquia",
    "type": "fogo",
    "tier": 2,
@@ -512,7 +704,11 @@
   },
   "amuleto_gelo_t2": {
    "id": "amuleto_gelo_t2",
-   "name": "Amuleto Glacial",
+   "name": {
+    "pt_BR": "Amuleto Glacial",
+    "en": "Glacial Amulet",
+    "es": "Amuleto Glacial"
+   },
    "slot": "amuleto",
    "type": "gelo",
    "tier": 2,
@@ -522,7 +718,11 @@
   },
   "garra_gelo_t2": {
    "id": "garra_gelo_t2",
-   "name": "Presa Glacial",
+   "name": {
+    "pt_BR": "Presa Glacial",
+    "en": "Glacial Fang",
+    "es": "Colmillo Glacial"
+   },
    "slot": "garra",
    "type": "gelo",
    "tier": 2,
@@ -532,7 +732,11 @@
   },
   "armadura_gelo_t2": {
    "id": "armadura_gelo_t2",
-   "name": "Escama Glacial",
+   "name": {
+    "pt_BR": "Escama Glacial",
+    "en": "Glacial Scale",
+    "es": "Escama Glacial"
+   },
    "slot": "armadura",
    "type": "gelo",
    "tier": 2,
@@ -542,7 +746,11 @@
   },
   "reliquia_gelo_t2": {
    "id": "reliquia_gelo_t2",
-   "name": "Orbe Glacial",
+   "name": {
+    "pt_BR": "Orbe Glacial",
+    "en": "Glacial Orb",
+    "es": "Orbe Glacial"
+   },
    "slot": "reliquia",
    "type": "gelo",
    "tier": 2,
@@ -552,7 +760,11 @@
   },
   "amuleto_planta_t2": {
    "id": "amuleto_planta_t2",
-   "name": "Amuleto Silvestre",
+   "name": {
+    "pt_BR": "Amuleto Silvestre",
+    "en": "Wild Amulet",
+    "es": "Amuleto Silvestre"
+   },
    "slot": "amuleto",
    "type": "planta",
    "tier": 2,
@@ -562,7 +774,11 @@
   },
   "garra_planta_t2": {
    "id": "garra_planta_t2",
-   "name": "Presa Silvestre",
+   "name": {
+    "pt_BR": "Presa Silvestre",
+    "en": "Wild Fang",
+    "es": "Colmillo Silvestre"
+   },
    "slot": "garra",
    "type": "planta",
    "tier": 2,
@@ -572,7 +788,11 @@
   },
   "armadura_planta_t2": {
    "id": "armadura_planta_t2",
-   "name": "Escama Silvestre",
+   "name": {
+    "pt_BR": "Escama Silvestre",
+    "en": "Wild Scale",
+    "es": "Escama Silvestre"
+   },
    "slot": "armadura",
    "type": "planta",
    "tier": 2,
@@ -582,7 +802,11 @@
   },
   "reliquia_planta_t2": {
    "id": "reliquia_planta_t2",
-   "name": "Orbe Silvestre",
+   "name": {
+    "pt_BR": "Orbe Silvestre",
+    "en": "Wild Orb",
+    "es": "Orbe Silvestre"
+   },
    "slot": "reliquia",
    "type": "planta",
    "tier": 2,
@@ -592,7 +816,11 @@
   },
   "amuleto_terra_t2": {
    "id": "amuleto_terra_t2",
-   "name": "Amuleto Rochoso",
+   "name": {
+    "pt_BR": "Amuleto Rochoso",
+    "en": "Rocky Amulet",
+    "es": "Amuleto Rocoso"
+   },
    "slot": "amuleto",
    "type": "terra",
    "tier": 2,
@@ -602,7 +830,11 @@
   },
   "garra_terra_t2": {
    "id": "garra_terra_t2",
-   "name": "Presa Rochosa",
+   "name": {
+    "pt_BR": "Presa Rochosa",
+    "en": "Rocky Fang",
+    "es": "Colmillo Rocoso"
+   },
    "slot": "garra",
    "type": "terra",
    "tier": 2,
@@ -612,7 +844,11 @@
   },
   "armadura_terra_t2": {
    "id": "armadura_terra_t2",
-   "name": "Escama Rochosa",
+   "name": {
+    "pt_BR": "Escama Rochosa",
+    "en": "Rocky Scale",
+    "es": "Escama Rocosa"
+   },
    "slot": "armadura",
    "type": "terra",
    "tier": 2,
@@ -622,7 +858,11 @@
   },
   "reliquia_terra_t2": {
    "id": "reliquia_terra_t2",
-   "name": "Orbe Rochoso",
+   "name": {
+    "pt_BR": "Orbe Rochoso",
+    "en": "Rocky Orb",
+    "es": "Orbe Rocoso"
+   },
    "slot": "reliquia",
    "type": "terra",
    "tier": 2,
@@ -632,7 +872,11 @@
   },
   "amuleto_eletrico_t2": {
    "id": "amuleto_eletrico_t2",
-   "name": "Amuleto Voltaico",
+   "name": {
+    "pt_BR": "Amuleto Voltaico",
+    "en": "Voltaic Amulet",
+    "es": "Amuleto Voltaico"
+   },
    "slot": "amuleto",
    "type": "eletrico",
    "tier": 2,
@@ -642,7 +886,11 @@
   },
   "garra_eletrico_t2": {
    "id": "garra_eletrico_t2",
-   "name": "Presa Voltaica",
+   "name": {
+    "pt_BR": "Presa Voltaica",
+    "en": "Voltaic Fang",
+    "es": "Colmillo Voltaico"
+   },
    "slot": "garra",
    "type": "eletrico",
    "tier": 2,
@@ -652,7 +900,11 @@
   },
   "armadura_eletrico_t2": {
    "id": "armadura_eletrico_t2",
-   "name": "Escama Voltaica",
+   "name": {
+    "pt_BR": "Escama Voltaica",
+    "en": "Voltaic Scale",
+    "es": "Escama Voltaica"
+   },
    "slot": "armadura",
    "type": "eletrico",
    "tier": 2,
@@ -662,7 +914,11 @@
   },
   "reliquia_eletrico_t2": {
    "id": "reliquia_eletrico_t2",
-   "name": "Orbe Voltaico",
+   "name": {
+    "pt_BR": "Orbe Voltaico",
+    "en": "Voltaic Orb",
+    "es": "Orbe Voltaico"
+   },
    "slot": "reliquia",
    "type": "eletrico",
    "tier": 2,
@@ -672,7 +928,11 @@
   },
   "amuleto_vento_t2": {
    "id": "amuleto_vento_t2",
-   "name": "Amuleto Etéreo",
+   "name": {
+    "pt_BR": "Amuleto Etéreo",
+    "en": "Ethereal Amulet",
+    "es": "Amuleto Etéreo"
+   },
    "slot": "amuleto",
    "type": "vento",
    "tier": 2,
@@ -682,7 +942,11 @@
   },
   "garra_vento_t2": {
    "id": "garra_vento_t2",
-   "name": "Presa Etérea",
+   "name": {
+    "pt_BR": "Presa Etérea",
+    "en": "Ethereal Fang",
+    "es": "Colmillo Etéreo"
+   },
    "slot": "garra",
    "type": "vento",
    "tier": 2,
@@ -692,7 +956,11 @@
   },
   "armadura_vento_t2": {
    "id": "armadura_vento_t2",
-   "name": "Escama Etérea",
+   "name": {
+    "pt_BR": "Escama Etérea",
+    "en": "Ethereal Scale",
+    "es": "Escama Etérea"
+   },
    "slot": "armadura",
    "type": "vento",
    "tier": 2,
@@ -702,7 +970,11 @@
   },
   "reliquia_vento_t2": {
    "id": "reliquia_vento_t2",
-   "name": "Orbe Etéreo",
+   "name": {
+    "pt_BR": "Orbe Etéreo",
+    "en": "Ethereal Orb",
+    "es": "Orbe Etéreo"
+   },
    "slot": "reliquia",
    "type": "vento",
    "tier": 2,
@@ -712,7 +984,11 @@
   },
   "amuleto_luz_t2": {
    "id": "amuleto_luz_t2",
-   "name": "Amuleto Radiante",
+   "name": {
+    "pt_BR": "Amuleto Radiante",
+    "en": "Radiant Amulet",
+    "es": "Amuleto Radiante"
+   },
    "slot": "amuleto",
    "type": "luz",
    "tier": 2,
@@ -722,7 +998,11 @@
   },
   "garra_luz_t2": {
    "id": "garra_luz_t2",
-   "name": "Presa Radiante",
+   "name": {
+    "pt_BR": "Presa Radiante",
+    "en": "Radiant Fang",
+    "es": "Colmillo Radiante"
+   },
    "slot": "garra",
    "type": "luz",
    "tier": 2,
@@ -732,7 +1012,11 @@
   },
   "armadura_luz_t2": {
    "id": "armadura_luz_t2",
-   "name": "Escama Radiante",
+   "name": {
+    "pt_BR": "Escama Radiante",
+    "en": "Radiant Scale",
+    "es": "Escama Radiante"
+   },
    "slot": "armadura",
    "type": "luz",
    "tier": 2,
@@ -742,7 +1026,11 @@
   },
   "reliquia_luz_t2": {
    "id": "reliquia_luz_t2",
-   "name": "Orbe Radiante",
+   "name": {
+    "pt_BR": "Orbe Radiante",
+    "en": "Radiant Orb",
+    "es": "Orbe Radiante"
+   },
    "slot": "reliquia",
    "type": "luz",
    "tier": 2,
@@ -752,7 +1040,11 @@
   },
   "amuleto_sombra_t2": {
    "id": "amuleto_sombra_t2",
-   "name": "Amuleto Umbral",
+   "name": {
+    "pt_BR": "Amuleto Umbral",
+    "en": "Umbral Amulet",
+    "es": "Amuleto Umbrío"
+   },
    "slot": "amuleto",
    "type": "sombra",
    "tier": 2,
@@ -762,7 +1054,11 @@
   },
   "garra_sombra_t2": {
    "id": "garra_sombra_t2",
-   "name": "Presa Umbral",
+   "name": {
+    "pt_BR": "Presa Umbral",
+    "en": "Umbral Fang",
+    "es": "Colmillo Umbrío"
+   },
    "slot": "garra",
    "type": "sombra",
    "tier": 2,
@@ -772,7 +1068,11 @@
   },
   "armadura_sombra_t2": {
    "id": "armadura_sombra_t2",
-   "name": "Escama Umbral",
+   "name": {
+    "pt_BR": "Escama Umbral",
+    "en": "Umbral Scale",
+    "es": "Escama Umbría"
+   },
    "slot": "armadura",
    "type": "sombra",
    "tier": 2,
@@ -782,7 +1082,11 @@
   },
   "reliquia_sombra_t2": {
    "id": "reliquia_sombra_t2",
-   "name": "Orbe Umbral",
+   "name": {
+    "pt_BR": "Orbe Umbral",
+    "en": "Umbral Orb",
+    "es": "Orbe Umbrío"
+   },
    "slot": "reliquia",
    "type": "sombra",
    "tier": 2,
@@ -792,7 +1096,11 @@
   },
   "amuleto_agua_t3": {
    "id": "amuleto_agua_t3",
-   "name": "Medalhão Coralino",
+   "name": {
+    "pt_BR": "Medalhão Coralino",
+    "en": "Coral Medallion",
+    "es": "Medallón Coralino"
+   },
    "slot": "amuleto",
    "type": "agua",
    "tier": 3,
@@ -802,7 +1110,11 @@
   },
   "garra_agua_t3": {
    "id": "garra_agua_t3",
-   "name": "Ferrão Coralino",
+   "name": {
+    "pt_BR": "Ferrão Coralino",
+    "en": "Coral Stinger",
+    "es": "Aguijón Coralino"
+   },
    "slot": "garra",
    "type": "agua",
    "tier": 3,
@@ -812,7 +1124,11 @@
   },
   "armadura_agua_t3": {
    "id": "armadura_agua_t3",
-   "name": "Carapaça Coralina",
+   "name": {
+    "pt_BR": "Carapaça Coralina",
+    "en": "Coral Carapace",
+    "es": "Caparazón Coralino"
+   },
    "slot": "armadura",
    "type": "agua",
    "tier": 3,
@@ -822,7 +1138,11 @@
   },
   "reliquia_agua_t3": {
    "id": "reliquia_agua_t3",
-   "name": "Totem Coralino",
+   "name": {
+    "pt_BR": "Totem Coralino",
+    "en": "Coral Totem",
+    "es": "Tótem Coralino"
+   },
    "slot": "reliquia",
    "type": "agua",
    "tier": 3,
@@ -832,7 +1152,11 @@
   },
   "amuleto_fogo_t3": {
    "id": "amuleto_fogo_t3",
-   "name": "Medalhão Ígneo",
+   "name": {
+    "pt_BR": "Medalhão Ígneo",
+    "en": "Igneous Medallion",
+    "es": "Medallón Ígneo"
+   },
    "slot": "amuleto",
    "type": "fogo",
    "tier": 3,
@@ -842,7 +1166,11 @@
   },
   "garra_fogo_t3": {
    "id": "garra_fogo_t3",
-   "name": "Ferrão Ígneo",
+   "name": {
+    "pt_BR": "Ferrão Ígneo",
+    "en": "Igneous Stinger",
+    "es": "Aguijón Ígneo"
+   },
    "slot": "garra",
    "type": "fogo",
    "tier": 3,
@@ -852,7 +1180,11 @@
   },
   "armadura_fogo_t3": {
    "id": "armadura_fogo_t3",
-   "name": "Carapaça Ígnea",
+   "name": {
+    "pt_BR": "Carapaça Ígnea",
+    "en": "Igneous Carapace",
+    "es": "Caparazón Ígneo"
+   },
    "slot": "armadura",
    "type": "fogo",
    "tier": 3,
@@ -862,7 +1194,11 @@
   },
   "reliquia_fogo_t3": {
    "id": "reliquia_fogo_t3",
-   "name": "Totem Ígneo",
+   "name": {
+    "pt_BR": "Totem Ígneo",
+    "en": "Igneous Totem",
+    "es": "Tótem Ígneo"
+   },
    "slot": "reliquia",
    "type": "fogo",
    "tier": 3,
@@ -872,7 +1208,11 @@
   },
   "amuleto_gelo_t3": {
    "id": "amuleto_gelo_t3",
-   "name": "Medalhão Glacial",
+   "name": {
+    "pt_BR": "Medalhão Glacial",
+    "en": "Glacial Medallion",
+    "es": "Medallón Glacial"
+   },
    "slot": "amuleto",
    "type": "gelo",
    "tier": 3,
@@ -882,7 +1222,11 @@
   },
   "garra_gelo_t3": {
    "id": "garra_gelo_t3",
-   "name": "Ferrão Glacial",
+   "name": {
+    "pt_BR": "Ferrão Glacial",
+    "en": "Glacial Stinger",
+    "es": "Aguijón Glacial"
+   },
    "slot": "garra",
    "type": "gelo",
    "tier": 3,
@@ -892,7 +1236,11 @@
   },
   "armadura_gelo_t3": {
    "id": "armadura_gelo_t3",
-   "name": "Carapaça Glacial",
+   "name": {
+    "pt_BR": "Carapaça Glacial",
+    "en": "Glacial Carapace",
+    "es": "Caparazón Glacial"
+   },
    "slot": "armadura",
    "type": "gelo",
    "tier": 3,
@@ -902,7 +1250,11 @@
   },
   "reliquia_gelo_t3": {
    "id": "reliquia_gelo_t3",
-   "name": "Totem Glacial",
+   "name": {
+    "pt_BR": "Totem Glacial",
+    "en": "Glacial Totem",
+    "es": "Tótem Glacial"
+   },
    "slot": "reliquia",
    "type": "gelo",
    "tier": 3,
@@ -912,7 +1264,11 @@
   },
   "amuleto_planta_t3": {
    "id": "amuleto_planta_t3",
-   "name": "Medalhão Silvestre",
+   "name": {
+    "pt_BR": "Medalhão Silvestre",
+    "en": "Wild Medallion",
+    "es": "Medallón Silvestre"
+   },
    "slot": "amuleto",
    "type": "planta",
    "tier": 3,
@@ -922,7 +1278,11 @@
   },
   "garra_planta_t3": {
    "id": "garra_planta_t3",
-   "name": "Ferrão Silvestre",
+   "name": {
+    "pt_BR": "Ferrão Silvestre",
+    "en": "Wild Stinger",
+    "es": "Aguijón Silvestre"
+   },
    "slot": "garra",
    "type": "planta",
    "tier": 3,
@@ -932,7 +1292,11 @@
   },
   "armadura_planta_t3": {
    "id": "armadura_planta_t3",
-   "name": "Carapaça Silvestre",
+   "name": {
+    "pt_BR": "Carapaça Silvestre",
+    "en": "Wild Carapace",
+    "es": "Caparazón Silvestre"
+   },
    "slot": "armadura",
    "type": "planta",
    "tier": 3,
@@ -942,7 +1306,11 @@
   },
   "reliquia_planta_t3": {
    "id": "reliquia_planta_t3",
-   "name": "Totem Silvestre",
+   "name": {
+    "pt_BR": "Totem Silvestre",
+    "en": "Wild Totem",
+    "es": "Tótem Silvestre"
+   },
    "slot": "reliquia",
    "type": "planta",
    "tier": 3,
@@ -952,7 +1320,11 @@
   },
   "amuleto_terra_t3": {
    "id": "amuleto_terra_t3",
-   "name": "Medalhão Rochoso",
+   "name": {
+    "pt_BR": "Medalhão Rochoso",
+    "en": "Rocky Medallion",
+    "es": "Medallón Rocoso"
+   },
    "slot": "amuleto",
    "type": "terra",
    "tier": 3,
@@ -962,7 +1334,11 @@
   },
   "garra_terra_t3": {
    "id": "garra_terra_t3",
-   "name": "Ferrão Rochoso",
+   "name": {
+    "pt_BR": "Ferrão Rochoso",
+    "en": "Rocky Stinger",
+    "es": "Aguijón Rocoso"
+   },
    "slot": "garra",
    "type": "terra",
    "tier": 3,
@@ -972,7 +1348,11 @@
   },
   "armadura_terra_t3": {
    "id": "armadura_terra_t3",
-   "name": "Carapaça Rochosa",
+   "name": {
+    "pt_BR": "Carapaça Rochosa",
+    "en": "Rocky Carapace",
+    "es": "Caparazón Rocoso"
+   },
    "slot": "armadura",
    "type": "terra",
    "tier": 3,
@@ -982,7 +1362,11 @@
   },
   "reliquia_terra_t3": {
    "id": "reliquia_terra_t3",
-   "name": "Totem Rochoso",
+   "name": {
+    "pt_BR": "Totem Rochoso",
+    "en": "Rocky Totem",
+    "es": "Tótem Rocoso"
+   },
    "slot": "reliquia",
    "type": "terra",
    "tier": 3,
@@ -992,7 +1376,11 @@
   },
   "amuleto_eletrico_t3": {
    "id": "amuleto_eletrico_t3",
-   "name": "Medalhão Voltaico",
+   "name": {
+    "pt_BR": "Medalhão Voltaico",
+    "en": "Voltaic Medallion",
+    "es": "Medallón Voltaico"
+   },
    "slot": "amuleto",
    "type": "eletrico",
    "tier": 3,
@@ -1002,7 +1390,11 @@
   },
   "garra_eletrico_t3": {
    "id": "garra_eletrico_t3",
-   "name": "Ferrão Voltaico",
+   "name": {
+    "pt_BR": "Ferrão Voltaico",
+    "en": "Voltaic Stinger",
+    "es": "Aguijón Voltaico"
+   },
    "slot": "garra",
    "type": "eletrico",
    "tier": 3,
@@ -1012,7 +1404,11 @@
   },
   "armadura_eletrico_t3": {
    "id": "armadura_eletrico_t3",
-   "name": "Carapaça Voltaica",
+   "name": {
+    "pt_BR": "Carapaça Voltaica",
+    "en": "Voltaic Carapace",
+    "es": "Caparazón Voltaico"
+   },
    "slot": "armadura",
    "type": "eletrico",
    "tier": 3,
@@ -1022,7 +1418,11 @@
   },
   "reliquia_eletrico_t3": {
    "id": "reliquia_eletrico_t3",
-   "name": "Totem Voltaico",
+   "name": {
+    "pt_BR": "Totem Voltaico",
+    "en": "Voltaic Totem",
+    "es": "Tótem Voltaico"
+   },
    "slot": "reliquia",
    "type": "eletrico",
    "tier": 3,
@@ -1032,7 +1432,11 @@
   },
   "amuleto_vento_t3": {
    "id": "amuleto_vento_t3",
-   "name": "Medalhão Etéreo",
+   "name": {
+    "pt_BR": "Medalhão Etéreo",
+    "en": "Ethereal Medallion",
+    "es": "Medallón Etéreo"
+   },
    "slot": "amuleto",
    "type": "vento",
    "tier": 3,
@@ -1042,7 +1446,11 @@
   },
   "garra_vento_t3": {
    "id": "garra_vento_t3",
-   "name": "Ferrão Etéreo",
+   "name": {
+    "pt_BR": "Ferrão Etéreo",
+    "en": "Ethereal Stinger",
+    "es": "Aguijón Etéreo"
+   },
    "slot": "garra",
    "type": "vento",
    "tier": 3,
@@ -1052,7 +1460,11 @@
   },
   "armadura_vento_t3": {
    "id": "armadura_vento_t3",
-   "name": "Carapaça Etérea",
+   "name": {
+    "pt_BR": "Carapaça Etérea",
+    "en": "Ethereal Carapace",
+    "es": "Caparazón Etéreo"
+   },
    "slot": "armadura",
    "type": "vento",
    "tier": 3,
@@ -1062,7 +1474,11 @@
   },
   "reliquia_vento_t3": {
    "id": "reliquia_vento_t3",
-   "name": "Totem Etéreo",
+   "name": {
+    "pt_BR": "Totem Etéreo",
+    "en": "Ethereal Totem",
+    "es": "Tótem Etéreo"
+   },
    "slot": "reliquia",
    "type": "vento",
    "tier": 3,
@@ -1072,7 +1488,11 @@
   },
   "amuleto_luz_t3": {
    "id": "amuleto_luz_t3",
-   "name": "Medalhão Radiante",
+   "name": {
+    "pt_BR": "Medalhão Radiante",
+    "en": "Radiant Medallion",
+    "es": "Medallón Radiante"
+   },
    "slot": "amuleto",
    "type": "luz",
    "tier": 3,
@@ -1082,7 +1502,11 @@
   },
   "garra_luz_t3": {
    "id": "garra_luz_t3",
-   "name": "Ferrão Radiante",
+   "name": {
+    "pt_BR": "Ferrão Radiante",
+    "en": "Radiant Stinger",
+    "es": "Aguijón Radiante"
+   },
    "slot": "garra",
    "type": "luz",
    "tier": 3,
@@ -1092,7 +1516,11 @@
   },
   "armadura_luz_t3": {
    "id": "armadura_luz_t3",
-   "name": "Carapaça Radiante",
+   "name": {
+    "pt_BR": "Carapaça Radiante",
+    "en": "Radiant Carapace",
+    "es": "Caparazón Radiante"
+   },
    "slot": "armadura",
    "type": "luz",
    "tier": 3,
@@ -1102,7 +1530,11 @@
   },
   "reliquia_luz_t3": {
    "id": "reliquia_luz_t3",
-   "name": "Totem Radiante",
+   "name": {
+    "pt_BR": "Totem Radiante",
+    "en": "Radiant Totem",
+    "es": "Tótem Radiante"
+   },
    "slot": "reliquia",
    "type": "luz",
    "tier": 3,
@@ -1112,7 +1544,11 @@
   },
   "amuleto_sombra_t3": {
    "id": "amuleto_sombra_t3",
-   "name": "Medalhão Umbral",
+   "name": {
+    "pt_BR": "Medalhão Umbral",
+    "en": "Umbral Medallion",
+    "es": "Medallón Umbrío"
+   },
    "slot": "amuleto",
    "type": "sombra",
    "tier": 3,
@@ -1122,7 +1558,11 @@
   },
   "garra_sombra_t3": {
    "id": "garra_sombra_t3",
-   "name": "Ferrão Umbral",
+   "name": {
+    "pt_BR": "Ferrão Umbral",
+    "en": "Umbral Stinger",
+    "es": "Aguijón Umbrío"
+   },
    "slot": "garra",
    "type": "sombra",
    "tier": 3,
@@ -1132,7 +1572,11 @@
   },
   "armadura_sombra_t3": {
    "id": "armadura_sombra_t3",
-   "name": "Carapaça Umbral",
+   "name": {
+    "pt_BR": "Carapaça Umbral",
+    "en": "Umbral Carapace",
+    "es": "Caparazón Umbrío"
+   },
    "slot": "armadura",
    "type": "sombra",
    "tier": 3,
@@ -1142,7 +1586,11 @@
   },
   "reliquia_sombra_t3": {
    "id": "reliquia_sombra_t3",
-   "name": "Totem Umbral",
+   "name": {
+    "pt_BR": "Totem Umbral",
+    "en": "Umbral Totem",
+    "es": "Tótem Umbrío"
+   },
    "slot": "reliquia",
    "type": "sombra",
    "tier": 3,
@@ -1152,7 +1600,11 @@
   },
   "amuleto_agua_t4": {
    "id": "amuleto_agua_t4",
-   "name": "Talismã Coralino",
+   "name": {
+    "pt_BR": "Talismã Coralino",
+    "en": "Coral Talisman",
+    "es": "Talismán Coralino"
+   },
    "slot": "amuleto",
    "type": "agua",
    "tier": 4,
@@ -1162,7 +1614,11 @@
   },
   "garra_agua_t4": {
    "id": "garra_agua_t4",
-   "name": "Lâmina Coralina",
+   "name": {
+    "pt_BR": "Lâmina Coralina",
+    "en": "Coral Blade",
+    "es": "Hoja Coralina"
+   },
    "slot": "garra",
    "type": "agua",
    "tier": 4,
@@ -1172,7 +1628,11 @@
   },
   "armadura_agua_t4": {
    "id": "armadura_agua_t4",
-   "name": "Malha Coralina",
+   "name": {
+    "pt_BR": "Malha Coralina",
+    "en": "Coral Mail",
+    "es": "Malla Coralina"
+   },
    "slot": "armadura",
    "type": "agua",
    "tier": 4,
@@ -1182,7 +1642,11 @@
   },
   "reliquia_agua_t4": {
    "id": "reliquia_agua_t4",
-   "name": "Ídolo Coralino",
+   "name": {
+    "pt_BR": "Ídolo Coralino",
+    "en": "Coral Idol",
+    "es": "Ídolo Coralino"
+   },
    "slot": "reliquia",
    "type": "agua",
    "tier": 4,
@@ -1192,7 +1656,11 @@
   },
   "amuleto_fogo_t4": {
    "id": "amuleto_fogo_t4",
-   "name": "Talismã Ígneo",
+   "name": {
+    "pt_BR": "Talismã Ígneo",
+    "en": "Igneous Talisman",
+    "es": "Talismán Ígneo"
+   },
    "slot": "amuleto",
    "type": "fogo",
    "tier": 4,
@@ -1202,7 +1670,11 @@
   },
   "garra_fogo_t4": {
    "id": "garra_fogo_t4",
-   "name": "Lâmina Ígnea",
+   "name": {
+    "pt_BR": "Lâmina Ígnea",
+    "en": "Igneous Blade",
+    "es": "Hoja Ígnea"
+   },
    "slot": "garra",
    "type": "fogo",
    "tier": 4,
@@ -1212,7 +1684,11 @@
   },
   "armadura_fogo_t4": {
    "id": "armadura_fogo_t4",
-   "name": "Malha Ígnea",
+   "name": {
+    "pt_BR": "Malha Ígnea",
+    "en": "Igneous Mail",
+    "es": "Malla Ígnea"
+   },
    "slot": "armadura",
    "type": "fogo",
    "tier": 4,
@@ -1222,7 +1698,11 @@
   },
   "reliquia_fogo_t4": {
    "id": "reliquia_fogo_t4",
-   "name": "Ídolo Ígneo",
+   "name": {
+    "pt_BR": "Ídolo Ígneo",
+    "en": "Igneous Idol",
+    "es": "Ídolo Ígneo"
+   },
    "slot": "reliquia",
    "type": "fogo",
    "tier": 4,
@@ -1232,7 +1712,11 @@
   },
   "amuleto_gelo_t4": {
    "id": "amuleto_gelo_t4",
-   "name": "Talismã Glacial",
+   "name": {
+    "pt_BR": "Talismã Glacial",
+    "en": "Glacial Talisman",
+    "es": "Talismán Glacial"
+   },
    "slot": "amuleto",
    "type": "gelo",
    "tier": 4,
@@ -1242,7 +1726,11 @@
   },
   "garra_gelo_t4": {
    "id": "garra_gelo_t4",
-   "name": "Lâmina Glacial",
+   "name": {
+    "pt_BR": "Lâmina Glacial",
+    "en": "Glacial Blade",
+    "es": "Hoja Glacial"
+   },
    "slot": "garra",
    "type": "gelo",
    "tier": 4,
@@ -1252,7 +1740,11 @@
   },
   "armadura_gelo_t4": {
    "id": "armadura_gelo_t4",
-   "name": "Malha Glacial",
+   "name": {
+    "pt_BR": "Malha Glacial",
+    "en": "Glacial Mail",
+    "es": "Malla Glacial"
+   },
    "slot": "armadura",
    "type": "gelo",
    "tier": 4,
@@ -1262,7 +1754,11 @@
   },
   "reliquia_gelo_t4": {
    "id": "reliquia_gelo_t4",
-   "name": "Ídolo Glacial",
+   "name": {
+    "pt_BR": "Ídolo Glacial",
+    "en": "Glacial Idol",
+    "es": "Ídolo Glacial"
+   },
    "slot": "reliquia",
    "type": "gelo",
    "tier": 4,
@@ -1272,7 +1768,11 @@
   },
   "amuleto_planta_t4": {
    "id": "amuleto_planta_t4",
-   "name": "Talismã Silvestre",
+   "name": {
+    "pt_BR": "Talismã Silvestre",
+    "en": "Wild Talisman",
+    "es": "Talismán Silvestre"
+   },
    "slot": "amuleto",
    "type": "planta",
    "tier": 4,
@@ -1282,7 +1782,11 @@
   },
   "garra_planta_t4": {
    "id": "garra_planta_t4",
-   "name": "Lâmina Silvestre",
+   "name": {
+    "pt_BR": "Lâmina Silvestre",
+    "en": "Wild Blade",
+    "es": "Hoja Silvestre"
+   },
    "slot": "garra",
    "type": "planta",
    "tier": 4,
@@ -1292,7 +1796,11 @@
   },
   "armadura_planta_t4": {
    "id": "armadura_planta_t4",
-   "name": "Malha Silvestre",
+   "name": {
+    "pt_BR": "Malha Silvestre",
+    "en": "Wild Mail",
+    "es": "Malla Silvestre"
+   },
    "slot": "armadura",
    "type": "planta",
    "tier": 4,
@@ -1302,7 +1810,11 @@
   },
   "reliquia_planta_t4": {
    "id": "reliquia_planta_t4",
-   "name": "Ídolo Silvestre",
+   "name": {
+    "pt_BR": "Ídolo Silvestre",
+    "en": "Wild Idol",
+    "es": "Ídolo Silvestre"
+   },
    "slot": "reliquia",
    "type": "planta",
    "tier": 4,
@@ -1312,7 +1824,11 @@
   },
   "amuleto_terra_t4": {
    "id": "amuleto_terra_t4",
-   "name": "Talismã Rochoso",
+   "name": {
+    "pt_BR": "Talismã Rochoso",
+    "en": "Rocky Talisman",
+    "es": "Talismán Rocoso"
+   },
    "slot": "amuleto",
    "type": "terra",
    "tier": 4,
@@ -1322,7 +1838,11 @@
   },
   "garra_terra_t4": {
    "id": "garra_terra_t4",
-   "name": "Lâmina Rochosa",
+   "name": {
+    "pt_BR": "Lâmina Rochosa",
+    "en": "Rocky Blade",
+    "es": "Hoja Rocosa"
+   },
    "slot": "garra",
    "type": "terra",
    "tier": 4,
@@ -1332,7 +1852,11 @@
   },
   "armadura_terra_t4": {
    "id": "armadura_terra_t4",
-   "name": "Malha Rochosa",
+   "name": {
+    "pt_BR": "Malha Rochosa",
+    "en": "Rocky Mail",
+    "es": "Malla Rocosa"
+   },
    "slot": "armadura",
    "type": "terra",
    "tier": 4,
@@ -1342,7 +1866,11 @@
   },
   "reliquia_terra_t4": {
    "id": "reliquia_terra_t4",
-   "name": "Ídolo Rochoso",
+   "name": {
+    "pt_BR": "Ídolo Rochoso",
+    "en": "Rocky Idol",
+    "es": "Ídolo Rocoso"
+   },
    "slot": "reliquia",
    "type": "terra",
    "tier": 4,
@@ -1352,7 +1880,11 @@
   },
   "amuleto_eletrico_t4": {
    "id": "amuleto_eletrico_t4",
-   "name": "Talismã Voltaico",
+   "name": {
+    "pt_BR": "Talismã Voltaico",
+    "en": "Voltaic Talisman",
+    "es": "Talismán Voltaico"
+   },
    "slot": "amuleto",
    "type": "eletrico",
    "tier": 4,
@@ -1362,7 +1894,11 @@
   },
   "garra_eletrico_t4": {
    "id": "garra_eletrico_t4",
-   "name": "Lâmina Voltaica",
+   "name": {
+    "pt_BR": "Lâmina Voltaica",
+    "en": "Voltaic Blade",
+    "es": "Hoja Voltaica"
+   },
    "slot": "garra",
    "type": "eletrico",
    "tier": 4,
@@ -1372,7 +1908,11 @@
   },
   "armadura_eletrico_t4": {
    "id": "armadura_eletrico_t4",
-   "name": "Malha Voltaica",
+   "name": {
+    "pt_BR": "Malha Voltaica",
+    "en": "Voltaic Mail",
+    "es": "Malla Voltaica"
+   },
    "slot": "armadura",
    "type": "eletrico",
    "tier": 4,
@@ -1382,7 +1922,11 @@
   },
   "reliquia_eletrico_t4": {
    "id": "reliquia_eletrico_t4",
-   "name": "Ídolo Voltaico",
+   "name": {
+    "pt_BR": "Ídolo Voltaico",
+    "en": "Voltaic Idol",
+    "es": "Ídolo Voltaico"
+   },
    "slot": "reliquia",
    "type": "eletrico",
    "tier": 4,
@@ -1392,7 +1936,11 @@
   },
   "amuleto_vento_t4": {
    "id": "amuleto_vento_t4",
-   "name": "Talismã Etéreo",
+   "name": {
+    "pt_BR": "Talismã Etéreo",
+    "en": "Ethereal Talisman",
+    "es": "Talismán Etéreo"
+   },
    "slot": "amuleto",
    "type": "vento",
    "tier": 4,
@@ -1402,7 +1950,11 @@
   },
   "garra_vento_t4": {
    "id": "garra_vento_t4",
-   "name": "Lâmina Etérea",
+   "name": {
+    "pt_BR": "Lâmina Etérea",
+    "en": "Ethereal Blade",
+    "es": "Hoja Etérea"
+   },
    "slot": "garra",
    "type": "vento",
    "tier": 4,
@@ -1412,7 +1964,11 @@
   },
   "armadura_vento_t4": {
    "id": "armadura_vento_t4",
-   "name": "Malha Etérea",
+   "name": {
+    "pt_BR": "Malha Etérea",
+    "en": "Ethereal Mail",
+    "es": "Malla Etérea"
+   },
    "slot": "armadura",
    "type": "vento",
    "tier": 4,
@@ -1422,7 +1978,11 @@
   },
   "reliquia_vento_t4": {
    "id": "reliquia_vento_t4",
-   "name": "Ídolo Etéreo",
+   "name": {
+    "pt_BR": "Ídolo Etéreo",
+    "en": "Ethereal Idol",
+    "es": "Ídolo Etéreo"
+   },
    "slot": "reliquia",
    "type": "vento",
    "tier": 4,
@@ -1432,7 +1992,11 @@
   },
   "amuleto_luz_t4": {
    "id": "amuleto_luz_t4",
-   "name": "Talismã Radiante",
+   "name": {
+    "pt_BR": "Talismã Radiante",
+    "en": "Radiant Talisman",
+    "es": "Talismán Radiante"
+   },
    "slot": "amuleto",
    "type": "luz",
    "tier": 4,
@@ -1442,7 +2006,11 @@
   },
   "garra_luz_t4": {
    "id": "garra_luz_t4",
-   "name": "Lâmina Radiante",
+   "name": {
+    "pt_BR": "Lâmina Radiante",
+    "en": "Radiant Blade",
+    "es": "Hoja Radiante"
+   },
    "slot": "garra",
    "type": "luz",
    "tier": 4,
@@ -1452,7 +2020,11 @@
   },
   "armadura_luz_t4": {
    "id": "armadura_luz_t4",
-   "name": "Malha Radiante",
+   "name": {
+    "pt_BR": "Malha Radiante",
+    "en": "Radiant Mail",
+    "es": "Malla Radiante"
+   },
    "slot": "armadura",
    "type": "luz",
    "tier": 4,
@@ -1462,7 +2034,11 @@
   },
   "reliquia_luz_t4": {
    "id": "reliquia_luz_t4",
-   "name": "Ídolo Radiante",
+   "name": {
+    "pt_BR": "Ídolo Radiante",
+    "en": "Radiant Idol",
+    "es": "Ídolo Radiante"
+   },
    "slot": "reliquia",
    "type": "luz",
    "tier": 4,
@@ -1472,7 +2048,11 @@
   },
   "amuleto_sombra_t4": {
    "id": "amuleto_sombra_t4",
-   "name": "Talismã Umbral",
+   "name": {
+    "pt_BR": "Talismã Umbral",
+    "en": "Umbral Talisman",
+    "es": "Talismán Umbrío"
+   },
    "slot": "amuleto",
    "type": "sombra",
    "tier": 4,
@@ -1482,7 +2062,11 @@
   },
   "garra_sombra_t4": {
    "id": "garra_sombra_t4",
-   "name": "Lâmina Umbral",
+   "name": {
+    "pt_BR": "Lâmina Umbral",
+    "en": "Umbral Blade",
+    "es": "Hoja Umbría"
+   },
    "slot": "garra",
    "type": "sombra",
    "tier": 4,
@@ -1492,7 +2076,11 @@
   },
   "armadura_sombra_t4": {
    "id": "armadura_sombra_t4",
-   "name": "Malha Umbral",
+   "name": {
+    "pt_BR": "Malha Umbral",
+    "en": "Umbral Mail",
+    "es": "Malla Umbría"
+   },
    "slot": "armadura",
    "type": "sombra",
    "tier": 4,
@@ -1502,7 +2090,11 @@
   },
   "reliquia_sombra_t4": {
    "id": "reliquia_sombra_t4",
-   "name": "Ídolo Umbral",
+   "name": {
+    "pt_BR": "Ídolo Umbral",
+    "en": "Umbral Idol",
+    "es": "Ídolo Umbrío"
+   },
    "slot": "reliquia",
    "type": "sombra",
    "tier": 4,
@@ -1512,7 +2104,11 @@
   },
   "amuleto_agua_t5": {
    "id": "amuleto_agua_t5",
-   "name": "Colar Coralino",
+   "name": {
+    "pt_BR": "Colar Coralino",
+    "en": "Coral Necklace",
+    "es": "Collar Coralino"
+   },
    "slot": "amuleto",
    "type": "agua",
    "tier": 5,
@@ -1522,7 +2118,11 @@
   },
   "garra_agua_t5": {
    "id": "garra_agua_t5",
-   "name": "Gadanha Coralina",
+   "name": {
+    "pt_BR": "Gadanha Coralina",
+    "en": "Coral Scythe",
+    "es": "Guadaña Coralina"
+   },
    "slot": "garra",
    "type": "agua",
    "tier": 5,
@@ -1532,7 +2132,11 @@
   },
   "armadura_agua_t5": {
    "id": "armadura_agua_t5",
-   "name": "Égide Coralina",
+   "name": {
+    "pt_BR": "Égide Coralina",
+    "en": "Coral Aegis",
+    "es": "Égida Coralina"
+   },
    "slot": "armadura",
    "type": "agua",
    "tier": 5,
@@ -1542,7 +2146,11 @@
   },
   "reliquia_agua_t5": {
    "id": "reliquia_agua_t5",
-   "name": "Cristal Coralino",
+   "name": {
+    "pt_BR": "Cristal Coralino",
+    "en": "Coral Crystal",
+    "es": "Cristal Coralino"
+   },
    "slot": "reliquia",
    "type": "agua",
    "tier": 5,
@@ -1552,7 +2160,11 @@
   },
   "amuleto_fogo_t5": {
    "id": "amuleto_fogo_t5",
-   "name": "Colar Ígneo",
+   "name": {
+    "pt_BR": "Colar Ígneo",
+    "en": "Igneous Necklace",
+    "es": "Collar Ígneo"
+   },
    "slot": "amuleto",
    "type": "fogo",
    "tier": 5,
@@ -1562,7 +2174,11 @@
   },
   "garra_fogo_t5": {
    "id": "garra_fogo_t5",
-   "name": "Gadanha Ígnea",
+   "name": {
+    "pt_BR": "Gadanha Ígnea",
+    "en": "Igneous Scythe",
+    "es": "Guadaña Ígnea"
+   },
    "slot": "garra",
    "type": "fogo",
    "tier": 5,
@@ -1572,7 +2188,11 @@
   },
   "armadura_fogo_t5": {
    "id": "armadura_fogo_t5",
-   "name": "Égide Ígnea",
+   "name": {
+    "pt_BR": "Égide Ígnea",
+    "en": "Igneous Aegis",
+    "es": "Égida Ígnea"
+   },
    "slot": "armadura",
    "type": "fogo",
    "tier": 5,
@@ -1582,7 +2202,11 @@
   },
   "reliquia_fogo_t5": {
    "id": "reliquia_fogo_t5",
-   "name": "Cristal Ígneo",
+   "name": {
+    "pt_BR": "Cristal Ígneo",
+    "en": "Igneous Crystal",
+    "es": "Cristal Ígneo"
+   },
    "slot": "reliquia",
    "type": "fogo",
    "tier": 5,
@@ -1592,7 +2216,11 @@
   },
   "amuleto_gelo_t5": {
    "id": "amuleto_gelo_t5",
-   "name": "Colar Glacial",
+   "name": {
+    "pt_BR": "Colar Glacial",
+    "en": "Glacial Necklace",
+    "es": "Collar Glacial"
+   },
    "slot": "amuleto",
    "type": "gelo",
    "tier": 5,
@@ -1602,7 +2230,11 @@
   },
   "garra_gelo_t5": {
    "id": "garra_gelo_t5",
-   "name": "Gadanha Glacial",
+   "name": {
+    "pt_BR": "Gadanha Glacial",
+    "en": "Glacial Scythe",
+    "es": "Guadaña Glacial"
+   },
    "slot": "garra",
    "type": "gelo",
    "tier": 5,
@@ -1612,7 +2244,11 @@
   },
   "armadura_gelo_t5": {
    "id": "armadura_gelo_t5",
-   "name": "Égide Glacial",
+   "name": {
+    "pt_BR": "Égide Glacial",
+    "en": "Glacial Aegis",
+    "es": "Égida Glacial"
+   },
    "slot": "armadura",
    "type": "gelo",
    "tier": 5,
@@ -1622,7 +2258,11 @@
   },
   "reliquia_gelo_t5": {
    "id": "reliquia_gelo_t5",
-   "name": "Cristal Glacial",
+   "name": {
+    "pt_BR": "Cristal Glacial",
+    "en": "Glacial Crystal",
+    "es": "Cristal Glacial"
+   },
    "slot": "reliquia",
    "type": "gelo",
    "tier": 5,
@@ -1632,7 +2272,11 @@
   },
   "amuleto_planta_t5": {
    "id": "amuleto_planta_t5",
-   "name": "Colar Silvestre",
+   "name": {
+    "pt_BR": "Colar Silvestre",
+    "en": "Wild Necklace",
+    "es": "Collar Silvestre"
+   },
    "slot": "amuleto",
    "type": "planta",
    "tier": 5,
@@ -1642,7 +2286,11 @@
   },
   "garra_planta_t5": {
    "id": "garra_planta_t5",
-   "name": "Gadanha Silvestre",
+   "name": {
+    "pt_BR": "Gadanha Silvestre",
+    "en": "Wild Scythe",
+    "es": "Guadaña Silvestre"
+   },
    "slot": "garra",
    "type": "planta",
    "tier": 5,
@@ -1652,7 +2300,11 @@
   },
   "armadura_planta_t5": {
    "id": "armadura_planta_t5",
-   "name": "Égide Silvestre",
+   "name": {
+    "pt_BR": "Égide Silvestre",
+    "en": "Wild Aegis",
+    "es": "Égida Silvestre"
+   },
    "slot": "armadura",
    "type": "planta",
    "tier": 5,
@@ -1662,7 +2314,11 @@
   },
   "reliquia_planta_t5": {
    "id": "reliquia_planta_t5",
-   "name": "Cristal Silvestre",
+   "name": {
+    "pt_BR": "Cristal Silvestre",
+    "en": "Wild Crystal",
+    "es": "Cristal Silvestre"
+   },
    "slot": "reliquia",
    "type": "planta",
    "tier": 5,
@@ -1672,7 +2328,11 @@
   },
   "amuleto_terra_t5": {
    "id": "amuleto_terra_t5",
-   "name": "Colar Rochoso",
+   "name": {
+    "pt_BR": "Colar Rochoso",
+    "en": "Rocky Necklace",
+    "es": "Collar Rocoso"
+   },
    "slot": "amuleto",
    "type": "terra",
    "tier": 5,
@@ -1682,7 +2342,11 @@
   },
   "garra_terra_t5": {
    "id": "garra_terra_t5",
-   "name": "Gadanha Rochosa",
+   "name": {
+    "pt_BR": "Gadanha Rochosa",
+    "en": "Rocky Scythe",
+    "es": "Guadaña Rocosa"
+   },
    "slot": "garra",
    "type": "terra",
    "tier": 5,
@@ -1692,7 +2356,11 @@
   },
   "armadura_terra_t5": {
    "id": "armadura_terra_t5",
-   "name": "Égide Rochosa",
+   "name": {
+    "pt_BR": "Égide Rochosa",
+    "en": "Rocky Aegis",
+    "es": "Égida Rocosa"
+   },
    "slot": "armadura",
    "type": "terra",
    "tier": 5,
@@ -1702,7 +2370,11 @@
   },
   "reliquia_terra_t5": {
    "id": "reliquia_terra_t5",
-   "name": "Cristal Rochoso",
+   "name": {
+    "pt_BR": "Cristal Rochoso",
+    "en": "Rocky Crystal",
+    "es": "Cristal Rocoso"
+   },
    "slot": "reliquia",
    "type": "terra",
    "tier": 5,
@@ -1712,7 +2384,11 @@
   },
   "amuleto_eletrico_t5": {
    "id": "amuleto_eletrico_t5",
-   "name": "Colar Voltaico",
+   "name": {
+    "pt_BR": "Colar Voltaico",
+    "en": "Voltaic Necklace",
+    "es": "Collar Voltaico"
+   },
    "slot": "amuleto",
    "type": "eletrico",
    "tier": 5,
@@ -1722,7 +2398,11 @@
   },
   "garra_eletrico_t5": {
    "id": "garra_eletrico_t5",
-   "name": "Gadanha Voltaica",
+   "name": {
+    "pt_BR": "Gadanha Voltaica",
+    "en": "Voltaic Scythe",
+    "es": "Guadaña Voltaica"
+   },
    "slot": "garra",
    "type": "eletrico",
    "tier": 5,
@@ -1732,7 +2412,11 @@
   },
   "armadura_eletrico_t5": {
    "id": "armadura_eletrico_t5",
-   "name": "Égide Voltaica",
+   "name": {
+    "pt_BR": "Égide Voltaica",
+    "en": "Voltaic Aegis",
+    "es": "Égida Voltaica"
+   },
    "slot": "armadura",
    "type": "eletrico",
    "tier": 5,
@@ -1742,7 +2426,11 @@
   },
   "reliquia_eletrico_t5": {
    "id": "reliquia_eletrico_t5",
-   "name": "Cristal Voltaico",
+   "name": {
+    "pt_BR": "Cristal Voltaico",
+    "en": "Voltaic Crystal",
+    "es": "Cristal Voltaico"
+   },
    "slot": "reliquia",
    "type": "eletrico",
    "tier": 5,
@@ -1752,7 +2440,11 @@
   },
   "amuleto_vento_t5": {
    "id": "amuleto_vento_t5",
-   "name": "Colar Etéreo",
+   "name": {
+    "pt_BR": "Colar Etéreo",
+    "en": "Ethereal Necklace",
+    "es": "Collar Etéreo"
+   },
    "slot": "amuleto",
    "type": "vento",
    "tier": 5,
@@ -1762,7 +2454,11 @@
   },
   "garra_vento_t5": {
    "id": "garra_vento_t5",
-   "name": "Gadanha Etérea",
+   "name": {
+    "pt_BR": "Gadanha Etérea",
+    "en": "Ethereal Scythe",
+    "es": "Guadaña Etérea"
+   },
    "slot": "garra",
    "type": "vento",
    "tier": 5,
@@ -1772,7 +2468,11 @@
   },
   "armadura_vento_t5": {
    "id": "armadura_vento_t5",
-   "name": "Égide Etérea",
+   "name": {
+    "pt_BR": "Égide Etérea",
+    "en": "Ethereal Aegis",
+    "es": "Égida Etérea"
+   },
    "slot": "armadura",
    "type": "vento",
    "tier": 5,
@@ -1782,7 +2482,11 @@
   },
   "reliquia_vento_t5": {
    "id": "reliquia_vento_t5",
-   "name": "Cristal Etéreo",
+   "name": {
+    "pt_BR": "Cristal Etéreo",
+    "en": "Ethereal Crystal",
+    "es": "Cristal Etéreo"
+   },
    "slot": "reliquia",
    "type": "vento",
    "tier": 5,
@@ -1792,7 +2496,11 @@
   },
   "amuleto_luz_t5": {
    "id": "amuleto_luz_t5",
-   "name": "Colar Radiante",
+   "name": {
+    "pt_BR": "Colar Radiante",
+    "en": "Radiant Necklace",
+    "es": "Collar Radiante"
+   },
    "slot": "amuleto",
    "type": "luz",
    "tier": 5,
@@ -1802,7 +2510,11 @@
   },
   "garra_luz_t5": {
    "id": "garra_luz_t5",
-   "name": "Gadanha Radiante",
+   "name": {
+    "pt_BR": "Gadanha Radiante",
+    "en": "Radiant Scythe",
+    "es": "Guadaña Radiante"
+   },
    "slot": "garra",
    "type": "luz",
    "tier": 5,
@@ -1812,7 +2524,11 @@
   },
   "armadura_luz_t5": {
    "id": "armadura_luz_t5",
-   "name": "Égide Radiante",
+   "name": {
+    "pt_BR": "Égide Radiante",
+    "en": "Radiant Aegis",
+    "es": "Égida Radiante"
+   },
    "slot": "armadura",
    "type": "luz",
    "tier": 5,
@@ -1822,7 +2538,11 @@
   },
   "reliquia_luz_t5": {
    "id": "reliquia_luz_t5",
-   "name": "Cristal Radiante",
+   "name": {
+    "pt_BR": "Cristal Radiante",
+    "en": "Radiant Crystal",
+    "es": "Cristal Radiante"
+   },
    "slot": "reliquia",
    "type": "luz",
    "tier": 5,
@@ -1832,7 +2552,11 @@
   },
   "amuleto_sombra_t5": {
    "id": "amuleto_sombra_t5",
-   "name": "Colar Umbral",
+   "name": {
+    "pt_BR": "Colar Umbral",
+    "en": "Umbral Necklace",
+    "es": "Collar Umbrío"
+   },
    "slot": "amuleto",
    "type": "sombra",
    "tier": 5,
@@ -1842,7 +2566,11 @@
   },
   "garra_sombra_t5": {
    "id": "garra_sombra_t5",
-   "name": "Gadanha Umbral",
+   "name": {
+    "pt_BR": "Gadanha Umbral",
+    "en": "Umbral Scythe",
+    "es": "Guadaña Umbría"
+   },
    "slot": "garra",
    "type": "sombra",
    "tier": 5,
@@ -1852,7 +2580,11 @@
   },
   "armadura_sombra_t5": {
    "id": "armadura_sombra_t5",
-   "name": "Égide Umbral",
+   "name": {
+    "pt_BR": "Égide Umbral",
+    "en": "Umbral Aegis",
+    "es": "Égida Umbría"
+   },
    "slot": "armadura",
    "type": "sombra",
    "tier": 5,
@@ -1862,7 +2594,11 @@
   },
   "reliquia_sombra_t5": {
    "id": "reliquia_sombra_t5",
-   "name": "Cristal Umbral",
+   "name": {
+    "pt_BR": "Cristal Umbral",
+    "en": "Umbral Crystal",
+    "es": "Cristal Umbrío"
+   },
    "slot": "reliquia",
    "type": "sombra",
    "tier": 5,
@@ -1872,7 +2608,11 @@
   },
   "amuleto_agua_t6": {
    "id": "amuleto_agua_t6",
-   "name": "Gargantilha Coralina",
+   "name": {
+    "pt_BR": "Gargantilha Coralina",
+    "en": "Coral Choker",
+    "es": "Gargantilla Coralina"
+   },
    "slot": "amuleto",
    "type": "agua",
    "tier": 6,
@@ -1882,7 +2622,11 @@
   },
   "garra_agua_t6": {
    "id": "garra_agua_t6",
-   "name": "Navalha Coralina",
+   "name": {
+    "pt_BR": "Navalha Coralina",
+    "en": "Coral Razor",
+    "es": "Navaja Coralina"
+   },
    "slot": "garra",
    "type": "agua",
    "tier": 6,
@@ -1892,7 +2636,11 @@
   },
   "armadura_agua_t6": {
    "id": "armadura_agua_t6",
-   "name": "Coura Coralina",
+   "name": {
+    "pt_BR": "Couro Coralino",
+    "en": "Coral Hide",
+    "es": "Cuero Coralino"
+   },
    "slot": "armadura",
    "type": "agua",
    "tier": 6,
@@ -1902,7 +2650,11 @@
   },
   "reliquia_agua_t6": {
    "id": "reliquia_agua_t6",
-   "name": "Fragmento Coralino",
+   "name": {
+    "pt_BR": "Fragmento Coralino",
+    "en": "Coral Shard",
+    "es": "Fragmento Coralino"
+   },
    "slot": "reliquia",
    "type": "agua",
    "tier": 6,
@@ -1912,7 +2664,11 @@
   },
   "amuleto_fogo_t6": {
    "id": "amuleto_fogo_t6",
-   "name": "Gargantilha Ígnea",
+   "name": {
+    "pt_BR": "Gargantilha Ígnea",
+    "en": "Igneous Choker",
+    "es": "Gargantilla Ígnea"
+   },
    "slot": "amuleto",
    "type": "fogo",
    "tier": 6,
@@ -1922,7 +2678,11 @@
   },
   "garra_fogo_t6": {
    "id": "garra_fogo_t6",
-   "name": "Navalha Ígnea",
+   "name": {
+    "pt_BR": "Navalha Ígnea",
+    "en": "Igneous Razor",
+    "es": "Navaja Ígnea"
+   },
    "slot": "garra",
    "type": "fogo",
    "tier": 6,
@@ -1932,7 +2692,11 @@
   },
   "armadura_fogo_t6": {
    "id": "armadura_fogo_t6",
-   "name": "Coura Ígnea",
+   "name": {
+    "pt_BR": "Couro Ígneo",
+    "en": "Igneous Hide",
+    "es": "Cuero Ígneo"
+   },
    "slot": "armadura",
    "type": "fogo",
    "tier": 6,
@@ -1942,7 +2706,11 @@
   },
   "reliquia_fogo_t6": {
    "id": "reliquia_fogo_t6",
-   "name": "Fragmento Ígneo",
+   "name": {
+    "pt_BR": "Fragmento Ígneo",
+    "en": "Igneous Shard",
+    "es": "Fragmento Ígneo"
+   },
    "slot": "reliquia",
    "type": "fogo",
    "tier": 6,
@@ -1952,7 +2720,11 @@
   },
   "amuleto_gelo_t6": {
    "id": "amuleto_gelo_t6",
-   "name": "Gargantilha Glacial",
+   "name": {
+    "pt_BR": "Gargantilha Glacial",
+    "en": "Glacial Choker",
+    "es": "Gargantilla Glacial"
+   },
    "slot": "amuleto",
    "type": "gelo",
    "tier": 6,
@@ -1962,7 +2734,11 @@
   },
   "garra_gelo_t6": {
    "id": "garra_gelo_t6",
-   "name": "Navalha Glacial",
+   "name": {
+    "pt_BR": "Navalha Glacial",
+    "en": "Glacial Razor",
+    "es": "Navaja Glacial"
+   },
    "slot": "garra",
    "type": "gelo",
    "tier": 6,
@@ -1972,7 +2748,11 @@
   },
   "armadura_gelo_t6": {
    "id": "armadura_gelo_t6",
-   "name": "Coura Glacial",
+   "name": {
+    "pt_BR": "Couro Glacial",
+    "en": "Glacial Hide",
+    "es": "Cuero Glacial"
+   },
    "slot": "armadura",
    "type": "gelo",
    "tier": 6,
@@ -1982,7 +2762,11 @@
   },
   "reliquia_gelo_t6": {
    "id": "reliquia_gelo_t6",
-   "name": "Fragmento Glacial",
+   "name": {
+    "pt_BR": "Fragmento Glacial",
+    "en": "Glacial Shard",
+    "es": "Fragmento Glacial"
+   },
    "slot": "reliquia",
    "type": "gelo",
    "tier": 6,
@@ -1992,7 +2776,11 @@
   },
   "amuleto_planta_t6": {
    "id": "amuleto_planta_t6",
-   "name": "Gargantilha Silvestre",
+   "name": {
+    "pt_BR": "Gargantilha Silvestre",
+    "en": "Wild Choker",
+    "es": "Gargantilla Silvestre"
+   },
    "slot": "amuleto",
    "type": "planta",
    "tier": 6,
@@ -2002,7 +2790,11 @@
   },
   "garra_planta_t6": {
    "id": "garra_planta_t6",
-   "name": "Navalha Silvestre",
+   "name": {
+    "pt_BR": "Navalha Silvestre",
+    "en": "Wild Razor",
+    "es": "Navaja Silvestre"
+   },
    "slot": "garra",
    "type": "planta",
    "tier": 6,
@@ -2012,7 +2804,11 @@
   },
   "armadura_planta_t6": {
    "id": "armadura_planta_t6",
-   "name": "Coura Silvestre",
+   "name": {
+    "pt_BR": "Couro Silvestre",
+    "en": "Wild Hide",
+    "es": "Cuero Silvestre"
+   },
    "slot": "armadura",
    "type": "planta",
    "tier": 6,
@@ -2022,7 +2818,11 @@
   },
   "reliquia_planta_t6": {
    "id": "reliquia_planta_t6",
-   "name": "Fragmento Silvestre",
+   "name": {
+    "pt_BR": "Fragmento Silvestre",
+    "en": "Wild Shard",
+    "es": "Fragmento Silvestre"
+   },
    "slot": "reliquia",
    "type": "planta",
    "tier": 6,
@@ -2032,7 +2832,11 @@
   },
   "amuleto_terra_t6": {
    "id": "amuleto_terra_t6",
-   "name": "Gargantilha Rochosa",
+   "name": {
+    "pt_BR": "Gargantilha Rochosa",
+    "en": "Rocky Choker",
+    "es": "Gargantilla Rocosa"
+   },
    "slot": "amuleto",
    "type": "terra",
    "tier": 6,
@@ -2042,7 +2846,11 @@
   },
   "garra_terra_t6": {
    "id": "garra_terra_t6",
-   "name": "Navalha Rochosa",
+   "name": {
+    "pt_BR": "Navalha Rochosa",
+    "en": "Rocky Razor",
+    "es": "Navaja Rocosa"
+   },
    "slot": "garra",
    "type": "terra",
    "tier": 6,
@@ -2052,7 +2860,11 @@
   },
   "armadura_terra_t6": {
    "id": "armadura_terra_t6",
-   "name": "Coura Rochosa",
+   "name": {
+    "pt_BR": "Couro Rochoso",
+    "en": "Rocky Hide",
+    "es": "Cuero Rocoso"
+   },
    "slot": "armadura",
    "type": "terra",
    "tier": 6,
@@ -2062,7 +2874,11 @@
   },
   "reliquia_terra_t6": {
    "id": "reliquia_terra_t6",
-   "name": "Fragmento Rochoso",
+   "name": {
+    "pt_BR": "Fragmento Rochoso",
+    "en": "Rocky Shard",
+    "es": "Fragmento Rocoso"
+   },
    "slot": "reliquia",
    "type": "terra",
    "tier": 6,
@@ -2072,7 +2888,11 @@
   },
   "amuleto_eletrico_t6": {
    "id": "amuleto_eletrico_t6",
-   "name": "Gargantilha Voltaica",
+   "name": {
+    "pt_BR": "Gargantilha Voltaica",
+    "en": "Voltaic Choker",
+    "es": "Gargantilla Voltaica"
+   },
    "slot": "amuleto",
    "type": "eletrico",
    "tier": 6,
@@ -2082,7 +2902,11 @@
   },
   "garra_eletrico_t6": {
    "id": "garra_eletrico_t6",
-   "name": "Navalha Voltaica",
+   "name": {
+    "pt_BR": "Navalha Voltaica",
+    "en": "Voltaic Razor",
+    "es": "Navaja Voltaica"
+   },
    "slot": "garra",
    "type": "eletrico",
    "tier": 6,
@@ -2092,7 +2916,11 @@
   },
   "armadura_eletrico_t6": {
    "id": "armadura_eletrico_t6",
-   "name": "Coura Voltaica",
+   "name": {
+    "pt_BR": "Couro Voltaico",
+    "en": "Voltaic Hide",
+    "es": "Cuero Voltaico"
+   },
    "slot": "armadura",
    "type": "eletrico",
    "tier": 6,
@@ -2102,7 +2930,11 @@
   },
   "reliquia_eletrico_t6": {
    "id": "reliquia_eletrico_t6",
-   "name": "Fragmento Voltaico",
+   "name": {
+    "pt_BR": "Fragmento Voltaico",
+    "en": "Voltaic Shard",
+    "es": "Fragmento Voltaico"
+   },
    "slot": "reliquia",
    "type": "eletrico",
    "tier": 6,
@@ -2112,7 +2944,11 @@
   },
   "amuleto_vento_t6": {
    "id": "amuleto_vento_t6",
-   "name": "Gargantilha Etérea",
+   "name": {
+    "pt_BR": "Gargantilha Etérea",
+    "en": "Ethereal Choker",
+    "es": "Gargantilla Etérea"
+   },
    "slot": "amuleto",
    "type": "vento",
    "tier": 6,
@@ -2122,7 +2958,11 @@
   },
   "garra_vento_t6": {
    "id": "garra_vento_t6",
-   "name": "Navalha Etérea",
+   "name": {
+    "pt_BR": "Navalha Etérea",
+    "en": "Ethereal Razor",
+    "es": "Navaja Etérea"
+   },
    "slot": "garra",
    "type": "vento",
    "tier": 6,
@@ -2132,7 +2972,11 @@
   },
   "armadura_vento_t6": {
    "id": "armadura_vento_t6",
-   "name": "Coura Etérea",
+   "name": {
+    "pt_BR": "Couro Etéreo",
+    "en": "Ethereal Hide",
+    "es": "Cuero Etéreo"
+   },
    "slot": "armadura",
    "type": "vento",
    "tier": 6,
@@ -2142,7 +2986,11 @@
   },
   "reliquia_vento_t6": {
    "id": "reliquia_vento_t6",
-   "name": "Fragmento Etéreo",
+   "name": {
+    "pt_BR": "Fragmento Etéreo",
+    "en": "Ethereal Shard",
+    "es": "Fragmento Etéreo"
+   },
    "slot": "reliquia",
    "type": "vento",
    "tier": 6,
@@ -2152,7 +3000,11 @@
   },
   "amuleto_luz_t6": {
    "id": "amuleto_luz_t6",
-   "name": "Gargantilha Radiante",
+   "name": {
+    "pt_BR": "Gargantilha Radiante",
+    "en": "Radiant Choker",
+    "es": "Gargantilla Radiante"
+   },
    "slot": "amuleto",
    "type": "luz",
    "tier": 6,
@@ -2162,7 +3014,11 @@
   },
   "garra_luz_t6": {
    "id": "garra_luz_t6",
-   "name": "Navalha Radiante",
+   "name": {
+    "pt_BR": "Navalha Radiante",
+    "en": "Radiant Razor",
+    "es": "Navaja Radiante"
+   },
    "slot": "garra",
    "type": "luz",
    "tier": 6,
@@ -2172,7 +3028,11 @@
   },
   "armadura_luz_t6": {
    "id": "armadura_luz_t6",
-   "name": "Coura Radiante",
+   "name": {
+    "pt_BR": "Couro Radiante",
+    "en": "Radiant Hide",
+    "es": "Cuero Radiante"
+   },
    "slot": "armadura",
    "type": "luz",
    "tier": 6,
@@ -2182,7 +3042,11 @@
   },
   "reliquia_luz_t6": {
    "id": "reliquia_luz_t6",
-   "name": "Fragmento Radiante",
+   "name": {
+    "pt_BR": "Fragmento Radiante",
+    "en": "Radiant Shard",
+    "es": "Fragmento Radiante"
+   },
    "slot": "reliquia",
    "type": "luz",
    "tier": 6,
@@ -2192,7 +3056,11 @@
   },
   "amuleto_sombra_t6": {
    "id": "amuleto_sombra_t6",
-   "name": "Gargantilha Umbral",
+   "name": {
+    "pt_BR": "Gargantilha Umbral",
+    "en": "Umbral Choker",
+    "es": "Gargantilla Umbría"
+   },
    "slot": "amuleto",
    "type": "sombra",
    "tier": 6,
@@ -2202,7 +3070,11 @@
   },
   "garra_sombra_t6": {
    "id": "garra_sombra_t6",
-   "name": "Navalha Umbral",
+   "name": {
+    "pt_BR": "Navalha Umbral",
+    "en": "Umbral Razor",
+    "es": "Navaja Umbría"
+   },
    "slot": "garra",
    "type": "sombra",
    "tier": 6,
@@ -2212,7 +3084,11 @@
   },
   "armadura_sombra_t6": {
    "id": "armadura_sombra_t6",
-   "name": "Coura Umbral",
+   "name": {
+    "pt_BR": "Couro Umbral",
+    "en": "Umbral Hide",
+    "es": "Cuero Umbrío"
+   },
    "slot": "armadura",
    "type": "sombra",
    "tier": 6,
@@ -2222,7 +3098,11 @@
   },
   "reliquia_sombra_t6": {
    "id": "reliquia_sombra_t6",
-   "name": "Fragmento Umbral",
+   "name": {
+    "pt_BR": "Fragmento Umbral",
+    "en": "Umbral Shard",
+    "es": "Fragmento Umbrío"
+   },
    "slot": "reliquia",
    "type": "sombra",
    "tier": 6,
@@ -2232,7 +3112,11 @@
   },
   "amuleto_agua_t7": {
    "id": "amuleto_agua_t7",
-   "name": "Insígnia Coralina",
+   "name": {
+    "pt_BR": "Insígnia Coralina",
+    "en": "Coral Insignia",
+    "es": "Insignia Coralina"
+   },
    "slot": "amuleto",
    "type": "agua",
    "tier": 7,
@@ -2242,7 +3126,11 @@
   },
   "garra_agua_t7": {
    "id": "garra_agua_t7",
-   "name": "Dente-Rei Coralino",
+   "name": {
+    "pt_BR": "Dente-Rei Coralino",
+    "en": "Coral King Tooth",
+    "es": "Diente Real Coralino"
+   },
    "slot": "garra",
    "type": "agua",
    "tier": 7,
@@ -2252,7 +3140,11 @@
   },
   "armadura_agua_t7": {
    "id": "armadura_agua_t7",
-   "name": "Bastião Coralino",
+   "name": {
+    "pt_BR": "Bastião Coralino",
+    "en": "Coral Bastion",
+    "es": "Bastión Coralino"
+   },
    "slot": "armadura",
    "type": "agua",
    "tier": 7,
@@ -2262,7 +3154,11 @@
   },
   "reliquia_agua_t7": {
    "id": "reliquia_agua_t7",
-   "name": "Núcleo Coralino",
+   "name": {
+    "pt_BR": "Núcleo Coralino",
+    "en": "Coral Core",
+    "es": "Núcleo Coralino"
+   },
    "slot": "reliquia",
    "type": "agua",
    "tier": 7,
@@ -2272,7 +3168,11 @@
   },
   "amuleto_fogo_t7": {
    "id": "amuleto_fogo_t7",
-   "name": "Insígnia Ígnea",
+   "name": {
+    "pt_BR": "Insígnia Ígnea",
+    "en": "Igneous Insignia",
+    "es": "Insignia Ígnea"
+   },
    "slot": "amuleto",
    "type": "fogo",
    "tier": 7,
@@ -2282,7 +3182,11 @@
   },
   "garra_fogo_t7": {
    "id": "garra_fogo_t7",
-   "name": "Dente-Rei Ígneo",
+   "name": {
+    "pt_BR": "Dente-Rei Ígneo",
+    "en": "Igneous King Tooth",
+    "es": "Diente Real Ígneo"
+   },
    "slot": "garra",
    "type": "fogo",
    "tier": 7,
@@ -2292,7 +3196,11 @@
   },
   "armadura_fogo_t7": {
    "id": "armadura_fogo_t7",
-   "name": "Bastião Ígneo",
+   "name": {
+    "pt_BR": "Bastião Ígneo",
+    "en": "Igneous Bastion",
+    "es": "Bastión Ígneo"
+   },
    "slot": "armadura",
    "type": "fogo",
    "tier": 7,
@@ -2302,7 +3210,11 @@
   },
   "reliquia_fogo_t7": {
    "id": "reliquia_fogo_t7",
-   "name": "Núcleo Ígneo",
+   "name": {
+    "pt_BR": "Núcleo Ígneo",
+    "en": "Igneous Core",
+    "es": "Núcleo Ígneo"
+   },
    "slot": "reliquia",
    "type": "fogo",
    "tier": 7,
@@ -2312,7 +3224,11 @@
   },
   "amuleto_gelo_t7": {
    "id": "amuleto_gelo_t7",
-   "name": "Insígnia Glacial",
+   "name": {
+    "pt_BR": "Insígnia Glacial",
+    "en": "Glacial Insignia",
+    "es": "Insignia Glacial"
+   },
    "slot": "amuleto",
    "type": "gelo",
    "tier": 7,
@@ -2322,7 +3238,11 @@
   },
   "garra_gelo_t7": {
    "id": "garra_gelo_t7",
-   "name": "Dente-Rei Glacial",
+   "name": {
+    "pt_BR": "Dente-Rei Glacial",
+    "en": "Glacial King Tooth",
+    "es": "Diente Real Glacial"
+   },
    "slot": "garra",
    "type": "gelo",
    "tier": 7,
@@ -2332,7 +3252,11 @@
   },
   "armadura_gelo_t7": {
    "id": "armadura_gelo_t7",
-   "name": "Bastião Glacial",
+   "name": {
+    "pt_BR": "Bastião Glacial",
+    "en": "Glacial Bastion",
+    "es": "Bastión Glacial"
+   },
    "slot": "armadura",
    "type": "gelo",
    "tier": 7,
@@ -2342,7 +3266,11 @@
   },
   "reliquia_gelo_t7": {
    "id": "reliquia_gelo_t7",
-   "name": "Núcleo Glacial",
+   "name": {
+    "pt_BR": "Núcleo Glacial",
+    "en": "Glacial Core",
+    "es": "Núcleo Glacial"
+   },
    "slot": "reliquia",
    "type": "gelo",
    "tier": 7,
@@ -2352,7 +3280,11 @@
   },
   "amuleto_planta_t7": {
    "id": "amuleto_planta_t7",
-   "name": "Insígnia Silvestre",
+   "name": {
+    "pt_BR": "Insígnia Silvestre",
+    "en": "Wild Insignia",
+    "es": "Insignia Silvestre"
+   },
    "slot": "amuleto",
    "type": "planta",
    "tier": 7,
@@ -2362,7 +3294,11 @@
   },
   "garra_planta_t7": {
    "id": "garra_planta_t7",
-   "name": "Dente-Rei Silvestre",
+   "name": {
+    "pt_BR": "Dente-Rei Silvestre",
+    "en": "Wild King Tooth",
+    "es": "Diente Real Silvestre"
+   },
    "slot": "garra",
    "type": "planta",
    "tier": 7,
@@ -2372,7 +3308,11 @@
   },
   "armadura_planta_t7": {
    "id": "armadura_planta_t7",
-   "name": "Bastião Silvestre",
+   "name": {
+    "pt_BR": "Bastião Silvestre",
+    "en": "Wild Bastion",
+    "es": "Bastión Silvestre"
+   },
    "slot": "armadura",
    "type": "planta",
    "tier": 7,
@@ -2382,7 +3322,11 @@
   },
   "reliquia_planta_t7": {
    "id": "reliquia_planta_t7",
-   "name": "Núcleo Silvestre",
+   "name": {
+    "pt_BR": "Núcleo Silvestre",
+    "en": "Wild Core",
+    "es": "Núcleo Silvestre"
+   },
    "slot": "reliquia",
    "type": "planta",
    "tier": 7,
@@ -2392,7 +3336,11 @@
   },
   "amuleto_terra_t7": {
    "id": "amuleto_terra_t7",
-   "name": "Insígnia Rochosa",
+   "name": {
+    "pt_BR": "Insígnia Rochosa",
+    "en": "Rocky Insignia",
+    "es": "Insignia Rocosa"
+   },
    "slot": "amuleto",
    "type": "terra",
    "tier": 7,
@@ -2402,7 +3350,11 @@
   },
   "garra_terra_t7": {
    "id": "garra_terra_t7",
-   "name": "Dente-Rei Rochoso",
+   "name": {
+    "pt_BR": "Dente-Rei Rochoso",
+    "en": "Rocky King Tooth",
+    "es": "Diente Real Rocoso"
+   },
    "slot": "garra",
    "type": "terra",
    "tier": 7,
@@ -2412,7 +3364,11 @@
   },
   "armadura_terra_t7": {
    "id": "armadura_terra_t7",
-   "name": "Bastião Rochoso",
+   "name": {
+    "pt_BR": "Bastião Rochoso",
+    "en": "Rocky Bastion",
+    "es": "Bastión Rocoso"
+   },
    "slot": "armadura",
    "type": "terra",
    "tier": 7,
@@ -2422,7 +3378,11 @@
   },
   "reliquia_terra_t7": {
    "id": "reliquia_terra_t7",
-   "name": "Núcleo Rochoso",
+   "name": {
+    "pt_BR": "Núcleo Rochoso",
+    "en": "Rocky Core",
+    "es": "Núcleo Rocoso"
+   },
    "slot": "reliquia",
    "type": "terra",
    "tier": 7,
@@ -2432,7 +3392,11 @@
   },
   "amuleto_eletrico_t7": {
    "id": "amuleto_eletrico_t7",
-   "name": "Insígnia Voltaica",
+   "name": {
+    "pt_BR": "Insígnia Voltaica",
+    "en": "Voltaic Insignia",
+    "es": "Insignia Voltaica"
+   },
    "slot": "amuleto",
    "type": "eletrico",
    "tier": 7,
@@ -2442,7 +3406,11 @@
   },
   "garra_eletrico_t7": {
    "id": "garra_eletrico_t7",
-   "name": "Dente-Rei Voltaico",
+   "name": {
+    "pt_BR": "Dente-Rei Voltaico",
+    "en": "Voltaic King Tooth",
+    "es": "Diente Real Voltaico"
+   },
    "slot": "garra",
    "type": "eletrico",
    "tier": 7,
@@ -2452,7 +3420,11 @@
   },
   "armadura_eletrico_t7": {
    "id": "armadura_eletrico_t7",
-   "name": "Bastião Voltaico",
+   "name": {
+    "pt_BR": "Bastião Voltaico",
+    "en": "Voltaic Bastion",
+    "es": "Bastión Voltaico"
+   },
    "slot": "armadura",
    "type": "eletrico",
    "tier": 7,
@@ -2462,7 +3434,11 @@
   },
   "reliquia_eletrico_t7": {
    "id": "reliquia_eletrico_t7",
-   "name": "Núcleo Voltaico",
+   "name": {
+    "pt_BR": "Núcleo Voltaico",
+    "en": "Voltaic Core",
+    "es": "Núcleo Voltaico"
+   },
    "slot": "reliquia",
    "type": "eletrico",
    "tier": 7,
@@ -2472,7 +3448,11 @@
   },
   "amuleto_vento_t7": {
    "id": "amuleto_vento_t7",
-   "name": "Insígnia Etérea",
+   "name": {
+    "pt_BR": "Insígnia Etérea",
+    "en": "Ethereal Insignia",
+    "es": "Insignia Etérea"
+   },
    "slot": "amuleto",
    "type": "vento",
    "tier": 7,
@@ -2482,7 +3462,11 @@
   },
   "garra_vento_t7": {
    "id": "garra_vento_t7",
-   "name": "Dente-Rei Etéreo",
+   "name": {
+    "pt_BR": "Dente-Rei Etéreo",
+    "en": "Ethereal King Tooth",
+    "es": "Diente Real Etéreo"
+   },
    "slot": "garra",
    "type": "vento",
    "tier": 7,
@@ -2492,7 +3476,11 @@
   },
   "armadura_vento_t7": {
    "id": "armadura_vento_t7",
-   "name": "Bastião Etéreo",
+   "name": {
+    "pt_BR": "Bastião Etéreo",
+    "en": "Ethereal Bastion",
+    "es": "Bastión Etéreo"
+   },
    "slot": "armadura",
    "type": "vento",
    "tier": 7,
@@ -2502,7 +3490,11 @@
   },
   "reliquia_vento_t7": {
    "id": "reliquia_vento_t7",
-   "name": "Núcleo Etéreo",
+   "name": {
+    "pt_BR": "Núcleo Etéreo",
+    "en": "Ethereal Core",
+    "es": "Núcleo Etéreo"
+   },
    "slot": "reliquia",
    "type": "vento",
    "tier": 7,
@@ -2512,7 +3504,11 @@
   },
   "amuleto_luz_t7": {
    "id": "amuleto_luz_t7",
-   "name": "Insígnia Radiante",
+   "name": {
+    "pt_BR": "Insígnia Radiante",
+    "en": "Radiant Insignia",
+    "es": "Insignia Radiante"
+   },
    "slot": "amuleto",
    "type": "luz",
    "tier": 7,
@@ -2522,7 +3518,11 @@
   },
   "garra_luz_t7": {
    "id": "garra_luz_t7",
-   "name": "Dente-Rei Radiante",
+   "name": {
+    "pt_BR": "Dente-Rei Radiante",
+    "en": "Radiant King Tooth",
+    "es": "Diente Real Radiante"
+   },
    "slot": "garra",
    "type": "luz",
    "tier": 7,
@@ -2532,7 +3532,11 @@
   },
   "armadura_luz_t7": {
    "id": "armadura_luz_t7",
-   "name": "Bastião Radiante",
+   "name": {
+    "pt_BR": "Bastião Radiante",
+    "en": "Radiant Bastion",
+    "es": "Bastión Radiante"
+   },
    "slot": "armadura",
    "type": "luz",
    "tier": 7,
@@ -2542,7 +3546,11 @@
   },
   "reliquia_luz_t7": {
    "id": "reliquia_luz_t7",
-   "name": "Núcleo Radiante",
+   "name": {
+    "pt_BR": "Núcleo Radiante",
+    "en": "Radiant Core",
+    "es": "Núcleo Radiante"
+   },
    "slot": "reliquia",
    "type": "luz",
    "tier": 7,
@@ -2552,7 +3560,11 @@
   },
   "amuleto_sombra_t7": {
    "id": "amuleto_sombra_t7",
-   "name": "Insígnia Umbral",
+   "name": {
+    "pt_BR": "Insígnia Umbral",
+    "en": "Umbral Insignia",
+    "es": "Insignia Umbría"
+   },
    "slot": "amuleto",
    "type": "sombra",
    "tier": 7,
@@ -2562,7 +3574,11 @@
   },
   "garra_sombra_t7": {
    "id": "garra_sombra_t7",
-   "name": "Dente-Rei Umbral",
+   "name": {
+    "pt_BR": "Dente-Rei Umbral",
+    "en": "Umbral King Tooth",
+    "es": "Diente Real Umbrío"
+   },
    "slot": "garra",
    "type": "sombra",
    "tier": 7,
@@ -2572,7 +3588,11 @@
   },
   "armadura_sombra_t7": {
    "id": "armadura_sombra_t7",
-   "name": "Bastião Umbral",
+   "name": {
+    "pt_BR": "Bastião Umbral",
+    "en": "Umbral Bastion",
+    "es": "Bastión Umbrío"
+   },
    "slot": "armadura",
    "type": "sombra",
    "tier": 7,
@@ -2582,7 +3602,11 @@
   },
   "reliquia_sombra_t7": {
    "id": "reliquia_sombra_t7",
-   "name": "Núcleo Umbral",
+   "name": {
+    "pt_BR": "Núcleo Umbral",
+    "en": "Umbral Core",
+    "es": "Núcleo Umbrío"
+   },
    "slot": "reliquia",
    "type": "sombra",
    "tier": 7,
@@ -2592,7 +3616,11 @@
   },
   "amuleto_agua_t8": {
    "id": "amuleto_agua_t8",
-   "name": "Relicário Coralino",
+   "name": {
+    "pt_BR": "Relicário Coralino",
+    "en": "Coral Reliquary",
+    "es": "Relicario Coralino"
+   },
    "slot": "amuleto",
    "type": "agua",
    "tier": 8,
@@ -2602,7 +3630,11 @@
   },
   "garra_agua_t8": {
    "id": "garra_agua_t8",
-   "name": "Ceifadora Coralina",
+   "name": {
+    "pt_BR": "Ceifadora Coralina",
+    "en": "Coral Reaper",
+    "es": "Segadora Coralina"
+   },
    "slot": "garra",
    "type": "agua",
    "tier": 8,
@@ -2612,7 +3644,11 @@
   },
   "armadura_agua_t8": {
    "id": "armadura_agua_t8",
-   "name": "Fortaleza Coralina",
+   "name": {
+    "pt_BR": "Fortaleza Coralina",
+    "en": "Coral Fortress",
+    "es": "Fortaleza Coralina"
+   },
    "slot": "armadura",
    "type": "agua",
    "tier": 8,
@@ -2622,7 +3658,11 @@
   },
   "reliquia_agua_t8": {
    "id": "reliquia_agua_t8",
-   "name": "Coração Coralino",
+   "name": {
+    "pt_BR": "Coração Coralino",
+    "en": "Coral Heart",
+    "es": "Corazón Coralino"
+   },
    "slot": "reliquia",
    "type": "agua",
    "tier": 8,
@@ -2632,7 +3672,11 @@
   },
   "amuleto_fogo_t8": {
    "id": "amuleto_fogo_t8",
-   "name": "Relicário Ígneo",
+   "name": {
+    "pt_BR": "Relicário Ígneo",
+    "en": "Igneous Reliquary",
+    "es": "Relicario Ígneo"
+   },
    "slot": "amuleto",
    "type": "fogo",
    "tier": 8,
@@ -2642,7 +3686,11 @@
   },
   "garra_fogo_t8": {
    "id": "garra_fogo_t8",
-   "name": "Ceifadora Ígnea",
+   "name": {
+    "pt_BR": "Ceifadora Ígnea",
+    "en": "Igneous Reaper",
+    "es": "Segadora Ígnea"
+   },
    "slot": "garra",
    "type": "fogo",
    "tier": 8,
@@ -2652,7 +3700,11 @@
   },
   "armadura_fogo_t8": {
    "id": "armadura_fogo_t8",
-   "name": "Fortaleza Ígnea",
+   "name": {
+    "pt_BR": "Fortaleza Ígnea",
+    "en": "Igneous Fortress",
+    "es": "Fortaleza Ígnea"
+   },
    "slot": "armadura",
    "type": "fogo",
    "tier": 8,
@@ -2662,7 +3714,11 @@
   },
   "reliquia_fogo_t8": {
    "id": "reliquia_fogo_t8",
-   "name": "Coração Ígneo",
+   "name": {
+    "pt_BR": "Coração Ígneo",
+    "en": "Igneous Heart",
+    "es": "Corazón Ígneo"
+   },
    "slot": "reliquia",
    "type": "fogo",
    "tier": 8,
@@ -2672,7 +3728,11 @@
   },
   "amuleto_gelo_t8": {
    "id": "amuleto_gelo_t8",
-   "name": "Relicário Glacial",
+   "name": {
+    "pt_BR": "Relicário Glacial",
+    "en": "Glacial Reliquary",
+    "es": "Relicario Glacial"
+   },
    "slot": "amuleto",
    "type": "gelo",
    "tier": 8,
@@ -2682,7 +3742,11 @@
   },
   "garra_gelo_t8": {
    "id": "garra_gelo_t8",
-   "name": "Ceifadora Glacial",
+   "name": {
+    "pt_BR": "Ceifadora Glacial",
+    "en": "Glacial Reaper",
+    "es": "Segadora Glacial"
+   },
    "slot": "garra",
    "type": "gelo",
    "tier": 8,
@@ -2692,7 +3756,11 @@
   },
   "armadura_gelo_t8": {
    "id": "armadura_gelo_t8",
-   "name": "Fortaleza Glacial",
+   "name": {
+    "pt_BR": "Fortaleza Glacial",
+    "en": "Glacial Fortress",
+    "es": "Fortaleza Glacial"
+   },
    "slot": "armadura",
    "type": "gelo",
    "tier": 8,
@@ -2702,7 +3770,11 @@
   },
   "reliquia_gelo_t8": {
    "id": "reliquia_gelo_t8",
-   "name": "Coração Glacial",
+   "name": {
+    "pt_BR": "Coração Glacial",
+    "en": "Glacial Heart",
+    "es": "Corazón Glacial"
+   },
    "slot": "reliquia",
    "type": "gelo",
    "tier": 8,
@@ -2712,7 +3784,11 @@
   },
   "amuleto_planta_t8": {
    "id": "amuleto_planta_t8",
-   "name": "Relicário Silvestre",
+   "name": {
+    "pt_BR": "Relicário Silvestre",
+    "en": "Wild Reliquary",
+    "es": "Relicario Silvestre"
+   },
    "slot": "amuleto",
    "type": "planta",
    "tier": 8,
@@ -2722,7 +3798,11 @@
   },
   "garra_planta_t8": {
    "id": "garra_planta_t8",
-   "name": "Ceifadora Silvestre",
+   "name": {
+    "pt_BR": "Ceifadora Silvestre",
+    "en": "Wild Reaper",
+    "es": "Segadora Silvestre"
+   },
    "slot": "garra",
    "type": "planta",
    "tier": 8,
@@ -2732,7 +3812,11 @@
   },
   "armadura_planta_t8": {
    "id": "armadura_planta_t8",
-   "name": "Fortaleza Silvestre",
+   "name": {
+    "pt_BR": "Fortaleza Silvestre",
+    "en": "Wild Fortress",
+    "es": "Fortaleza Silvestre"
+   },
    "slot": "armadura",
    "type": "planta",
    "tier": 8,
@@ -2742,7 +3826,11 @@
   },
   "reliquia_planta_t8": {
    "id": "reliquia_planta_t8",
-   "name": "Coração Silvestre",
+   "name": {
+    "pt_BR": "Coração Silvestre",
+    "en": "Wild Heart",
+    "es": "Corazón Silvestre"
+   },
    "slot": "reliquia",
    "type": "planta",
    "tier": 8,
@@ -2752,7 +3840,11 @@
   },
   "amuleto_terra_t8": {
    "id": "amuleto_terra_t8",
-   "name": "Relicário Rochoso",
+   "name": {
+    "pt_BR": "Relicário Rochoso",
+    "en": "Rocky Reliquary",
+    "es": "Relicario Rocoso"
+   },
    "slot": "amuleto",
    "type": "terra",
    "tier": 8,
@@ -2762,7 +3854,11 @@
   },
   "garra_terra_t8": {
    "id": "garra_terra_t8",
-   "name": "Ceifadora Rochosa",
+   "name": {
+    "pt_BR": "Ceifadora Rochosa",
+    "en": "Rocky Reaper",
+    "es": "Segadora Rocosa"
+   },
    "slot": "garra",
    "type": "terra",
    "tier": 8,
@@ -2772,7 +3868,11 @@
   },
   "armadura_terra_t8": {
    "id": "armadura_terra_t8",
-   "name": "Fortaleza Rochosa",
+   "name": {
+    "pt_BR": "Fortaleza Rochosa",
+    "en": "Rocky Fortress",
+    "es": "Fortaleza Rocosa"
+   },
    "slot": "armadura",
    "type": "terra",
    "tier": 8,
@@ -2782,7 +3882,11 @@
   },
   "reliquia_terra_t8": {
    "id": "reliquia_terra_t8",
-   "name": "Coração Rochoso",
+   "name": {
+    "pt_BR": "Coração Rochoso",
+    "en": "Rocky Heart",
+    "es": "Corazón Rocoso"
+   },
    "slot": "reliquia",
    "type": "terra",
    "tier": 8,
@@ -2792,7 +3896,11 @@
   },
   "amuleto_eletrico_t8": {
    "id": "amuleto_eletrico_t8",
-   "name": "Relicário Voltaico",
+   "name": {
+    "pt_BR": "Relicário Voltaico",
+    "en": "Voltaic Reliquary",
+    "es": "Relicario Voltaico"
+   },
    "slot": "amuleto",
    "type": "eletrico",
    "tier": 8,
@@ -2802,7 +3910,11 @@
   },
   "garra_eletrico_t8": {
    "id": "garra_eletrico_t8",
-   "name": "Ceifadora Voltaica",
+   "name": {
+    "pt_BR": "Ceifadora Voltaica",
+    "en": "Voltaic Reaper",
+    "es": "Segadora Voltaica"
+   },
    "slot": "garra",
    "type": "eletrico",
    "tier": 8,
@@ -2812,7 +3924,11 @@
   },
   "armadura_eletrico_t8": {
    "id": "armadura_eletrico_t8",
-   "name": "Fortaleza Voltaica",
+   "name": {
+    "pt_BR": "Fortaleza Voltaica",
+    "en": "Voltaic Fortress",
+    "es": "Fortaleza Voltaica"
+   },
    "slot": "armadura",
    "type": "eletrico",
    "tier": 8,
@@ -2822,7 +3938,11 @@
   },
   "reliquia_eletrico_t8": {
    "id": "reliquia_eletrico_t8",
-   "name": "Coração Voltaico",
+   "name": {
+    "pt_BR": "Coração Voltaico",
+    "en": "Voltaic Heart",
+    "es": "Corazón Voltaico"
+   },
    "slot": "reliquia",
    "type": "eletrico",
    "tier": 8,
@@ -2832,7 +3952,11 @@
   },
   "amuleto_vento_t8": {
    "id": "amuleto_vento_t8",
-   "name": "Relicário Etéreo",
+   "name": {
+    "pt_BR": "Relicário Etéreo",
+    "en": "Ethereal Reliquary",
+    "es": "Relicario Etéreo"
+   },
    "slot": "amuleto",
    "type": "vento",
    "tier": 8,
@@ -2842,7 +3966,11 @@
   },
   "garra_vento_t8": {
    "id": "garra_vento_t8",
-   "name": "Ceifadora Etérea",
+   "name": {
+    "pt_BR": "Ceifadora Etérea",
+    "en": "Ethereal Reaper",
+    "es": "Segadora Etérea"
+   },
    "slot": "garra",
    "type": "vento",
    "tier": 8,
@@ -2852,7 +3980,11 @@
   },
   "armadura_vento_t8": {
    "id": "armadura_vento_t8",
-   "name": "Fortaleza Etérea",
+   "name": {
+    "pt_BR": "Fortaleza Etérea",
+    "en": "Ethereal Fortress",
+    "es": "Fortaleza Etérea"
+   },
    "slot": "armadura",
    "type": "vento",
    "tier": 8,
@@ -2862,7 +3994,11 @@
   },
   "reliquia_vento_t8": {
    "id": "reliquia_vento_t8",
-   "name": "Coração Etéreo",
+   "name": {
+    "pt_BR": "Coração Etéreo",
+    "en": "Ethereal Heart",
+    "es": "Corazón Etéreo"
+   },
    "slot": "reliquia",
    "type": "vento",
    "tier": 8,
@@ -2872,7 +4008,11 @@
   },
   "amuleto_luz_t8": {
    "id": "amuleto_luz_t8",
-   "name": "Relicário Radiante",
+   "name": {
+    "pt_BR": "Relicário Radiante",
+    "en": "Radiant Reliquary",
+    "es": "Relicario Radiante"
+   },
    "slot": "amuleto",
    "type": "luz",
    "tier": 8,
@@ -2882,7 +4022,11 @@
   },
   "garra_luz_t8": {
    "id": "garra_luz_t8",
-   "name": "Ceifadora Radiante",
+   "name": {
+    "pt_BR": "Ceifadora Radiante",
+    "en": "Radiant Reaper",
+    "es": "Segadora Radiante"
+   },
    "slot": "garra",
    "type": "luz",
    "tier": 8,
@@ -2892,7 +4036,11 @@
   },
   "armadura_luz_t8": {
    "id": "armadura_luz_t8",
-   "name": "Fortaleza Radiante",
+   "name": {
+    "pt_BR": "Fortaleza Radiante",
+    "en": "Radiant Fortress",
+    "es": "Fortaleza Radiante"
+   },
    "slot": "armadura",
    "type": "luz",
    "tier": 8,
@@ -2902,7 +4050,11 @@
   },
   "reliquia_luz_t8": {
    "id": "reliquia_luz_t8",
-   "name": "Coração Radiante",
+   "name": {
+    "pt_BR": "Coração Radiante",
+    "en": "Radiant Heart",
+    "es": "Corazón Radiante"
+   },
    "slot": "reliquia",
    "type": "luz",
    "tier": 8,
@@ -2912,7 +4064,11 @@
   },
   "amuleto_sombra_t8": {
    "id": "amuleto_sombra_t8",
-   "name": "Relicário Umbral",
+   "name": {
+    "pt_BR": "Relicário Umbral",
+    "en": "Umbral Reliquary",
+    "es": "Relicario Umbrío"
+   },
    "slot": "amuleto",
    "type": "sombra",
    "tier": 8,
@@ -2922,7 +4078,11 @@
   },
   "garra_sombra_t8": {
    "id": "garra_sombra_t8",
-   "name": "Ceifadora Umbral",
+   "name": {
+    "pt_BR": "Ceifadora Umbral",
+    "en": "Umbral Reaper",
+    "es": "Segadora Umbría"
+   },
    "slot": "garra",
    "type": "sombra",
    "tier": 8,
@@ -2932,7 +4092,11 @@
   },
   "armadura_sombra_t8": {
    "id": "armadura_sombra_t8",
-   "name": "Fortaleza Umbral",
+   "name": {
+    "pt_BR": "Fortaleza Umbral",
+    "en": "Umbral Fortress",
+    "es": "Fortaleza Umbría"
+   },
    "slot": "armadura",
    "type": "sombra",
    "tier": 8,
@@ -2942,7 +4106,11 @@
   },
   "reliquia_sombra_t8": {
    "id": "reliquia_sombra_t8",
-   "name": "Coração Umbral",
+   "name": {
+    "pt_BR": "Coração Umbral",
+    "en": "Umbral Heart",
+    "es": "Corazón Umbrío"
+   },
    "slot": "reliquia",
    "type": "sombra",
    "tier": 8,
@@ -2952,7 +4120,11 @@
   },
   "amuleto_agua_t9": {
    "id": "amuleto_agua_t9",
-   "name": "Coroa-Pingente Coralina",
+   "name": {
+    "pt_BR": "Coroa-Pingente Coralina",
+    "en": "Coral Crown Pendant",
+    "es": "Colgante Real Coralino"
+   },
    "slot": "amuleto",
    "type": "agua",
    "tier": 9,
@@ -2962,7 +4134,11 @@
   },
   "garra_agua_t9": {
    "id": "garra_agua_t9",
-   "name": "Garra Ancestral Coralina",
+   "name": {
+    "pt_BR": "Garra Ancestral Coralina",
+    "en": "Coral Ancient Claw",
+    "es": "Garra Ancestral Coralina"
+   },
    "slot": "garra",
    "type": "agua",
    "tier": 9,
@@ -2972,7 +4148,11 @@
   },
   "armadura_agua_t9": {
    "id": "armadura_agua_t9",
-   "name": "Manto Primevo Coralino",
+   "name": {
+    "pt_BR": "Manto Primevo Coralino",
+    "en": "Coral Primeval Mantle",
+    "es": "Manto Primigenio Coralino"
+   },
    "slot": "armadura",
    "type": "agua",
    "tier": 9,
@@ -2982,7 +4162,11 @@
   },
   "reliquia_agua_t9": {
    "id": "reliquia_agua_t9",
-   "name": "Essência Viva Coralina",
+   "name": {
+    "pt_BR": "Essência Viva Coralina",
+    "en": "Coral Living Essence",
+    "es": "Esencia Viva Coralina"
+   },
    "slot": "reliquia",
    "type": "agua",
    "tier": 9,
@@ -2992,7 +4176,11 @@
   },
   "amuleto_fogo_t9": {
    "id": "amuleto_fogo_t9",
-   "name": "Coroa-Pingente Ígnea",
+   "name": {
+    "pt_BR": "Coroa-Pingente Ígnea",
+    "en": "Igneous Crown Pendant",
+    "es": "Colgante Real Ígneo"
+   },
    "slot": "amuleto",
    "type": "fogo",
    "tier": 9,
@@ -3002,7 +4190,11 @@
   },
   "garra_fogo_t9": {
    "id": "garra_fogo_t9",
-   "name": "Garra Ancestral Ígnea",
+   "name": {
+    "pt_BR": "Garra Ancestral Ígnea",
+    "en": "Igneous Ancient Claw",
+    "es": "Garra Ancestral Ígnea"
+   },
    "slot": "garra",
    "type": "fogo",
    "tier": 9,
@@ -3012,7 +4204,11 @@
   },
   "armadura_fogo_t9": {
    "id": "armadura_fogo_t9",
-   "name": "Manto Primevo Ígneo",
+   "name": {
+    "pt_BR": "Manto Primevo Ígneo",
+    "en": "Igneous Primeval Mantle",
+    "es": "Manto Primigenio Ígneo"
+   },
    "slot": "armadura",
    "type": "fogo",
    "tier": 9,
@@ -3022,7 +4218,11 @@
   },
   "reliquia_fogo_t9": {
    "id": "reliquia_fogo_t9",
-   "name": "Essência Viva Ígnea",
+   "name": {
+    "pt_BR": "Essência Viva Ígnea",
+    "en": "Igneous Living Essence",
+    "es": "Esencia Viva Ígnea"
+   },
    "slot": "reliquia",
    "type": "fogo",
    "tier": 9,
@@ -3032,7 +4232,11 @@
   },
   "amuleto_gelo_t9": {
    "id": "amuleto_gelo_t9",
-   "name": "Coroa-Pingente Glacial",
+   "name": {
+    "pt_BR": "Coroa-Pingente Glacial",
+    "en": "Glacial Crown Pendant",
+    "es": "Colgante Real Glacial"
+   },
    "slot": "amuleto",
    "type": "gelo",
    "tier": 9,
@@ -3042,7 +4246,11 @@
   },
   "garra_gelo_t9": {
    "id": "garra_gelo_t9",
-   "name": "Garra Ancestral Glacial",
+   "name": {
+    "pt_BR": "Garra Ancestral Glacial",
+    "en": "Glacial Ancient Claw",
+    "es": "Garra Ancestral Glacial"
+   },
    "slot": "garra",
    "type": "gelo",
    "tier": 9,
@@ -3052,7 +4260,11 @@
   },
   "armadura_gelo_t9": {
    "id": "armadura_gelo_t9",
-   "name": "Manto Primevo Glacial",
+   "name": {
+    "pt_BR": "Manto Primevo Glacial",
+    "en": "Glacial Primeval Mantle",
+    "es": "Manto Primigenio Glacial"
+   },
    "slot": "armadura",
    "type": "gelo",
    "tier": 9,
@@ -3062,7 +4274,11 @@
   },
   "reliquia_gelo_t9": {
    "id": "reliquia_gelo_t9",
-   "name": "Essência Viva Glacial",
+   "name": {
+    "pt_BR": "Essência Viva Glacial",
+    "en": "Glacial Living Essence",
+    "es": "Esencia Viva Glacial"
+   },
    "slot": "reliquia",
    "type": "gelo",
    "tier": 9,
@@ -3072,7 +4288,11 @@
   },
   "amuleto_planta_t9": {
    "id": "amuleto_planta_t9",
-   "name": "Coroa-Pingente Silvestre",
+   "name": {
+    "pt_BR": "Coroa-Pingente Silvestre",
+    "en": "Wild Crown Pendant",
+    "es": "Colgante Real Silvestre"
+   },
    "slot": "amuleto",
    "type": "planta",
    "tier": 9,
@@ -3082,7 +4302,11 @@
   },
   "garra_planta_t9": {
    "id": "garra_planta_t9",
-   "name": "Garra Ancestral Silvestre",
+   "name": {
+    "pt_BR": "Garra Ancestral Silvestre",
+    "en": "Wild Ancient Claw",
+    "es": "Garra Ancestral Silvestre"
+   },
    "slot": "garra",
    "type": "planta",
    "tier": 9,
@@ -3092,7 +4316,11 @@
   },
   "armadura_planta_t9": {
    "id": "armadura_planta_t9",
-   "name": "Manto Primevo Silvestre",
+   "name": {
+    "pt_BR": "Manto Primevo Silvestre",
+    "en": "Wild Primeval Mantle",
+    "es": "Manto Primigenio Silvestre"
+   },
    "slot": "armadura",
    "type": "planta",
    "tier": 9,
@@ -3102,7 +4330,11 @@
   },
   "reliquia_planta_t9": {
    "id": "reliquia_planta_t9",
-   "name": "Essência Viva Silvestre",
+   "name": {
+    "pt_BR": "Essência Viva Silvestre",
+    "en": "Wild Living Essence",
+    "es": "Esencia Viva Silvestre"
+   },
    "slot": "reliquia",
    "type": "planta",
    "tier": 9,
@@ -3112,7 +4344,11 @@
   },
   "amuleto_terra_t9": {
    "id": "amuleto_terra_t9",
-   "name": "Coroa-Pingente Rochosa",
+   "name": {
+    "pt_BR": "Coroa-Pingente Rochosa",
+    "en": "Rocky Crown Pendant",
+    "es": "Colgante Real Rocoso"
+   },
    "slot": "amuleto",
    "type": "terra",
    "tier": 9,
@@ -3122,7 +4358,11 @@
   },
   "garra_terra_t9": {
    "id": "garra_terra_t9",
-   "name": "Garra Ancestral Rochosa",
+   "name": {
+    "pt_BR": "Garra Ancestral Rochosa",
+    "en": "Rocky Ancient Claw",
+    "es": "Garra Ancestral Rocosa"
+   },
    "slot": "garra",
    "type": "terra",
    "tier": 9,
@@ -3132,7 +4372,11 @@
   },
   "armadura_terra_t9": {
    "id": "armadura_terra_t9",
-   "name": "Manto Primevo Rochoso",
+   "name": {
+    "pt_BR": "Manto Primevo Rochoso",
+    "en": "Rocky Primeval Mantle",
+    "es": "Manto Primigenio Rocoso"
+   },
    "slot": "armadura",
    "type": "terra",
    "tier": 9,
@@ -3142,7 +4386,11 @@
   },
   "reliquia_terra_t9": {
    "id": "reliquia_terra_t9",
-   "name": "Essência Viva Rochosa",
+   "name": {
+    "pt_BR": "Essência Viva Rochosa",
+    "en": "Rocky Living Essence",
+    "es": "Esencia Viva Rocosa"
+   },
    "slot": "reliquia",
    "type": "terra",
    "tier": 9,
@@ -3152,7 +4400,11 @@
   },
   "amuleto_eletrico_t9": {
    "id": "amuleto_eletrico_t9",
-   "name": "Coroa-Pingente Voltaica",
+   "name": {
+    "pt_BR": "Coroa-Pingente Voltaica",
+    "en": "Voltaic Crown Pendant",
+    "es": "Colgante Real Voltaico"
+   },
    "slot": "amuleto",
    "type": "eletrico",
    "tier": 9,
@@ -3162,7 +4414,11 @@
   },
   "garra_eletrico_t9": {
    "id": "garra_eletrico_t9",
-   "name": "Garra Ancestral Voltaica",
+   "name": {
+    "pt_BR": "Garra Ancestral Voltaica",
+    "en": "Voltaic Ancient Claw",
+    "es": "Garra Ancestral Voltaica"
+   },
    "slot": "garra",
    "type": "eletrico",
    "tier": 9,
@@ -3172,7 +4428,11 @@
   },
   "armadura_eletrico_t9": {
    "id": "armadura_eletrico_t9",
-   "name": "Manto Primevo Voltaico",
+   "name": {
+    "pt_BR": "Manto Primevo Voltaico",
+    "en": "Voltaic Primeval Mantle",
+    "es": "Manto Primigenio Voltaico"
+   },
    "slot": "armadura",
    "type": "eletrico",
    "tier": 9,
@@ -3182,7 +4442,11 @@
   },
   "reliquia_eletrico_t9": {
    "id": "reliquia_eletrico_t9",
-   "name": "Essência Viva Voltaica",
+   "name": {
+    "pt_BR": "Essência Viva Voltaica",
+    "en": "Voltaic Living Essence",
+    "es": "Esencia Viva Voltaica"
+   },
    "slot": "reliquia",
    "type": "eletrico",
    "tier": 9,
@@ -3192,7 +4456,11 @@
   },
   "amuleto_vento_t9": {
    "id": "amuleto_vento_t9",
-   "name": "Coroa-Pingente Etérea",
+   "name": {
+    "pt_BR": "Coroa-Pingente Etérea",
+    "en": "Ethereal Crown Pendant",
+    "es": "Colgante Real Etéreo"
+   },
    "slot": "amuleto",
    "type": "vento",
    "tier": 9,
@@ -3202,7 +4470,11 @@
   },
   "garra_vento_t9": {
    "id": "garra_vento_t9",
-   "name": "Garra Ancestral Etérea",
+   "name": {
+    "pt_BR": "Garra Ancestral Etérea",
+    "en": "Ethereal Ancient Claw",
+    "es": "Garra Ancestral Etérea"
+   },
    "slot": "garra",
    "type": "vento",
    "tier": 9,
@@ -3212,7 +4484,11 @@
   },
   "armadura_vento_t9": {
    "id": "armadura_vento_t9",
-   "name": "Manto Primevo Etéreo",
+   "name": {
+    "pt_BR": "Manto Primevo Etéreo",
+    "en": "Ethereal Primeval Mantle",
+    "es": "Manto Primigenio Etéreo"
+   },
    "slot": "armadura",
    "type": "vento",
    "tier": 9,
@@ -3222,7 +4498,11 @@
   },
   "reliquia_vento_t9": {
    "id": "reliquia_vento_t9",
-   "name": "Essência Viva Etérea",
+   "name": {
+    "pt_BR": "Essência Viva Etérea",
+    "en": "Ethereal Living Essence",
+    "es": "Esencia Viva Etérea"
+   },
    "slot": "reliquia",
    "type": "vento",
    "tier": 9,
@@ -3232,7 +4512,11 @@
   },
   "amuleto_luz_t9": {
    "id": "amuleto_luz_t9",
-   "name": "Coroa-Pingente Radiante",
+   "name": {
+    "pt_BR": "Coroa-Pingente Radiante",
+    "en": "Radiant Crown Pendant",
+    "es": "Colgante Real Radiante"
+   },
    "slot": "amuleto",
    "type": "luz",
    "tier": 9,
@@ -3242,7 +4526,11 @@
   },
   "garra_luz_t9": {
    "id": "garra_luz_t9",
-   "name": "Garra Ancestral Radiante",
+   "name": {
+    "pt_BR": "Garra Ancestral Radiante",
+    "en": "Radiant Ancient Claw",
+    "es": "Garra Ancestral Radiante"
+   },
    "slot": "garra",
    "type": "luz",
    "tier": 9,
@@ -3252,7 +4540,11 @@
   },
   "armadura_luz_t9": {
    "id": "armadura_luz_t9",
-   "name": "Manto Primevo Radiante",
+   "name": {
+    "pt_BR": "Manto Primevo Radiante",
+    "en": "Radiant Primeval Mantle",
+    "es": "Manto Primigenio Radiante"
+   },
    "slot": "armadura",
    "type": "luz",
    "tier": 9,
@@ -3262,7 +4554,11 @@
   },
   "reliquia_luz_t9": {
    "id": "reliquia_luz_t9",
-   "name": "Essência Viva Radiante",
+   "name": {
+    "pt_BR": "Essência Viva Radiante",
+    "en": "Radiant Living Essence",
+    "es": "Esencia Viva Radiante"
+   },
    "slot": "reliquia",
    "type": "luz",
    "tier": 9,
@@ -3272,7 +4568,11 @@
   },
   "amuleto_sombra_t9": {
    "id": "amuleto_sombra_t9",
-   "name": "Coroa-Pingente Umbral",
+   "name": {
+    "pt_BR": "Coroa-Pingente Umbral",
+    "en": "Umbral Crown Pendant",
+    "es": "Colgante Real Umbrío"
+   },
    "slot": "amuleto",
    "type": "sombra",
    "tier": 9,
@@ -3282,7 +4582,11 @@
   },
   "garra_sombra_t9": {
    "id": "garra_sombra_t9",
-   "name": "Garra Ancestral Umbral",
+   "name": {
+    "pt_BR": "Garra Ancestral Umbral",
+    "en": "Umbral Ancient Claw",
+    "es": "Garra Ancestral Umbría"
+   },
    "slot": "garra",
    "type": "sombra",
    "tier": 9,
@@ -3292,7 +4596,11 @@
   },
   "armadura_sombra_t9": {
    "id": "armadura_sombra_t9",
-   "name": "Manto Primevo Umbral",
+   "name": {
+    "pt_BR": "Manto Primevo Umbral",
+    "en": "Umbral Primeval Mantle",
+    "es": "Manto Primigenio Umbrío"
+   },
    "slot": "armadura",
    "type": "sombra",
    "tier": 9,
@@ -3302,7 +4610,11 @@
   },
   "reliquia_sombra_t9": {
    "id": "reliquia_sombra_t9",
-   "name": "Essência Viva Umbral",
+   "name": {
+    "pt_BR": "Essência Viva Umbral",
+    "en": "Umbral Living Essence",
+    "es": "Esencia Viva Umbría"
+   },
    "slot": "reliquia",
    "type": "sombra",
    "tier": 9,
@@ -3314,79 +4626,64 @@
  "affixes": [
   {
    "id": "hp_pct",
-   "name": "+{v}% HP",
    "stat": "hp_pct",
    "min": 3,
    "max": 10
   },
   {
    "id": "atk_pct",
-   "name": "+{v}% Ataque",
    "stat": "atk_pct",
    "min": 3,
    "max": 10
   },
   {
    "id": "def_pct",
-   "name": "+{v}% Defesa",
    "stat": "def_pct",
    "min": 3,
    "max": 10
   },
   {
    "id": "spd_pct",
-   "name": "+{v}% Velocidade",
    "stat": "spd_pct",
    "min": 2,
    "max": 6
   },
   {
    "id": "crit",
-   "name": "+{v}% Crítico",
    "stat": "crit",
    "min": 1,
    "max": 5
   },
   {
    "id": "lifesteal",
-   "name": "+{v}% Roubo de vida",
    "stat": "lifesteal",
    "min": 1,
    "max": 4
   },
   {
    "id": "cdr",
-   "name": "-{v}% Recarga de habilidades",
    "stat": "cdr",
    "min": 2,
    "max": 8
   },
   {
    "id": "xp_pct",
-   "name": "+{v}% XP",
    "stat": "xp_pct",
    "min": 1,
    "max": 5
   },
   {
    "id": "gold_pct",
-   "name": "+{v}% Ouro",
    "stat": "gold_pct",
    "min": 2,
    "max": 8
   },
   {
    "id": "type_dmg",
-   "name": "+{v}% dano contra {t}",
    "stat": "type_dmg",
    "min": 4,
    "max": 12,
    "per_type": true
   }
- ],
- "shop": {
-  "_comentario": "A loja NPC vende bases Comum dos tiers liberados.",
-  "rarity": "comum",
-  "price_mult": 3.0
- }
+ ]
 }

@@ -48,6 +48,14 @@ var max_steps_per_frame := 400
 var _accum := 0.0
 var _ui_timer := 0.0
 var _cam_target: Creature = null
+var _spawn_point := Vector2i.ZERO
+var _team_revive_timer := -1.0
+var _field_check := 0.0
+## uids caídos neste ciclo (só voltam quando o time inteiro renasce)
+var fallen := {}
+## uids que entraram em campo neste ciclo: recebem XP de quem luta mesmo se caírem
+var participants: Array = []
+var daily: Dictionary = {}
 
 
 func _ready() -> void:
@@ -131,7 +139,7 @@ func setup_challenge(p_challenge: Dictionary) -> void:
 	st.rng = max(1, int(st.rng))
 	boss = _make_creature(challenge.boss_form, lvl, st, false, false)
 	boss.is_boss = true
-	boss.display_name = challenge.name
+	boss.display_name = DataDB.challenge_name(challenge)
 	boss.set_size_scale(float(challenge.get("scale", 1.6)))
 	_place_creature(boss, Vector2i(c.x, c.y - 4))
 	boss.home = boss.cell
@@ -142,6 +150,35 @@ func setup_challenge(p_challenge: Dictionary) -> void:
 		Game.mark_seen(challenge.boss_form)
 
 
+## Chefe Diário: arena com um chefe que acompanha o nível do jogador.
+func setup_daily(def: Dictionary) -> void:
+	var cfg: Dictionary = DataDB.config.daily_boss
+	var subs := DataDB.sub_biomes(def.type)
+	var c := {
+		"id": "daily", "name": DataDB.form_name(def.form), "boss_form": def.form, "type": def.type,
+		"biome": subs[int(def.day) % subs.size()] if not subs.is_empty() else "praia",
+		"boss_level": int(def.level), "hp_mult": float(cfg.hp_mult), "atk_mult": float(cfg.atk_mult),
+		"def_mult": float(cfg.def_mult), "scale": float(cfg.scale), "mechanics": cfg.mechanics.duplicate(true),
+		"phases": [{"hp_below": 0.5, "atk_mult": 1.25, "spd_mult": 1.15, "say": {"pt_BR": "O chefe se enfurece!", "en": "The boss is enraged!", "es": "¡El jefe se enfurece!"}}],
+		"time_limit": float(cfg.time_limit), "map_size": cfg.map_size, "seed": 5000 + int(def.day),
+	}
+	if c.mechanics.has("summon"):
+		var same_type: Array = []
+		for f in DataDB.form_list:
+			if f.type == def.type and int(f.stage) == 2:
+				same_type.append(f.form_id)
+		c.mechanics.summon["form"] = same_type[int(def.day) % same_type.size()]
+	daily = def
+	setup_challenge(c)
+	mode = "daily"
+
+
+func boss_damage_fraction() -> float:
+	if boss == null:
+		return 0.0
+	return clampf(1.0 - boss.hp / boss.max_hp, 0.0, 1.0)
+
+
 func _build_world() -> void:
 	_build_nodes()
 	nav.setup(map.size, map.solid)
@@ -149,6 +186,9 @@ func _build_world() -> void:
 	for c in map.tiles:
 		ground.set_cell(c, 0, Vector2i(int(map.tiles[c]), 0))
 	party.clear()
+	fallen.clear()
+	participants.clear()
+	_team_revive_timer = -1.0
 	enemies.clear()
 	corpses.clear()
 	dots.clear()
@@ -163,34 +203,114 @@ func _build_world() -> void:
 	camera.limit_bottom = map.size.y * TILE + TILE * 2
 
 
+## Coloca em campo os monstros do grupo que devem lutar (nível do principal define quantos).
 func _spawn_party(start: Vector2i) -> void:
-	var fighters: Array = Game.fighting_monsters() if Game else []
-	for i in fighters.size():
-		var m: Dictionary = fighters[i]
-		var st: Dictionary = Game.monster_stats(m)
-		var c := _make_creature(MonsterLogic.form_id(m), int(m.level), st, true, bool(m.shiny))
-		c.mon_uid = m.uid
-		c.party_index = i
-		_place_creature(c, nav.nearest_free(start + Vector2i(i, 0)))
-		c.home = c.cell
-		party.append(c)
+	_spawn_point = start
+	_ensure_field()
 	if not party.is_empty():
 		_cam_target = party[0]
 		camera.position = party[0].position
 		camera.reset_smoothing()
 
 
-## Recria os monstros do grupo (após trocar grupo/equipamento sem sair da hunt).
+## Recria os monstros do grupo (troca de grupo/equipamento, mudança de quantos lutam).
 func refresh_party() -> void:
-	var start: Vector2i = party[0].cell if not party.is_empty() else map.start
+	var start: Vector2i = _spawn_point
+	for c in party:
+		if c.alive:
+			start = c.cell
+			break
 	for c in party:
 		nav.release(c.cell, c)
 		c.queue_free()
 	party.clear()
+	fallen.clear()
+	participants.clear()
+	_team_revive_timer = -1.0
 	for e in enemies:
 		e.target = null
 	_spawn_party(start)
 	party_updated.emit()
+
+
+func field_wanted() -> int:
+	if Game == null:
+		return 0
+	return PartyLogic.fighting_count(Game.main_level(), Game.party_monsters().size())
+
+
+func alive_on_field() -> int:
+	var n := 0
+	for c in party:
+		if c.alive:
+			n += 1
+	return n
+
+
+func creature_for(uid: String) -> Creature:
+	for c in party:
+		if c.mon_uid == uid:
+			return c
+	return null
+
+
+## Garante o número certo de monstros vivos em campo. Quem cai é substituído pelo próximo
+## membro do grupo ainda de pé; o time só renasce quando todos caem.
+func _ensure_field() -> void:
+	if Game == null or _team_revive_timer >= 0.0:
+		return
+	var wanted := field_wanted()
+	var members: Array = Game.party_monsters()
+	var on_field := {}
+	for c in party:
+		on_field[c.mon_uid] = c
+	# membro removido do grupo: tira do mapa
+	var valid := {}
+	for m in members:
+		valid[m.uid] = true
+	for c in party.duplicate():
+		if not valid.has(c.mon_uid):
+			nav.release(c.cell, c)
+			party.erase(c)
+			c.queue_free()
+	var alive := alive_on_field()
+	if alive >= wanted:
+		return
+	var anchor: Vector2i = _spawn_point
+	for c in party:
+		if c.alive:
+			anchor = c.cell
+			break
+	for i in members.size():
+		if alive >= wanted:
+			break
+		var m: Dictionary = members[i]
+		if fallen.has(m.uid):
+			continue
+		var existing: Creature = on_field.get(m.uid)
+		if existing and existing.alive:
+			continue
+		if existing:
+			party.erase(existing)
+			existing.queue_free()
+		var st: Dictionary = Game.monster_stats(m)
+		var c := _make_creature(MonsterLogic.form_id(m), int(m.level), st, true, bool(m.shiny))
+		c.mon_uid = m.uid
+		c.party_index = i
+		_place_creature(c, nav.nearest_free(anchor + Vector2i(alive, 0), 8))
+		c.home = c.cell
+		party.append(c)
+		if not participants.has(m.uid):
+			participants.append(m.uid)
+		alive += 1
+		if elapsed > 0.5 and not headless:
+			fx.add_effect("spawn", c.position, Color(0.6, 1, 0.7), 0, 0.5)
+	party.sort_custom(func(a, b): return a.party_index < b.party_index)
+	if _cam_target == null or not is_instance_valid(_cam_target) or not _cam_target.alive:
+		for c in party:
+			if c.alive:
+				_cam_target = c
+				break
 
 
 func _make_creature(form_id: String, level: int, stats: Dictionary, player: bool, shiny: bool) -> Creature:
@@ -225,7 +345,7 @@ func spawn_enemy(form_id: String, level: int, cell: Vector2i, slot := -1, summon
 	if Game:
 		Game.mark_seen(form_id)
 	if shiny and Game:
-		Game.feed.emit("✦ Um %s SHINY apareceu!" % DataDB.form(form_id).name, Color(1, 0.9, 0.3))
+		Game.feed.emit(Loc.t("✦ Um %s SHINY apareceu!") % DataDB.form_name(form_id), Color(1, 0.9, 0.3))
 	return c
 
 
@@ -269,12 +389,21 @@ func step(dt: float) -> void:
 		return
 	elapsed += dt
 	var regen := float(DataDB.config.combat.regen_pct_per_sec)
+	if _team_revive_timer >= 0.0:
+		_team_revive_timer -= dt
+		if _team_revive_timer <= 0.0:
+			_team_revive()
+	else:
+		_field_check -= dt
+		if _field_check <= 0.0:
+			_field_check = 0.5
+			if alive_on_field() != field_wanted():
+				if alive_on_field() > field_wanted():
+					refresh_party()
+				else:
+					_ensure_field()
 	for c in party:
 		if not c.alive:
-			if mode == "hunt":
-				c.revive_timer -= dt
-				if c.revive_timer <= 0.0:
-					_revive(c)
 			continue
 		c.hp = minf(c.max_hp, c.hp + c.max_hp * regen * dt)
 		CreatureAI.player_tick(self, c, dt)
@@ -446,7 +575,7 @@ func use_ability(c: Creature, ab: Dictionary, tgt: Creature) -> void:
 			heal(c, c.max_hp * power)
 			fx.add_effect("heal", c.position, Color(0.4, 1, 0.5), 0, 0.7)
 	if not headless:
-		fx.add_text(c.position + Vector2(0, -16), ab.name, col.lightened(0.4), 9)
+		fx.add_text(c.position + Vector2(0, -16), Loc.tx(ab.name), col.lightened(0.4), 9)
 
 
 func _area_damage(src: Creature, center: Vector2i, radius: int, power: float) -> void:
@@ -496,7 +625,7 @@ func _on_death(c: Creature, killer: Creature) -> void:
 		return
 	if mode != "hunt" or c.is_summon or Game == null:
 		return
-	var res: Dictionary = Game.on_kill(hunt, c.form_id, c.level, c.ticket, c.shiny)
+	var res: Dictionary = Game.on_kill(hunt, c.form_id, c.level, c.ticket, c.shiny, participants)
 	var main: Creature = killer if killer and killer.is_player else (party[0] if not party.is_empty() else null)
 	if main and not headless:
 		var xp_main: float = res.xp[0] if not res.xp.is_empty() else 0.0
@@ -524,22 +653,21 @@ func _update_corpses(dt: float) -> void:
 
 
 func _on_player_death(c: Creature) -> void:
-	c.revive_timer = float(DataDB.config.combat.revive_seconds)
+	fallen[c.mon_uid] = true
 	for e in enemies:
 		if e.target == c:
 			e.target = null
-	player_died.emit(c)
 	if Game:
 		Game.save.stats.deaths = int(Game.save.stats.get("deaths", 0)) + 1
-	var all_dead := true
-	for p in party:
-		if p.alive:
-			all_dead = false
-	if not all_dead:
+	# substituto entra em campo
+	_ensure_field()
+	player_died.emit(c)
+	if alive_on_field() > 0:
 		return
-	if mode == "challenge":
+	if mode != "hunt":
 		_finish_challenge(false)
 		return
+	_team_revive_timer = float(DataDB.config.combat.revive_seconds)
 	wipe_times.append(elapsed)
 	var window := float(DataDB.config.combat.wipe_window_seconds)
 	while not wipe_times.is_empty() and elapsed - float(wipe_times[0]) > window:
@@ -552,23 +680,32 @@ func _on_player_death(c: Creature) -> void:
 		suggest_easier.emit()
 
 
-func _revive(c: Creature) -> void:
+## O time inteiro renasce junto (depois que todos caíram).
+func _team_revive() -> void:
+	_team_revive_timer = -1.0
 	var where: Vector2i = map.start
-	for p in party:
-		if p.alive and p != c:
-			where = p.cell
-			break
-	c.revive_at(nav.nearest_free(where, 6))
-	nav.occupy(c.cell, c)
-	c.target = null
-	c.path.clear()
-	fx.add_effect("heal", c.position, Color(1, 1, 0.6), 0, 0.8)
+	for c in party:
+		nav.release(c.cell, c)
+		c.queue_free()
+	party.clear()
+	fallen.clear()
+	participants.clear()
+	_spawn_point = where
+	_ensure_field()
+	for c in party:
+		fx.add_effect("heal", c.position, Color(1, 1, 0.6), 0, 0.8)
+	if not party.is_empty():
+		_cam_target = party[0]
 
 
 func revive_all_now() -> void:
-	for c in party:
-		if not c.alive:
-			_revive(c)
+	if mode != "hunt":
+		return
+	_team_revive()
+
+
+func team_revive_remaining() -> float:
+	return maxf(0.0, _team_revive_timer)
 
 
 # ------------------------------------------------------------------ chefe / desafios
@@ -584,7 +721,7 @@ func _update_boss(dt: float) -> void:
 	if boss == null or not boss.alive:
 		return
 	if elapsed > float(challenge.get("time_limit", 240)):
-		boss_message.emit("Tempo esgotado!")
+		boss_message.emit(Loc.t("Tempo esgotado!"))
 		_finish_challenge(false)
 		return
 	var mech: Dictionary = challenge.get("mechanics", {})
@@ -604,7 +741,7 @@ func _update_boss(dt: float) -> void:
 			boss_phase += 1
 			boss.atk_mult *= float(ph.get("atk_mult", 1.0))
 			boss.spd_mult *= float(ph.get("spd_mult", 1.0))
-			boss_message.emit(ph.get("say", "O chefe muda de fase!"))
+			boss_message.emit(Loc.tx(ph.get("say", "O chefe muda de fase!")))
 			fx.add_effect("nova", boss.position, Color(1, 0.3, 0.2), TILE * 3, 0.8)
 
 
@@ -618,7 +755,7 @@ func _boss_summon(m: Dictionary) -> void:
 	for i in int(m.count):
 		var cell := nav.nearest_free(boss.cell + Vector2i(rng.randi_range(-2, 2), rng.randi_range(-2, 2)), 4)
 		spawn_enemy(m.form, max(1, int(challenge.boss_level) - int(m.get("level_offset", 8))), cell, -1, true)
-	boss_message.emit("%s invoca reforços!" % boss.display_name)
+	boss_message.emit(Loc.t("%s invoca reforços!") % boss.display_name)
 
 
 func _boss_aoe(m: Dictionary) -> void:

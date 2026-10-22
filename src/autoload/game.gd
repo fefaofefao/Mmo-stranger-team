@@ -12,6 +12,7 @@ signal collection_changed
 signal boosts_changed
 signal sales_received(sales: Array)
 signal session_ready
+signal fighting_changed
 
 const SAVE_PATH := "user://save.json"
 const SAVE_VERSION := 1
@@ -38,7 +39,9 @@ func _ready() -> void:
 	rng.randomize()
 	DataDB.ensure_loaded()
 	load_local()
-	TranslationServer.set_locale(save.settings.get("locale", "pt_BR"))
+	if str(save.settings.get("locale", "")) == "":
+		save.settings.locale = Loc.detect()
+	Loc.set_locale(save.settings.locale)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
@@ -83,7 +86,7 @@ func new_save() -> Dictionary:
 		"monsters": {}, "party": [], "items": {}, "inventory_cap": int(DataDB.config.inventory.base_cap),
 		"collection": {}, "challenges": {}, "current_hunt": "", "ai_behavior": "focus",
 		"boosts": {"xp_until": 0.0}, "settings": {"auto_sell_comum": false, "auto_sell_incomum": false, "zoom": 2.0,
-		"show_damage": true, "locale": "pt_BR"}, "stats": {"kills": 0, "deaths": 0, "wipes": 0},
+		"show_damage": true, "locale": ""}, "stats": {"kills": 0, "deaths": 0, "wipes": 0},
 		"debug_unlock_all": false, "last_interstitial": 0.0,
 	}
 	for t in DataDB.type_ids:
@@ -147,7 +150,7 @@ func reset_all() -> void:
 func start_session() -> Dictionary:
 	var r := await Backend.request("login", {"device_id": save.device_id})
 	if not r.get("ok", false):
-		feed.emit("Sem conexão: jogando offline (sincroniza depois).", Color.ORANGE)
+		feed.emit(Loc.t("Sem conexão: jogando offline (sincroniza depois)."), Color.ORANGE)
 	else:
 		_apply_wallet(r.get("wallet", {}))
 		if save.player_name == "":
@@ -160,7 +163,7 @@ func start_session() -> Dictionary:
 				_merge_defaults(restored, new_save())
 				save = restored
 				_fix_types()
-				feed.emit("Progresso restaurado da nuvem.", Color.LIGHT_GREEN)
+				feed.emit(Loc.t("Progresso restaurado da nuvem."), Color.LIGHT_GREEN)
 		await refresh_profile()
 	var summary := {}
 	if has_starter() and save.current_hunt != "":
@@ -202,6 +205,7 @@ func refresh_profile() -> void:
 		var rec: Dictionary = srv_mons.get(m.server_id, {})
 		if not rec.is_empty():
 			m.stars = int(rec.get("stars", 0))
+			m.quality = int(rec.get("quality", m.get("quality", 0)))
 	var sales: Array = r.get("sales", [])
 	if not sales.is_empty():
 		_apply_sales(sales)
@@ -226,8 +230,8 @@ func refresh_profile() -> void:
 func _apply_sales(sales: Array) -> void:
 	for s in sales:
 		var l: Dictionary = s.listing
-		var what := ItemLogic.display_name(l.item) if l.kind == "item" else "%d Essência de %s" % [int(l.amount), DataDB.type_name(l.essence_type)]
-		feed.emit("Market: %s vendido por %d de ouro (líquido)." % [what, int(s.net)], Color.GOLD)
+		var what := ItemLogic.display_name(l.item) if l.kind == "item" else Loc.t("%d Essência de %s") % [int(l.amount), DataDB.type_name(l.essence_type)]
+		feed.emit(Loc.t("Market: %s vendido por %d de ouro.") % [what, int(s.net)], Color.GOLD)
 	sales_received.emit(sales)
 
 
@@ -291,7 +295,7 @@ func flush_claims() -> void:
 	_apply_wallet(r.get("wallet", {}))
 	for it in r.get("items", []):
 		add_item(it)
-		feed.emit("Drop %s: %s" % [DataDB.rarity(it.rarity).name, ItemLogic.display_name(it)], DataDB.rarity_color(it.rarity))
+		feed.emit("%s: %s" % [DataDB.rarity_name(it.rarity), ItemLogic.display_name(it)], DataDB.rarity_color(it.rarity))
 	for rec in r.get("recruits", []):
 		add_recruit(rec)
 
@@ -389,7 +393,7 @@ func cloud_sync() -> void:
 		for m in save.monsters.values():
 			if int(m.level) > allowed:
 				MonsterLogic.set_level(m, allowed)
-		feed.emit("Progresso ajustado pelo servidor (validação de tempo).", Color.ORANGE)
+		feed.emit(Loc.t("Progresso ajustado pelo servidor (validação de tempo)."), Color.ORANGE)
 		monsters_changed.emit()
 	save_local()
 	Backend.request("cloud_save_put", {"save": save})
@@ -462,11 +466,13 @@ func fighter_stats() -> Array:
 func choose_starter(family_id: String) -> bool:
 	var r := await Backend.request("register_starter", {"family": family_id})
 	var sid := ""
+	var q := int(DataDB.config.get("quality", {}).get("starter", 50))
 	if r.get("ok", false):
 		sid = r.monster.server_id
+		q = int(r.monster.get("quality", q))
 	else:
 		sid = "local_starter"
-	var m := MonsterLogic.create(family_id, int(DataDB.config.starting_level), false, sid, sid)
+	var m := MonsterLogic.create(family_id, int(DataDB.config.starting_level), false, sid, sid, q)
 	save.monsters[m.uid] = m
 	save.party = [m.uid]
 	_mark_obtained(MonsterLogic.form_id(m), false)
@@ -484,7 +490,7 @@ func choose_starter(family_id: String) -> bool:
 func add_recruit(rec: Dictionary, notify := true) -> Dictionary:
 	if save.monsters.has(rec.server_id):
 		return save.monsters[rec.server_id]
-	var m := MonsterLogic.create_from_form(rec.form, int(DataDB.config.recruit_level), bool(rec.shiny), rec.server_id, rec.server_id)
+	var m := MonsterLogic.create_from_form(rec.form, int(DataDB.config.recruit_level), bool(rec.shiny), rec.server_id, rec.server_id, int(rec.get("quality", 0)))
 	m.stars = int(rec.get("stars", 0))
 	save.monsters[m.uid] = m
 	_mark_obtained(rec.form, bool(rec.shiny))
@@ -492,7 +498,7 @@ func add_recruit(rec: Dictionary, notify := true) -> Dictionary:
 		save.party.append(m.uid)
 		party_changed.emit()
 	if notify:
-		var txt := "Recrutado: %s!" % MonsterLogic.display_name(m)
+		var txt := Loc.t("Recrutado: %s (qualidade %s)!") % [MonsterLogic.display_name(m), MonsterLogic.quality_text(m)]
 		feed.emit(txt, Color(1, 0.85, 0.3) if m.shiny else Color(0.6, 1, 0.6))
 	recruited.emit(m)
 	monsters_changed.emit()
@@ -541,7 +547,7 @@ func set_ai_behavior(b: String) -> void:
 func convert_monster(uid: String) -> Dictionary:
 	var m := monster(uid)
 	if m.is_empty() or save.party.has(uid):
-		return {"ok": false, "error": "Retire o monstro do grupo antes."}
+		return {"ok": false, "error": Loc.t("Retire o monstro do grupo antes.")}
 	var r := await Backend.request("convert_monster", {"server_id": m.server_id, "level": m.level, "stage": m.stage, "stars": m.stars})
 	if not r.get("ok", false):
 		return r
@@ -585,7 +591,7 @@ func grant_xp_boost() -> void:
 	var start: float = maxf(GameClock.now(), float(save.boosts.get("xp_until", 0.0)))
 	save.boosts.xp_until = start + float(DataDB.config.ads.xp_boost_minutes) * 60.0
 	boosts_changed.emit()
-	feed.emit("2x XP ativado por %d min!" % int(DataDB.config.ads.xp_boost_minutes), Color.GOLD)
+	feed.emit(Loc.t("2x XP ativado por %d min!") % int(DataDB.config.ads.xp_boost_minutes), Color.GOLD)
 
 
 func get_spawn_ticket(hunt_id: String) -> Dictionary:
@@ -618,24 +624,27 @@ func mark_seen(form_id: String) -> void:
 
 ## Chamado pelo mundo a cada inimigo derrotado numa hunt.
 ## Retorna {xp: Array, drop: Dictionary}
-func on_kill(hunt: Dictionary, form_id: String, level: int, ticket: String, shiny: bool) -> Dictionary:
+func on_kill(hunt: Dictionary, form_id: String, level: int, ticket: String, shiny: bool, participants: Array = []) -> Dictionary:
 	var c := _coll(form_id)
 	c.seen = true
 	var before := int(c.kills)
 	c.kills = before + 1
 	for ms in DataDB.config.collection.milestones:
 		if before < int(ms) and int(c.kills) >= int(ms):
-			feed.emit("Marco da Coleção: %d abates de %s! Bônus permanente." % [int(ms), DataDB.form(form_id).name], Color.GOLD)
+			feed.emit(Loc.t("Marco da Coleção: %d abates de %s! Bônus permanente.") % [int(ms), DataDB.form_name(form_id)], Color.GOLD)
 	save.stats.kills = int(save.stats.kills) + 1
 	var party := party_monsters()
 	var bonus = account_bonuses().xp_pct
 	if not party.is_empty():
 		bonus += monster_stats(party[0]).xp_pct
 	var base := Formulas.xp_for_kill(level) * float(hunt.get("xp_mult", 1.0)) * xp_boost_mult()
-	var shares := PartyLogic.split_xp(party, base, level, bonus)
+	var shares := PartyLogic.split_xp(party, base, level, bonus, participants)
+	var fc_before := PartyLogic.fighting_count(main_level(), party.size())
 	for i in party.size():
 		var ev := MonsterLogic.add_xp(party[i], shares[i])
 		_handle_progress(party[i], ev)
+	if PartyLogic.fighting_count(main_level(), party.size()) != fc_before:
+		fighting_changed.emit()
 	var drop := {}
 	var rar := LootTable.roll_rarity(rng, false)
 	if debug_force_local_drop != "":
@@ -674,10 +683,10 @@ func _handle_progress(m: Dictionary, ev: Dictionary) -> void:
 	if int(ev.get("levels", 0)) > 0:
 		monster_progress.emit(m.uid, ev)
 		if save.party.size() > 0 and save.party[0] == m.uid:
-			feed.emit("%s chegou ao nível %d!" % [MonsterLogic.display_name(m), int(m.level)], Color(0.6, 0.9, 1.0))
+			feed.emit(Loc.t("%s chegou ao nível %d!") % [MonsterLogic.display_name(m), int(m.level)], Color(0.6, 0.9, 1.0))
 	if ev.get("evolved", false):
 		_mark_obtained(MonsterLogic.form_id(m), bool(m.shiny))
-		feed.emit("%s evoluiu para %s!" % [DataDB.form(ev.from_form).name, DataDB.form(ev.to_form).name], Color.GOLD)
+		feed.emit(Loc.t("%s evoluiu para %s!") % [DataDB.form_name(ev.from_form), DataDB.form_name(ev.to_form)], Color.GOLD)
 		monsters_changed.emit()
 
 
@@ -737,7 +746,7 @@ func add_item(it: Dictionary, notify := true) -> bool:
 	if inv_count() >= inv_cap():
 		if it.get("bound", false):
 			if notify:
-				feed.emit("Inventário cheio: item descartado.", Color.ORANGE_RED)
+				feed.emit(Loc.t("Inventário cheio: item descartado."), Color.ORANGE_RED)
 			return false
 		it["loc"] = "depot"
 	else:
@@ -767,10 +776,10 @@ func equip(mon_uid: String, item_uid: String) -> Dictionary:
 	var m := monster(mon_uid)
 	var it: Dictionary = save.items.get(item_uid, {})
 	if m.is_empty() or it.is_empty():
-		return {"ok": false, "error": "Inválido"}
+		return {"ok": false, "error": Loc.t("Inválido")}
 	var b := ItemLogic.base(it)
 	if int(b.level) > int(m.level):
-		return {"ok": false, "error": "Requer nível %d" % int(b.level)}
+		return {"ok": false, "error": Loc.t("Requer nível %d") % int(b.level)}
 	_unequip_everywhere(item_uid)
 	var slot: String = b.slot
 	if m.equip.has(slot) and save.items.has(m.equip[slot]):
@@ -803,11 +812,11 @@ func toggle_lock(uid: String) -> void:
 func move_item(uid: String, to_loc: String) -> Dictionary:
 	var it: Dictionary = save.items.get(uid, {})
 	if it.is_empty() or it.loc == "equip":
-		return {"ok": false, "error": "Item equipado"}
+		return {"ok": false, "error": Loc.t("Item equipado")}
 	if to_loc == "inv" and inv_count() >= inv_cap():
-		return {"ok": false, "error": "Inventário cheio"}
+		return {"ok": false, "error": Loc.t("Inventário cheio")}
 	if to_loc == "depot" and depot_items().size() >= int(DataDB.config.inventory.depot_cap):
-		return {"ok": false, "error": "Depot cheio"}
+		return {"ok": false, "error": Loc.t("Depot cheio")}
 	it.loc = to_loc
 	inventory_changed.emit()
 	return {"ok": true}
@@ -816,11 +825,11 @@ func move_item(uid: String, to_loc: String) -> Dictionary:
 func sell_item(uid: String) -> Dictionary:
 	var it: Dictionary = save.items.get(uid, {})
 	if it.is_empty():
-		return {"ok": false, "error": "Item inválido"}
+		return {"ok": false, "error": Loc.t("Item inválido")}
 	if it.get("locked", false):
-		return {"ok": false, "error": "Item travado. Destrave para vender."}
+		return {"ok": false, "error": Loc.t("Item travado. Destrave para vender.")}
 	if it.loc == "equip":
-		return {"ok": false, "error": "Desequipe antes de vender."}
+		return {"ok": false, "error": Loc.t("Desequipe antes de vender.")}
 	var r := await Backend.request("npc_sell", {"item": it})
 	if r.get("ok", false):
 		remove_item(uid)
@@ -830,7 +839,7 @@ func sell_item(uid: String) -> Dictionary:
 
 func buy_from_shop(base_id: String) -> Dictionary:
 	if inv_count() >= inv_cap():
-		return {"ok": false, "error": "Inventário cheio"}
+		return {"ok": false, "error": Loc.t("Inventário cheio")}
 	var r := await Backend.request("npc_buy", {"base": base_id})
 	if r.get("ok", false):
 		_apply_wallet(r.wallet)
@@ -847,7 +856,7 @@ func inventory_expand_cost() -> int:
 func expand_inventory() -> Dictionary:
 	var inv: Dictionary = DataDB.config.inventory
 	if inv_cap() >= int(inv.max_cap):
-		return {"ok": false, "error": "Limite máximo"}
+		return {"ok": false, "error": Loc.t("Limite máximo")}
 	var r := await Backend.request("spend", {"gold": inventory_expand_cost(), "essences": {}, "reason": "inventory"})
 	if r.get("ok", false):
 		save.inventory_cap = inv_cap() + int(inv.expand_step)
@@ -859,7 +868,7 @@ func expand_inventory() -> Dictionary:
 func enhance_item(uid: String) -> Dictionary:
 	var it: Dictionary = save.items.get(uid, {})
 	if it.is_empty():
-		return {"ok": false, "error": "Item inválido"}
+		return {"ok": false, "error": Loc.t("Item inválido")}
 	var r: Dictionary
 	if it.get("bound", false):
 		var cost := EssenceLogic.enhance_cost(it)
@@ -887,11 +896,11 @@ func enhance_item(uid: String) -> Dictionary:
 func market_list_item(uid: String, price: int) -> Dictionary:
 	var it: Dictionary = save.items.get(uid, {})
 	if it.is_empty() or it.get("bound", false):
-		return {"ok": false, "error": "Item não negociável"}
+		return {"ok": false, "error": Loc.t("Item não negociável")}
 	if it.get("locked", false):
-		return {"ok": false, "error": "Item travado"}
+		return {"ok": false, "error": Loc.t("Item travado")}
 	if it.loc == "equip":
-		return {"ok": false, "error": "Desequipe antes"}
+		return {"ok": false, "error": Loc.t("Desequipe antes")}
 	var r := await Backend.request("market_list_item", {"uid": uid, "price": price})
 	if r.get("ok", false):
 		remove_item(uid)
@@ -954,10 +963,10 @@ func hunt_lock_reason(h: Dictionary) -> String:
 	if save.debug_unlock_all:
 		return ""
 	if main_level() < int(h.unlock_level):
-		return "Requer nível %d" % int(h.unlock_level)
+		return Loc.t("Requer nível %d") % int(h.unlock_level)
 	var rc := int(h.get("requires_challenge", 0))
 	if rc > 0 and not challenge_level_cleared(rc):
-		return "Vença o Desafio %d" % rc
+		return Loc.t("Vença o Desafio %d") % rc
 	return ""
 
 
@@ -969,12 +978,12 @@ func challenge_lock_reason(c: Dictionary) -> String:
 		if int(cc.level) < int(c.level):
 			prev = int(cc.level)
 	if prev > 0 and not challenge_level_cleared(prev):
-		return "Vença o Desafio %d" % prev
+		return Loc.t("Vença o Desafio %d") % prev
 	if main_level() < int(c.level) - 5:
-		return "Requer nível %d" % (int(c.level) - 5)
+		return Loc.t("Requer nível %d") % (int(c.level) - 5)
 	var cd := challenge_cooldown(c.id)
 	if cd > 0:
-		return "Aguarde %ds" % int(ceil(cd))
+		return Loc.t("Aguarde %ds") % int(ceil(cd))
 	return ""
 
 
@@ -1028,6 +1037,28 @@ func recommended_hunt() -> Dictionary:
 		if int(h.level) <= lvl + 2 and (best.is_empty() or int(h.level) > int(best.level)):
 			best = h
 	return best
+
+
+# ================================================================ chefe diário
+
+func daily_status() -> Dictionary:
+	return await Backend.request("daily_boss_status", {"level": main_level()})
+
+
+func daily_start() -> Dictionary:
+	await flush_claims()
+	return await Backend.request("daily_boss_start", {"level": main_level()})
+
+
+func daily_claim(token: String, fraction: float, seconds: float, won: bool) -> Dictionary:
+	var r := await Backend.request("daily_boss_claim", {"token": token, "fraction": fraction, "seconds": seconds, "won": won, "party": party_snapshot()})
+	if r.get("ok", false):
+		_apply_wallet(r.wallet)
+		for it in r.get("items", []):
+			add_item(it)
+		save.stats.daily_boss = int(save.stats.get("daily_boss", 0)) + 1
+		save_local()
+	return r
 
 
 # ================================================================ debug

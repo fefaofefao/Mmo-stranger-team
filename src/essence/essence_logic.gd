@@ -11,6 +11,7 @@ static func essence_value(m: Dictionary) -> int:
 	var v := float(e.stage_base[stage - 1]) * (1.0 + float(m.level) / float(e.level_div))
 	v *= float(fam.get("essence_mult", 1.0))
 	v *= 1.0 + 0.2 * int(m.get("stars", 0))
+	v *= 1.0 + int(m.get("quality", 0)) / 100.0
 	if m.get("shiny", false):
 		v *= float(e.shiny_mult)
 	return int(round(v))

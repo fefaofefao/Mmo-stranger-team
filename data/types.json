@@ -6,47 +6,83 @@
  "types": [
   {
    "id": "agua",
-   "name": "Água",
+   "name": {
+    "pt_BR": "Água",
+    "en": "Water",
+    "es": "Agua"
+   },
    "color": "#3b7fd9"
   },
   {
    "id": "fogo",
-   "name": "Fogo",
+   "name": {
+    "pt_BR": "Fogo",
+    "en": "Fire",
+    "es": "Fuego"
+   },
    "color": "#e0522b"
   },
   {
    "id": "gelo",
-   "name": "Gelo",
+   "name": {
+    "pt_BR": "Gelo",
+    "en": "Ice",
+    "es": "Hielo"
+   },
    "color": "#7fd6e8"
   },
   {
    "id": "planta",
-   "name": "Planta",
+   "name": {
+    "pt_BR": "Planta",
+    "en": "Plant",
+    "es": "Planta"
+   },
    "color": "#4caf3f"
   },
   {
    "id": "terra",
-   "name": "Terra",
+   "name": {
+    "pt_BR": "Terra",
+    "en": "Earth",
+    "es": "Tierra"
+   },
    "color": "#a8743a"
   },
   {
    "id": "eletrico",
-   "name": "Elétrico",
+   "name": {
+    "pt_BR": "Elétrico",
+    "en": "Electric",
+    "es": "Eléctrico"
+   },
    "color": "#f2d023"
   },
   {
    "id": "vento",
-   "name": "Vento",
-   "color": "#b9c9d6"
+   "name": {
+    "pt_BR": "Vento",
+    "en": "Wind",
+    "es": "Viento"
+   },
+   "color": "#94bfe0"
   },
   {
    "id": "luz",
-   "name": "Luz",
-   "color": "#fff1a8"
+   "name": {
+    "pt_BR": "Luz",
+    "en": "Light",
+    "es": "Luz"
+   },
+   "color": "#f5c94e"
   },
   {
    "id": "sombra",
-   "name": "Sombra",
+   "name": {
+    "pt_BR": "Sombra",
+    "en": "Shadow",
+    "es": "Sombra"
+   },
    "color": "#6a3d9a"
   }
  ]

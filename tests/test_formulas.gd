@@ -26,7 +26,9 @@ func test_stats_growth() -> void:
 	var b := Formulas.raw_stats("fogo_1_1", 20)
 	near(a.hp / b.hp, float(DataDB.config.stage_mult[1]) / float(DataDB.config.stage_mult[0]), 0.0001, "bônus de estágio")
 	var sh := Formulas.raw_stats("fogo_1_1", 20, true)
-	near(sh.atk / b.atk, 1.05, 0.0001, "shiny +5%")
+	near(sh.atk / b.atk, 1.0 + float(DataDB.config.shiny_stat_bonus), 0.0001, "shiny +50%")
+	var q := Formulas.raw_stats("fogo_1_1", 20, false, 100)
+	near(q.atk / b.atk, 1.0 + float(DataDB.config.quality.max_bonus), 0.0001, "qualidade 100% = +30%")
 
 
 func test_xp_curve() -> void:
@@ -53,3 +55,12 @@ func test_level_up_and_evolution() -> void:
 	check(m.level == 35 and m.stage == 3, "adulto no 35")
 	MonsterLogic.set_level(m, 999)
 	check(m.level == 300, "limite de nível")
+
+
+func test_early_levels_fast() -> void:
+	# até o nível 10 o ritmo é acelerado (menos abates por nível)
+	check(Formulas.kills_for_level(2) < Formulas.kills_for_level(12) / 10.0, "nível 2 bem mais rápido que o 12")
+	var k := 0.0
+	for l in range(1, 10):
+		k += Formulas.kills_for_level(l)
+	check(k < 260.0, "nível 10 em poucos abates (%d)" % int(k))

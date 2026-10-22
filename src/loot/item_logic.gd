@@ -5,10 +5,15 @@ extends RefCounted
 ## bound=true => item criado pelo cliente (Comum/Incomum), não negociável no market.
 
 const STAT_NAMES := {
-	"hp": "HP", "atk": "Ataque", "def": "Defesa", "spd_pct": "% Velocidade", "crit": "% Crítico",
-	"hp_pct": "% HP", "atk_pct": "% Ataque", "def_pct": "% Defesa", "lifesteal": "% Roubo de vida",
-	"cdr": "% Recarga", "xp_pct": "% XP", "gold_pct": "% Ouro",
+	"hp": "HP", "atk": "Ataque", "def": "Defesa", "spd_pct": "Velocidade", "crit": "Crítico",
+	"hp_pct": "HP", "atk_pct": "Ataque", "def_pct": "Defesa", "lifesteal": "Roubo de vida",
+	"cdr": "Recarga", "xp_pct": "XP", "gold_pct": "Ouro",
 }
+
+
+static func stat_name(k: String) -> String:
+	var n: String = STAT_NAMES.get(k, k)
+	return Loc.t(n) if n != "HP" and n != "XP" else n
 
 
 static func new_uid(prefix: String, rng: RandomNumberGenerator) -> String:
@@ -101,7 +106,7 @@ static func stats(item: Dictionary, wearer_type := "") -> Dictionary:
 
 static func display_name(item: Dictionary) -> String:
 	var b := base(item)
-	var n: String = b.get("name", "?")
+	var n: String = Loc.tx(b.get("name", "?"))
 	if int(item.get("enh", 0)) > 0:
 		n += " +%d" % int(item.enh)
 	return n
@@ -112,27 +117,28 @@ static func describe(item: Dictionary, wearer_type := "") -> Array:
 	var b := base(item)
 	if b.is_empty():
 		return lines
-	var r := DataDB.rarity(item.rarity)
-	lines.append("%s · %s · Nv %d" % [r.name, _slot_name(b.slot), int(b.level)])
+	lines.append("%s · %s · %s" % [DataDB.rarity_name(item.rarity), _slot_name(b.slot), Loc.t("Nv %d") % int(b.level)])
 	var st := stats(item, wearer_type)
 	for k in st:
 		if k == "type_dmg":
 			for t in st.type_dmg:
-				lines.append("+%d%% dano contra %s" % [int(st.type_dmg[t]), DataDB.type_name(t)])
+				lines.append(Loc.t("+%d%% dano contra %s") % [int(st.type_dmg[t]), DataDB.type_name(t)])
 		elif k in ["hp", "atk", "def"]:
-			lines.append("+%d %s" % [int(round(st[k])), STAT_NAMES[k]])
+			lines.append("+%d %s" % [int(round(st[k])), stat_name(k)])
+		elif k == "cdr":
+			lines.append("-%.1f%% %s" % [st[k], stat_name(k)])
 		else:
-			lines.append("+%.1f%s" % [st[k], STAT_NAMES.get(k, k)])
-	lines.append("Tema %s (+%d%% no tipo)" % [DataDB.type_name(b.type), int(float(DataDB.config.items.type_match_bonus) * 100)])
+			lines.append("+%.1f%% %s" % [st[k], stat_name(k)])
+	lines.append(Loc.t("Tema %s (+%d%% no tipo)") % [DataDB.type_name(b.type), int(float(DataDB.config.items.type_match_bonus) * 100)])
 	if item.get("bound", false):
-		lines.append("Vinculado (não negociável)")
+		lines.append(Loc.t("Vinculado"))
 	return lines
 
 
 static func _slot_name(slot: String) -> String:
 	for s in DataDB.item_slots:
 		if s.id == slot:
-			return s.name
+			return Loc.tx(s.name)
 	return slot
 
 

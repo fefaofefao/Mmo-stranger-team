@@ -1,9 +1,13 @@
 {
- "_comentario": "Paletas e estilos de geração por bioma. Mundo 2 aplica 'corruption' do config.json sobre estas paletas.",
+ "_comentario": "Paletas e estilos de geração por bioma. Mundo 2 aplica 'corruption' do config.json.",
  "biomes": [
   {
    "id": "praia",
-   "name": "Praia",
+   "name": {
+    "pt_BR": "Praia",
+    "en": "Beach",
+    "es": "Playa"
+   },
    "types": [
     "agua"
    ],
@@ -23,7 +27,11 @@
   },
   {
    "id": "lago",
-   "name": "Lago",
+   "name": {
+    "pt_BR": "Lago",
+    "en": "Lake",
+    "es": "Lago"
+   },
    "types": [
     "agua"
    ],
@@ -43,7 +51,11 @@
   },
   {
    "id": "recife",
-   "name": "Recife",
+   "name": {
+    "pt_BR": "Recife",
+    "en": "Reef",
+    "es": "Arrecife"
+   },
    "types": [
     "agua"
    ],
@@ -63,7 +75,11 @@
   },
   {
    "id": "vulcao",
-   "name": "Vulcão",
+   "name": {
+    "pt_BR": "Vulcão",
+    "en": "Volcano",
+    "es": "Volcán"
+   },
    "types": [
     "fogo"
    ],
@@ -83,7 +99,11 @@
   },
   {
    "id": "campo_lava",
-   "name": "Campo de Lava",
+   "name": {
+    "pt_BR": "Campo de Lava",
+    "en": "Lava Field",
+    "es": "Campo de Lava"
+   },
    "types": [
     "fogo"
    ],
@@ -103,7 +123,11 @@
   },
   {
    "id": "tundra",
-   "name": "Tundra",
+   "name": {
+    "pt_BR": "Tundra",
+    "en": "Tundra",
+    "es": "Tundra"
+   },
    "types": [
     "gelo"
    ],
@@ -123,7 +147,11 @@
   },
   {
    "id": "caverna_congelada",
-   "name": "Caverna Congelada",
+   "name": {
+    "pt_BR": "Caverna Congelada",
+    "en": "Frozen Cave",
+    "es": "Cueva Helada"
+   },
    "types": [
     "gelo"
    ],
@@ -143,7 +171,11 @@
   },
   {
    "id": "campo_grama",
-   "name": "Campo de Grama",
+   "name": {
+    "pt_BR": "Campo de Grama",
+    "en": "Grassland",
+    "es": "Pradera"
+   },
    "types": [
     "planta"
    ],
@@ -163,7 +195,11 @@
   },
   {
    "id": "floresta_densa",
-   "name": "Floresta Densa",
+   "name": {
+    "pt_BR": "Floresta Densa",
+    "en": "Dense Forest",
+    "es": "Bosque Denso"
+   },
    "types": [
     "planta"
    ],
@@ -183,7 +219,11 @@
   },
   {
    "id": "canion",
-   "name": "Cânion",
+   "name": {
+    "pt_BR": "Cânion",
+    "en": "Canyon",
+    "es": "Cañón"
+   },
    "types": [
     "terra"
    ],
@@ -203,7 +243,11 @@
   },
   {
    "id": "caverna_rochosa",
-   "name": "Caverna Rochosa",
+   "name": {
+    "pt_BR": "Caverna Rochosa",
+    "en": "Rocky Cave",
+    "es": "Cueva Rocosa"
+   },
    "types": [
     "terra"
    ],
@@ -223,7 +267,11 @@
   },
   {
    "id": "planalto_tempestade",
-   "name": "Planalto da Tempestade",
+   "name": {
+    "pt_BR": "Planalto da Tempestade",
+    "en": "Storm Plateau",
+    "es": "Meseta Tormentosa"
+   },
    "types": [
     "eletrico"
    ],
@@ -243,7 +291,11 @@
   },
   {
    "id": "ruinas_energizadas",
-   "name": "Ruínas Energizadas",
+   "name": {
+    "pt_BR": "Ruínas Energizadas",
+    "en": "Charged Ruins",
+    "es": "Ruinas Energizadas"
+   },
    "types": [
     "eletrico"
    ],
@@ -263,7 +315,11 @@
   },
   {
    "id": "picos",
-   "name": "Picos Montanhosos",
+   "name": {
+    "pt_BR": "Picos Montanhosos",
+    "en": "Mountain Peaks",
+    "es": "Picos Montañosos"
+   },
    "types": [
     "vento"
    ],
@@ -283,7 +339,11 @@
   },
   {
    "id": "plataformas_nuvens",
-   "name": "Plataformas nas Nuvens",
+   "name": {
+    "pt_BR": "Plataformas nas Nuvens",
+    "en": "Cloud Platforms",
+    "es": "Plataformas de Nubes"
+   },
    "types": [
     "vento"
    ],
@@ -303,7 +363,11 @@
   },
   {
    "id": "templo",
-   "name": "Templo",
+   "name": {
+    "pt_BR": "Templo",
+    "en": "Temple",
+    "es": "Templo"
+   },
    "types": [
     "luz"
    ],
@@ -323,7 +387,11 @@
   },
   {
    "id": "campo_cristais",
-   "name": "Campo de Cristais",
+   "name": {
+    "pt_BR": "Campo de Cristais",
+    "en": "Crystal Field",
+    "es": "Campo de Cristales"
+   },
    "types": [
     "luz"
    ],
@@ -343,7 +411,11 @@
   },
   {
    "id": "floresta_sombria",
-   "name": "Floresta Sombria",
+   "name": {
+    "pt_BR": "Floresta Sombria",
+    "en": "Gloomy Forest",
+    "es": "Bosque Sombrío"
+   },
    "types": [
     "sombra"
    ],
@@ -363,7 +435,11 @@
   },
   {
    "id": "cemiterio",
-   "name": "Cemitério Antigo",
+   "name": {
+    "pt_BR": "Cemitério Antigo",
+    "en": "Ancient Graveyard",
+    "es": "Cementerio Antiguo"
+   },
    "types": [
     "sombra"
    ],
@@ -383,7 +459,11 @@
   },
   {
    "id": "pantano",
-   "name": "Pântano",
+   "name": {
+    "pt_BR": "Pântano",
+    "en": "Swamp",
+    "es": "Pantano"
+   },
    "types": [
     "agua",
     "planta"
@@ -404,7 +484,11 @@
   },
   {
    "id": "fontes_termais",
-   "name": "Fontes Termais",
+   "name": {
+    "pt_BR": "Fontes Termais",
+    "en": "Hot Springs",
+    "es": "Aguas Termales"
+   },
    "types": [
     "agua",
     "fogo"
@@ -425,7 +509,11 @@
   },
   {
    "id": "deserto_cinzas",
-   "name": "Deserto de Cinzas",
+   "name": {
+    "pt_BR": "Deserto de Cinzas",
+    "en": "Ash Desert",
+    "es": "Desierto de Ceniza"
+   },
    "types": [
     "fogo",
     "terra"
@@ -446,7 +534,11 @@
   },
   {
    "id": "geleira_rochosa",
-   "name": "Geleira Rochosa",
+   "name": {
+    "pt_BR": "Geleira Rochosa",
+    "en": "Rocky Glacier",
+    "es": "Glaciar Rocoso"
+   },
    "types": [
     "gelo",
     "terra"
@@ -467,7 +559,11 @@
   },
   {
    "id": "cordilheira_ventosa",
-   "name": "Cordilheira Ventosa",
+   "name": {
+    "pt_BR": "Cordilheira Ventosa",
+    "en": "Windy Range",
+    "es": "Cordillera Ventosa"
+   },
    "types": [
     "vento",
     "terra",
@@ -489,7 +585,11 @@
   },
   {
    "id": "crepusculo",
-   "name": "Vale do Crepúsculo",
+   "name": {
+    "pt_BR": "Vale do Crepúsculo",
+    "en": "Twilight Vale",
+    "es": "Valle del Crepúsculo"
+   },
    "types": [
     "luz",
     "sombra"
@@ -510,7 +610,11 @@
   },
   {
    "id": "brejo_sombrio",
-   "name": "Brejo Sombrio",
+   "name": {
+    "pt_BR": "Brejo Sombrio",
+    "en": "Dark Marsh",
+    "es": "Ciénaga Sombría"
+   },
    "types": [
     "sombra",
     "planta"
@@ -531,7 +635,11 @@
   },
   {
    "id": "geleira_eterea",
-   "name": "Geleira Etérea",
+   "name": {
+    "pt_BR": "Geleira Etérea",
+    "en": "Ethereal Glacier",
+    "es": "Glaciar Etéreo"
+   },
    "types": [
     "gelo",
     "vento"
@@ -552,7 +660,11 @@
   },
   {
    "id": "tempestade_luminosa",
-   "name": "Tempestade Luminosa",
+   "name": {
+    "pt_BR": "Tempestade Luminosa",
+    "en": "Luminous Storm",
+    "es": "Tormenta Luminosa"
+   },
    "types": [
     "eletrico",
     "luz"

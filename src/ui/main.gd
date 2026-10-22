@@ -1,5 +1,5 @@
 extends Control
-## Cena principal: navegação entre telas, área do banner, overlays (diálogos, toasts, debug).
+## Cena principal: navegação entre telas, área do banner, avisos, diálogos e menu de debug.
 
 const SCREENS := {
 	"title": preload("res://src/ui/screens/title_screen.gd"),
@@ -16,6 +16,7 @@ const SCREENS := {
 	"market": preload("res://src/ui/screens/market_screen.gd"),
 	"rankings": preload("res://src/ui/screens/rankings_screen.gd"),
 	"challenges": preload("res://src/ui/screens/challenges_screen.gd"),
+	"daily": preload("res://src/ui/screens/daily_boss_screen.gd"),
 	"settings": preload("res://src/ui/screens/settings_screen.gd"),
 }
 const HuntScreen := preload("res://src/ui/screens/hunt_screen.gd")
@@ -25,6 +26,7 @@ var content: Control
 var host: Control
 var banner_area: PanelContainer
 var overlay: Control
+var notify: NotifyCenter
 var hunt_screen: Control = null
 var stack: Array = []
 var current: Control = null
@@ -35,18 +37,16 @@ func _ready() -> void:
 	theme = UI.theme()
 	ThemeDB.fallback_font = UI.font()
 	set_anchors_preset(Control.PRESET_FULL_RECT)
-	var bg := ColorRect.new()
-	bg.color = UI.C_BG
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(bg)
+	add_child(UI.background())
 	content = Control.new()
 	content.set_anchors_preset(Control.PRESET_FULL_RECT)
+	content.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(content)
 	host = Control.new()
 	host.set_anchors_preset(Control.PRESET_FULL_RECT)
 	host.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	content.add_child(host)
-	banner_area = UI.panel(Color("#0d0c0b"), Color("#3a342b"))
+	banner_area = UI.panel("card_dim")
 	banner_area.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	banner_area.visible = false
 	var bl := UI.label("", 18, UI.C_MUTED)
@@ -58,6 +58,8 @@ func _ready() -> void:
 	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(overlay)
+	notify = NotifyCenter.new()
+	overlay.add_child(notify)
 	Ads.banner_visibility_changed.connect(_on_banner)
 	get_tree().set_auto_accept_quit(false)
 	get_tree().quit_on_go_back = false
@@ -75,7 +77,7 @@ func _on_banner(visible_b: bool, h: float) -> void:
 	banner_area.offset_top = -banner_h
 	banner_area.offset_bottom = 0
 	var lbl: Label = banner_area.get_child(0)
-	lbl.text = "[ Banner AdMob — %s ]" % ("teste simulado" if Ads.simulated else "ID de teste" if DataDB.ads_cfg.get("use_test_ids", true) else "")
+	lbl.text = Loc.t("Banner AdMob — teste simulado") if Ads.simulated else ""
 	content.offset_bottom = -banner_h
 
 
@@ -92,7 +94,7 @@ func _notification(what: int) -> void:
 
 ## No Android o jogo fica pausado em segundo plano: ao voltar, recebe o progresso offline.
 func _on_resumed() -> void:
-	if not Game.session_started or not Game.has_starter() or (hunt_screen and hunt_screen.in_challenge()):
+	if not Game.session_started or not Game.has_starter() or (hunt_screen and hunt_screen.in_boss_fight()):
 		return
 	await Game.flush_claims()
 	var s: Dictionary = await Game.claim_offline()
@@ -145,13 +147,12 @@ func _close_current() -> void:
 
 
 func back() -> void:
-	if overlay.get_child_count() > 0:
-		for ch in overlay.get_children():
-			if ch is UIDialog:
-				ch._choose(-1)
-				return
+	for ch in overlay.get_children():
+		if ch is UIDialog:
+			ch._choose(-1)
+			return
 	if current == null:
-		if hunt_screen and hunt_screen.visible and not hunt_screen.in_challenge():
+		if hunt_screen and hunt_screen.visible and not hunt_screen.in_boss_fight():
 			goto("hub")
 		return
 	var nm: String = current.get_meta("screen_name")
@@ -162,9 +163,6 @@ func back() -> void:
 		return
 	var prev: Dictionary = stack.pop_back()
 	_close_current()
-	if prev.name == "hunt":
-		goto("hunt")
-		return
 	goto(prev.name, prev.params, false)
 
 
@@ -173,15 +171,15 @@ func refresh_current() -> void:
 		current.rebuild()
 
 
-func toast(text: String, color := UI.C_TEXT) -> void:
-	UI.toast(overlay, text, color)
+func toast(text: String, color := UI.C_TEXT, icon_name := "") -> void:
+	notify.push(text, color, icon_name)
 
 
-func dialog(t: String, text: String, buttons: Array) -> UIDialog:
-	return UI.dialog(overlay, t, text, buttons)
+func dialog(t: String, text: String, buttons: Array, icon_name := "") -> UIDialog:
+	return UI.dialog(overlay, t, text, buttons, icon_name)
 
 
-func confirm(t: String, text: String, yes := "Sim", no := "Não") -> bool:
+func confirm(t: String, text: String, yes := "", no := "") -> bool:
 	return await UIDialog.confirm(overlay, t, text, yes, no)
 
 
@@ -203,31 +201,34 @@ func start_game() -> void:
 func show_offline_summary(s: Dictionary) -> void:
 	Ads.context = "offline_summary"
 	var lines: Array = []
-	lines.append("Tempo fora: %s" % UI.fmt_time(float(s.get("seconds", 0))))
-	lines.append("Abates: %s" % UI.fmt(s.kills))
-	lines.append("Ouro: +%s" % UI.fmt(s.gold))
+	lines.append(Loc.t("Tempo fora: %s") % UI.fmt_time(float(s.get("seconds", 0))))
+	lines.append(Loc.t("Abates: %s") % UI.fmt(s.kills))
+	lines.append(Loc.t("Ouro: +%s") % UI.fmt(s.gold))
 	var party := Game.party_monsters()
 	for i in mini(party.size(), s.xp.size()):
 		var m: Dictionary = party[i]
 		var lv: int = s.levels[i] if i < s.levels.size() else 0
-		lines.append("%s: +%s XP%s" % [MonsterLogic.display_name(m), UI.fmt(s.xp[i]), (" (+%d níveis)" % lv) if lv > 0 else ""])
-	lines.append("Itens Comuns/Incomuns: %d%s" % [int(s.local_items), (" (%d perdidos: inventário cheio)" % int(s.local_lost)) if int(s.local_lost) > 0 else ""])
+		var extra := (Loc.t(" (+%d níveis)") % lv) if lv > 0 else ""
+		lines.append(Loc.t("%s: +%s XP") % [MonsterLogic.display_name(m), UI.fmt(s.xp[i])] + extra)
+	lines.append(Loc.t("Itens Comuns/Incomuns: %d") % int(s.local_items))
+	if int(s.local_lost) > 0:
+		lines.append(Loc.t("%d itens perdidos (inventário cheio)") % int(s.local_lost))
 	for it in s.get("items", []):
-		lines.append("Drop %s: %s" % [DataDB.rarity(it.rarity).name, ItemLogic.display_name(it)])
+		lines.append("%s: %s" % [DataDB.rarity_name(it.rarity), ItemLogic.display_name(it)])
 	for rec in s.get("recruits", []):
-		lines.append("Recrutado: %s%s" % ["✦ " if rec.shiny else "", DataDB.form(rec.form).name])
+		lines.append(Loc.t("Recrutado: %s%s (qualidade %d%%)") % ["✦ " if rec.shiny else "", DataDB.form_name(rec.form), int(rec.get("quality", 0))])
 	if int(s.get("shinies", 0)) > 0:
-		lines.append("Shinies encontrados: %d" % int(s.shinies))
-	var d := dialog("Resumo Offline", "\n".join(lines), ["Dobrar (anúncio)", "OK"])
+		lines.append(Loc.t("Shinies encontrados: %d") % int(s.shinies))
+	var d := dialog(Loc.t("Bem-vindo de volta!"), "\n".join(lines), [Loc.t("Dobrar ▶"), Loc.t("Coletar")], "chest")
 	var choice: int = await d.chosen
 	Ads.context = ""
 	if choice == 0:
-		var ok: bool = await Ads.show_rewarded("Dobrar recompensa offline")
+		var ok: bool = await Ads.show_rewarded(Loc.t("Dobrar recompensa offline"))
 		if ok:
 			var r: Dictionary = await Game.double_offline_reward()
 			if not r.is_empty():
-				toast("Recompensa offline dobrada! +%s ouro" % UI.fmt(r.gold), UI.C_GOLD)
+				toast(Loc.t("Recompensa offline dobrada! +%s ouro") % UI.fmt(r.gold), UI.C_GOLD, "coin")
 			else:
-				toast("Não foi possível dobrar agora.", UI.C_BAD)
+				toast(Loc.t("Não foi possível dobrar agora."), UI.C_BAD)
 	if hunt_screen:
 		hunt_screen.refresh_hud()

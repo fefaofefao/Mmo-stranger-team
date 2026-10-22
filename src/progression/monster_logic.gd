@@ -1,22 +1,23 @@
 class_name MonsterLogic
 extends RefCounted
 ## Monstro do jogador (formato salvo):
-## {uid, server_id, family, stage, level, xp, shiny, stars, equip:{slot:item_uid}, caught_at}
+## {uid, server_id, family, stage, level, xp, shiny, quality(0-100), stars, equip:{slot:item_uid}, caught_at}
+## A qualidade é sorteada pelo servidor ao recrutar e dá até +30% de atributos.
 
 
-static func create(family_id: String, level: int, shiny: bool, uid: String, server_id := "") -> Dictionary:
+static func create(family_id: String, level: int, shiny: bool, uid: String, server_id := "", quality := 0) -> Dictionary:
 	var m := {
 		"uid": uid, "server_id": server_id if server_id != "" else uid, "family": family_id, "stage": 1,
-		"level": max(1, level), "xp": 0.0, "shiny": shiny, "stars": 0, "equip": {},
+		"level": max(1, level), "xp": 0.0, "shiny": shiny, "quality": clampi(quality, 0, 100), "stars": 0, "equip": {},
 		"caught_at": int(Time.get_unix_time_from_system()),
 	}
 	m.stage = stage_for_level(family_id, m.level)
 	return m
 
 
-static func create_from_form(form_id: String, level: int, shiny: bool, uid: String, server_id := "") -> Dictionary:
+static func create_from_form(form_id: String, level: int, shiny: bool, uid: String, server_id := "", quality := 0) -> Dictionary:
 	var f := DataDB.form(form_id)
-	var m := create(f.family, level, shiny, uid, server_id)
+	var m := create(f.family, level, shiny, uid, server_id, quality)
 	# um recrutado de forma adolescente/adulta mantém pelo menos o estágio da forma
 	m.stage = max(int(m.stage), int(f.stage))
 	return m
@@ -32,6 +33,24 @@ static func form(m: Dictionary) -> Dictionary:
 
 static func type_of(m: Dictionary) -> String:
 	return DataDB.families[m.family].type
+
+
+## Sorteio de qualidade (usado pelo servidor). Maioria baixa; shiny sempre entre shiny_min e 100.
+static func roll_quality(rng: RandomNumberGenerator, shiny: bool) -> int:
+	var q: Dictionary = DataDB.config.get("quality", {})
+	if shiny:
+		var mn := int(q.get("shiny_min", 50))
+		return mn + int(round((100 - mn) * pow(rng.randf(), 1.3)))
+	return int(round(100.0 * pow(rng.randf(), float(q.get("exponent", 1.8)))))
+
+
+static func quality_text(m: Dictionary) -> String:
+	var q := int(m.get("quality", 0))
+	return "%d%% %s" % [q, Loc.tx(DataDB.quality_grade(q).get("name", ""))]
+
+
+static func quality_color(m: Dictionary) -> Color:
+	return Color(DataDB.quality_grade(int(m.get("quality", 0))).get("color", "#ffffff"))
 
 
 static func display_name(m: Dictionary) -> String:
@@ -84,7 +103,7 @@ static func equipment_stats(m: Dictionary, items_by_uid: Dictionary) -> Dictiona
 ## Atributos finais para combate. bonuses: {atk_pct, xp_pct} da Coleção (conta).
 static func compute_stats(m: Dictionary, items_by_uid: Dictionary = {}, bonuses: Dictionary = {}) -> Dictionary:
 	var fid := form_id(m)
-	var raw := Formulas.raw_stats(fid, int(m.level), bool(m.get("shiny", false)))
+	var raw := Formulas.raw_stats(fid, int(m.level), bool(m.get("shiny", false)), int(m.get("quality", 0)))
 	var stars := int(m.get("stars", 0))
 	var star_mult := 1.0 + float(DataDB.config.stars.stat_bonus_per_star) * stars
 	var eq := equipment_stats(m, items_by_uid)

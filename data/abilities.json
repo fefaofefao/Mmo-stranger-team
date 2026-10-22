@@ -8,7 +8,11 @@
    "cooldown": 6.0,
    "fx": "slash",
    "id": "agua_strike",
-   "name": "Pancada de Maré",
+   "name": {
+    "pt_BR": "Pancada de Maré",
+    "en": "Tide Slam",
+    "es": "Golpe de Marea"
+   },
    "type": "agua",
    "kind": "strike"
   },
@@ -20,7 +24,11 @@
    "cooldown": 5.0,
    "fx": "projectile",
    "id": "agua_bolt",
-   "name": "Jato d'Água",
+   "name": {
+    "pt_BR": "Jato d'Água",
+    "en": "Water Jet",
+    "es": "Chorro de Agua"
+   },
    "type": "agua",
    "kind": "bolt"
   },
@@ -32,7 +40,11 @@
    "cooldown": 8.0,
    "fx": "ring",
    "id": "agua_burst",
-   "name": "Onda Circular",
+   "name": {
+    "pt_BR": "Onda Circular",
+    "en": "Ring Wave",
+    "es": "Onda Circular"
+   },
    "type": "agua",
    "kind": "burst"
   },
@@ -44,7 +56,11 @@
    "cooldown": 8.0,
    "fx": "explosion",
    "id": "agua_blast",
-   "name": "Bomba de Bolhas",
+   "name": {
+    "pt_BR": "Bomba de Bolhas",
+    "en": "Bubble Bomb",
+    "es": "Bomba de Burbujas"
+   },
    "type": "agua",
    "kind": "blast"
   },
@@ -56,7 +72,11 @@
    "cooldown": 14.0,
    "fx": "heal",
    "id": "agua_heal",
-   "name": "Névoa Restauradora",
+   "name": {
+    "pt_BR": "Névoa Restauradora",
+    "en": "Healing Mist",
+    "es": "Niebla Curativa"
+   },
    "type": "agua",
    "kind": "heal"
   },
@@ -69,7 +89,11 @@
    "fx": "rain",
    "ticks": 4,
    "id": "agua_dot",
-   "name": "Correnteza",
+   "name": {
+    "pt_BR": "Correnteza",
+    "en": "Undertow",
+    "es": "Corriente"
+   },
    "type": "agua",
    "kind": "dot"
   },
@@ -81,7 +105,11 @@
    "cooldown": 16.0,
    "fx": "nova",
    "id": "agua_ult",
-   "name": "Tsunami",
+   "name": {
+    "pt_BR": "Tsunami",
+    "en": "Tsunami",
+    "es": "Tsunami"
+   },
    "type": "agua",
    "kind": "ult"
   },
@@ -93,7 +121,11 @@
    "cooldown": 6.0,
    "fx": "slash",
    "id": "fogo_strike",
-   "name": "Garra Flamejante",
+   "name": {
+    "pt_BR": "Garra Flamejante",
+    "en": "Flame Claw",
+    "es": "Garra Llameante"
+   },
    "type": "fogo",
    "kind": "strike"
   },
@@ -105,7 +137,11 @@
    "cooldown": 5.0,
    "fx": "projectile",
    "id": "fogo_bolt",
-   "name": "Bola de Fogo",
+   "name": {
+    "pt_BR": "Bola de Fogo",
+    "en": "Fireball",
+    "es": "Bola de Fuego"
+   },
    "type": "fogo",
    "kind": "bolt"
   },
@@ -117,7 +153,11 @@
    "cooldown": 8.0,
    "fx": "ring",
    "id": "fogo_burst",
-   "name": "Explosão de Brasas",
+   "name": {
+    "pt_BR": "Explosão de Brasas",
+    "en": "Ember Burst",
+    "es": "Estallido de Brasas"
+   },
    "type": "fogo",
    "kind": "burst"
   },
@@ -129,7 +169,11 @@
    "cooldown": 8.0,
    "fx": "explosion",
    "id": "fogo_blast",
-   "name": "Chuva de Lava",
+   "name": {
+    "pt_BR": "Chuva de Lava",
+    "en": "Lava Rain",
+    "es": "Lluvia de Lava"
+   },
    "type": "fogo",
    "kind": "blast"
   },
@@ -141,7 +185,11 @@
    "cooldown": 14.0,
    "fx": "heal",
    "id": "fogo_heal",
-   "name": "Calor Vital",
+   "name": {
+    "pt_BR": "Calor Vital",
+    "en": "Vital Heat",
+    "es": "Calor Vital"
+   },
    "type": "fogo",
    "kind": "heal"
   },
@@ -154,7 +202,11 @@
    "fx": "rain",
    "ticks": 4,
    "id": "fogo_dot",
-   "name": "Queimadura",
+   "name": {
+    "pt_BR": "Queimadura",
+    "en": "Scorch",
+    "es": "Quemadura"
+   },
    "type": "fogo",
    "kind": "dot"
   },
@@ -166,7 +218,11 @@
    "cooldown": 16.0,
    "fx": "nova",
    "id": "fogo_ult",
-   "name": "Erupção",
+   "name": {
+    "pt_BR": "Erupção",
+    "en": "Eruption",
+    "es": "Erupción"
+   },
    "type": "fogo",
    "kind": "ult"
   },
@@ -178,7 +234,11 @@
    "cooldown": 6.0,
    "fx": "slash",
    "id": "gelo_strike",
-   "name": "Mordida Gélida",
+   "name": {
+    "pt_BR": "Mordida Gélida",
+    "en": "Frost Bite",
+    "es": "Mordida Gélida"
+   },
    "type": "gelo",
    "kind": "strike"
   },
@@ -190,7 +250,11 @@
    "cooldown": 5.0,
    "fx": "projectile",
    "id": "gelo_bolt",
-   "name": "Estilhaço de Gelo",
+   "name": {
+    "pt_BR": "Estilhaço de Gelo",
+    "en": "Ice Shard",
+    "es": "Esquirla de Hielo"
+   },
    "type": "gelo",
    "kind": "bolt"
   },
@@ -202,7 +266,11 @@
    "cooldown": 8.0,
    "fx": "ring",
    "id": "gelo_burst",
-   "name": "Anel de Geada",
+   "name": {
+    "pt_BR": "Anel de Geada",
+    "en": "Frost Ring",
+    "es": "Anillo de Escarcha"
+   },
    "type": "gelo",
    "kind": "burst"
   },
@@ -214,7 +282,11 @@
    "cooldown": 8.0,
    "fx": "explosion",
    "id": "gelo_blast",
-   "name": "Granizo",
+   "name": {
+    "pt_BR": "Granizo",
+    "en": "Hailstorm",
+    "es": "Granizo"
+   },
    "type": "gelo",
    "kind": "blast"
   },
@@ -226,7 +298,11 @@
    "cooldown": 14.0,
    "fx": "heal",
    "id": "gelo_heal",
-   "name": "Casulo de Gelo",
+   "name": {
+    "pt_BR": "Casulo de Gelo",
+    "en": "Ice Cocoon",
+    "es": "Capullo de Hielo"
+   },
    "type": "gelo",
    "kind": "heal"
   },
@@ -239,7 +315,11 @@
    "fx": "rain",
    "ticks": 4,
    "id": "gelo_dot",
-   "name": "Congelamento",
+   "name": {
+    "pt_BR": "Congelamento",
+    "en": "Deep Freeze",
+    "es": "Congelación"
+   },
    "type": "gelo",
    "kind": "dot"
   },
@@ -251,7 +331,11 @@
    "cooldown": 16.0,
    "fx": "nova",
    "id": "gelo_ult",
-   "name": "Nevasca",
+   "name": {
+    "pt_BR": "Nevasca",
+    "en": "Blizzard",
+    "es": "Ventisca"
+   },
    "type": "gelo",
    "kind": "ult"
   },
@@ -263,7 +347,11 @@
    "cooldown": 6.0,
    "fx": "slash",
    "id": "planta_strike",
-   "name": "Chicote de Vinha",
+   "name": {
+    "pt_BR": "Chicote de Vinha",
+    "en": "Vine Whip",
+    "es": "Látigo de Vid"
+   },
    "type": "planta",
    "kind": "strike"
   },
@@ -275,7 +363,11 @@
    "cooldown": 5.0,
    "fx": "projectile",
    "id": "planta_bolt",
-   "name": "Semente Bala",
+   "name": {
+    "pt_BR": "Semente Bala",
+    "en": "Seed Bullet",
+    "es": "Semilla Bala"
+   },
    "type": "planta",
    "kind": "bolt"
   },
@@ -287,7 +379,11 @@
    "cooldown": 8.0,
    "fx": "ring",
    "id": "planta_burst",
-   "name": "Espinhos Ao Redor",
+   "name": {
+    "pt_BR": "Anel de Espinhos",
+    "en": "Thorn Ring",
+    "es": "Anillo de Espinas"
+   },
    "type": "planta",
    "kind": "burst"
   },
@@ -299,7 +395,11 @@
    "cooldown": 8.0,
    "fx": "explosion",
    "id": "planta_blast",
-   "name": "Explosão de Pólen",
+   "name": {
+    "pt_BR": "Explosão de Pólen",
+    "en": "Pollen Burst",
+    "es": "Estallido de Polen"
+   },
    "type": "planta",
    "kind": "blast"
   },
@@ -311,7 +411,11 @@
    "cooldown": 14.0,
    "fx": "heal",
    "id": "planta_heal",
-   "name": "Fotossíntese",
+   "name": {
+    "pt_BR": "Fotossíntese",
+    "en": "Photosynthesis",
+    "es": "Fotosíntesis"
+   },
    "type": "planta",
    "kind": "heal"
   },
@@ -324,7 +428,11 @@
    "fx": "rain",
    "ticks": 4,
    "id": "planta_dot",
-   "name": "Esporos Tóxicos",
+   "name": {
+    "pt_BR": "Esporos Tóxicos",
+    "en": "Toxic Spores",
+    "es": "Esporas Tóxicas"
+   },
    "type": "planta",
    "kind": "dot"
   },
@@ -336,7 +444,11 @@
    "cooldown": 16.0,
    "fx": "nova",
    "id": "planta_ult",
-   "name": "Fúria da Floresta",
+   "name": {
+    "pt_BR": "Fúria da Floresta",
+    "en": "Forest Fury",
+    "es": "Furia del Bosque"
+   },
    "type": "planta",
    "kind": "ult"
   },
@@ -348,7 +460,11 @@
    "cooldown": 6.0,
    "fx": "slash",
    "id": "terra_strike",
-   "name": "Pancada Rochosa",
+   "name": {
+    "pt_BR": "Pancada Rochosa",
+    "en": "Rock Smash",
+    "es": "Golpe Rocoso"
+   },
    "type": "terra",
    "kind": "strike"
   },
@@ -360,7 +476,11 @@
    "cooldown": 5.0,
    "fx": "projectile",
    "id": "terra_bolt",
-   "name": "Arremesso de Pedra",
+   "name": {
+    "pt_BR": "Arremesso de Pedra",
+    "en": "Stone Throw",
+    "es": "Lanzar Piedra"
+   },
    "type": "terra",
    "kind": "bolt"
   },
@@ -372,7 +492,11 @@
    "cooldown": 8.0,
    "fx": "ring",
    "id": "terra_burst",
-   "name": "Tremor",
+   "name": {
+    "pt_BR": "Tremor",
+    "en": "Tremor",
+    "es": "Temblor"
+   },
    "type": "terra",
    "kind": "burst"
   },
@@ -384,7 +508,11 @@
    "cooldown": 8.0,
    "fx": "explosion",
    "id": "terra_blast",
-   "name": "Desabamento",
+   "name": {
+    "pt_BR": "Desabamento",
+    "en": "Rockslide",
+    "es": "Derrumbe"
+   },
    "type": "terra",
    "kind": "blast"
   },
@@ -396,7 +524,11 @@
    "cooldown": 14.0,
    "fx": "heal",
    "id": "terra_heal",
-   "name": "Pele de Pedra",
+   "name": {
+    "pt_BR": "Pele de Pedra",
+    "en": "Stone Skin",
+    "es": "Piel de Piedra"
+   },
    "type": "terra",
    "kind": "heal"
   },
@@ -409,7 +541,11 @@
    "fx": "rain",
    "ticks": 4,
    "id": "terra_dot",
-   "name": "Areia Movediça",
+   "name": {
+    "pt_BR": "Areia Movediça",
+    "en": "Quicksand",
+    "es": "Arenas Movedizas"
+   },
    "type": "terra",
    "kind": "dot"
   },
@@ -421,7 +557,11 @@
    "cooldown": 16.0,
    "fx": "nova",
    "id": "terra_ult",
-   "name": "Terremoto",
+   "name": {
+    "pt_BR": "Terremoto",
+    "en": "Earthquake",
+    "es": "Terremoto"
+   },
    "type": "terra",
    "kind": "ult"
   },
@@ -433,7 +573,11 @@
    "cooldown": 6.0,
    "fx": "slash",
    "id": "eletrico_strike",
-   "name": "Ferrão Voltaico",
+   "name": {
+    "pt_BR": "Ferrão Voltaico",
+    "en": "Volt Sting",
+    "es": "Aguijón Voltaico"
+   },
    "type": "eletrico",
    "kind": "strike"
   },
@@ -445,7 +589,11 @@
    "cooldown": 5.0,
    "fx": "projectile",
    "id": "eletrico_bolt",
-   "name": "Faísca",
+   "name": {
+    "pt_BR": "Faísca",
+    "en": "Spark",
+    "es": "Chispa"
+   },
    "type": "eletrico",
    "kind": "bolt"
   },
@@ -457,7 +605,11 @@
    "cooldown": 8.0,
    "fx": "ring",
    "id": "eletrico_burst",
-   "name": "Descarga",
+   "name": {
+    "pt_BR": "Descarga",
+    "en": "Discharge",
+    "es": "Descarga"
+   },
    "type": "eletrico",
    "kind": "burst"
   },
@@ -469,7 +621,11 @@
    "cooldown": 8.0,
    "fx": "explosion",
    "id": "eletrico_blast",
-   "name": "Raio Concentrado",
+   "name": {
+    "pt_BR": "Raio Concentrado",
+    "en": "Focused Bolt",
+    "es": "Rayo Concentrado"
+   },
    "type": "eletrico",
    "kind": "blast"
   },
@@ -481,7 +637,11 @@
    "cooldown": 14.0,
    "fx": "heal",
    "id": "eletrico_heal",
-   "name": "Recarga",
+   "name": {
+    "pt_BR": "Recarga",
+    "en": "Recharge",
+    "es": "Recarga"
+   },
    "type": "eletrico",
    "kind": "heal"
   },
@@ -494,7 +654,11 @@
    "fx": "rain",
    "ticks": 4,
    "id": "eletrico_dot",
-   "name": "Estática",
+   "name": {
+    "pt_BR": "Estática",
+    "en": "Static",
+    "es": "Estática"
+   },
    "type": "eletrico",
    "kind": "dot"
   },
@@ -506,7 +670,11 @@
    "cooldown": 16.0,
    "fx": "nova",
    "id": "eletrico_ult",
-   "name": "Tempestade de Raios",
+   "name": {
+    "pt_BR": "Tempestade de Raios",
+    "en": "Thunderstorm",
+    "es": "Tormenta de Rayos"
+   },
    "type": "eletrico",
    "kind": "ult"
   },
@@ -518,7 +686,11 @@
    "cooldown": 6.0,
    "fx": "slash",
    "id": "vento_strike",
-   "name": "Corte de Ar",
+   "name": {
+    "pt_BR": "Corte de Ar",
+    "en": "Air Cut",
+    "es": "Corte de Aire"
+   },
    "type": "vento",
    "kind": "strike"
   },
@@ -530,7 +702,11 @@
    "cooldown": 5.0,
    "fx": "projectile",
    "id": "vento_bolt",
-   "name": "Rajada",
+   "name": {
+    "pt_BR": "Rajada",
+    "en": "Gust",
+    "es": "Ráfaga"
+   },
    "type": "vento",
    "kind": "bolt"
   },
@@ -542,7 +718,11 @@
    "cooldown": 8.0,
    "fx": "ring",
    "id": "vento_burst",
-   "name": "Redemoinho",
+   "name": {
+    "pt_BR": "Redemoinho",
+    "en": "Whirlwind",
+    "es": "Remolino"
+   },
    "type": "vento",
    "kind": "burst"
   },
@@ -554,7 +734,11 @@
    "cooldown": 8.0,
    "fx": "explosion",
    "id": "vento_blast",
-   "name": "Lâminas de Vento",
+   "name": {
+    "pt_BR": "Lâminas de Vento",
+    "en": "Wind Blades",
+    "es": "Cuchillas de Viento"
+   },
    "type": "vento",
    "kind": "blast"
   },
@@ -566,7 +750,11 @@
    "cooldown": 14.0,
    "fx": "heal",
    "id": "vento_heal",
-   "name": "Brisa Curativa",
+   "name": {
+    "pt_BR": "Brisa Curativa",
+    "en": "Healing Breeze",
+    "es": "Brisa Curativa"
+   },
    "type": "vento",
    "kind": "heal"
   },
@@ -579,7 +767,11 @@
    "fx": "rain",
    "ticks": 4,
    "id": "vento_dot",
-   "name": "Vendaval",
+   "name": {
+    "pt_BR": "Vendaval",
+    "en": "Gale",
+    "es": "Vendaval"
+   },
    "type": "vento",
    "kind": "dot"
   },
@@ -591,7 +783,11 @@
    "cooldown": 16.0,
    "fx": "nova",
    "id": "vento_ult",
-   "name": "Furacão",
+   "name": {
+    "pt_BR": "Furacão",
+    "en": "Hurricane",
+    "es": "Huracán"
+   },
    "type": "vento",
    "kind": "ult"
   },
@@ -603,7 +799,11 @@
    "cooldown": 6.0,
    "fx": "slash",
    "id": "luz_strike",
-   "name": "Golpe Radiante",
+   "name": {
+    "pt_BR": "Golpe Radiante",
+    "en": "Radiant Strike",
+    "es": "Golpe Radiante"
+   },
    "type": "luz",
    "kind": "strike"
   },
@@ -615,7 +815,11 @@
    "cooldown": 5.0,
    "fx": "projectile",
    "id": "luz_bolt",
-   "name": "Raio de Sol",
+   "name": {
+    "pt_BR": "Raio de Sol",
+    "en": "Sunbeam",
+    "es": "Rayo de Sol"
+   },
    "type": "luz",
    "kind": "bolt"
   },
@@ -627,7 +831,11 @@
    "cooldown": 8.0,
    "fx": "ring",
    "id": "luz_burst",
-   "name": "Clarão",
+   "name": {
+    "pt_BR": "Clarão",
+    "en": "Flash",
+    "es": "Destello"
+   },
    "type": "luz",
    "kind": "burst"
   },
@@ -639,7 +847,11 @@
    "cooldown": 8.0,
    "fx": "explosion",
    "id": "luz_blast",
-   "name": "Coluna de Luz",
+   "name": {
+    "pt_BR": "Coluna de Luz",
+    "en": "Pillar of Light",
+    "es": "Columna de Luz"
+   },
    "type": "luz",
    "kind": "blast"
   },
@@ -651,7 +863,11 @@
    "cooldown": 14.0,
    "fx": "heal",
    "id": "luz_heal",
-   "name": "Bênção",
+   "name": {
+    "pt_BR": "Bênção",
+    "en": "Blessing",
+    "es": "Bendición"
+   },
    "type": "luz",
    "kind": "heal"
   },
@@ -664,7 +880,11 @@
    "fx": "rain",
    "ticks": 4,
    "id": "luz_dot",
-   "name": "Ofuscar",
+   "name": {
+    "pt_BR": "Ofuscar",
+    "en": "Dazzle",
+    "es": "Deslumbrar"
+   },
    "type": "luz",
    "kind": "dot"
   },
@@ -676,7 +896,11 @@
    "cooldown": 16.0,
    "fx": "nova",
    "id": "luz_ult",
-   "name": "Juízo Solar",
+   "name": {
+    "pt_BR": "Juízo Solar",
+    "en": "Solar Judgment",
+    "es": "Juicio Solar"
+   },
    "type": "luz",
    "kind": "ult"
   },
@@ -688,7 +912,11 @@
    "cooldown": 6.0,
    "fx": "slash",
    "id": "sombra_strike",
-   "name": "Mordida Sombria",
+   "name": {
+    "pt_BR": "Mordida Sombria",
+    "en": "Shadow Bite",
+    "es": "Mordida Sombría"
+   },
    "type": "sombra",
    "kind": "strike"
   },
@@ -700,7 +928,11 @@
    "cooldown": 5.0,
    "fx": "projectile",
    "id": "sombra_bolt",
-   "name": "Projétil Umbral",
+   "name": {
+    "pt_BR": "Projétil Umbral",
+    "en": "Umbral Shot",
+    "es": "Proyectil Umbrío"
+   },
    "type": "sombra",
    "kind": "bolt"
   },
@@ -712,7 +944,11 @@
    "cooldown": 8.0,
    "fx": "ring",
    "id": "sombra_burst",
-   "name": "Onda de Breu",
+   "name": {
+    "pt_BR": "Onda de Breu",
+    "en": "Pitch Wave",
+    "es": "Onda de Brea"
+   },
    "type": "sombra",
    "kind": "burst"
   },
@@ -724,7 +960,11 @@
    "cooldown": 8.0,
    "fx": "explosion",
    "id": "sombra_blast",
-   "name": "Abismo",
+   "name": {
+    "pt_BR": "Abismo",
+    "en": "Abyss",
+    "es": "Abismo"
+   },
    "type": "sombra",
    "kind": "blast"
   },
@@ -736,7 +976,11 @@
    "cooldown": 14.0,
    "fx": "heal",
    "id": "sombra_heal",
-   "name": "Drenar Vida",
+   "name": {
+    "pt_BR": "Drenar Vida",
+    "en": "Life Drain",
+    "es": "Drenar Vida"
+   },
    "type": "sombra",
    "kind": "heal"
   },
@@ -749,7 +993,11 @@
    "fx": "rain",
    "ticks": 4,
    "id": "sombra_dot",
-   "name": "Maldição",
+   "name": {
+    "pt_BR": "Maldição",
+    "en": "Curse",
+    "es": "Maldición"
+   },
    "type": "sombra",
    "kind": "dot"
   },
@@ -761,7 +1009,11 @@
    "cooldown": 16.0,
    "fx": "nova",
    "id": "sombra_ult",
-   "name": "Eclipse Total",
+   "name": {
+    "pt_BR": "Eclipse Total",
+    "en": "Total Eclipse",
+    "es": "Eclipse Total"
+   },
    "type": "sombra",
    "kind": "ult"
   }

@@ -84,7 +84,7 @@ static func load_all() -> void:
 			var form := {
 				"form_id": st.form_id, "name": st.name, "stage": int(st.stage), "desc": st.desc,
 				"abilities": st.abilities, "family": fam.id, "type": fam.type, "shape": fam.shape,
-				"style": fam.style, "hue_shift": float(fam.get("hue_shift", 0.0)),
+				"style": fam.style, "hue_shift": float(fam.get("hue_shift", 0.0)), "features": fam.get("features", {}),
 			}
 			forms[st.form_id] = form
 			form_list.append(form)
@@ -157,7 +157,7 @@ static func generate_world2_hunts() -> Array:
 				var fid: String = arr[rng.randi_range(0, arr.size() - 1)]
 				monsters.append({"form": fid, "weight": 1})
 			var h := {
-				"id": "w2_%d_%d" % [lvl, k], "name": "Abismo · %s %s" % [biomes[biome].name, _roman(k + 1)],
+				"id": "w2_%d_%d" % [lvl, k], "name": _w2_name(biomes[biome].name, _roman(k + 1)),
 				"world": 2, "category": "mundo2", "level": lvl, "unlock_level": max(80, lvl - 5),
 				"requires_challenge": int(w2.unlock_challenge), "biome": biome, "corrupted": true, "types": types,
 				"monsters": monsters, "density": int(w2.density), "respawn": float(w2.respawn),
@@ -167,6 +167,15 @@ static func generate_world2_hunts() -> Array:
 			}
 			out.append(h)
 		lvl += int(w2.step)
+	return out
+
+
+static func _w2_name(bname, roman: String) -> Dictionary:
+	var out := {}
+	var prefix := {"pt_BR": "Abismo", "en": "Abyss", "es": "Abismo"}
+	for l in Loc.LANGS:
+		var b := str(bname.get(l, bname.get("pt_BR", ""))) if bname is Dictionary else str(bname)
+		out[l] = "%s · %s %s" % [prefix[l], b, roman]
 	return out
 
 
@@ -250,7 +259,44 @@ static func starters() -> Array:
 
 
 static func type_name(type_id: String) -> String:
-	return type_info.get(type_id, {}).get("name", type_id)
+	return Loc.tx(type_info.get(type_id, {}).get("name", type_id))
+
+
+static func rarity_name(id: String) -> String:
+	return Loc.tx(rarity(id).get("name", id))
+
+
+static func biome_name(id: String) -> String:
+	return Loc.tx(biomes.get(id, {}).get("name", id))
+
+
+static func hunt_name(h: Dictionary) -> String:
+	return Loc.tx(h.get("name", h.get("id", "?")))
+
+
+static func ability_name(id: String) -> String:
+	return Loc.tx(abilities.get(id, {}).get("name", id))
+
+
+static func form_name(form_id: String) -> String:
+	return str(forms.get(form_id, {}).get("name", "?"))
+
+
+static func form_desc(form_id: String) -> String:
+	return Loc.tx(forms.get(form_id, {}).get("desc", ""))
+
+
+static func challenge_name(c: Dictionary) -> String:
+	return Loc.tx(c.get("name", c.get("id", "?")))
+
+
+## Faixa de qualidade (Comum/Bom/Ótimo/Perfeito) para uma qualidade 0-100.
+static func quality_grade(q: int) -> Dictionary:
+	var best: Dictionary = {}
+	for g in config.get("quality", {}).get("grades", []):
+		if q >= int(g.min):
+			best = g
+	return best
 
 
 static func type_color(type_id: String) -> Color:

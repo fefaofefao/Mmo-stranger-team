@@ -1,11 +1,15 @@
 {
- "_comentario": "Desafios (bosses). Para adicionar desafios acima de 90, inclua novas entradas aqui.",
+ "_comentario": "Desafios (bosses). Para desafios acima de 90, inclua novas entradas aqui.",
  "fail_cooldown_seconds": 60,
  "challenges": [
   {
    "id": "c10",
    "level": 10,
-   "name": "Gotelão, o Rei das Poças",
+   "name": {
+    "pt_BR": "Marolontra, Rainha das Ondas",
+    "en": "Marolontra, Queen of Waves",
+    "es": "Marolontra, Reina de las Olas"
+   },
    "boss_form": "agua_1_2",
    "type": "agua",
    "biome": "praia",
@@ -19,7 +23,11 @@
      "hp_below": 0.5,
      "atk_mult": 1.3,
      "spd_mult": 1.2,
-     "say": "Fase 2: o chefe se enfurece!"
+     "say": {
+      "pt_BR": "Fase 2: o chefe se enfurece!",
+      "en": "Phase 2: the boss is enraged!",
+      "es": "¡Fase 2: el jefe se enfurece!"
+     }
     }
    ],
    "mechanics": {
@@ -47,7 +55,11 @@
   {
    "id": "c20",
    "level": 20,
-   "name": "Brasalfa, Lobo-Tocha",
+   "name": {
+    "pt_BR": "Raposbrasa, a Incendiária",
+    "en": "Raposbrasa the Firestarter",
+    "es": "Raposbrasa, la Incendiaria"
+   },
    "boss_form": "fogo_1_2",
    "type": "fogo",
    "biome": "vulcao",
@@ -61,7 +73,11 @@
      "hp_below": 0.5,
      "atk_mult": 1.3,
      "spd_mult": 1.2,
-     "say": "Fase 2: o chefe se enfurece!"
+     "say": {
+      "pt_BR": "Fase 2: o chefe se enfurece!",
+      "en": "Phase 2: the boss is enraged!",
+      "es": "¡Fase 2: el jefe se enfurece!"
+     }
     }
    ],
    "mechanics": {
@@ -91,7 +107,11 @@
   {
    "id": "c30",
    "level": 30,
-   "name": "Ramagueira Anciã",
+   "name": {
+    "pt_BR": "Cervilha Anciã",
+    "en": "Elder Cervilha",
+    "es": "Cervilha Anciana"
+   },
    "boss_form": "planta_1_2",
    "type": "planta",
    "biome": "floresta_densa",
@@ -105,7 +125,11 @@
      "hp_below": 0.5,
      "atk_mult": 1.3,
      "spd_mult": 1.2,
-     "say": "Fase 2: o chefe se enfurece!"
+     "say": {
+      "pt_BR": "Fase 2: o chefe se enfurece!",
+      "en": "Phase 2: the boss is enraged!",
+      "es": "¡Fase 2: el jefe se enfurece!"
+     }
     }
    ],
    "mechanics": {
@@ -140,7 +164,11 @@
   {
    "id": "c40",
    "level": 40,
-   "name": "Monolitauro Desperto",
+   "name": {
+    "pt_BR": "Tatuzólito Desperto",
+    "en": "Awakened Tatuzólito",
+    "es": "Tatuzólito Despierto"
+   },
    "boss_form": "terra_1_3",
    "type": "terra",
    "biome": "caverna_rochosa",
@@ -154,7 +182,11 @@
      "hp_below": 0.5,
      "atk_mult": 1.3,
      "spd_mult": 1.2,
-     "say": "Fase 2: o chefe se enfurece!"
+     "say": {
+      "pt_BR": "Fase 2: o chefe se enfurece!",
+      "en": "Phase 2: the boss is enraged!",
+      "es": "¡Fase 2: el jefe se enfurece!"
+     }
     }
    ],
    "mechanics": {
@@ -184,7 +216,11 @@
   {
    "id": "c50",
    "level": 50,
-   "name": "Glaciafera Branca",
+   "name": {
+    "pt_BR": "Leoparvalanche Branco",
+    "en": "White Leoparvalanche",
+    "es": "Leoparvalanche Blanco"
+   },
    "boss_form": "gelo_2_3",
    "type": "gelo",
    "biome": "caverna_congelada",
@@ -198,7 +234,11 @@
      "hp_below": 0.5,
      "atk_mult": 1.3,
      "spd_mult": 1.2,
-     "say": "Fase 2: o chefe se enfurece!"
+     "say": {
+      "pt_BR": "Fase 2: o chefe se enfurece!",
+      "en": "Phase 2: the boss is enraged!",
+      "es": "¡Fase 2: el jefe se enfurece!"
+     }
     }
    ],
    "mechanics": {
@@ -227,7 +267,11 @@
   {
    "id": "c60",
    "level": 60,
-   "name": "Trovajante Tirano",
+   "name": {
+    "pt_BR": "Carneiraio, Senhor da Tempestade",
+    "en": "Carneiraio, Storm Lord",
+    "es": "Carneiraio, Señor de la Tormenta"
+   },
    "boss_form": "eletrico_1_3",
    "type": "eletrico",
    "biome": "ruinas_energizadas",
@@ -241,7 +285,11 @@
      "hp_below": 0.5,
      "atk_mult": 1.3,
      "spd_mult": 1.2,
-     "say": "Fase 2: o chefe se enfurece!"
+     "say": {
+      "pt_BR": "Fase 2: o chefe se enfurece!",
+      "en": "Phase 2: the boss is enraged!",
+      "es": "¡Fase 2: el jefe se enfurece!"
+     }
     }
    ],
    "mechanics": {
@@ -277,7 +325,11 @@
   {
    "id": "c70",
    "level": 70,
-   "name": "Furacondor Ancestral",
+   "name": {
+    "pt_BR": "Lebreventania Ancestral",
+    "en": "Ancestral Lebreventania",
+    "es": "Lebreventania Ancestral"
+   },
    "boss_form": "vento_1_3",
    "type": "vento",
    "biome": "plataformas_nuvens",
@@ -291,7 +343,11 @@
      "hp_below": 0.5,
      "atk_mult": 1.3,
      "spd_mult": 1.2,
-     "say": "Fase 2: o chefe se enfurece!"
+     "say": {
+      "pt_BR": "Fase 2: o chefe se enfurece!",
+      "en": "Phase 2: the boss is enraged!",
+      "es": "¡Fase 2: el jefe se enfurece!"
+     }
     }
    ],
    "mechanics": {
@@ -321,7 +377,11 @@
   {
    "id": "c80",
    "level": 80,
-   "name": "Auréolux, o Juiz",
+   "name": {
+    "pt_BR": "Alvorcorno, Juiz da Aurora",
+    "en": "Alvorcorno, Judge of Dawn",
+    "es": "Alvorcorno, Juez del Alba"
+   },
    "boss_form": "luz_1_3",
    "type": "luz",
    "biome": "templo",
@@ -335,7 +395,11 @@
      "hp_below": 0.5,
      "atk_mult": 1.3,
      "spd_mult": 1.2,
-     "say": "Fase 2: o chefe se enfurece!"
+     "say": {
+      "pt_BR": "Fase 2: o chefe se enfurece!",
+      "en": "Phase 2: the boss is enraged!",
+      "es": "¡Fase 2: el jefe se enfurece!"
+     }
     }
    ],
    "mechanics": {
@@ -371,7 +435,11 @@
   {
    "id": "c90",
    "level": 90,
-   "name": "Eclipsauro Primordial",
+   "name": {
+    "pt_BR": "Eclipsilobo Primordial",
+    "en": "Primordial Eclipsilobo",
+    "es": "Eclipsilobo Primordial"
+   },
    "boss_form": "sombra_1_3",
    "type": "sombra",
    "biome": "cemiterio",
@@ -385,7 +453,11 @@
      "hp_below": 0.5,
      "atk_mult": 1.3,
      "spd_mult": 1.2,
-     "say": "Fase 2: o chefe se enfurece!"
+     "say": {
+      "pt_BR": "Fase 2: o chefe se enfurece!",
+      "en": "Phase 2: the boss is enraged!",
+      "es": "¡Fase 2: el jefe se enfurece!"
+     }
     }
    ],
    "mechanics": {

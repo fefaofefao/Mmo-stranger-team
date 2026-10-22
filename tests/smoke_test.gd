@@ -151,13 +151,81 @@ func _run() -> void:
 	st.last_seen_at = float(st.last_seen_at) - 3 * 3600.0
 	var s: Dictionary = await G.claim_offline()
 	check(int(s.get("kills", 0)) > 0, "progresso offline: %d abates em 3h" % int(s.get("kills", 0)))
-	print("== mundo 2")
+	print("== time: quantos lutam acompanham o nível (inclusive ao subir naturalmente)")
 	G.save.debug_unlock_all = true
+	while G.save.party.size() < 3:
+		var rec := {"server_id": "dbg%d" % G.save.party.size(), "form": "planta_1_1", "shiny": false, "quality": 30}
+		G.add_recruit(rec, false)
+	await G.debug_set_level(200)
+	await G.set_current_hunt("w2_190_0")
+	hs.load_current_hunt()
+	w = hs.world
+	await frames(2)
+	await sim_seconds(w, 2.0)
+	check(w.alive_on_field() == 2, "nível 200: 2 monstros caçando no mapa (%d)" % w.alive_on_field())
+	# sobe do 209 para o 210 com XP de abates: o 3º precisa entrar sozinho
+	await G.debug_set_level(209)
+	var mm = G.main_monster()
+	mm.xp = Formulas.xp_to_next(209) - 1.0
+	G.on_kill(DataDB.hunts["w2_190_0"], DataDB.hunts["w2_190_0"].monsters[0].form, 190, "", false, w.participants)
+	await sim_seconds(w, 1.5)
+	check(int(G.main_level()) >= 210 and w.alive_on_field() == 3, "ao chegar no 210 o 3º entra em campo (%d)" % w.alive_on_field())
+	print("== time: revezamento quando alguém cai")
+	await G.debug_set_level(50)
+	await G.set_current_hunt("w1_s3_fogo_1")
+	hs.load_current_hunt()
+	w = hs.world
+	await sim_seconds(w, 1.0)
+	check(w.alive_on_field() == 1, "nível 50: 1 em campo")
+	var first: Creature = w.party[0]
+	var first_uid: String = first.mon_uid
+	w.deal_damage(null, first, 0.0, true, first.max_hp * 2.0)
+	await sim_seconds(w, 0.6)
+	check(w.fallen.has(first_uid), "principal caído")
+	check(w.alive_on_field() == 1 and w.party.filter(func(c): return c.alive)[0].mon_uid != first_uid, "o próximo do grupo entrou no lugar")
+	var xp_before := float(G.monster(first_uid).xp)
+	var lvl_before := int(G.monster(first_uid).level)
+	G.on_kill(w.hunt, w.hunt.monsters[0].form, int(w.hunt.level), "", false, w.participants)
+	check(int(G.monster(first_uid).level) > lvl_before or float(G.monster(first_uid).xp) > xp_before, "caído continua ganhando XP como participante")
+	for c in w.party.duplicate():
+		if c.alive:
+			w.deal_damage(null, c, 0.0, true, c.max_hp * 2.0)
+	await sim_seconds(w, 0.3)
+	var guard := 0
+	while w.alive_on_field() > 0 and guard < 5:
+		for c in w.party.duplicate():
+			if c.alive:
+				w.deal_damage(null, c, 0.0, true, c.max_hp * 2.0)
+		await sim_seconds(w, 0.3)
+		guard += 1
+	check(w.team_revive_remaining() > 0.0, "todos caíram: time aguarda renascer")
+	await sim_seconds(w, float(DataDB.config.combat.revive_seconds) + 0.5)
+	check(w.alive_on_field() == 1 and w.fallen.is_empty(), "time renasceu junto")
+	print("== chefe diário")
+	var ds: Dictionary = await G.daily_status()
+	check(ds.get("ok", false) and int(ds.entries) == 3, "status do chefe diário")
+	var dst: Dictionary = await G.daily_start()
+	check(dst.get("ok", false), "entrada consumida")
+	hs.start_daily(dst)
+	await frames(3)
+	var dd := [false, false]
+	hs.world.challenge_finished.connect(func(won, _s): dd[0] = true; dd[1] = won)
+	await sim_seconds(hs.world, 125.0)
+	check(dd[0], "luta do chefe diário terminou (vitória: %s, dano %d%%)" % [dd[1], int(hs.world.boss_damage_fraction() * 100)])
+	await frames(10)
+	for ch in main.overlay.get_children():
+		if ch is UIDialog:
+			ch._choose(0)
+	await frames(5)
+	var ds2: Dictionary = await G.daily_status()
+	check(int(ds2.used) == 1, "1 entrada usada")
+	print("== mundo 2")
 	await G.debug_set_level(215)
 	await G.set_current_hunt("w2_210_0")
 	hs.load_current_hunt()
 	await frames(2)
-	check(hs.world.party.size() == min(3, G.save.party.size()), "monstros em campo no nível 215: %d" % hs.world.party.size())
+	await sim_seconds(hs.world, 1.0)
+	check(hs.world.alive_on_field() == min(3, G.save.party.size()), "monstros em campo no nível 215: %d" % hs.world.alive_on_field())
 	await sim_seconds(hs.world, 30.0)
 	G.save_local()
 	print("\n==== smoke test: %d falhas ====" % failures)

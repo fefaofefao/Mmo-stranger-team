@@ -2,80 +2,98 @@ extends Screen
 ## Escolha do monstro inicial (9 opções, 1 por tipo).
 
 var selected := ""
-var detail: VBoxContainer
 
 
 func build() -> void:
-	var b := make_layout("Escolha seu inicial", false)
-	var hint := UI.label("Cada tipo é forte contra o próximo do ciclo e fraco contra o anterior:\nÁgua › Fogo › Gelo › Planta › Terra › Elétrico › Vento › Luz › Sombra › Água", 19, UI.C_MUTED, true)
+	var b := make_layout(Loc.t("Escolha seu parceiro"), "paw", false)
+	var hint := UI.label(Loc.t("Cada tipo é forte contra o próximo do ciclo:") + "\n" + _cycle(), 18, UI.C_MUTED, true)
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	b.add_child(hint)
-	var g := UI.grid(3, 10)
+	var g := UI.grid(3, 8)
 	b.add_child(g)
+	if selected == "":
+		selected = DataDB.starters()[0].id
 	for fam in DataDB.starters():
 		var fid: String = fam.stages[0].form_id
-		var card := UI.button("", func(): _select(fam.id), 20, 170)
-		card.custom_minimum_size = Vector2(220, 170)
+		var fam_id: String = fam.id
+		var card := UI.button("", func(): selected = fam_id; rebuild(), 20, 168, "tab_on" if selected == fam_id else "tab")
+		card.custom_minimum_size = Vector2(220, 168)
 		var cv := UI.vbox(2)
 		cv.set_anchors_preset(Control.PRESET_FULL_RECT)
-		cv.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		cv.alignment = BoxContainer.ALIGNMENT_CENTER
-		var p := UI.portrait(fid, false, 96)
-		p.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		cv.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var p := UI.portrait(fid, false, 92)
+		p.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		cv.add_child(p)
-		var n := UI.label(DataDB.form(fid).name, 22)
+		var n := UI.label(DataDB.form_name(fid), 21)
 		n.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		cv.add_child(n)
-		var tl := UI.type_badge(fam.type, 18)
-		tl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		cv.add_child(tl)
-		if selected == fam.id:
-			card.add_theme_stylebox_override("normal", UI.sb(Color("#6a5838"), UI.C_GOLD))
+		var tb := UI.type_badge(fam.type, 15)
+		tb.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		cv.add_child(tb)
 		card.add_child(cv)
 		g.add_child(card)
-	var p2 := UI.panel()
+	var p2 := UI.panel("panel_gold")
 	p2.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	b.add_child(p2)
-	detail = UI.vbox(8)
+	var detail := UI.vbox(8)
 	p2.add_child(detail)
-	_show_detail()
-
-
-func _select(fid: String) -> void:
-	selected = fid
-	rebuild()
-
-
-func _show_detail() -> void:
-	if selected == "":
-		detail.add_child(UI.label("Toque em um monstro para ver detalhes.", 22, UI.C_MUTED))
-		return
 	var fam: Dictionary = DataDB.families[selected]
 	var f1 := DataDB.form(fam.stages[0].form_id)
-	var row := UI.hbox(12)
+	var row := UI.hbox(14)
+	row.alignment = BoxContainer.ALIGNMENT_CENTER
 	detail.add_child(row)
-	for st in fam.stages:
-		var c := UI.vbox(0)
-		c.add_child(UI.portrait(st.form_id, false, 80))
-		var l := UI.label(st.name, 18, UI.C_MUTED)
+	for i in fam.stages.size():
+		var st: Dictionary = fam.stages[i]
+		var c := UI.vbox(2)
+		c.add_child(UI.portrait_frame(st.form_id, false, 84 + i * 6))
+		var l := UI.label(st.name, 17, UI.C_GOLD if i == 0 else UI.C_MUTED)
 		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		c.add_child(l)
 		row.add_child(c)
-	var style_name := {"melee": "Corpo a corpo", "ranged": "Distância", "magic": "Mágico"}
-	detail.add_child(UI.label("%s · %s · Evolui nos níveis %d e %d" % [DataDB.type_name(fam.type), style_name[fam.style], int(fam.evo_levels[0]), int(fam.evo_levels[1])], 20, UI.C_GOLD, true))
-	detail.add_child(UI.label(f1.desc, 20, UI.C_TEXT, true))
+		if i < 2:
+			var ar := UI.label("›", 30, UI.C_MUTED)
+			ar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			row.add_child(ar)
+	var info := UI.hbox(8)
+	info.alignment = BoxContainer.ALIGNMENT_CENTER
+	info.add_child(UI.type_badge(fam.type, 18))
+	info.add_child(UI.pill(_style(fam.style), UI.C_INFO, 18))
+	info.add_child(UI.pill(Loc.t("Evolui: Nv %d e %d") % [int(fam.evo_levels[0]), int(fam.evo_levels[1])], UI.C_GOLD, 18))
+	detail.add_child(info)
+	var d := UI.label(DataDB.form_desc(f1.form_id), 21, UI.C_TEXT, true)
+	d.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	detail.add_child(d)
 	var s := Formulas.raw_stats(f1.form_id, 1)
-	detail.add_child(UI.label("HP %d · ATQ %d · DEF %d · VEL %d · Alcance %d" % [s.hp, s.atk, s.def, s.spd, s.rng], 20))
-	detail.add_child(UI.label("Forte contra %s · Fraco contra %s" % [DataDB.type_name(TypeChart.strong_against(fam.type)), DataDB.type_name(TypeChart.weak_against(fam.type))], 20, UI.C_MUTED, true))
-	var spacer := Control.new()
-	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	detail.add_child(spacer)
-	detail.add_child(UI.button("Escolher %s" % f1.name, _confirm, 28, 80))
+	var sl := UI.label(Loc.t("HP %d · ATQ %d · DEF %d · VEL %d · Alcance %d") % [s.hp, s.atk, s.def, s.spd, s.rng], 19, UI.C_MUTED)
+	sl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	detail.add_child(sl)
+	var tl := UI.label(Loc.t("Forte contra %s · Fraco contra %s") % [DataDB.type_name(TypeChart.strong_against(fam.type)), DataDB.type_name(TypeChart.weak_against(fam.type))], 19, UI.C_MUTED, true)
+	tl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	detail.add_child(tl)
+	detail.add_child(UI.hspace())
+	var sp := Control.new()
+	sp.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	detail.add_child(sp)
+	detail.add_child(UI.icon_button("paw", Loc.t("Escolher %s") % f1.name, _confirm, 28, 84, "primary"))
+
+
+static func _style(s: String) -> String:
+	return {"melee": Loc.t("Corpo a corpo"), "ranged": Loc.t("Distância"), "magic": Loc.t("Mágico")}.get(s, s)
+
+
+func _cycle() -> String:
+	var names: Array = []
+	for t in DataDB.type_ids:
+		names.append(DataDB.type_name(t))
+	names.append(names[0])
+	return " › ".join(names)
 
 
 func _confirm() -> void:
 	var f1 := DataDB.form(DataDB.families[selected].stages[0].form_id)
-	if not await main.confirm("Confirmar", "Começar a jornada com %s?" % f1.name):
+	if not await main.confirm(Loc.t("Confirmar"), Loc.t("Começar a jornada com %s?") % f1.name):
 		return
 	await Game.choose_starter(selected)
 	main.goto("hunt")
-	main.toast("Seu %s já está caçando sozinho! Acompanhe pelo mapa." % f1.name, UI.C_GOLD)
+	main.toast(Loc.t("%s já está caçando sozinho!") % f1.name, UI.C_GOLD, "paw")

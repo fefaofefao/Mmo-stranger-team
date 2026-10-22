@@ -32,3 +32,12 @@ func test_xp_split() -> void:
 	near(xs[2], 100.0, 0.001, "3º luta no 210")
 	xs = PartyLogic.split_xp(_party([10]), 100.0, 10, 10.0)
 	near(xs[0], 110.0, 0.001, "bônus de XP")
+
+
+func test_participants_get_full_xp() -> void:
+	# grupo nível 10 (1 em campo): o principal caiu e o 2º entrou; os dois participaram
+	var p := _party([10, 10, 10])
+	var xs := PartyLogic.split_xp(p, 100.0, 10, 0.0, ["p0", "p1"])
+	near(xs[0], 100.0, 0.001, "principal caído ainda ganha 100%")
+	near(xs[1], 100.0, 0.001, "substituto ganha 100%")
+	near(xs[2], 50.0, 0.001, "reserva que não entrou ganha 50%")

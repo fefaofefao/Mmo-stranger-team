@@ -14,7 +14,52 @@
   1.05,
   1.1
  ],
- "shiny_stat_bonus": 0.05,
+ "shiny_stat_bonus": 0.5,
+ "quality": {
+  "_comentario": "Qualidade (0-100%) sorteada no servidor ao recrutar. Bônus de atributos = max_bonus * qualidade. Distribuição: 100*u^exponent (maioria baixa). Shiny: shiny_min..100.",
+  "max_bonus": 0.3,
+  "exponent": 1.8,
+  "shiny_min": 50,
+  "starter": 50,
+  "grades": [
+   {
+    "min": 0,
+    "name": {
+     "pt_BR": "Comum",
+     "en": "Common",
+     "es": "Común"
+    },
+    "color": "#b8b0a0"
+   },
+   {
+    "min": 40,
+    "name": {
+     "pt_BR": "Bom",
+     "en": "Good",
+     "es": "Bueno"
+    },
+    "color": "#7be07b"
+   },
+   {
+    "min": 70,
+    "name": {
+     "pt_BR": "Ótimo",
+     "en": "Great",
+     "es": "Genial"
+    },
+    "color": "#5aa8ff"
+   },
+   {
+    "min": 90,
+    "name": {
+     "pt_BR": "Perfeito",
+     "en": "Perfect",
+     "es": "Perfecto"
+    },
+    "color": "#ffb43a"
+   }
+  ]
+ },
  "shiny_chance": 0.0002,
  "recruit_chance": 0.002,
  "shiny_recruit_mult": 10,
@@ -43,7 +88,7 @@
   "ranged_projectile_speed": 9.0
  },
  "xp": {
-  "kills_min": 6,
+  "kills_min": 2,
   "kills_a": 2.9,
   "kills_p": 1.5,
   "late_start": 80,
@@ -52,7 +97,9 @@
   "kill_q": 1.35,
   "low_level_penalty_start": 10,
   "low_level_penalty_per_level": 0.04,
-  "low_level_penalty_min": 0.2
+  "low_level_penalty_min": 0.2,
+  "early_levels": 12,
+  "early_mult_start": 0.22
  },
  "gold": {
   "kill_base": 2.0,
@@ -81,9 +128,13 @@
  "rarities": [
   {
    "id": "comum",
-   "name": "Comum",
+   "name": {
+    "pt_BR": "Comum",
+    "en": "Common",
+    "es": "Común"
+   },
    "color": "#c8c8c8",
-   "chance": 0.025,
+   "chance": 0.0125,
    "stat_mult": 1.0,
    "affixes": 0,
    "server": false,
@@ -91,9 +142,13 @@
   },
   {
    "id": "incomum",
-   "name": "Incomum",
+   "name": {
+    "pt_BR": "Incomum",
+    "en": "Uncommon",
+    "es": "Poco común"
+   },
    "color": "#5fd35f",
-   "chance": 0.00625,
+   "chance": 0.003,
    "stat_mult": 1.2,
    "affixes": 0,
    "server": false,
@@ -101,9 +156,13 @@
   },
   {
    "id": "raro",
-   "name": "Raro",
+   "name": {
+    "pt_BR": "Raro",
+    "en": "Rare",
+    "es": "Raro"
+   },
    "color": "#4a9cff",
-   "chance": 0.005,
+   "chance": 0.003,
    "stat_mult": 1.45,
    "affixes": 0,
    "server": true,
@@ -111,9 +170,13 @@
   },
   {
    "id": "epico",
-   "name": "Épico",
+   "name": {
+    "pt_BR": "Épico",
+    "en": "Epic",
+    "es": "Épico"
+   },
    "color": "#b05cff",
-   "chance": 0.0005,
+   "chance": 0.0003,
    "stat_mult": 1.75,
    "affixes": 1,
    "server": true,
@@ -121,9 +184,13 @@
   },
   {
    "id": "lendario",
-   "name": "Lendário",
+   "name": {
+    "pt_BR": "Lendário",
+    "en": "Legendary",
+    "es": "Legendario"
+   },
    "color": "#ff9a1f",
-   "chance": 5e-05,
+   "chance": 3e-05,
    "stat_mult": 2.1,
    "affixes": 2,
    "server": true,
@@ -131,9 +198,13 @@
   },
   {
    "id": "mitico",
-   "name": "Mítico",
+   "name": {
+    "pt_BR": "Mítico",
+    "en": "Mythic",
+    "es": "Mítico"
+   },
    "color": "#ff3a5a",
-   "chance": 4e-06,
+   "chance": 2.5e-06,
    "stat_mult": 2.6,
    "affixes": 3,
    "server": true,
@@ -281,5 +352,56 @@
    10,
    100
   ]
- }
+ },
+ "daily_boss": {
+  "_comentario": "Chefe Diário: 1 chefe por dia (rotação), 3 entradas por dia (dia UTC). Recompensa proporcional ao dano causado; vitória garante item.",
+  "entries": 3,
+  "hp_mult": 22.0,
+  "atk_mult": 0.32,
+  "def_mult": 1.1,
+  "scale": 1.7,
+  "time_limit": 120,
+  "map_size": [
+   24,
+   24
+  ],
+  "mechanics": {
+   "summon": {
+    "every": 14,
+    "count": 2,
+    "level_offset": 12
+   },
+   "aoe": {
+    "every": 9,
+    "count": 3,
+    "radius": 1,
+    "dmg_pct": 0.12,
+    "telegraph": 1.6
+   }
+  },
+  "gold_kills": 120,
+  "essence_base": 15,
+  "essence_per_level": 0.6,
+  "min_reward_fraction": 0.2,
+  "item_rarity_roll": [
+   [
+    "lendario",
+    0.03
+   ],
+   [
+    "epico",
+    0.22
+   ],
+   [
+    "raro",
+    1.0
+   ]
+  ],
+  "min_seconds": 10
+ },
+ "languages": [
+  "pt_BR",
+  "en",
+  "es"
+ ]
 }

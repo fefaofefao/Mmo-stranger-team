@@ -1,131 +1,167 @@
 extends Screen
-## Detalhes do monstro: status, equipamentos, estrelas, habilidades e comportamento da IA.
+## Detalhes do monstro: status, qualidade, equipamentos, estrelas, habilidades e IA.
 
 var uid := ""
 var choosing_slot := ""
+
+const SLOT_ICONS := {"amuleto": "heart", "garra": "sword", "armadura": "chest", "reliquia": "gem"}
 
 
 func build() -> void:
 	uid = params.get("uid", "")
 	var m := Game.monster(uid)
-	var b := make_layout("Monstro")
+	var b := make_layout(Loc.t("Monstro"), "paw")
 	if m.is_empty():
-		b.add_child(UI.label("Monstro não encontrado.", 22))
+		b.add_child(empty_note(Loc.t("Monstro não encontrado.")))
 		return
 	var sc := UI.scroll(10)
 	b.add_child(sc[0])
 	var v: VBoxContainer = sc[1]
 	var fid := MonsterLogic.form_id(m)
-	var f := DataDB.form(fid)
 	var fam: Dictionary = DataDB.families[m.family]
-	var head := UI.hbox(12)
+	var head := UI.panel("panel_gold")
 	v.add_child(head)
-	head.add_child(UI.portrait(fid, bool(m.shiny), 128))
-	var hv := UI.vbox(2)
+	var hr := UI.hbox(12)
+	head.add_child(hr)
+	hr.add_child(UI.portrait_frame(fid, bool(m.shiny), 132))
+	var hv := UI.vbox(4)
 	hv.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	head.add_child(hv)
-	hv.add_child(UI.label(MonsterLogic.display_name(m), 30, UI.C_GOLD))
-	var style_name := {"melee": "Corpo a corpo", "ranged": "Distância", "magic": "Mágico"}
-	hv.add_child(UI.label("%s · %s · %s" % [DataDB.type_name(fam.type), ["Filhote", "Adolescente", "Adulto"][int(m.stage) - 1], style_name[fam.style]], 20, DataDB.type_color(fam.type).lightened(0.2)))
+	hr.add_child(hv)
+	hv.add_child(UI.label(MonsterLogic.display_name(m), 30, Color(1, 0.88, 0.45) if m.shiny else UI.C_GOLD))
+	var pills := UI.hbox(4)
+	pills.add_child(UI.type_badge(fam.type, 16))
+	pills.add_child(UI.pill([Loc.t("Filhote"), Loc.t("Adolescente"), Loc.t("Adulto")][int(m.stage) - 1], UI.C_INFO, 16))
+	pills.add_child(UI.pill(StarterStyle.name(fam.style), UI.C_MUTED, 16))
+	hv.add_child(pills)
 	var need := Formulas.xp_to_next(int(m.level))
-	hv.add_child(UI.label("Nível %d · XP %s / %s" % [int(m.level), UI.fmt(m.xp), UI.fmt(need)], 20))
-	var xb := UI.bar(float(m.xp) / max(1, need), Color(0.35, 0.6, 1.0), 300, 12)
+	hv.add_child(UI.label(Loc.t("Nível %d · XP %s / %s") % [int(m.level), UI.fmt(m.xp), UI.fmt(need)], 19))
+	var xb := UI.bar(float(m.xp) / max(1, need), Color(0.38, 0.62, 1.0), 300, 12)
 	xb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hv.add_child(xb)
-	var ev := MonsterLogic.evo_levels(m.family)
+	var qrow := UI.hbox(6)
+	hv.add_child(qrow)
+	qrow.add_child(UI.label(Loc.t("Qualidade"), 18, UI.C_MUTED))
+	var qb := UI.bar(int(m.get("quality", 0)) / 100.0, MonsterLogic.quality_color(m), 120, 12)
+	qb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	qb.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	qrow.add_child(qb)
+	qrow.add_child(UI.quality_badge(m, 15))
 	if int(m.stage) < 3:
-		var nxt := int(ev[int(m.stage) - 1])
-		hv.add_child(UI.label("Evolui para %s no nível %d" % [DataDB.form(DataDB.form_for_stage(m.family, int(m.stage) + 1)).name, nxt], 18, UI.C_MUTED))
-	v.add_child(UI.label(f.desc, 20, UI.C_TEXT, true))
+		var ev := MonsterLogic.evo_levels(m.family)
+		hv.add_child(UI.label(Loc.t("Evolui para %s no nível %d") % [DataDB.form_name(DataDB.form_for_stage(m.family, int(m.stage) + 1)), int(ev[int(m.stage) - 1])], 17, UI.C_MUTED))
+	v.add_child(UI.label(DataDB.form_desc(fid), 20, UI.C_TEXT, true))
 	# atributos
+	v.add_child(UI.section(Loc.t("Atributos"), "sword"))
 	var st := Game.monster_stats(m)
-	var sp := UI.panel()
-	v.add_child(sp)
-	var g := UI.grid(2, 6)
-	sp.add_child(g)
-	for pair in [["HP", int(st.hp)], ["Ataque", int(st.atk)], ["Defesa", int(st.def)], ["Velocidade", int(st.spd)],
-			["Alcance", int(st.rng)], ["Crítico", "%d%%" % int(st.crit * 100)], ["Roubo de vida", "%d%%" % int(st.lifesteal * 100)],
-			["Bônus XP", "%d%%" % int(st.xp_pct)], ["Poder", MonsterLogic.power(st)], ["Shiny", "Sim (+5%)" if m.shiny else "Não"]]:
-		g.add_child(UI.label("%s: %s" % [pair[0], str(pair[1])], 20))
+	var g := UI.grid(3, 6)
+	v.add_child(g)
+	for pair in [["HP", int(st.hp)], [Loc.t("Ataque"), int(st.atk)], [Loc.t("Defesa"), int(st.def)], [Loc.t("Velocidade"), int(st.spd)],
+			[Loc.t("Alcance"), int(st.rng)], [Loc.t("Crítico"), "%d%%" % int(st.crit * 100)], [Loc.t("Roubo de vida"), "%d%%" % int(st.lifesteal * 100)],
+			[Loc.t("Bônus XP"), "%d%%" % int(st.xp_pct)], [Loc.t("Poder"), MonsterLogic.power(st)]]:
+		var c := UI.card()
+		c.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var cv := UI.vbox(0)
+		c.add_child(cv)
+		cv.add_child(UI.label(str(pair[0]), 15, UI.C_MUTED))
+		cv.add_child(UI.label(str(pair[1]), 22, UI.C_TEXT))
+		g.add_child(c)
 	# estrelas
-	v.add_child(UI.label("Estrelas  " + "★".repeat(int(m.stars)) + "☆".repeat(5 - int(m.stars)), 24, UI.C_GOLD))
-	v.add_child(UI.label("Cada estrela: +%d%% atributos. 3ª e 5ª estrelas: habilidades +%d%% de poder e −%d%% de recarga." % [
+	v.add_child(UI.section(Loc.t("Estrelas"), "star"))
+	var srow := UI.hbox(10)
+	v.add_child(srow)
+	srow.add_child(UI.stars(int(m.stars), 34))
+	v.add_child(UI.label(Loc.t("Cada estrela: +%d%% atributos. 3ª e 5ª estrelas: habilidades +%d%% de poder e −%d%% de recarga.") % [
 		int(float(DataDB.config.stars.stat_bonus_per_star) * 100), int(float(DataDB.config.stars.ability_power_per_upgrade) * 100),
-		int(float(DataDB.config.stars.ability_cd_per_upgrade) * 100)], 18, UI.C_MUTED, true))
+		int(float(DataDB.config.stars.ability_cd_per_upgrade) * 100)], 17, UI.C_MUTED, true))
 	var cost := EssenceLogic.star_cost(m)
 	if cost > 0:
 		var t: String = fam.type
 		var have := int(Game.save.essences.get(t, 0))
-		var sb := UI.button("Adicionar estrela (%d Essência de %s · você tem %d)" % [cost, DataDB.type_name(t), have], _buy_star, 20)
+		var sb := UI.icon_button("star", Loc.t("Adicionar estrela · %d de %d Essência de %s") % [cost, have, DataDB.type_name(t)], _buy_star, 19, 64, "primary")
 		sb.disabled = have < cost
 		v.add_child(sb)
 	# equipamentos
-	v.add_child(UI.label("Equipamentos", 24, UI.C_GOLD))
+	v.add_child(UI.section(Loc.t("Equipamentos"), "bag"))
 	for s in DataDB.item_slots:
 		v.add_child(_slot_row(m, s))
 	if choosing_slot != "":
 		_item_picker(v, m)
 	# habilidades
-	v.add_child(UI.label("Habilidades (usadas automaticamente pela IA)", 24, UI.C_GOLD))
-	for ab_id in f.abilities:
+	v.add_child(UI.section(Loc.t("Habilidades (usadas pela IA)"), "bolt"))
+	var kinds := {"strike": Loc.t("golpe forte"), "bolt": Loc.t("projétil"), "burst": Loc.t("área ao redor"), "blast": Loc.t("explosão no alvo"),
+		"heal": Loc.t("cura própria"), "dot": Loc.t("dano contínuo em área"), "ult": Loc.t("suprema em área")}
+	for ab_id in DataDB.form(fid).abilities:
 		var ab: Dictionary = DataDB.abilities[ab_id]
-		var kinds := {"strike": "golpe forte", "bolt": "projétil", "burst": "área ao redor", "blast": "explosão no alvo", "heal": "cura própria", "dot": "dano contínuo em área", "ult": "suprema em área"}
-		v.add_child(UI.label("• %s — %s · poder %.1fx · recarga %.0fs%s" % [ab.name, kinds.get(ab.kind, ab.kind), float(ab.power) * st.ability_power_mult,
-			float(ab.cooldown) * st.ability_cd_mult, (" · raio %d" % int(ab.radius)) if int(ab.radius) > 0 else ""], 19, UI.C_TEXT, true))
-	v.add_child(UI.label("Comportamento da IA do grupo: %s" % ("Focar o mesmo alvo" if Game.save.ai_behavior == "focus" else "Espalhar alvos"), 20, UI.C_MUTED))
-	v.add_child(UI.small_button("Alterar comportamento", func():
-		Game.set_ai_behavior("spread" if Game.save.ai_behavior == "focus" else "focus")
-		rebuild()))
+		var c := UI.card()
+		var cv := UI.vbox(2)
+		c.add_child(cv)
+		cv.add_child(UI.label(DataDB.ability_name(ab_id), 20, DataDB.type_color(ab.type).lightened(0.3)))
+		cv.add_child(UI.label(Loc.t("%s · poder %.1fx · recarga %.0fs") % [kinds.get(ab.kind, ab.kind), float(ab.power) * st.ability_power_mult, float(ab.cooldown) * st.ability_cd_mult]
+			+ ((" · " + Loc.t("raio %d") % int(ab.radius)) if int(ab.radius) > 0 else ""), 16, UI.C_MUTED, true))
+		v.add_child(c)
+	v.add_child(UI.section(Loc.t("Comportamento da IA"), "gear"))
+	var row := UI.hbox(8)
+	v.add_child(row)
+	for opt in [["focus", Loc.t("Focar o mesmo alvo")], ["spread", Loc.t("Espalhar alvos")]]:
+		var key: String = opt[0]
+		var btn := UI.button(opt[1], func(): Game.set_ai_behavior(key); rebuild(), 19, 60, "tab_on" if Game.save.ai_behavior == key else "tab")
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(btn)
 
 
 func _slot_row(m: Dictionary, s: Dictionary) -> Control:
+	var p := UI.card()
 	var row := UI.hbox(8)
+	p.add_child(row)
+	row.add_child(UI.icon(SLOT_ICONS.get(s.id, "gem"), 36))
 	var iu: String = m.equip.get(s.id, "")
 	var it: Dictionary = Game.save.items.get(iu, {})
-	var txt := "%s: %s" % [s.name, "—" if it.is_empty() else ItemLogic.display_name(it)]
-	var l := UI.label(txt, 20, UI.C_MUTED if it.is_empty() else DataDB.rarity_color(it.rarity))
-	l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var col := UI.vbox(0)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(col)
+	col.add_child(UI.label(Loc.tx(s.name), 15, UI.C_MUTED))
+	var l := UI.label(Loc.t("vazio") if it.is_empty() else ItemLogic.display_name(it), 19, UI.C_MUTED if it.is_empty() else DataDB.rarity_color(it.rarity))
 	l.clip_text = true
-	row.add_child(l)
+	col.add_child(l)
 	var sid: String = s.id
-	row.add_child(UI.small_button("Trocar", func(): choosing_slot = sid; rebuild()))
+	row.add_child(UI.small_button(Loc.t("Trocar"), func(): choosing_slot = sid; rebuild()))
 	if not it.is_empty():
-		row.add_child(UI.small_button("Tirar", func(): Game.unequip(uid, sid); rebuild()))
-	return row
+		row.add_child(UI.small_button(Loc.t("Tirar"), func(): Game.unequip(uid, sid); rebuild()))
+	return p
 
 
 func _item_picker(v: VBoxContainer, m: Dictionary) -> void:
-	var p := UI.panel(Color("#24211d"), UI.C_GOLD)
+	var p := UI.panel("panel_gold")
 	v.add_child(p)
 	var pv := UI.vbox(6)
 	p.add_child(pv)
 	var top := UI.hbox()
 	pv.add_child(top)
-	top.add_child(UI.expand(UI.label("Escolher: %s" % ItemLogic.slot_name(choosing_slot), 22, UI.C_GOLD)))
-	top.add_child(UI.small_button("Fechar", func(): choosing_slot = ""; rebuild()))
+	top.add_child(UI.expand(UI.label(Loc.t("Escolher: %s") % ItemLogic.slot_name(choosing_slot), 22, UI.C_GOLD)))
+	top.add_child(UI.small_button(Loc.t("Fechar"), func(): choosing_slot = ""; rebuild()))
 	var items: Array = []
 	for it in Game.inv_items():
 		if ItemLogic.base(it).slot == choosing_slot:
 			items.append(it)
 	items.sort_custom(func(a, b): return ItemLogic.power_score(a) > ItemLogic.power_score(b))
 	if items.is_empty():
-		pv.add_child(UI.label("Nenhum item desse tipo no inventário.", 20, UI.C_MUTED))
+		pv.add_child(UI.label(Loc.t("Nenhum item desse tipo no inventário."), 19, UI.C_MUTED))
 	for it in items:
 		var b := ItemLogic.base(it)
 		var row := UI.hbox(6)
 		var desc := ItemLogic.describe(it, MonsterLogic.type_of(m))
-		var l := UI.label("%s\n%s" % [ItemLogic.display_name(it), " · ".join(desc.slice(1, 4))], 18, DataDB.rarity_color(it.rarity), true)
+		var l := UI.label("%s\n%s" % [ItemLogic.display_name(it), " · ".join(desc.slice(1, 4))], 17, DataDB.rarity_color(it.rarity), true)
 		row.add_child(l)
 		var iu: String = it.uid
-		var eb := UI.small_button("Equipar", func():
+		var eb := UI.small_button(Loc.t("Equipar"), func():
 			var r := Game.equip(uid, iu)
 			if not r.ok:
 				toast(r.error, UI.C_BAD)
 			choosing_slot = ""
-			rebuild())
+			rebuild(), "primary")
 		eb.disabled = int(b.level) > int(m.level)
 		if eb.disabled:
-			eb.text = "Nv %d" % int(b.level)
+			eb.text = Loc.t("Nv %d") % int(b.level)
 		row.add_child(eb)
 		pv.add_child(row)
 
@@ -133,7 +169,7 @@ func _item_picker(v: VBoxContainer, m: Dictionary) -> void:
 func _buy_star() -> void:
 	var r: Dictionary = await Game.buy_star(uid)
 	if r.get("ok", false):
-		toast("Estrela adicionada!", UI.C_GOLD)
+		toast(Loc.t("Estrela adicionada!"), UI.C_GOLD, "star")
 	else:
-		toast(r.get("error", "Falhou"), UI.C_BAD)
+		toast(Loc.t(r.get("error", "Falhou")), UI.C_BAD)
 	rebuild()

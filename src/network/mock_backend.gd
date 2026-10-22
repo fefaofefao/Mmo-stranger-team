@@ -97,6 +97,12 @@ func _dispatch(action: String, a: Dictionary) -> Dictionary:
 			return L.double_offline()
 		"claim_challenge":
 			return L.claim_challenge(a.get("challenge", ""), bool(a.get("won", false)), float(a.get("seconds", 0)), a.get("party", []))
+		"daily_boss_status":
+			return L.daily_boss_status(int(a.get("level", 1)))
+		"daily_boss_start":
+			return L.daily_boss_start(int(a.get("level", 1)))
+		"daily_boss_claim":
+			return L.daily_boss_claim(a.get("token", ""), float(a.get("fraction", 0)), float(a.get("seconds", 0)), bool(a.get("won", false)), a.get("party", []))
 		"challenge_status":
 			return L.challenge_status()
 		"convert_monster":

@@ -121,7 +121,7 @@ func register_starter(family_id: String) -> Dictionary:
 			return _ok({"monster": m})
 	var sid := _id("m")
 	var rec := {"server_id": sid, "family": family_id, "form": fam.stages[0].form_id, "shiny": false, "stars": 0,
-		"converted": false, "starter": true}
+		"converted": false, "starter": true, "quality": int(DataDB.config.get("quality", {}).get("starter", 50))}
 	p().monsters[sid] = rec
 	return _ok({"monster": rec})
 
@@ -137,7 +137,7 @@ func _party_upper_stats(party: Array) -> Array:
 		var fam_id: String = rec.get("family", pm.get("family", ""))
 		if not DataDB.families.has(fam_id):
 			continue
-		var m := MonsterLogic.create(fam_id, lvl, bool(rec.get("shiny", false)), "tmp")
+		var m := MonsterLogic.create(fam_id, lvl, bool(rec.get("shiny", false)), "tmp", "", int(rec.get("quality", 100)))
 		m.stage = maxi(int(m.stage), int(pm.get("stage", 1)))
 		m.stars = int(rec.get("stars", 0))
 		var s := MonsterLogic.compute_stats(m)
@@ -207,7 +207,8 @@ func _roll_recruit(hunt: Dictionary, form_id: String, shiny: bool) -> Dictionary
 		return {}
 	var f := DataDB.form(form_id)
 	var sid := _id("m")
-	var rec := {"server_id": sid, "family": f.family, "form": form_id, "shiny": shiny, "stars": 0, "converted": false}
+	var rec := {"server_id": sid, "family": f.family, "form": form_id, "shiny": shiny, "stars": 0, "converted": false,
+		"quality": MonsterLogic.roll_quality(rng, shiny)}
 	p().monsters[sid] = rec
 	return rec
 
@@ -354,7 +355,8 @@ func _grant_bulk_kills(hunt: Dictionary, kills: int, gold_pct: float) -> Diction
 			var fid: String = forms[rng.randi_range(0, forms.size() - 1)]
 			var f := DataDB.form(fid)
 			var sid := _id("m")
-			var rec := {"server_id": sid, "family": f.family, "form": fid, "shiny": i < shiny_rec, "stars": 0, "converted": false}
+			var rec := {"server_id": sid, "family": f.family, "form": fid, "shiny": i < shiny_rec, "stars": 0, "converted": false,
+				"quality": MonsterLogic.roll_quality(rng, i < shiny_rec)}
 			p().monsters[sid] = rec
 			recruits.append(rec)
 	return _ok({"kills": kills, "kills_by_form": kills_by_form, "gold_gained": gold, "items": items,
@@ -410,6 +412,99 @@ func challenge_status() -> Dictionary:
 	return _ok({"challenges": p().challenges, "server_time": now()})
 
 
+# ------------------------------------------------------------------ chefe diário
+
+static func day_id(t: float) -> int:
+	return int(floor(t / 86400.0))
+
+
+## Chefe do dia: rotação determinística entre as formas adultas; nível acompanha o jogador.
+static func daily_boss_def(day: int, level: int) -> Dictionary:
+	var adults: Array = []
+	for f in DataDB.form_list:
+		if int(f.stage) == 3:
+			adults.append(f.form_id)
+	var form_id: String = adults[(day * 7 + 3) % adults.size()]
+	var cfg: Dictionary = DataDB.config.daily_boss
+	var lvl := clampi(level, 5, int(DataDB.config.max_level))
+	var st := Formulas.enemy_stats(form_id, lvl, 1)
+	return {"form": form_id, "type": DataDB.form(form_id).type, "level": lvl, "day": day,
+		"hp": float(st.hp) * float(cfg.hp_mult), "def": float(st.def) * float(cfg.def_mult)}
+
+
+func _daily_state() -> Dictionary:
+	var d: Dictionary = p().get("daily", {})
+	var today := day_id(now())
+	if int(d.get("day", -1)) != today:
+		d = {"day": today, "used": 0, "tokens": {}}
+		p().daily = d
+	return d
+
+
+func daily_boss_status(main_level: int) -> Dictionary:
+	var d := _daily_state()
+	var lvl := mini(main_level, int(p().validated_level) + 10)
+	return _ok({"boss": daily_boss_def(int(d.day), lvl), "used": int(d.used), "entries": int(DataDB.config.daily_boss.entries),
+		"resets_in": (int(d.day) + 1) * 86400.0 - now()})
+
+
+func daily_boss_start(main_level: int) -> Dictionary:
+	var d := _daily_state()
+	if int(d.used) >= int(DataDB.config.daily_boss.entries):
+		return _err("Sem entradas hoje. Volte amanhã!")
+	var lvl := mini(main_level, int(p().validated_level) + 10)
+	d.used = int(d.used) + 1
+	var token := _id("db")
+	d.tokens[token] = {"level": lvl, "t": now(), "done": false}
+	return _ok({"token": token, "boss": daily_boss_def(int(d.day), lvl), "used": int(d.used)})
+
+
+## Recompensa proporcional ao dano causado (limitada ao dano plausível do grupo no tempo informado).
+func daily_boss_claim(token: String, damage_fraction: float, seconds: float, won: bool, party: Array) -> Dictionary:
+	var d := _daily_state()
+	var tk: Dictionary = d.tokens.get(token, {})
+	if tk.is_empty() or tk.done:
+		return _err("Entrada inválida")
+	tk.done = true
+	var cfg: Dictionary = DataDB.config.daily_boss
+	var boss := daily_boss_def(int(d.day), int(tk.level))
+	seconds = clampf(seconds, 0.0, minf(now() - float(tk.t) + 5.0, float(cfg.time_limit) + 5.0))
+	var fighters := _fighters(party, _party_upper_stats(party))
+	var dps := 0.0
+	for f in fighters:
+		var tm := TypeChart.multiplier(f.type, boss.type)
+		dps += Formulas.expected_damage(f.atk, boss.def, 1.0, tm, f.crit) / Formulas.attack_interval(f.spd) * 1.6
+	var max_frac := clampf(dps * seconds * 1.5 / maxf(1.0, boss.hp), 0.0, 1.0)
+	var frac := clampf(damage_fraction, 0.0, max_frac)
+	if won and (max_frac < 0.95 or seconds < float(cfg.min_seconds)):
+		won = false
+	if won:
+		frac = 1.0
+	var mn := float(cfg.min_reward_fraction)
+	var rf := mn + (1.0 - mn) * frac
+	var lvl := int(boss.level)
+	var gold := int(float(cfg.gold_kills) * Formulas.gold_for_kill(lvl) * rf)
+	var ess := int((float(cfg.essence_base) + float(cfg.essence_per_level) * lvl) * rf)
+	p().gold = int(p().gold) + gold
+	p().essences[boss.type] = int(p().essences.get(boss.type, 0)) + ess
+	var items: Array = []
+	if won:
+		var rar := "raro"
+		var r := rng.randf()
+		var acc := 0.0
+		for pair in cfg.item_rarity_roll:
+			acc += float(pair[1])
+			if r < acc:
+				rar = pair[0]
+				break
+		var base_id := LootTable.pick_base({"drops": DataDB.world2_drops([boss.type], lvl)}, rng)
+		var it := ItemLogic.create(base_id, rar, rng, false, _id("s"))
+		p().items[it.uid] = it
+		items.append(it)
+	return _ok({"won": won, "fraction": frac, "gold_gained": gold, "essence_type": boss.type, "essence_gained": ess,
+		"items": items, "wallet": wallet()})
+
+
 # ------------------------------------------------------------------ essência / estrelas / gastos
 
 func convert_monster(server_id: String, level: int, stage: int, stars_client: int) -> Dictionary:
@@ -419,7 +514,7 @@ func convert_monster(server_id: String, level: int, stage: int, stars_client: in
 	if rec.get("starter", false):
 		return _err("O inicial não pode ser trocado")
 	level = mini(level, int(p().validated_level) + 10)
-	var m := MonsterLogic.create(rec.family, level, bool(rec.shiny), "tmp")
+	var m := MonsterLogic.create(rec.family, level, bool(rec.shiny), "tmp", "", int(rec.get("quality", 0)))
 	m.stage = clampi(maxi(stage, DataDB.form(rec.form).get("stage", 1)), 1, MonsterLogic.stage_for_level(rec.family, 300))
 	m.stars = int(rec.get("stars", 0))
 	var amount := EssenceLogic.essence_value(m)

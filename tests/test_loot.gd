@@ -11,9 +11,9 @@ func test_rarity_rates() -> void:
 		if r != "":
 			counts[r] = int(counts.get(r, 0)) + 1
 	var raro := float(counts.get("raro", 0)) / n
-	near(raro, 1.0 / 200.0, 0.0006, "Raro ~1/200")
+	near(raro, LootTable.chance("raro"), 0.0005, "taxa de Raro conforme config")
 	var epico := float(counts.get("epico", 0)) / n
-	near(epico, 1.0 / 2000.0, 0.00015, "Épico ~1/2000")
+	near(epico, LootTable.chance("epico"), 0.00012, "taxa de Épico conforme config")
 	check(not counts.has("comum") and not counts.has("incomum"), "servidor não sorteia Comum/Incomum")
 	var local := {}
 	for i in 100000:
@@ -24,7 +24,7 @@ func test_rarity_rates() -> void:
 
 
 func test_rarity_mult() -> void:
-	near(LootTable.chance("raro", 1.5), 0.0075, 0.00001, "multiplicador do Mundo 2")
+	near(LootTable.chance("raro", 1.5), float(DataDB.rarity("raro").chance) * 1.5, 0.00001, "multiplicador do Mundo 2")
 	near(LootTable.chance("comum", 1.5), float(DataDB.rarity("comum").chance), 0.00001, "comum não multiplica")
 
 

@@ -27,10 +27,15 @@ static func xp_shares(main_level: int, party_size: int) -> Array:
 
 ## Distribui XP de um abate entre os membros. base_xp = XP do abate para quem está lutando.
 ## party: Array de monstros. Retorna Array de XP concedida a cada um.
-static func split_xp(party: Array, base_xp: float, enemy_level: int, xp_bonus_pct := 0.0) -> Array:
+## participants: uids que entraram em campo neste ciclo (mesmo se caíram) recebem a parte de quem luta.
+static func split_xp(party: Array, base_xp: float, enemy_level: int, xp_bonus_pct := 0.0, participants: Array = []) -> Array:
 	if party.is_empty():
 		return []
 	var shares := xp_shares(int(party[0].level), party.size())
+	if not participants.is_empty():
+		var p: Dictionary = DataDB.config.party
+		for i in party.size():
+			shares[i] = float(p.fighting_xp_share) if participants.has(party[i].uid) else float(p.bench_xp_share)
 	var out: Array = []
 	for i in party.size():
 		var m: Dictionary = party[i]

@@ -14,7 +14,11 @@ static func level_mult(level: int) -> float:
 
 
 ## Atributos "crus" de uma forma em um nível (sem itens, estrelas ou bônus).
-static func raw_stats(form_id: String, level: int, shiny := false) -> Dictionary:
+static func quality_mult(quality: int) -> float:
+	return 1.0 + float(c().get("quality", {}).get("max_bonus", 0.3)) * clampf(quality / 100.0, 0.0, 1.0)
+
+
+static func raw_stats(form_id: String, level: int, shiny := false, quality := 0) -> Dictionary:
 	var f := DataDB.form(form_id)
 	var fam: Dictionary = DataDB.families.get(f.get("family", ""), {})
 	if fam.is_empty():
@@ -23,7 +27,7 @@ static func raw_stats(form_id: String, level: int, shiny := false) -> Dictionary
 	var lm := level_mult(level)
 	var sm := float(c().stage_mult[stage - 1])
 	var ssm := float(c().stage_spd_mult[stage - 1])
-	var sh := 1.0 + (float(c().shiny_stat_bonus) if shiny else 0.0)
+	var sh := (1.0 + (float(c().shiny_stat_bonus) if shiny else 0.0)) * quality_mult(quality)
 	var b: Dictionary = fam.base
 	return {
 		"hp": float(b.hp) * lm * sm * sh,
@@ -59,6 +63,10 @@ static func kills_for_level(level: int) -> float:
 	var late := float(level - int(x.late_start))
 	if late > 0:
 		k *= 1.0 + float(x.late_slope) * late
+	# início acelerado: os primeiros níveis passam rápido para fisgar o jogador
+	var early := int(x.get("early_levels", 0))
+	if level < early:
+		k *= lerpf(float(x.get("early_mult_start", 1.0)), 1.0, float(level - 1) / float(early - 1))
 	return k
 
 

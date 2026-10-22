@@ -53,9 +53,9 @@ func init_ads(overlay_parent: Node) -> void:
 
 
 func _simulated_consent() -> void:
-	var dlg := UI.dialog(_overlay_parent, "Privacidade (GDPR/UMP)",
-		"Este jogo exibe anúncios. Em produção, o formulário oficial de consentimento do Google (UMP) aparece aqui para usuários do EEE/Reino Unido.\n\n[Modo simulado: plugin AdMob ausente]",
-		["Aceitar", "Recusar personalização"])
+	var dlg := UI.dialog(_overlay_parent, Loc.t("Privacidade"),
+		Loc.t("Este jogo exibe anúncios. Em produção, o formulário oficial de consentimento do Google (UMP) aparece aqui para usuários do EEE/Reino Unido.") + "\n\n" + Loc.t("[Modo simulado: plugin AdMob ausente]"),
+		[Loc.t("Aceitar"), Loc.t("Recusar personalização")], "lock")
 	var choice: int = await dlg.chosen
 	Game.save.settings["consent_answered"] = true
 	Game.save.settings["consent_personalized"] = choice == 0
@@ -87,7 +87,7 @@ func maybe_interstitial() -> void:
 	if adapter:
 		adapter.show_interstitial()
 	elif _overlay_parent:
-		await _simulated_fullscreen("ANÚNCIO INTERSTITIAL DE TESTE", 2.0, true)
+		await _simulated_fullscreen(Loc.t("ANÚNCIO DE TESTE"), 2.0, true)
 
 
 func can_interstitial_now() -> bool:
@@ -103,7 +103,7 @@ func show_rewarded(reason: String) -> bool:
 		while result[0] == null:
 			await get_tree().process_frame
 		return result[0]
-	return await _simulated_fullscreen("ANÚNCIO PREMIADO DE TESTE\n" + reason, 3.0, false)
+	return await _simulated_fullscreen(Loc.t("ANÚNCIO PREMIADO DE TESTE") + "\n" + reason, 3.0, false)
 
 
 func _simulated_fullscreen(text: String, seconds: float, skippable: bool) -> bool:

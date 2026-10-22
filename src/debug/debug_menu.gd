@@ -39,7 +39,7 @@ func _hs():
 
 
 func _build() -> void:
-	panel = UI.panel(Color(0.05, 0.05, 0.08, 0.95), Color("#b05cff"))
+	panel = UI.panel("panel_gold")
 	panel.position = Vector2(20, 120)
 	panel.custom_minimum_size = Vector2(680, 900)
 	panel.size = Vector2(680, 900)
@@ -51,7 +51,7 @@ func _build() -> void:
 	v.add_child(UI.label("Nível do grupo", 20, UI.C_GOLD))
 	var g := UI.grid(4, 6)
 	v.add_child(g)
-	for lv in [1, 10, 16, 35, 60, 80, 110, 150, 210, 300]:
+	for lv in [1, 10, 16, 35, 60, 80, 110, 150, 200, 210, 300]:
 		var l: int = lv
 		g.add_child(UI.small_button("Nv %d" % l, func(): _level(l)))
 	g.add_child(UI.small_button("+10 níveis", func(): _level(Game.main_level() + 10)))
@@ -69,7 +69,7 @@ func _build() -> void:
 	fr.add_child(UI.small_button("Próx. recrut.", func(): _force({"recruit": 1}, "Próximo abate recruta")))
 	for r in ["raro", "epico", "lendario", "mitico"]:
 		var rr: String = r
-		fr.add_child(UI.small_button("Drop %s" % DataDB.rarity(r).name, func(): _force({"drop": rr}, "Próximo abate dropa %s" % DataDB.rarity(rr).name)))
+		fr.add_child(UI.small_button("Drop %s" % DataDB.rarity_name(r), func(): _force({"drop": rr}, "Próximo abate dropa %s" % DataDB.rarity_name(rr))))
 	fr.add_child(UI.small_button("Drop Incomum", func(): Game.debug_force_local_drop = "incomum"; main.toast("Próximo drop local: Incomum")))
 	v.add_child(UI.label("Recursos", 20, UI.C_GOLD))
 	var rr2 := UI.hbox(6)
@@ -80,6 +80,8 @@ func _build() -> void:
 		Game.save.debug_unlock_all = true
 		main.toast("Tudo desbloqueado")))
 	v.add_child(UI.small_button("Recrutar 3 monstros aleatórios", _recruit3))
+	v.add_child(UI.small_button("Recrutar 1 SHINY (próximo abate)", func(): _force({"shiny": 1, "recruit": 1}, "Próximo spawn shiny + recrutamento")))
+	v.add_child(UI.small_button("Chefe Diário: restaurar entradas", _daily_reset))
 	v.add_child(UI.label("Spawnar monstro na hunt", 20, UI.C_GOLD))
 	var sp_grid := UI.grid(3, 6)
 	v.add_child(sp_grid)
@@ -91,13 +93,13 @@ func _build() -> void:
 	forms.append_array(["fogo_1_3", "agua_2_3", "sombra_5_3"])
 	for f in forms:
 		var ff: String = f
-		sp_grid.add_child(UI.small_button("%s x5" % DataDB.form(ff).name, func(): _spawn(ff)))
+		sp_grid.add_child(UI.small_button("%s x5" % DataDB.form_name(ff), func(): _spawn(ff)))
 	v.add_child(UI.label("Trocar bioma do mapa atual", 20, UI.C_GOLD))
 	var bg := UI.grid(3, 6)
 	v.add_child(bg)
 	for b in DataDB.biomes.values():
 		var bid: String = b.id
-		bg.add_child(UI.small_button(b.name.substr(0, 14), func(): _biome(bid)))
+		bg.add_child(UI.small_button(DataDB.biome_name(bid).substr(0, 14), func(): _biome(bid)))
 	v.add_child(UI.small_button("Exportar spritesheets placeholder (user://)", _export_art))
 	v.add_child(UI.small_button("RESETAR TUDO (save + servidor mock)", _reset_all))
 	v.add_child(UI.small_button("Fechar", _toggle))
@@ -150,7 +152,7 @@ func _recruit3() -> void:
 func _spawn(f: String) -> void:
 	if _hs() and not _hs().in_challenge():
 		_hs().world.debug_spawn(f, 5)
-		main.toast("5x %s" % DataDB.form(f).name)
+		main.toast("5x %s" % DataDB.form_name(f))
 
 
 func _biome(bid: String) -> void:
@@ -179,3 +181,11 @@ func _reset_all() -> void:
 	Game.reset_all()
 	Game.time_scale = 1.0
 	get_tree().reload_current_scene()
+
+
+func _daily_reset() -> void:
+	if not Backend.is_mock():
+		return
+	var p: Dictionary = (Backend.impl as MockBackend).logic.p()
+	p.erase("daily")
+	main.toast("Entradas do Chefe Diário restauradas")
