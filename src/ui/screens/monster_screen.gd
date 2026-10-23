@@ -75,6 +75,10 @@ func build() -> void:
 		int(float(DataDB.config.stars.ability_cd_per_upgrade) * 100)], 17, UI.C_MUTED, true))
 	var cost := EssenceLogic.star_cost(m)
 	if cost > 0:
+		var m2: Dictionary = m.duplicate(true)
+		m2.stars = int(m.stars) + 1
+		var st2 := Game.monster_stats(m2)
+		v.add_child(UI.label(Loc.t("Próxima estrela: HP %d → %d · Ataque %d → %d · Defesa %d → %d") % [int(st.hp), int(st2.hp), int(st.atk), int(st2.atk), int(st.def), int(st2.def)], 16, UI.C_GOOD, true))
 		var t: String = fam.type
 		var have := int(Game.save.essences.get(t, 0))
 		var sb := UI.icon_button("star", Loc.t("Adicionar estrela · %d de %d Essência de %s") % [cost, have, DataDB.type_name(t)], _buy_star, 19, 64, "primary")
@@ -103,6 +107,10 @@ func build() -> void:
 		int(round(float(tc.atk_def_per_level) * tr * 100)), int(round(float(tc.hp_per_level) * tr * 100)),
 		int(tc.glow_levels[0]), int(tc.glow_levels[1]), int(tc.glow_levels[2])], 16, UI.C_MUTED, true))
 	if tr < int(tc.max):
+		var m3: Dictionary = m.duplicate(true)
+		m3.train = tr + 1
+		var st3 := Game.monster_stats(m3)
+		tv.add_child(UI.label(Loc.t("Próximo treino: Ataque %d → %d · Defesa %d → %d · HP %d → %d") % [int(st.atk), int(st3.atk), int(st.def), int(st3.def), int(st.hp), int(st3.hp)], 16, UI.C_GOOD, true))
 		var tcost := Game.train_cost(m)
 		var tbtn := UI.icon_button("coin", Loc.t("Treinar (+%d%% ATQ/DEF) · %s") % [int(round(float(tc.atk_def_per_level) * 100)), UI.fmt(tcost)], _train, 19, 64, "primary")
 		tbtn.disabled = Game.save.gold < tcost
@@ -194,22 +202,27 @@ func _item_picker(v: VBoxContainer, m: Dictionary) -> void:
 
 
 func _train() -> void:
+	var before := Game.monster_stats(Game.monster(uid))
 	var r: Dictionary = await Game.train_monster(uid)
 	if r.get("ok", false):
 		var m := Game.monster(uid)
+		var after := Game.monster_stats(m)
+		var gain := Loc.t("Ataque %d → %d · Defesa %d → %d · HP %d → %d") % [int(before.atk), int(after.atk), int(before.def), int(after.def), int(before.hp), int(after.hp)]
 		if r.get("new_glow", false):
-			toast(Loc.t("%s ganhou um novo brilho!") % MonsterLogic.display_name(m), UI.C_GOLD, "sparkle")
+			toast(Loc.t("%s ganhou um novo brilho!") % MonsterLogic.display_name(m) + "\n" + gain, UI.C_GOLD, "sparkle")
 		else:
-			toast(Loc.t("Treino +%d!") % int(r.train), UI.C_GOOD, "bolt")
+			toast(Loc.t("Treino +%d!") % int(r.train) + "\n" + gain, UI.C_GOOD, "bolt")
 	else:
 		toast(Loc.t(r.get("error", "Falhou")), UI.C_BAD)
 	rebuild()
 
 
 func _buy_star() -> void:
+	var before := Game.monster_stats(Game.monster(uid))
 	var r: Dictionary = await Game.buy_star(uid)
 	if r.get("ok", false):
-		toast(Loc.t("Estrela adicionada!"), UI.C_GOLD, "star")
+		var after := Game.monster_stats(Game.monster(uid))
+		toast(Loc.t("Estrela adicionada!") + "\n" + Loc.t("HP %d → %d · Ataque %d → %d · Defesa %d → %d") % [int(before.hp), int(after.hp), int(before.atk), int(after.atk), int(before.def), int(after.def)], UI.C_GOLD, "star")
 	else:
 		toast(Loc.t(r.get("error", "Falhou")), UI.C_BAD)
 	rebuild()

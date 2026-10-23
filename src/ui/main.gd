@@ -18,6 +18,8 @@ const SCREENS := {
 	"challenges": preload("res://src/ui/screens/challenges_screen.gd"),
 	"daily": preload("res://src/ui/screens/daily_boss_screen.gd"),
 	"settings": preload("res://src/ui/screens/settings_screen.gd"),
+	"boosts": preload("res://src/ui/screens/boosts_screen.gd"),
+	"diamonds": preload("res://src/ui/screens/diamonds_screen.gd"),
 }
 const HuntScreen := preload("res://src/ui/screens/hunt_screen.gd")
 const DebugMenu := preload("res://src/debug/debug_menu.gd")
@@ -68,6 +70,7 @@ func _ready() -> void:
 		dbg.main = self
 		overlay.add_child(dbg)
 	goto("title", {}, false)
+	Billing.set_overlay(overlay)
 	await Ads.init_ads(overlay)
 
 
@@ -156,6 +159,7 @@ func _maybe_tip(name: String) -> void:
 		"market": ["scales", Loc.t("Market"), Loc.t("Compre e venda com outros jogadores de todos os idiomas. Itens Raros ou melhores e Essências podem ser negociados.")],
 		"rankings": ["trophy", Loc.t("Rankings"), Loc.t("Compare nível, coleção, shinies, estrelas e tempos de Desafio — no geral e na semana.")],
 		"challenges": ["skull", Loc.t("Desafios"), Loc.t("Chefes com mecânicas especiais. Vencer libera novas hunts e dá recompensas garantidas. Leve monstros com vantagem de tipo!")],
+		"boosts": ["boost", Loc.t("Bônus"), Loc.t("Cada bônus dobra algo: XP, chance de shiny, recrutamento, drop ou ouro. Assista a um anúncio para 15 minutos grátis ou use diamantes para 8 horas.")],
 		"daily": ["crown", Loc.t("Chefe Diário"), Loc.t("Um chefe novo por dia e 3 entradas. Quanto mais dano, mais ouro e Essência; vencer garante um item Raro ou melhor.")],
 	}
 	if not tips.has(name) or not Game.has_starter():

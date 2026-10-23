@@ -91,7 +91,9 @@ func _layout() -> void:
 	var s: Dictionary = steps[idx]
 	var tgt = s.get("target")
 	var r := Rect2(vs.x * 0.5, vs.y * 0.5, 0, 0)
-	if tgt is Control and is_instance_valid(tgt) and tgt.is_visible_in_tree():
+	if tgt is Callable:
+		r = tgt.call()  # alvo que se move (ex.: monstro no mapa)
+	elif tgt is Control and is_instance_valid(tgt) and tgt.is_visible_in_tree():
 		r = (tgt as Control).get_global_rect().grow(6)
 	frame.visible = r.size.x > 0
 	frame.position = r.position
@@ -112,6 +114,11 @@ func _layout() -> void:
 	if r.size.x > 0:
 		y = r.end.y + 16 if r.get_center().y < vs.y * 0.5 else r.position.y - cs.y - 16
 	card.position = Vector2((vs.x - cs.x) * 0.5, clampf(y, 16, vs.y - cs.y - 16))
+
+
+func _process(_d: float) -> void:
+	if not steps.is_empty() and steps[idx].get("target") is Callable:
+		_layout()
 
 
 func _finish() -> void:

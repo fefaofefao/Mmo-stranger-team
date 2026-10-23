@@ -1,0 +1,48 @@
+{
+ "_comentario": "Produtos de dinheiro real (Google Play Billing, tipo 'inapp' consumível). Crie no Play Console com os MESMOS ids. 'price' é só o texto mostrado quando a loja do Google ainda não respondeu (o jogo usa o preço localizado da Play Store). Diamantes só entram por compra real ou venda de monstros no Market.",
+ "first_purchase_bonus": 1.0,
+ "products": [
+  {
+   "id": "diamonds_500",
+   "diamonds": 500,
+   "bonus": 0,
+   "price": "US$ 4,99",
+   "tag": ""
+  },
+  {
+   "id": "diamonds_1100",
+   "diamonds": 1000,
+   "bonus": 100,
+   "price": "US$ 9,99",
+   "tag": "+10%"
+  },
+  {
+   "id": "diamonds_2300",
+   "diamonds": 2000,
+   "bonus": 300,
+   "price": "US$ 19,99",
+   "tag": "+15%"
+  },
+  {
+   "id": "diamonds_3600",
+   "diamonds": 3000,
+   "bonus": 600,
+   "price": "US$ 29,99",
+   "tag": "Popular"
+  },
+  {
+   "id": "diamonds_6500",
+   "diamonds": 5000,
+   "bonus": 1500,
+   "price": "US$ 49,99",
+   "tag": "+30%"
+  },
+  {
+   "id": "diamonds_14000",
+   "diamonds": 10000,
+   "bonus": 4000,
+   "price": "US$ 99,99",
+   "tag": "Melhor valor"
+  }
+ ]
+}

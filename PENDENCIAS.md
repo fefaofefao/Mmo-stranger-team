@@ -13,7 +13,7 @@ O jogo roda completo sem nenhum destes itens (servidor mock + anúncios simulado
    npm i -g supabase
    supabase login
    supabase link --project-ref SEU_PROJECT_REF
-   supabase db push          # inclui as migrations 20261022000003 (qualidade + Chefe Diário) 20261023000004 (Marcos de Caça) e 20261024000005 (loja rotativa e treino)
+   supabase db push          # inclui as migrations 20261022000003 (qualidade + Chefe Diário) 20261023000004 (Marcos de Caça) 20261024000005 (loja rotativa e treino) e 20261025000006 (diamantes, bônus, monstros no Market)
    godot --headless --path . -s tools/export_server_data.gd
    supabase functions deploy game
    ```
@@ -61,3 +61,11 @@ Substitua os placeholders (ver README, seção 6): 135 spritesheets de monstros,
 
 ## 6. Traduções
 EN e ES foram escritos por mim; vale uma revisão por falante nativo antes de publicar (`tools/i18n_table.py` e os textos `{pt_BR, en, es}` em `tools/gen_data.py`). Para um novo idioma: acrescente a coluna nesses dois arquivos, rode `python3 tools/build_translations.py` e `python3 tools/gen_data.py`, inclua o código em `Loc.LANGS` e o `.translation` em `project.godot`.
+
+## 7. Compras com dinheiro real (diamantes)
+1. Play Console → Monetizar → Produtos no app: crie **produtos gerenciados (consumíveis)** com os ids de `data/iap.json` (`diamonds_500`, `diamonds_1100`, `diamonds_2300`, `diamonds_3600`, `diamonds_6500`, `diamonds_14000`) e defina os preços (4,99 / 9,99 / 19,99 / 29,99 / 49,99 / 99,99 ou equivalentes por país). Para criar outros produtos, acrescente em `data/iap.json` e rode `tools/export_server_data.gd`.
+2. Godot → AssetLib → instale **Godot Google Play Billing** (plugin oficial) no build gradle e ative em Exportar → Android. O jogo detecta o singleton `GodotGooglePlayBilling`; se a versão do plugin tiver nomes diferentes, ajuste só `src/autoload/billing.gd`.
+3. Google Cloud: crie uma **conta de serviço**, dê acesso a ela no Play Console (Usuários e permissões → "Ver dados financeiros" / "Gerenciar pedidos") e baixe a chave JSON.
+4. Supabase → Edge Functions → Secrets: `GOOGLE_SERVICE_ACCOUNT_JSON` (conteúdo da chave), `GOOGLE_PLAY_PACKAGE` (ex.: `com.seuestudio.bestiario`). Para testar no servidor real sem cobrança, `IAP_TEST_MODE=1` aceita compras simuladas — **remova antes de publicar**.
+5. Teste com contas de "testador de licença" do Play Console (compras de teste não são cobradas).
+6. Recomendado: ativar as Notificações em tempo real do Play (RTDN) para tratar reembolsos (remover diamantes) — não implementado.

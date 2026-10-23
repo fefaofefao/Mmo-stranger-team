@@ -15,7 +15,7 @@ func _initialize() -> void:
 		"config": DataDB.config, "types": DataDB.type_ids, "strong_mult": DataDB.strong_mult, "weak_mult": DataDB.weak_mult,
 		"families": DataDB.families, "forms": DataDB.forms, "abilities": DataDB.abilities, "hunts": hunts,
 		"challenges": DataDB.challenges, "challenge_fail_cooldown": DataDB.challenge_fail_cooldown,
-		"item_bases": DataDB.item_bases,
+		"item_bases": DataDB.item_bases, "iap": DataDB.iap,
 		"form_order": _adult_order(), "item_tiers": DataDB.item_tiers, "item_slots": DataDB.item_slots, "affixes": DataDB.affixes,
 	}
 	var f := FileAccess.open("res://supabase/functions/_shared/gamedata.json", FileAccess.WRITE)

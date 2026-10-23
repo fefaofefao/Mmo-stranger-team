@@ -39,7 +39,7 @@ func _run() -> void:
 	G.save.settings.consent_answered = true
 	G.save.settings.tutorial_done = true
 	var all_tips := {}
-	for k in ["hub", "hunts", "party", "monster", "depot", "altar", "collection", "inventory", "shop", "market", "rankings", "challenges", "daily"]:
+	for k in ["hub", "hunts", "party", "monster", "depot", "altar", "collection", "inventory", "shop", "market", "rankings", "challenges", "daily", "boosts"]:
 		all_tips[k] = true
 	G.save.settings.tips_seen = all_tips
 	var lang := "pt_BR"
@@ -69,6 +69,11 @@ func _run() -> void:
 	hs._run_tutorial()
 	await frames(100)
 	await shot("tutorial")
+	for ch in main.overlay.get_children():
+		if ch is Tutorial:
+			ch._show(2)
+	await frames(30)
+	await shot("tutorial_shiny")
 	for ch in main.overlay.get_children():
 		if ch is Tutorial:
 			ch._finish()
@@ -139,9 +144,27 @@ func _run() -> void:
 	main.goto("market")
 	await frames(10)
 	await shot("market")
+	main.current.filters.kind = "monster"
+	main.current.loaded_tab = -1
+	main.current.rebuild()
+	await frames(20)
+	await shot("market_monstros")
+	await G.debug_grant(0, 0, 1350)
+	await G.buy_boost("shiny")
+	await G.ad_boost("xp")
+	main.goto("boosts")
+	await frames(10)
+	await shot("bonus")
+	main.goto("diamonds")
+	await frames(5)
+	await shot("diamantes")
 	main.goto("altar")
 	main.current._select_quality(G.depot_monsters(), 101)
 	await shot("altar")
+	main.current.tab = 1
+	main.current.rebuild()
+	await frames(3)
+	await shot("altar_aprimorar")
 	main.goto("rankings")
 	await frames(10)
 	await shot("rankings")

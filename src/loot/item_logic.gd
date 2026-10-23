@@ -163,3 +163,28 @@ static func shop_price(base_id: String) -> int:
 
 static func power_score(item: Dictionary) -> float:
 	return main_value(item) + 3.0 * item.get("affixes", []).size()
+
+
+## Ganho do próximo aprimoramento: [{stat, before, after, text}] (só atributos que mudam).
+static func enhance_gain(item: Dictionary) -> Array:
+	var nxt := item.duplicate(true)
+	nxt.enh = int(item.get("enh", 0)) + 1
+	var a := stats(item)
+	var b := stats(nxt)
+	var out: Array = []
+	for k in b:
+		if k == "type_dmg" or not a.has(k):
+			continue
+		var v0 := float(a[k])
+		var v1 := float(b[k])
+		if absf(v1 - v0) < 0.0001:
+			continue
+		var txt := ""
+		if k in ["hp", "atk", "def"] and v1 - v0 >= 1.0:
+			txt = "%s %d → %d (+%d)" % [stat_name(k), int(round(v0)), int(round(v1)), int(round(v1)) - int(round(v0))]
+		elif k in ["hp", "atk", "def"]:
+			txt = "%s %.1f → %.1f (+%.1f)" % [stat_name(k), v0, v1, v1 - v0]
+		else:
+			txt = "%s %.1f%% → %.1f%% (+%.1f%%)" % [stat_name(k), v0, v1, v1 - v0]
+		out.append({"stat": k, "before": v0, "after": v1, "text": txt})
+	return out

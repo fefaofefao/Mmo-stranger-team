@@ -195,6 +195,28 @@ def gem():
     return i
 
 
+def diamond():
+    i = Icon()
+    i.poly([(4, 12), (10, 5), (22, 5), (28, 12), (16, 28.5)], "#7fe8ff")
+    i.poly([(4, 12), (28, 12), (16, 28.5)], "#3ec4f0", 0.25)
+    i.poly([(10, 5), (16, 12), (22, 5)], "#d8fbff", 0.05)
+    i.poly([(10, 12), (16, 28.5), (22, 12)], "#9af0ff", 0.15)
+    i.poly([(4, 12), (10, 5), (10, 12)], "#b8f6ff", 0.1)
+    i.poly([(22, 5), (28, 12), (22, 12)], "#56d4f8", 0.1)
+    i.shine(12.5, 8, 2, 1.3, 230)
+    i.poly(star_pts(25.5, 4.5, 3.6, 1.1, 4, 0), "#ffffff", 0)
+    return i
+
+
+def boost():
+    i = Icon()
+    i.circle(16, 16, 13, "#8a4ae0")
+    i.circle(16, 16, 10.5, "#b07aff", 0.2)
+    i.poly([(18, 5), (9, 18), (15, 18), (13, 27), (23, 13), (17, 13), (20, 5)], "#ffe36a", 0.25)
+    i.shine(11, 10, 3, 2, 110)
+    return i
+
+
 def sword():
     i = Icon()
     i.poly([(24.5, 3.5), (28.5, 3.5), (28.5, 7.5), (13.5, 22.2), (9.8, 18.5)], STEEL, 0.25)
@@ -672,7 +694,7 @@ def t_sombra():
 
 
 ICONS = {
-    "coin": coin, "gem": gem, "sword": sword, "shield": shield, "map": map_, "skull": skull, "paw": paw,
+    "coin": coin, "gem": gem, "diamond": diamond, "boost": boost, "sword": sword, "shield": shield, "map": map_, "skull": skull, "paw": paw,
     "chest": chest, "bag": bag, "shop": shop, "scales": scales, "altar": altar, "book": book,
     "trophy": trophy, "gear": gear, "star": star, "star_empty": star_empty, "lock": lock, "play": play,
     "crown": crown, "clock": clock, "back": back, "heart": heart, "plus": plus, "minus": minus,

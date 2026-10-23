@@ -6,6 +6,7 @@ var main  # Main
 var params: Dictionary = {}
 var body: VBoxContainer
 var gold_chip: PanelContainer
+var diamond_chip: PanelContainer
 
 
 func _init() -> void:
@@ -52,9 +53,18 @@ func make_layout(p_title: String, icon_name := "", show_back := true) -> VBoxCon
 	t.clip_text = true
 	t.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	top.add_child(t)
-	gold_chip = UI.chip("coin", "", UI.C_GOLD, 22)
-	gold_chip.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	top.add_child(gold_chip)
+	var wv := UI.vbox(2)
+	wv.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	top.add_child(wv)
+	gold_chip = UI.chip("coin", "", UI.C_GOLD, 20)
+	wv.add_child(gold_chip)
+	diamond_chip = UI.chip("diamond", "", Color("#7fe8ff"), 18)
+	diamond_chip.size_flags_horizontal = Control.SIZE_SHRINK_END
+	diamond_chip.mouse_filter = Control.MOUSE_FILTER_STOP
+	diamond_chip.gui_input.connect(func(e):
+		if e is InputEventMouseButton and not e.pressed and e.button_index == MOUSE_BUTTON_LEFT and get_meta("screen_name", "") != "diamonds":
+			main.goto("diamonds"))
+	wv.add_child(diamond_chip)
 	_update_gold()
 	if not Game.wallet_changed.is_connected(_update_gold):
 		Game.wallet_changed.connect(_update_gold)
@@ -70,6 +80,8 @@ func make_layout(p_title: String, icon_name := "", show_back := true) -> VBoxCon
 func _update_gold() -> void:
 	if is_instance_valid(gold_chip):
 		(gold_chip.find_child("Value", true, false) as Label).text = UI.fmt(Game.save.gold)
+	if is_instance_valid(diamond_chip):
+		(diamond_chip.find_child("Value", true, false) as Label).text = UI.fmt(Game.save.get("diamonds", 0))
 
 
 func on_show() -> void:

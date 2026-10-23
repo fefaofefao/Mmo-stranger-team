@@ -113,6 +113,16 @@ func _dispatch(action: String, a: Dictionary) -> Dictionary:
 			return L.spend(int(a.get("gold", 0)), a.get("essences", {}), a.get("reason", ""))
 		"npc_sell":
 			return L.npc_sell(a.get("item", {}))
+		"iap_purchase":
+			return L.iap_purchase(a.get("product", ""), a.get("token", ""))
+		"boost_status":
+			return L.boost_status()
+		"boost_buy":
+			return L.boost_buy(a.get("kind", ""))
+		"boost_ad":
+			return L.boost_ad(a.get("kind", ""))
+		"market_list_monster":
+			return L.market_list_monster(a.get("server_id", ""), int(a.get("level", 1)), int(a.get("stage", 1)), int(a.get("price", 0)))
 		"train_monster":
 			return L.train_monster(a.get("server_id", ""))
 		"shop_status":
@@ -156,7 +166,7 @@ func _dispatch(action: String, a: Dictionary) -> Dictionary:
 	if OS.is_debug_build():
 		match action:
 			"debug_grant":
-				return L.debug_grant(int(a.get("gold", 0)), a.get("essences", {}))
+				return L.debug_grant(int(a.get("gold", 0)), a.get("essences", {}), int(a.get("diamonds", 0)))
 			"debug_force":
 				for k in a:
 					L.debug_force[k] = a[k]

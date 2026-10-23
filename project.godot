@@ -17,6 +17,7 @@ Data="*res://src/autoload/data.gd"
 Backend="*res://src/autoload/backend.gd"
 Game="*res://src/autoload/game.gd"
 Ads="*res://src/autoload/ads.gd"
+Billing="*res://src/autoload/billing.gd"
 
 [display]
 

@@ -52,7 +52,7 @@ static func choose_player_target(w, c: Creature) -> Creature:
 	var best: Creature = null
 	var best_score := INF
 	for e in enemies:
-		if not e.alive:
+		if not e.alive or e.demo:
 			continue
 		var score := float(c.dist_to(e))
 		if e.target == c and c.dist_to(e) <= 1:
@@ -187,6 +187,8 @@ static func _idle_wander(w, c: Creature, dt: float, player: bool) -> void:
 # ------------------------------------------------------------------ selvagens / chefe
 
 static func enemy_tick(w, c: Creature, dt: float) -> void:
+	if c.demo:
+		return  # shiny do tutorial: só posa para a foto
 	_cooldowns(c, dt)
 	if c.moving:
 		return

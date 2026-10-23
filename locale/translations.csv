@@ -437,3 +437,86 @@ Treino +%d!,Training +%d!,¡Entrenamiento +%d!
 Treino no máximo,Training maxed out,Entrenamiento al máximo
 Já vendido,Already sold,Ya vendido
 Ofertas,Offers,Ofertas
+Bônus,Boosts,Bonos
+"Cada bônus dobra algo: XP, chance de shiny, recrutamento, drop ou ouro. Assista a um anúncio para 15 minutos grátis ou use diamantes para 8 horas.","Each boost doubles something: XP, shiny chance, recruiting, drops or gold. Watch an ad for 15 free minutes or use diamonds for 8 hours.","Cada bono duplica algo: XP, probabilidad de shiny, reclutamiento, botín u oro. Mira un anuncio para 15 minutos gratis o usa diamantes para 8 horas."
+"Olha, um SHINY!","Look, a SHINY!","¡Mira, un SHINY!"
+Shinies têm cores raras e brilham: são 50%% mais fortes e sempre vêm com qualidade de 50 a 100%%. Aparece mais ou menos 1 a cada %s monstros — e dá para recrutar!,Shinies have rare colors and sparkle: they're 50%% stronger and always come with 50 to 100%% quality. Roughly 1 in every %s monsters — and you can recruit them!,Los shinies tienen colores raros y brillan: son 50%% más fuertes y siempre vienen con calidad de 50 a 100%%. Aparece más o menos 1 de cada %s monstruos — ¡y se pueden reclutar!
+"Mas ESTE aqui é só de demonstração e não pode ser recrutado, tá, Exploiter? Ele é ator contratado, tem agente e já avisou que não faz cena de captura.","But THIS one is just a demo and can't be recruited, okay, Exploiter? He's a hired actor, has an agent, and already said he doesn't do capture scenes.","Pero ESTE es solo de demostración y no se puede reclutar, ¿vale, Exploiter? Es un actor contratado, tiene agente y ya avisó que no hace escenas de captura."
+"Hub: Grupo, Loja, Altar, Market e mais. Hunts: escolha onde caçar. Chefe: 3 lutas por dia. Bônus: dobre XP, shiny, recrutamento, drop ou ouro — 15 minutos grátis com um anúncio.","Base: Team, Shop, Altar, Market and more. Hunts: choose where to hunt. Boss: 3 fights a day. Boosts: double XP, shiny, recruiting, drops or gold — 15 free minutes with an ad.","Base: Grupo, Tienda, Altar, Mercado y más. Cacerías: elige dónde cazar. Jefe: 3 peleas al día. Bonos: duplica XP, shiny, reclutamiento, botín u oro — 15 minutos gratis con un anuncio."
+O shiny de demonstração voltou para o camarim.,The demo shiny went back to its dressing room.,El shiny de demostración volvió a su camerino.
+Diamantes,Diamonds,Diamantes
+Diamantes: %d horas. Anúncio: %d minutos grátis (acumula até %d min).,Diamonds: %d hours. Ad: %d free minutes (stacks up to %d min).,Diamantes: %d horas. Anuncio: %d minutos gratis (se acumula hasta %d min).
+Pacote completo,Full bundle,Paquete completo
+Todos os 5 bônus por %d horas.,All 5 boosts for %d hours.,Los 5 bonos por %d horas.
+Anúncio · %d min,Ad · %d min,Anuncio · %d min
+Ativo: %s restantes,Active: %s left,Activo: quedan %s
+Inativo,Inactive,Inactivo
+Diamantes insuficientes,Not enough diamonds,Diamantes insuficientes
+Você precisa de %s diamantes. Ver pacotes de diamantes?,You need %s diamonds. See diamond packs?,Necesitas %s diamantes. ¿Ver paquetes de diamantes?
+Ver pacotes,See packs,Ver paquetes
+Agora não,Not now,Ahora no
+Ativar %s por %d horas por %s diamantes?,Activate %s for %d hours for %s diamonds?,¿Activar %s por %d horas por %s diamantes?
+%s ativado!,%s activated!,¡%s activado!
++%d min de %s!,+%d min of %s!,¡+%d min de %s!
+Monstros (diamantes),Monsters (diamonds),Monstruos (diamantes)
+Qualquer qualidade,Any quality,Cualquier calidad
+Qualidade 40%+,Quality 40%+,Calidad 40%+
+Qualidade 70%+,Quality 70%+,Calidad 70%+
+Qualidade 90%+,Quality 90%+,Calidad 90%+
+Só shiny,Shiny only,Solo shiny
+"Monstros só são vendidos por diamantes. Chegam com nível, qualidade, estrelas e treino.","Monsters are sold for diamonds only. They arrive with their level, quality, stars and training.","Los monstruos solo se venden por diamantes. Llegan con su nivel, calidad, estrellas y entrenamiento."
+Comprar por %s diamantes?,Buy for %s diamonds?,¿Comprar por %s diamantes?
+Monstros (por diamantes),Monsters (for diamonds),Monstruos (por diamantes)
+Preço em diamantes,Price in diamonds,Precio en diamantes
+Preço em diamantes para %s (você recebe %d%% após a taxa). Ele sai do seu Depot até ser vendido ou você cancelar.,Price in diamonds for %s (you get %d%% after the fee). It leaves your Depot until sold or cancelled.,Precio en diamantes para %s (recibes %d%% tras la comisión). Sale de tu Depósito hasta venderse o cancelar.
+Para que serve a Essência?,What is Essence for?,¿Para qué sirve la Esencia?
+• Estrelas: cada estrela dá +%d%% em todos os atributos de um monstro do mesmo tipo.,• Stars: each star gives +%d%% to all stats of a monster of the same type.,• Estrellas: cada estrella da +%d%% a todos los atributos de un monstruo del mismo tipo.
+• Aprimorar itens: cada nível dá +%d%% no atributo principal do item.,• Upgrade items: each level gives +%d%% to the item's main stat.,• Mejorar objetos: cada nivel da +%d%% al atributo principal del objeto.
+• Vender no Market para outros jogadores.,• Sell on the Market to other players.,• Vender en el Mercado a otros jugadores.
+Ganho: %s,Gain: %s,Mejora: %s
++%d → +%d · chance %d%% · custo: %d Essência de %s + %s ouro,+%d → +%d · %d%% chance · cost: %d %s Essence + %s gold,+%d → +%d · probabilidad %d%% · costo: %d Esencia de %s + %s oro
+%s agora é +%d.,%s is now +%d.,%s ahora es +%d.
+"%s, que está usando o item, ficou mais forte!","%s, who is wearing the item, got stronger!","¡%s, que lleva el objeto, se volvió más fuerte!"
+Equipe o item em um monstro para usar o bônus.,Equip the item on a monster to use the bonus.,Equipa el objeto en un monstruo para usar el bono.
+Aprimorado!,Upgraded!,¡Mejorado!
+Não foi desta vez,Not this time,No fue esta vez
+O aprimoramento falhou (chance de %d%%). O item continua intacto; só o custo foi gasto. Tente de novo!,The upgrade failed (%d%% chance). The item is intact; only the cost was spent. Try again!,La mejora falló (probabilidad %d%%). El objeto sigue intacto; solo se gastó el costo. ¡Inténtalo de nuevo!
+Próxima estrela: HP %d → %d · Ataque %d → %d · Defesa %d → %d,Next star: HP %d → %d · Attack %d → %d · Defense %d → %d,Próxima estrella: PV %d → %d · Ataque %d → %d · Defensa %d → %d
+Próximo treino: Ataque %d → %d · Defesa %d → %d · HP %d → %d,Next training: Attack %d → %d · Defense %d → %d · HP %d → %d,Próximo entrenamiento: Ataque %d → %d · Defensa %d → %d · PV %d → %d
+Ataque %d → %d · Defesa %d → %d · HP %d → %d,Attack %d → %d · Defense %d → %d · HP %d → %d,Ataque %d → %d · Defensa %d → %d · PV %d → %d
+HP %d → %d · Ataque %d → %d · Defesa %d → %d,HP %d → %d · Attack %d → %d · Defense %d → %d,PV %d → %d · Ataque %d → %d · Defensa %d → %d
+Você tem %s diamantes,You have %s diamonds,Tienes %s diamantes
+"Use em Bônus (2x XP, shiny, recrutamento, drop, ouro) e para comprar monstros de outros jogadores no Market.","Use them on Boosts (2x XP, shiny, recruiting, drops, gold) and to buy monsters from other players on the Market.","Úsalos en Bonos (2x XP, shiny, reclutamiento, botín, oro) y para comprar monstruos de otros jugadores en el Mercado."
+Primeira compra: diamantes em DOBRO!,First purchase: DOUBLE diamonds!,¡Primera compra: diamantes DOBLES!
+"[Modo de teste: compras simuladas, sem cobrança]","[Test mode: simulated purchases, no charge]","[Modo de prueba: compras simuladas, sin cobro]"
+Pagamento processado pelo Google Play. Diamantes não podem ser trocados por ouro nem por dinheiro.,Payment processed by Google Play. Diamonds can't be exchanged for gold or money.,Pago procesado por Google Play. Los diamantes no se pueden cambiar por oro ni por dinero.
++%s de bônus,+%s bonus,+%s de bono
++%s diamantes! Obrigado pelo apoio!,+%s diamonds! Thanks for the support!,¡+%s diamantes! ¡Gracias por el apoyo!
+Market: %s vendido por %d diamantes.,Market: %s sold for %d diamonds.,Mercado: %s vendido por %d diamantes.
+Bônus de 15 minutos,15-minute boost,Bono de 15 minutos
++%d diamantes!,+%d diamonds!,¡+%d diamantes!
+Produto inválido,Invalid product,Producto inválido
+Compra de teste,Test purchase,Compra de prueba
+%d diamantes por %s.,%d diamonds for %s.,%d diamantes por %s.
+[Modo simulado: sem Google Play Billing nenhuma cobrança é feita],[Simulated mode: without Google Play Billing nothing is charged],[Modo simulado: sin Google Play Billing no se cobra nada]
+Loja do Google indisponível. Tente de novo.,Google store unavailable. Try again.,Tienda de Google no disponible. Inténtalo de nuevo.
+2x XP,2x XP,2x XP
+2x Shiny,2x Shiny,2x Shiny
+2x Recrutamento,2x Recruiting,2x Reclutamiento
+2x Drop,2x Drops,2x Botín
+2x Ouro,2x Gold,2x Oro
+Todos os monstros do grupo ganham o dobro de XP.,Every monster in the team earns double XP.,Todos los monstruos del grupo ganan el doble de XP.
+Dobra a chance de aparecer monstro shiny na caçada.,Doubles the chance of shiny monsters appearing while hunting.,Duplica la probabilidad de que aparezcan monstruos shiny.
+Dobra a chance de recrutar o monstro abatido.,Doubles the chance to recruit defeated monsters.,Duplica la probabilidad de reclutar al monstruo derrotado.
+Dobra a chance de itens caírem.,Doubles the chance of item drops.,Duplica la probabilidad de botín.
+Dobra o ouro de cada abate.,Doubles the gold from each kill.,Duplica el oro de cada derrota.
+Popular,Popular,Popular
+Melhor valor,Best value,Mejor valor
++10%,+10%,+10%
++15%,+15%,+15%
++30%,+30%,+30%
+Compra não confirmada,Purchase not confirmed,Compra no confirmada
+Compra já creditada,Purchase already credited,Compra ya acreditada
+Bônus inválido,Invalid boost,Bono inválido
+Esse bônus já está ativo por bastante tempo,That boost is already active for a long time,Ese bono ya está activo por bastante tiempo
+O inicial não pode ser vendido,The starter can't be sold,El inicial no se puede vender

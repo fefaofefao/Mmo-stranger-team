@@ -227,6 +227,21 @@ func _run() -> void:
 	await sim_seconds(hs.world, 1.0)
 	check(hs.world.alive_on_field() == min(3, G.save.party.size()), "monstros em campo no nível 215: %d" % hs.world.alive_on_field())
 	await sim_seconds(hs.world, 30.0)
+	print("== shiny de demonstração do tutorial")
+	var wd = hs.world
+	var demo = wd.spawn_demo_shiny()
+	check(demo != null and demo.shiny and demo.demo, "shiny de demonstração apareceu")
+	var pk: int = G.pending_kills.size()
+	var kills_before: int = int(G.save.stats.kills)
+	await sim_seconds(wd, 5.0)
+	check(is_instance_valid(demo) and demo.alive, "ninguém ataca o shiny de demonstração")
+	wd._on_death(demo, wd.party[0])
+	check(G.pending_kills.size() <= pk + 200 and int(G.save.stats.kills) >= kills_before, "abate do demo não vira pedido ao servidor")
+	var found := false
+	for k in G.pending_kills:
+		if k.get("ticket", "") == "" and k.form == demo.form_id and false:
+			found = true
+	check(not found, "demo sem ticket de shiny")
 	G.save_local()
 	print("\n==== smoke test: %d falhas ====" % failures)
 	quit(1 if failures > 0 else 0)

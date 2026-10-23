@@ -322,7 +322,10 @@
   "max_listings": 10,
   "min_price": 1,
   "max_price": 999999999,
-  "listing_days": 7
+  "listing_days": 7,
+  "monster_fee": 0.1,
+  "monster_min_price": 10,
+  "monster_max_price": 1000000
  },
  "shop": {
   "_comentario": "Loja rotativa: 5 itens por rodada, novos a cada rotation_hours (ou atualizando com ouro). Preço = ouro de N abates no nível do item (raros caros de propósito: são o grande destino do ouro).",
@@ -613,5 +616,39 @@
    10,
    15
   ]
+ },
+ "boosts": {
+  "_comentario": "Bônus temporários. Diamantes = 8 h; anúncio premiado = 15 min (soma, até ad_max_minutes restantes). O servidor aplica shiny/recrutamento/drop/ouro; a XP é aplicada no cliente.",
+  "diamond_hours": 8,
+  "ad_minutes": 15,
+  "ad_max_minutes": 120,
+  "kinds": {
+   "xp": {
+    "mult": 2.0,
+    "price": 120,
+    "icon": "xp"
+   },
+   "shiny": {
+    "mult": 2.0,
+    "price": 200,
+    "icon": "sparkle"
+   },
+   "recruit": {
+    "mult": 2.0,
+    "price": 150,
+    "icon": "egg"
+   },
+   "drop": {
+    "mult": 2.0,
+    "price": 150,
+    "icon": "clover"
+   },
+   "gold": {
+    "mult": 2.0,
+    "price": 100,
+    "icon": "coin"
+   }
+  },
+  "bundle_price": 550
  }
 }

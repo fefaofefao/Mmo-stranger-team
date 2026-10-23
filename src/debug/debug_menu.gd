@@ -76,6 +76,7 @@ func _build() -> void:
 	v.add_child(rr2)
 	rr2.add_child(UI.expand(UI.small_button("+100k ouro", func(): Game.debug_grant(100000, 0); main.toast("+100k ouro"))))
 	rr2.add_child(UI.expand(UI.small_button("+1000 Essência (todas)", func(): Game.debug_grant(0, 1000); main.toast("+1000 de cada Essência"))))
+	v.add_child(UI.small_button("+1000 diamantes (só servidor mock)", func(): Game.debug_grant(0, 0, 1000); main.toast("+1000 diamantes")))
 	v.add_child(UI.small_button("Desbloquear todas as hunts e desafios", func():
 		Game.save.debug_unlock_all = true
 		main.toast("Tudo desbloqueado")))

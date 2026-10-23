@@ -84,10 +84,10 @@ func _notification(what: int) -> void:
 func new_save() -> Dictionary:
 	var s := {
 		"version": SAVE_VERSION, "device_id": "dev_%x%x" % [rng.randi(), rng.randi()], "created_at": GameClock.now(),
-		"saved_at": 0.0, "playtime": 0.0, "player_name": "", "gold": 0, "essences": {},
+		"saved_at": 0.0, "playtime": 0.0, "player_name": "", "gold": 0, "diamonds": 0, "essences": {},
 		"monsters": {}, "party": [], "items": {}, "inventory_cap": int(DataDB.config.inventory.base_cap),
 		"collection": {}, "challenges": {}, "current_hunt": "", "ai_behavior": "focus",
-		"boosts": {"xp_until": 0.0}, "settings": {"auto_sell_comum": false, "auto_sell_incomum": false, "zoom": 2.0,
+		"boosts": {}, "settings": {"auto_sell_comum": false, "auto_sell_incomum": false, "zoom": 2.0,
 		"show_damage": true, "locale": ""}, "stats": {"kills": 0, "deaths": 0, "wipes": 0},
 		"debug_unlock_all": false, "last_interstitial": 0.0,
 	}
@@ -171,6 +171,7 @@ func start_session() -> Dictionary:
 				_fix_types()
 				feed.emit(Loc.t("Progresso restaurado da nuvem."), Color.LIGHT_GREEN)
 		await refresh_profile()
+	await refresh_boosts()
 	var summary := {}
 	if has_starter() and save.current_hunt != "":
 		summary = await claim_offline()
@@ -245,6 +246,9 @@ func refresh_profile() -> void:
 func _apply_sales(sales: Array) -> void:
 	for s in sales:
 		var l: Dictionary = s.listing
+		if l.kind == "monster":
+			feed.emit(Loc.t("Market: %s vendido por %d diamantes.") % [DataDB.form_name(l.monster.form), int(s.net)], Color("#7fe8ff"))
+			continue
 		var what := ItemLogic.display_name(l.item) if l.kind == "item" else Loc.t("%d Essência de %s") % [int(l.amount), DataDB.type_name(l.essence_type)]
 		feed.emit(Loc.t("Market: %s vendido por %d de ouro.") % [what, int(s.net)], Color.GOLD)
 	sales_received.emit(sales)
@@ -254,6 +258,7 @@ func _apply_wallet(w: Dictionary) -> void:
 	if w.is_empty():
 		return
 	save.gold = int(w.get("gold", save.gold))
+	save.diamonds = int(w.get("diamonds", save.get("diamonds", 0)))
 	var es: Dictionary = w.get("essences", {})
 	for t in es:
 		save.essences[t] = int(es[t])
@@ -361,7 +366,7 @@ func apply_bulk_kills(hunt: Dictionary, r: Dictionary) -> Dictionary:
 	for rr in DataDB.rarities:
 		if rr.server:
 			continue
-		var n := LootTable.binomial(kills, float(rr.chance) * (1.0 + float(account_bonuses().drop_pct) / 100.0), rng)
+		var n := LootTable.binomial(kills, float(rr.chance) * (1.0 + float(account_bonuses().drop_pct) / 100.0) * boost_mult("drop"), rng)
 		for j in mini(n, 200):
 			var it := ItemLogic.create(LootTable.pick_base(hunt, rng), rr.id, rng, true)
 			if add_item(it, false):
@@ -700,22 +705,80 @@ func buy_star(uid: String) -> Dictionary:
 # ================================================================ abates (tempo real)
 
 func xp_boost_mult() -> float:
-	return float(DataDB.config.ads.xp_boost_mult) if xp_boost_active() else 1.0
+	return boost_mult("xp")
 
 
 func xp_boost_active() -> bool:
-	return float(save.boosts.get("xp_until", 0.0)) > GameClock.now()
+	return boost_active("xp")
 
 
 func xp_boost_remaining() -> float:
-	return max(0.0, float(save.boosts.get("xp_until", 0.0)) - GameClock.now())
+	return boost_remaining("xp")
 
 
-func grant_xp_boost() -> void:
-	var start: float = maxf(GameClock.now(), float(save.boosts.get("xp_until", 0.0)))
-	save.boosts.xp_until = start + float(DataDB.config.ads.xp_boost_minutes) * 60.0
+# ================================================================ bônus (diamantes / anúncio)
+
+func boost_remaining(kind: String) -> float:
+	return maxf(0.0, float(save.boosts.get(kind, 0.0)) - GameClock.now())
+
+
+func boost_active(kind: String) -> bool:
+	return boost_remaining(kind) > 0.0
+
+
+func boost_mult(kind: String) -> float:
+	return float(DataDB.config.boosts.kinds[kind].mult) if boost_active(kind) else 1.0
+
+
+func active_boosts() -> int:
+	var n := 0
+	for k in DataDB.config.boosts.kinds:
+		if boost_active(k):
+			n += 1
+	return n
+
+
+func _apply_boosts(r: Dictionary) -> void:
+	if not r.get("ok", false):
+		return
+	var skew := GameClock.now() - float(r.get("server_time", GameClock.now()))
+	var b: Dictionary = r.get("boosts", {})
+	save.boosts = {}
+	for k in b:
+		save.boosts[k] = float(b[k]) + skew
+	if r.has("wallet"):
+		_apply_wallet(r.wallet)
 	boosts_changed.emit()
-	feed.emit(Loc.t("2x XP ativado por %d min!") % int(DataDB.config.ads.xp_boost_minutes), Color.GOLD)
+
+
+func refresh_boosts() -> void:
+	_apply_boosts(await Backend.request("boost_status"))
+
+
+func buy_boost(kind: String) -> Dictionary:
+	var r := await Backend.request("boost_buy", {"kind": kind})
+	_apply_boosts(r)
+	return r
+
+
+## Assiste a um anúncio premiado e ganha 15 min do bônus.
+func ad_boost(kind: String) -> Dictionary:
+	var ok: bool = await Ads.show_rewarded(Loc.t("Bônus de 15 minutos"))
+	if not ok:
+		return {"ok": false, "error": ""}
+	var r := await Backend.request("boost_ad", {"kind": kind})
+	_apply_boosts(r)
+	return r
+
+
+## Credita uma compra com dinheiro real (chamado pelo autoload Billing).
+func credit_purchase(product_id: String, token: String) -> Dictionary:
+	var r := await Backend.request("iap_purchase", {"product": product_id, "token": token})
+	if r.get("ok", false):
+		_apply_wallet(r.wallet)
+		feed.emit(Loc.t("+%d diamantes!") % int(r.diamonds_gained), Color("#7fe8ff"))
+		save_local()
+	return r
 
 
 func get_spawn_ticket(hunt_id: String) -> Dictionary:
@@ -764,7 +827,7 @@ func on_kill(hunt: Dictionary, form_id: String, level: int, ticket: String, shin
 	if PartyLogic.fighting_count(main_level(), party.size()) != fc_before:
 		fighting_changed.emit()
 	var drop := {}
-	var rar := LootTable.roll_rarity(rng, false, 1.0, 1.0 + float(account_bonuses().drop_pct) / 100.0)
+	var rar := LootTable.roll_rarity(rng, false, 1.0, (1.0 + float(account_bonuses().drop_pct) / 100.0) * boost_mult("drop"))
 	if debug_force_local_drop != "":
 		rar = debug_force_local_drop
 		debug_force_local_drop = ""
@@ -774,7 +837,7 @@ func on_kill(hunt: Dictionary, form_id: String, level: int, ticket: String, shin
 			drop = it
 		elif add_item(it, false):
 			drop = it
-	pending_gold += int(Formulas.gold_for_kill(level) * float(hunt.get("gold_mult", 1.0)))
+	pending_gold += int(Formulas.gold_for_kill(level) * float(hunt.get("gold_mult", 1.0)) * boost_mult("gold"))
 	pending_kills.append({"hunt": hunt.id, "form": form_id, "level": level, "ticket": ticket})
 	if pending_kills.size() > 600:
 		pending_kills = pending_kills.slice(pending_kills.size() - 600)
@@ -1063,6 +1126,38 @@ func market_buy(listing_id: String) -> Dictionary:
 		_apply_wallet(r.wallet)
 		if not r.get("item", {}).is_empty():
 			add_item(r.item)
+		if not r.get("monster", {}).is_empty():
+			_add_market_monster(r.monster)
+	return r
+
+
+## Monstro vindo do Market (comprado ou listagem cancelada): mantém nível, qualidade, estrelas e treino.
+func _add_market_monster(rec: Dictionary) -> Dictionary:
+	var m := MonsterLogic.create(rec.family, int(rec.get("level", 1)), bool(rec.get("shiny", false)), rec.server_id, rec.server_id, int(rec.get("quality", 0)))
+	m.stage = maxi(int(m.stage), int(rec.get("stage", 1)))
+	m.stars = int(rec.get("stars", 0))
+	m.train = int(rec.get("train", 0))
+	save.monsters[m.uid] = m
+	_mark_obtained(MonsterLogic.form_id(m), bool(m.shiny))
+	monsters_changed.emit()
+	return m
+
+
+## Coloca um monstro do Depot à venda (só por diamantes).
+func market_list_monster(uid: String, price: int) -> Dictionary:
+	var m := monster(uid)
+	if m.is_empty() or save.party.has(uid):
+		return {"ok": false, "error": Loc.t("Retire o monstro do grupo antes.")}
+	var r := await Backend.request("market_list_monster", {"server_id": m.server_id, "level": m.level, "stage": m.stage, "price": price})
+	if r.get("ok", false):
+		for slot in m.equip.keys():
+			var iu: String = m.equip[slot]
+			if save.items.has(iu):
+				save.items[iu].loc = "inv"
+		save.monsters.erase(uid)
+		_apply_wallet(r.wallet)
+		monsters_changed.emit()
+		inventory_changed.emit()
 	return r
 
 
@@ -1072,6 +1167,8 @@ func market_cancel(listing_id: String) -> Dictionary:
 		_apply_wallet(r.wallet)
 		if not r.get("item", {}).is_empty():
 			add_item(r.item)
+		if not r.get("monster", {}).is_empty():
+			_add_market_monster(r.monster)
 	return r
 
 
@@ -1205,11 +1302,11 @@ func daily_claim(token: String, fraction: float, seconds: float, won: bool) -> D
 
 # ================================================================ debug
 
-func debug_grant(gold: int, ess: int) -> void:
+func debug_grant(gold: int, ess: int, diamonds := 0) -> void:
 	var essences := {}
 	for t in DataDB.type_ids:
 		essences[t] = ess
-	var r := await Backend.request("debug_grant", {"gold": gold, "essences": essences})
+	var r := await Backend.request("debug_grant", {"gold": gold, "essences": essences, "diamonds": diamonds})
 	if r.get("ok", false):
 		_apply_wallet(r.wallet)
 

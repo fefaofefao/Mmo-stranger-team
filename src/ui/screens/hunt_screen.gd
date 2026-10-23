@@ -187,7 +187,7 @@ func _build() -> void:
 	nav.add_child(UI.tile_button("paw", Loc.t("Grupo"), func(): main.goto("party"), 36, Vector2(0, 92)))
 	boss_btn = UI.tile_button("crown", Loc.t("Chefe"), func(): main.goto("daily"), 36, Vector2(0, 92))
 	nav.add_child(boss_btn)
-	boost_btn = UI.tile_button("play", "2x XP", _on_boost, 36, Vector2(0, 92), "ad")
+	boost_btn = UI.tile_button("boost", Loc.t("Bônus"), _on_boost, 36, Vector2(0, 92), "ad")
 	nav.add_child(boost_btn)
 
 
@@ -324,23 +324,41 @@ func _run_tutorial() -> void:
 	if not visible:
 		Game.save.settings.tutorial_done = false
 		return
+	var demo: Creature = world.spawn_demo_shiny()
+	var one_in := int(round(1.0 / float(DataDB.config.shiny_chance)))
 	var steps := [
 		{"title": Loc.t("Bem-vindo, domador!"), "icon": "paw", "target": vp_container,
 			"text": Loc.t("Seu monstro caça sozinho: anda pelo mapa, ataca e usa habilidades. Você cuida da estratégia: onde caçar, quem leva no grupo e como fortalecê-lo.")},
 		{"title": Loc.t("Seu grupo"), "icon": "heart", "target": hud_box,
 			"text": Loc.t("Vida e XP de cada monstro. Toque num deles para trocar por outro do Depot. No nível 110 dois monstros lutam juntos; no 210, três.")},
+		{"title": Loc.t("Olha, um SHINY!"), "icon": "sparkle", "target": func(): return _creature_rect(demo),
+			"text": Loc.t("Shinies têm cores raras e brilham: são 50%% mais fortes e sempre vêm com qualidade de 50 a 100%%. Aparece mais ou menos 1 a cada %s monstros — e dá para recrutar!") % UI.fmt(one_in)
+				+ "\n\n" + Loc.t("Mas ESTE aqui é só de demonstração e não pode ser recrutado, tá, Exploiter? Ele é ator contratado, tem agente e já avisou que não faz cena de captura.")},
 		{"title": Loc.t("Marcos de Caça"), "icon": "trophy", "target": mastery_panel,
 			"text": Loc.t("Cada abate conta para os Marcos daquela espécie. Cada elemento dá um bônus permanente: Água dá Vida, Fogo dá Ataque, Planta dá XP, Vento dá sorte de drop e assim por diante.")},
 		{"title": Loc.t("Drops e recrutas"), "icon": "egg", "target": feed_ref,
 			"text": Loc.t("Aqui aparecem itens, níveis e recrutas. Todo abate pode recrutar o monstro derrotado, com qualidade de 0 a 100%. Shinies são raríssimos e muito mais fortes!")},
 		{"title": Loc.t("Tudo a um toque"), "icon": "house", "target": nav_row,
-			"text": Loc.t("Hub: Grupo, Loja, Altar, Market e mais. Hunts: escolha onde caçar. Chefe: 3 lutas por dia. 2x XP: um anúncio opcional dobra a XP por 30 minutos.")},
+			"text": Loc.t("Hub: Grupo, Loja, Altar, Market e mais. Hunts: escolha onde caçar. Chefe: 3 lutas por dia. Bônus: dobre XP, shiny, recrutamento, drop ou ouro — 15 minutos grátis com um anúncio.")},
 		{"title": Loc.t("Mesmo longe, progresso"), "icon": "clock", "target": null,
 			"text": Loc.t("Feche o jogo quando quiser: seu grupo continua caçando por até 8 horas e você recebe tudo ao voltar. Boa caçada!")},
 	]
 	var t := Tutorial.run(main.overlay, steps)
 	await t.finished
+	if demo:
+		world.remove_demo(demo)
+		main.toast(Loc.t("O shiny de demonstração voltou para o camarim."), UI.C_GOLD, "sparkle")
 	Game.save_local()
+
+
+## Retângulo na tela de um monstro do mapa (para o destaque do tutorial).
+func _creature_rect(c: Creature) -> Rect2:
+	if c == null or not is_instance_valid(c):
+		return Rect2()
+	var cam: Camera2D = world.camera
+	var p: Vector2 = (c.global_position - cam.get_screen_center_position()) * cam.zoom + vp_container.size * 0.5
+	var z := zoom * 30.0
+	return Rect2(vp_container.global_position + p - Vector2(z, z * 1.5), Vector2(z * 2.0, z * 2.2))
 
 
 func _refresh_daily_badge() -> void:
@@ -577,8 +595,11 @@ func _update_boost() -> void:
 	var l := _tile_label(boost_btn)
 	if l == null:
 		return
-	var boost := Game.xp_boost_remaining()
-	l.text = UI.fmt_time(boost) if boost > 0 else "2x XP"
+	var best := 0.0
+	for k in DataDB.config.boosts.kinds:
+		best = maxf(best, Game.boost_remaining(k))
+	var n := Game.active_boosts()
+	l.text = ("%d · %s" % [n, UI.fmt_time(best)]) if n > 0 else Loc.t("Bônus")
 
 
 func _update_hud_values() -> void:
@@ -647,12 +668,7 @@ func _on_kill_reward(info: Dictionary) -> void:
 
 
 func _on_boost() -> void:
-	if Game.xp_boost_active():
-		main.toast(Loc.t("2x XP ativo por mais %s. Assistir de novo soma +30 min.") % UI.fmt_time(Game.xp_boost_remaining()), UI.C_INFO, "clock")
-	var ok: bool = await Ads.show_rewarded(Loc.t("2x XP por 30 minutos"))
-	if ok:
-		Game.grant_xp_boost()
-		refresh_hud()
+	main.goto("boosts")
 
 
 func _on_revive() -> void:

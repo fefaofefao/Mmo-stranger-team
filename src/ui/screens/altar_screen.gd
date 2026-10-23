@@ -28,6 +28,14 @@ func build() -> void:
 	var sc := UI.scroll(8)
 	b.add_child(sc[0])
 	if tab == 0:
+		var info := UI.card()
+		var iv := UI.vbox(2)
+		info.add_child(iv)
+		iv.add_child(UI.label(Loc.t("Para que serve a Essência?"), 18, UI.C_GOLD))
+		iv.add_child(UI.label(Loc.t("• Estrelas: cada estrela dá +%d%% em todos os atributos de um monstro do mesmo tipo.") % int(float(DataDB.config.stars.stat_bonus_per_star) * 100), 15, UI.C_TEXT, true))
+		iv.add_child(UI.label(Loc.t("• Aprimorar itens: cada nível dá +%d%% no atributo principal do item.") % int(float(DataDB.config.enhance.stat_per_level) * 100), 15, UI.C_TEXT, true))
+		iv.add_child(UI.label(Loc.t("• Vender no Market para outros jogadores."), 15, UI.C_TEXT, true))
+		sc[1].add_child(info)
 		var dep := Game.depot_monsters()
 		sel_boxes.clear()
 		for u in sel.keys():
@@ -95,7 +103,9 @@ func build() -> void:
 				v.add_child(UI.label(Loc.t("Aprimoramento máximo"), 16, UI.C_GOLD))
 			else:
 				var c := EssenceLogic.enhance_cost(it)
-				v.add_child(UI.label(Loc.t("+%d → +%d · %d%% · %d Essência de %s + %s ouro") % [enh, enh + 1, int(EssenceLogic.enhance_chance(enh) * 100), int(c.essence), DataDB.type_name(c.essence_type), UI.fmt(c.gold)], 15, UI.C_MUTED, true))
+				for g in ItemLogic.enhance_gain(it):
+					v.add_child(UI.label(Loc.t("Ganho: %s") % g.text, 17, UI.C_GOOD, true))
+				v.add_child(UI.label(Loc.t("+%d → +%d · chance %d%% · custo: %d Essência de %s + %s ouro") % [enh, enh + 1, int(EssenceLogic.enhance_chance(enh) * 100), int(c.essence), DataDB.type_name(c.essence_type), UI.fmt(c.gold)], 15, UI.C_MUTED, true))
 			var iu: String = it.uid
 			var bt := UI.small_button(Loc.t("Aprimorar"), func(): _enhance(iu), "primary")
 			bt.disabled = enh >= int(DataDB.config.enhance.max)
@@ -207,12 +217,30 @@ func _enhance(uid: String) -> void:
 	if busy:
 		return
 	busy = true
+	var before: Dictionary = Game.save.items.get(uid, {}).duplicate(true)
+	var gains := ItemLogic.enhance_gain(before)
 	var r: Dictionary = await Game.enhance_item(uid)
 	busy = false
 	if not r.get("ok", false):
 		toast(Loc.t(r.get("error", "Falhou")), UI.C_BAD)
 	elif r.get("success", false):
-		toast(Loc.t("Sucesso! Item aprimorado."), UI.C_GOOD, "sparkle")
+		var lines: Array = [Loc.t("%s agora é +%d.") % [ItemLogic.display_name(Game.save.items.get(uid, before)), int(before.get("enh", 0)) + 1]]
+		for g in gains:
+			lines.append(g.text)
+		var holder := _wearer(uid)
+		if holder != "":
+			lines.append("\n" + Loc.t("%s, que está usando o item, ficou mais forte!") % holder)
+		else:
+			lines.append("\n" + Loc.t("Equipe o item em um monstro para usar o bônus."))
+		main.dialog(Loc.t("Aprimorado!"), "\n".join(lines), [Loc.t("OK")], "sparkle")
 	else:
-		toast(Loc.t("Falhou... o item continua intacto."), UI.C_BAD)
+		main.dialog(Loc.t("Não foi desta vez"), Loc.t("O aprimoramento falhou (chance de %d%%). O item continua intacto; só o custo foi gasto. Tente de novo!") % int(EssenceLogic.enhance_chance(int(before.get("enh", 0))) * 100), [Loc.t("OK")], "cross")
 	rebuild()
+
+
+## Nome do monstro que está usando o item ("" se nenhum).
+func _wearer(item_uid: String) -> String:
+	for m in Game.save.monsters.values():
+		if m.get("equip", {}).values().has(item_uid):
+			return MonsterLogic.display_name(m)
+	return ""

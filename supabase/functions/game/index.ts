@@ -25,7 +25,62 @@ const iso = (s: number) => new Date(s * 1000).toISOString();
 type Ctx = { uid: string; user: any; userClient: any; player: any; dirty: Record<string, any> };
 
 function wallet(p: any) {
-  return { gold: Number(p.gold), essences: p.essences ?? {} };
+  return { gold: Number(p.gold), essences: p.essences ?? {}, diamonds: Number(p.diamonds ?? 0) };
+}
+
+// ---- bônus temporários (players.boosts = {tipo: fim em segundos unix})
+function boostMult(ctx: Ctx, kind: string, t0 = -1, t1 = -1) {
+  const m = C.boosts.kinds[kind].mult;
+  const until = Number(ctx.player.boosts?.[kind] ?? 0);
+  const now = nowS();
+  if (t0 < 0 || t1 - t0 < 1) return until > now ? m : 1;
+  const cover = Math.min(1, Math.max(0, (Math.min(until, t1) - t0) / (t1 - t0)));
+  return 1 + (m - 1) * cover;
+}
+function extendBoost(ctx: Ctx, kind: string, seconds: number) {
+  const b = { ...(ctx.player.boosts ?? {}) };
+  b[kind] = Math.max(nowS(), Number(b[kind] ?? 0)) + seconds;
+  set(ctx, "boosts", b);
+}
+
+// ---- compras na Play Store: valida o token na API do Google (conta de serviço) ----
+async function googleAccessToken(): Promise<string> {
+  const sa = JSON.parse(Deno.env.get("GOOGLE_SERVICE_ACCOUNT_JSON") ?? "{}");
+  if (!sa.client_email) throw new Error("GOOGLE_SERVICE_ACCOUNT_JSON ausente");
+  const enc = (o: any) => btoa(JSON.stringify(o)).replace(/=+$/, "").replace(/\+/g, "-").replace(/\//g, "_");
+  const now = Math.floor(Date.now() / 1000);
+  const head = enc({ alg: "RS256", typ: "JWT" });
+  const claim = enc({ iss: sa.client_email, scope: "https://www.googleapis.com/auth/androidpublisher", aud: "https://oauth2.googleapis.com/token", iat: now, exp: now + 3600 });
+  const pem = sa.private_key.replace(/-----[^-]+-----/g, "").replace(/\s+/g, "");
+  const der = Uint8Array.from(atob(pem), (c) => c.charCodeAt(0));
+  const key = await crypto.subtle.importKey("pkcs8", der, { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["sign"]);
+  const sig = new Uint8Array(await crypto.subtle.sign("RSASSA-PKCS1-v1_5", key, new TextEncoder().encode(`${head}.${claim}`)));
+  const sigB64 = btoa(String.fromCharCode(...sig)).replace(/=+$/, "").replace(/\+/g, "-").replace(/\//g, "_");
+  const res = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=${head}.${claim}.${sigB64}`,
+  });
+  const j = await res.json();
+  if (!j.access_token) throw new Error("falha ao autenticar no Google");
+  return j.access_token;
+}
+
+async function verifyPurchase(productId: string, token: string): Promise<{ ok: boolean; error?: string }> {
+  if (token.startsWith("sim_")) {
+    return Deno.env.get("IAP_TEST_MODE") === "1" ? { ok: true } : { ok: false, error: "Compra não confirmada" };
+  }
+  const pkg = Deno.env.get("GOOGLE_PLAY_PACKAGE") ?? "";
+  try {
+    const at = await googleAccessToken();
+    const url = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${pkg}/purchases/products/${productId}/tokens/${encodeURIComponent(token)}`;
+    const r = await fetch(url, { headers: { Authorization: `Bearer ${at}` } });
+    if (!r.ok) return { ok: false, error: "Compra não confirmada" };
+    const j = await r.json();
+    if (j.purchaseState !== 0) return { ok: false, error: "Compra não confirmada" };
+    return { ok: true };
+  } catch (_e) {
+    return { ok: false, error: "Loja do Google indisponível. Tente de novo." };
+  }
 }
 
 async function loadPlayer(uid: string) {
@@ -89,7 +144,8 @@ function addMastery(ctx: Ctx, byForm: Record<string, number>) {
   for (const f in byForm) m[f] = (m[f] ?? 0) + byForm[f];
   set(ctx, "mastery", m);
 }
-const goldMult = (ctx: Ctx, goldPct: number) => 1 + Math.min(Math.max(goldPct ?? 0, 0), 100) / 100 + mastery(ctx).gold_pct / 100;
+const goldMult = (ctx: Ctx, goldPct: number, boost = -1) =>
+  (1 + Math.min(Math.max(goldPct ?? 0, 0), 100) / 100 + mastery(ctx).gold_pct / 100) * (boost < 0 ? boostMult(ctx, "gold") : boost);
 
 function capStats(upper: any[], client: any[]) {
   return upper.map((u, i) => {
@@ -110,7 +166,7 @@ async function insertItem(ctx: Ctx, it: any) {
 
 async function rollRecruit(ctx: Ctx, hunt: any, form: string, shiny: boolean) {
   if (hunt.world !== 1 || !hunt.recruit) return null;
-  let ch = C.recruit_chance * (hunt.recruit_mult ?? 1) * (1 + mastery(ctx).recruit_pct / 100);
+  let ch = C.recruit_chance * (hunt.recruit_mult ?? 1) * (1 + mastery(ctx).recruit_pct / 100) * boostMult(ctx, "recruit");
   if (shiny) ch *= C.shiny_recruit_mult ?? 10;
   if (L.rand() >= ch) return null;
   const f = D.forms[form];
@@ -119,7 +175,11 @@ async function rollRecruit(ctx: Ctx, hunt: any, form: string, shiny: boolean) {
   return rec;
 }
 
-async function bulkKills(ctx: Ctx, hunt: any, kills: number, goldPct: number) {
+async function bulkKills(ctx: Ctx, hunt: any, kills: number, goldPct: number, windowStart = -1) {
+  // bônus valem na proporção do tempo offline em que estavam ativos
+  const t1 = nowS();
+  const t0 = windowStart >= 0 ? windowStart : t1;
+  const bm = (k: string) => boostMult(ctx, k, t0, t1);
   const byForm: Record<string, number> = {};
   const tw = hunt.monsters.reduce((a: number, m: any) => a + (m.weight ?? 1), 0);
   let assigned = 0;
@@ -129,7 +189,7 @@ async function bulkKills(ctx: Ctx, hunt: any, kills: number, goldPct: number) {
     assigned += Math.max(0, n);
   });
   const mb = mastery(ctx);
-  const gold = Math.floor(kills * L.goldForKill(hunt.level) * (hunt.gold_mult ?? 1) * goldMult(ctx, goldPct));
+  const gold = Math.floor(kills * L.goldForKill(hunt.level) * (hunt.gold_mult ?? 1) * goldMult(ctx, goldPct, bm("gold")));
   addMastery(ctx, byForm);
   addGold(ctx, gold);
   set(ctx, "npc_budget", Number(ctx.player.npc_budget) + kills * C.anti_cheat.npc_sell_budget_per_kill * (1 + 0.15 * hunt.level));
@@ -139,13 +199,13 @@ async function bulkKills(ctx: Ctx, hunt: any, kills: number, goldPct: number) {
   const items: any[] = [];
   for (const r of C.rarities) {
     if (!r.server) continue;
-    const n = L.binomial(kills, r.chance * (hunt.rarity_mult ?? 1) * (1 + mb.drop_pct / 100));
+    const n = L.binomial(kills, r.chance * (hunt.rarity_mult ?? 1) * (1 + mb.drop_pct / 100) * bm("drop"));
     for (let i = 0; i < Math.min(n, 50); i++) items.push(await insertItem(ctx, L.createItem(L.pickBase(hunt.drops), r.id, false)));
   }
-  const shinies = L.binomial(kills, C.shiny_chance);
+  const shinies = L.binomial(kills, C.shiny_chance * bm("shiny"));
   const recruits: any[] = [];
   if (hunt.world === 1 && hunt.recruit) {
-    const ch = C.recruit_chance * (hunt.recruit_mult ?? 1) * (1 + mb.recruit_pct / 100);
+    const ch = C.recruit_chance * (hunt.recruit_mult ?? 1) * (1 + mb.recruit_pct / 100) * bm("recruit");
     const sr = L.binomial(shinies, Math.min(1, ch * (C.shiny_recruit_mult ?? 10)));
     const nr = L.binomial(kills - shinies, ch);
     const forms = Object.keys(byForm);
@@ -219,7 +279,7 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     const n = Math.min(100, Math.max(1, a.n ?? 20));
     if (!D.hunts[a.hunt]) return err("Hunt inválida");
     const rows = [];
-    for (let i = 0; i < n; i++) rows.push({ id: L.newId("t"), owner: ctx.uid, hunt: a.hunt, shiny: L.rand() < C.shiny_chance, used: false });
+    for (let i = 0; i < n; i++) rows.push({ id: L.newId("t"), owner: ctx.uid, hunt: a.hunt, shiny: L.rand() < C.shiny_chance * boostMult(ctx, "shiny"), used: false });
     await admin.from("spawn_tickets").insert(rows);
     return ok({ tickets: rows.map((r) => ({ id: r.id, shiny: r.shiny })) });
   },
@@ -243,7 +303,7 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     let gold = 0, shinies = 0, budget = Number(ctx.player.npc_budget);
     const items: any[] = [], recruits: any[] = [], usedT: string[] = [];
     const gm = goldMult(ctx, a.gold_pct ?? 0);
-    const luck = 1 + mastery(ctx).drop_pct / 100;
+    const luck = (1 + mastery(ctx).drop_pct / 100) * boostMult(ctx, "drop");
     const byForm: Record<string, number> = {};
     for (const k of kills) {
       if (!valid.has(k.form)) continue;
@@ -281,15 +341,15 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     }
     const f = fighters(party, capStats(await partyUpperStats(ctx, party), a.stats ?? []));
     const kills = Math.floor((L.estimateKills(f, hunt).kills_per_hour * elapsed) / 3600 * C.offline.efficiency);
-    const res = await bulkKills(ctx, hunt, kills, a.gold_pct ?? 0);
-    set(ctx, "last_offline", { hunt: a.hunt, kills, doubled: false, t, gold_pct: a.gold_pct ?? 0 });
+    const res = await bulkKills(ctx, hunt, kills, a.gold_pct ?? 0, t - elapsed);
+    set(ctx, "last_offline", { hunt: a.hunt, kills, doubled: false, t, gold_pct: a.gold_pct ?? 0, seconds: elapsed });
     return { ...res, seconds: elapsed };
   },
   async double_offline(ctx) {
     const lo = ctx.player.last_offline ?? {};
     if (!lo.hunt || lo.doubled || nowS() - lo.t > 1800) return err("Nada para dobrar");
     set(ctx, "last_offline", { ...lo, doubled: true });
-    return await bulkKills(ctx, D.hunts[lo.hunt], lo.kills, lo.gold_pct ?? 0);
+    return await bulkKills(ctx, D.hunts[lo.hunt], lo.kills, lo.gold_pct ?? 0, lo.t - (lo.seconds ?? 0));
   },
   async claim_challenge(ctx, a) {
     const c = D.challenges.find((x: any) => x.id === a.challenge);
@@ -397,6 +457,49 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
       if (r.ok) totals[r.essence_type] = (totals[r.essence_type] ?? 0) + r.amount;
     }
     return ok({ results, totals, wallet: wallet(ctx.player) });
+  },
+  async iap_purchase(ctx, a) {
+    const pr = (D.iap?.products ?? []).find((p: any) => p.id === a.product);
+    if (!pr) return err("Produto inválido");
+    const token = String(a.token ?? "");
+    if (!token) return err("Compra não confirmada");
+    const { data: dup } = await admin.from("iap_purchases").select("token").eq("token", token).maybeSingle();
+    if (dup) return err("Compra já creditada");
+    const v = await verifyPurchase(pr.id, token);
+    if (!v.ok) return err(v.error ?? "Compra não confirmada");
+    let amount = pr.diamonds + (pr.bonus ?? 0);
+    const first = Number(ctx.player.purchases ?? 0) === 0;
+    if (first) amount += Math.round(pr.diamonds * (D.iap.first_purchase_bonus ?? 0));
+    const { error } = await admin.from("iap_purchases").insert({ token, owner: ctx.uid, product: pr.id, diamonds: amount });
+    if (error) return err("Compra já creditada");
+    set(ctx, "purchases", Number(ctx.player.purchases ?? 0) + 1);
+    set(ctx, "diamonds", Number(ctx.player.diamonds ?? 0) + amount);
+    return ok({ diamonds_gained: amount, first_bonus: first, wallet: wallet(ctx.player) });
+  },
+  async boost_status(ctx) {
+    return ok({ boosts: ctx.player.boosts ?? {}, server_time: nowS(), wallet: wallet(ctx.player) });
+  },
+  async boost_buy(ctx, a) {
+    const cfg = C.boosts;
+    const kinds = a.kind === "all" ? Object.keys(cfg.kinds) : [a.kind];
+    if (a.kind !== "all" && !cfg.kinds[a.kind]) return err("Bônus inválido");
+    const price = a.kind === "all" ? cfg.bundle_price : cfg.kinds[a.kind].price;
+    if (Number(ctx.player.diamonds ?? 0) < price) return err("Diamantes insuficientes");
+    set(ctx, "diamonds", Number(ctx.player.diamonds) - price);
+    for (const k of kinds) extendBoost(ctx, k, cfg.diamond_hours * 3600);
+    return actions.boost_status(ctx, {});
+  },
+  async boost_ad(ctx, a) {
+    const cfg = C.boosts;
+    if (!cfg.kinds[a.kind]) return err("Bônus inválido");
+    const left = Number(ctx.player.boosts?.[a.kind] ?? 0) - nowS();
+    if (left > cfg.ad_max_minutes * 60) return err("Esse bônus já está ativo por bastante tempo");
+    extendBoost(ctx, a.kind, cfg.ad_minutes * 60);
+    return actions.boost_status(ctx, {});
+  },
+  async market_list_monster(ctx, a) {
+    const { data, error } = await ctx.userClient.rpc("market_list_monster", { p_server_id: a.server_id, p_level: a.level ?? 1, p_price: a.price });
+    return error ? err(error.message) : data;
   },
   async train_monster(ctx, a) {
     const { data: rec } = await admin.from("monsters").select("*").eq("server_id", a.server_id).eq("owner", ctx.uid).maybeSingle();
@@ -571,7 +674,10 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
   // market: funções Postgres atômicas executadas com o JWT do usuário (auth.uid())
   async market_search(ctx, a) {
     const { data, error } = await ctx.userClient.rpc("market_search", { f: a.filters ?? {} });
-    return error ? err(error.message) : data;
+    if (error) return err(error.message);
+    const mt = a.filters?.monster_type ?? "";
+    if (mt && data?.listings) data.listings = data.listings.filter((l: any) => l.kind !== "monster" || D.families[l.monster?.family]?.type === mt);
+    return data;
   },
   async market_list_item(ctx, a) {
     const { data, error } = await ctx.userClient.rpc("market_list_item", { p_uid: a.uid, p_price: a.price });
@@ -596,7 +702,7 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
 };
 
 // ações que só leem/escrevem via RPC não devem sobrescrever o jogador com dados antigos
-const NO_PLAYER_WRITE = new Set(["market_search", "market_list_item", "market_list_essence", "market_buy", "market_cancel", "market_my", "rankings", "ranking_categories", "challenge_status", "daily_boss_status"]);
+const NO_PLAYER_WRITE = new Set(["market_search", "market_list_item", "market_list_essence", "market_buy", "market_cancel", "market_my", "rankings", "ranking_categories", "challenge_status", "daily_boss_status", "market_list_monster"]);
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });

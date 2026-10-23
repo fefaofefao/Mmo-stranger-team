@@ -356,6 +356,33 @@ func spawn_enemy(form_id: String, level: int, cell: Vector2i, slot := -1, summon
 	return c
 
 
+## Shiny de demonstração do tutorial: aparece perto do grupo, não luta, ninguém o ataca,
+## não gera ticket, recompensa nem recrutamento — e vai embora quando o tutorial acaba.
+func spawn_demo_shiny() -> Creature:
+	if mode != "hunt" or party.is_empty():
+		return null
+	var form_id: String = hunt.monsters[0].form
+	var st := Formulas.enemy_stats(form_id, int(hunt.level), 1, false)
+	var c := _make_creature(form_id, int(hunt.level), st, false, true)
+	c.demo = true
+	c.ticket = ""
+	_place_creature(c, party[0].cell + Vector2i(2, 1))
+	c.home = c.cell
+	c.facing = SpriteFactory.DIR_LEFT
+	enemies.append(c)
+	fx.add_effect("spawn", c.position, Color(1, 0.9, 0.4), 0, 0.8)
+	return c
+
+
+func remove_demo(c: Creature) -> void:
+	if not is_instance_valid(c):
+		return
+	enemies.erase(c)
+	nav.release(c.cell, c)
+	fx.add_effect("spawn", c.position, Color(1, 0.9, 0.4), 0, 0.6)
+	c.queue_free()
+
+
 func _pick_hunt_form() -> String:
 	var total := 0.0
 	for m in hunt.monsters:
@@ -475,7 +502,7 @@ func count_hostiles_near(c: Creature, cell: Vector2i, radius: int) -> int:
 
 
 func deal_damage(src: Creature, dst: Creature, power: float, is_ability: bool, true_damage := -1.0) -> void:
-	if not dst.alive or finished:
+	if not dst.alive or finished or dst.demo:
 		return
 	var dmg := 0.0
 	var crit := false
@@ -638,7 +665,7 @@ func _on_death(c: Creature, killer: Creature) -> void:
 	if c.is_boss:
 		_finish_challenge(true)
 		return
-	if mode != "hunt" or c.is_summon or Game == null:
+	if mode != "hunt" or c.is_summon or c.demo or Game == null:
 		return
 	var res: Dictionary = Game.on_kill(hunt, c.form_id, c.level, c.ticket, c.shiny, participants)
 	var main: Creature = killer if killer and killer.is_player else (party[0] if not party.is_empty() else null)

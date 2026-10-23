@@ -86,3 +86,11 @@ Legenda: [x] concluído · [~] concluído com fallback (ver PENDENCIAS.md)
 - [x] Treino de monstros com ouro, com brilho em +5/+10/+15
 - [x] Tutorial inicial e dica única por área do Hub
 - [x] Mock + Edge Function + migration 20261024000005, testes (7.367 asserções), paridade, traduções, screenshots, APK
+
+## Revisão 5 — diamantes e bônus
+- [x] Diamantes (só dinheiro real), 6 pacotes, primeira compra em dobro, Billing com modo simulado e validação no servidor
+- [x] Bônus 2x XP/shiny/recrutamento/drop/ouro: 8 h por diamantes ou 15 min por anúncio
+- [x] Monstros no Market só por diamantes
+- [x] Tutorial com shiny de demonstração não recrutável
+- [x] Altar e telas de evolução mostram antes → depois
+- [x] Mock + Edge Function + migration 20261025000006, testes (7.412 asserções), smoke, paridade, traduções, screenshots, APK

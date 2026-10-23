@@ -8,6 +8,7 @@ const DATA_DIR := "res://data/"
 static var loaded := false
 static var config: Dictionary = {}
 static var ads_cfg: Dictionary = {}
+static var iap: Dictionary = {}
 static var backend_cfg: Dictionary = {}
 
 static var type_ids: Array = []
@@ -57,6 +58,7 @@ static func load_json(path: String) -> Variant:
 static func load_all() -> void:
 	config = load_json(DATA_DIR + "config.json")
 	ads_cfg = load_json(DATA_DIR + "ads.json")
+	iap = load_json(DATA_DIR + "iap.json")
 	backend_cfg = load_json(DATA_DIR + "backend.json")
 
 	var t: Dictionary = load_json(DATA_DIR + "types.json")
@@ -315,4 +317,11 @@ static func challenge_for_level(level: int) -> Dictionary:
 	for c in challenges:
 		if int(c.level) == level:
 			return c
+	return {}
+
+
+static func iap_product(id: String) -> Dictionary:
+	for pr in iap.get("products", []):
+		if pr.id == id:
+			return pr
 	return {}

@@ -55,7 +55,7 @@ func _err(msg: String) -> Dictionary:
 
 
 func wallet() -> Dictionary:
-	return {"gold": int(p().gold), "essences": p().essences.duplicate()}
+	return {"gold": int(p().gold), "essences": p().essences.duplicate(), "diamonds": int(p().get("diamonds", 0))}
 
 
 static func week_id(t: float) -> int:
@@ -185,8 +185,9 @@ func request_spawn_tickets(hunt_id: String, n: int) -> Dictionary:
 		if t - float(p().tickets[k].t) > 3600.0 * 6:
 			p().tickets.erase(k)
 	var out: Array = []
+	var shiny_ch := float(DataDB.config.shiny_chance) * boost_mult("shiny")
 	for i in n:
-		var shiny := rng.randf() < float(DataDB.config.shiny_chance)
+		var shiny := rng.randf() < shiny_ch
 		if int(debug_force.get("shiny", 0)) > 0:
 			shiny = true
 			debug_force.shiny = int(debug_force.shiny) - 1
@@ -199,7 +200,7 @@ func request_spawn_tickets(hunt_id: String, n: int) -> Dictionary:
 func _roll_recruit(hunt: Dictionary, form_id: String, shiny: bool) -> Dictionary:
 	if int(hunt.get("world", 1)) != 1 or not hunt.get("recruit", true):
 		return {}
-	var ch := float(DataDB.config.recruit_chance) * float(hunt.get("recruit_mult", 1.0)) * (1.0 + float(_mastery().recruit_pct) / 100.0)
+	var ch := float(DataDB.config.recruit_chance) * float(hunt.get("recruit_mult", 1.0)) * (1.0 + float(_mastery().recruit_pct) / 100.0) * boost_mult("recruit")
 	if shiny:
 		ch *= float(DataDB.config.get("shiny_recruit_mult", 10.0))
 	var forced := int(debug_force.get("recruit", 0)) > 0
@@ -232,8 +233,9 @@ func _roll_server_drop(hunt: Dictionary, luck := 1.0) -> Dictionary:
 
 
 ## Ouro: bônus do equipamento informado pelo cliente (limitado) + Marcos validados pelo servidor.
-func _gold_mult(gold_pct: float) -> float:
-	return 1.0 + clampf(gold_pct, 0.0, 100.0) / 100.0 + float(_mastery().gold_pct) / 100.0
+func _gold_mult(gold_pct: float, boost := -1.0) -> float:
+	var b := boost_mult("gold") if boost < 0.0 else boost
+	return (1.0 + clampf(gold_pct, 0.0, 100.0) / 100.0 + float(_mastery().gold_pct) / 100.0) * b
 
 
 ## Bônus dos Marcos de Caça a partir dos abates aceitos pelo servidor.
@@ -273,7 +275,7 @@ func claim_kills(hunt_id: String, kills: Array, party: Array, client_stats: Arra
 	var lvl_max := int(hunt.level) + int(DataDB.config.enemy_level_spread) + 1
 	var npc_budget_per := float(ac.npc_sell_budget_per_kill)
 	var mb := _mastery()
-	var luck := 1.0 + float(mb.drop_pct) / 100.0
+	var luck := (1.0 + float(mb.drop_pct) / 100.0) * boost_mult("drop")
 	var gm := _gold_mult(gold_pct)
 	var by_form := {}
 	for i in accepted:
@@ -322,9 +324,9 @@ func claim_offline(hunt_id: String, party: Array, client_stats: Array, gold_pct 
 	var fighters := _fighters(party, _party_capped_stats(party, client_stats))
 	var est := KillRate.estimate(fighters, hunt)
 	var kills := int(floor(est.kills_per_hour * elapsed / 3600.0 * float(off.efficiency)))
-	var res := _grant_bulk_kills(hunt, kills, gold_pct)
+	var res := _grant_bulk_kills(hunt, kills, gold_pct, t - elapsed)
 	res["seconds"] = elapsed
-	p().last_offline = {"hunt": hunt_id, "kills": kills, "doubled": false, "t": t, "gold_pct": gold_pct}
+	p().last_offline = {"hunt": hunt_id, "kills": kills, "doubled": false, "t": t, "gold_pct": gold_pct, "seconds": elapsed}
 	return res
 
 
@@ -335,10 +337,20 @@ func double_offline() -> Dictionary:
 		return _err("Nada para dobrar")
 	lo.doubled = true
 	var hunt: Dictionary = DataDB.hunts.get(lo.hunt, {})
-	return _grant_bulk_kills(hunt, int(lo.kills), float(lo.get("gold_pct", 0.0)))
+	return _grant_bulk_kills(hunt, int(lo.kills), float(lo.get("gold_pct", 0.0)), float(lo.t) - float(lo.get("seconds", 0.0)))
 
 
-func _grant_bulk_kills(hunt: Dictionary, kills: int, gold_pct: float) -> Dictionary:
+func _grant_bulk_kills(hunt: Dictionary, kills: int, gold_pct: float, window_start := -1.0) -> Dictionary:
+	# bônus valem na proporção do tempo offline em que estavam ativos
+	var t1 := now()
+	var t0 := window_start if window_start >= 0.0 else t1
+	var bm := func(kind: String) -> float:
+		var m := float(DataDB.config.boosts.kinds[kind].mult)
+		var until := float(p().get("boosts", {}).get(kind, 0.0))
+		if t1 - t0 < 1.0:
+			return m if until > t1 else 1.0
+		var cover := clampf((minf(until, t1) - t0) / (t1 - t0), 0.0, 1.0)
+		return 1.0 + (m - 1.0) * cover
 	var kills_by_form := {}
 	var total_w := 0.0
 	for m in hunt.monsters:
@@ -352,7 +364,7 @@ func _grant_bulk_kills(hunt: Dictionary, kills: int, gold_pct: float) -> Diction
 		assigned += n
 	var mb := _mastery()
 	var lvl := int(hunt.level)
-	var gold := int(kills * Formulas.gold_for_kill(lvl) * float(hunt.get("gold_mult", 1.0)) * _gold_mult(gold_pct))
+	var gold := int(kills * Formulas.gold_for_kill(lvl) * float(hunt.get("gold_mult", 1.0)) * _gold_mult(gold_pct, float(bm.call("gold"))))
 	for fid in kills_by_form:
 		_add_mastery(fid, int(kills_by_form[fid]))
 	p().gold = int(p().gold) + gold
@@ -362,16 +374,16 @@ func _grant_bulk_kills(hunt: Dictionary, kills: int, gold_pct: float) -> Diction
 	for r in DataDB.rarities:
 		if not r.server:
 			continue
-		var n := LootTable.binomial(kills, LootTable.chance(r.id, float(hunt.get("rarity_mult", 1.0))) * (1.0 + float(mb.drop_pct) / 100.0), rng)
+		var n := LootTable.binomial(kills, LootTable.chance(r.id, float(hunt.get("rarity_mult", 1.0))) * (1.0 + float(mb.drop_pct) / 100.0) * float(bm.call("drop")), rng)
 		for i in mini(n, 50):
 			var base_id := LootTable.pick_base(hunt, rng)
 			var it := ItemLogic.create(base_id, r.id, rng, false, _id("s"))
 			p().items[it.uid] = it
 			items.append(it)
-	var shinies := LootTable.binomial(kills, float(DataDB.config.shiny_chance), rng)
+	var shinies := LootTable.binomial(kills, float(DataDB.config.shiny_chance) * float(bm.call("shiny")), rng)
 	var recruits: Array = []
 	if int(hunt.get("world", 1)) == 1 and hunt.get("recruit", true):
-		var ch := float(DataDB.config.recruit_chance) * float(hunt.get("recruit_mult", 1.0)) * (1.0 + float(mb.recruit_pct) / 100.0)
+		var ch := float(DataDB.config.recruit_chance) * float(hunt.get("recruit_mult", 1.0)) * (1.0 + float(mb.recruit_pct) / 100.0) * float(bm.call("recruit"))
 		var shiny_rec := LootTable.binomial(shinies, minf(1.0, ch * float(DataDB.config.get("shiny_recruit_mult", 10.0))), rng)
 		var normal_rec := LootTable.binomial(kills - shinies, ch, rng)
 		for i in mini(normal_rec + shiny_rec, 30):
@@ -620,6 +632,73 @@ func npc_sell_many(items: Array) -> Dictionary:
 			sold.append(str(it.get("uid", "")))
 			gold += int(r.gold_gained)
 	return _ok({"sold": sold, "gold_gained": gold, "wallet": wallet()})
+
+
+# ------------------------------------------------------------------ diamantes (dinheiro real) e bônus
+
+## Compra com dinheiro real. No mock aceita tokens "sim_" (compra simulada); a Edge Function
+## valida o token na API do Google Play e impede reuso.
+func iap_purchase(product_id: String, token: String) -> Dictionary:
+	var pr := DataDB.iap_product(product_id)
+	if pr.is_empty():
+		return _err("Produto inválido")
+	if token == "" or not token.begins_with("sim_"):
+		return _err("Compra não confirmada")
+	if not p().has("iap_tokens"):
+		p().iap_tokens = {}
+	if p().iap_tokens.has(token):
+		return _err("Compra já creditada")
+	p().iap_tokens[token] = true
+	var amount := int(pr.diamonds) + int(pr.get("bonus", 0))
+	var first := int(p().get("purchases", 0)) == 0
+	if first:
+		amount += int(round(float(pr.diamonds) * float(DataDB.iap.get("first_purchase_bonus", 0.0))))
+	p().purchases = int(p().get("purchases", 0)) + 1
+	p().diamonds = int(p().get("diamonds", 0)) + amount
+	return _ok({"diamonds_gained": amount, "first_bonus": first, "wallet": wallet()})
+
+
+func boost_mult(kind: String) -> float:
+	var until := float(p().get("boosts", {}).get(kind, 0.0))
+	return float(DataDB.config.boosts.kinds[kind].mult) if until > now() else 1.0
+
+
+func boost_status() -> Dictionary:
+	return _ok({"boosts": p().get("boosts", {}).duplicate(), "server_time": now(), "wallet": wallet()})
+
+
+func _extend_boost(kind: String, seconds: float) -> void:
+	if not p().has("boosts"):
+		p().boosts = {}
+	var start := maxf(now(), float(p().boosts.get(kind, 0.0)))
+	p().boosts[kind] = start + seconds
+
+
+## Bônus de 8 h por diamantes. kind = "all" compra o pacote com todos.
+func boost_buy(kind: String) -> Dictionary:
+	var cfg: Dictionary = DataDB.config.boosts
+	var kinds: Array = cfg.kinds.keys() if kind == "all" else [kind]
+	if kind != "all" and not cfg.kinds.has(kind):
+		return _err("Bônus inválido")
+	var price := int(cfg.bundle_price) if kind == "all" else int(cfg.kinds[kind].price)
+	if int(p().get("diamonds", 0)) < price:
+		return _err("Diamantes insuficientes")
+	p().diamonds = int(p().diamonds) - price
+	for k in kinds:
+		_extend_boost(k, float(cfg.diamond_hours) * 3600.0)
+	return boost_status()
+
+
+## Bônus de 15 min por anúncio premiado (acumula até ad_max_minutes restantes).
+func boost_ad(kind: String) -> Dictionary:
+	var cfg: Dictionary = DataDB.config.boosts
+	if not cfg.kinds.has(kind):
+		return _err("Bônus inválido")
+	var left := float(p().get("boosts", {}).get(kind, 0.0)) - now()
+	if left > float(cfg.ad_max_minutes) * 60.0:
+		return _err("Esse bônus já está ativo por bastante tempo")
+	_extend_boost(kind, float(cfg.ad_minutes) * 60.0)
+	return boost_status()
 
 
 # ------------------------------------------------------------------ treino de monstros (ouro)
@@ -893,7 +972,17 @@ func _refill_market() -> void:
 		if l.seller_id.begins_with("fake_"):
 			count += 1
 	var bases := DataDB.item_bases.keys()
-	while count < 60:
+	var mons := 0
+	for l in state.listings.values():
+		if l.seller_id.begins_with("fake_") and l.kind == "monster":
+			mons += 1
+	while mons < 18:
+		var fpm: Dictionary = state.fake_players[rng.randi_range(0, state.fake_players.size() - 1)]
+		var ml := _fake_monster_listing(fpm)
+		state.listings[ml.id] = ml
+		mons += 1
+		count += 1
+	while count < 78:
 		var fp: Dictionary = state.fake_players[rng.randi_range(0, state.fake_players.size() - 1)]
 		var id := _id("L")
 		var listing := {"id": id, "seller_id": fp.id, "seller_name": fp.name, "created_at": now()}
@@ -918,12 +1007,32 @@ func _refill_market() -> void:
 		count += 1
 
 
+func _fake_monster_listing(fp: Dictionary) -> Dictionary:
+	var fams := DataDB.families.keys()
+	var fam: String = fams[rng.randi_range(0, fams.size() - 1)]
+	var shiny := rng.randf() < 0.08
+	var lvl := rng.randi_range(5, 120)
+	var stage := MonsterLogic.stage_for_level(fam, lvl)
+	var q := MonsterLogic.roll_quality(rng, shiny)
+	var mon := {"server_id": _id("m"), "family": fam, "form": DataDB.form_for_stage(fam, stage), "shiny": shiny, "quality": q,
+		"stars": rng.randi_range(0, 2) if lvl > 40 else 0, "train": rng.randi_range(0, 6) if lvl > 30 else 0, "level": lvl, "stage": stage}
+	var price := int((20 + q * 1.2 + lvl * 0.6) * (12.0 if shiny else 1.0) * rng.randf_range(0.8, 1.6))
+	return {"id": _id("L"), "seller_id": fp.id, "seller_name": fp.name, "created_at": now(), "kind": "monster",
+		"currency": "diamonds", "monster": mon, "price": price}
+
+
 func _simulate_fake_buyers() -> void:
 	var t := now()
 	for l in state.listings.values().duplicate():
 		if l.seller_id != p().get("id", "") or t - float(l.created_at) < 45.0:
 			continue
 		if rng.randf() < 0.35:
+			if l.kind == "monster":
+				var dnet := int(floor(float(l.price) * (1.0 - float(DataDB.config.market.monster_fee))))
+				p().diamonds = int(p().get("diamonds", 0)) + dnet
+				state.listings.erase(l.id)
+				state.sales_log.append({"listing": l, "net": dnet, "currency": "diamonds", "buyer": FAKE_NAMES[rng.randi_range(0, FAKE_NAMES.size() - 1)]})
+				continue
 			var net := int(floor(float(l.price) * (1.0 - float(DataDB.config.market.fee))))
 			p().gold = int(p().gold) + net
 			state.listings.erase(l.id)
@@ -954,6 +1063,15 @@ static func _match(l: Dictionary, f: Dictionary) -> bool:
 	var kind: String = f.get("kind", "")
 	if kind != "" and l.kind != kind:
 		return false
+	if kind == "" and l.kind == "monster":
+		return false
+	if l.kind == "monster":
+		var mt: String = f.get("monster_type", "")
+		if mt != "" and DataDB.families.get(l.monster.family, {}).get("type", "") != mt:
+			return false
+		if f.get("shiny_only", false) and not l.monster.shiny:
+			return false
+		return int(l.monster.get("quality", 0)) >= int(f.get("min_quality", 0))
 	if l.kind == "essence":
 		var et: String = f.get("essence_type", "")
 		return et == "" or et == l.essence_type
@@ -1015,12 +1133,48 @@ func _check_listing(price: int) -> Dictionary:
 	return _ok()
 
 
+## Monstros no Market: só por diamantes. O monstro sai do jogador até ser vendido ou cancelado.
+func market_list_monster(server_id: String, level: int, stage: int, price: int) -> Dictionary:
+	var rec: Dictionary = p().monsters.get(server_id, {})
+	if rec.is_empty() or rec.get("converted", false):
+		return _err("Monstro inválido")
+	if rec.get("starter", false):
+		return _err("O inicial não pode ser vendido")
+	var m: Dictionary = DataDB.config.market
+	if price < int(m.monster_min_price) or price > int(m.monster_max_price):
+		return _err("Preço inválido")
+	var chk := _check_listing(1)
+	if not chk.ok:
+		return chk
+	var lvl := clampi(level, 1, int(p().validated_level) + 10)
+	var st := clampi(maxi(stage, int(DataDB.form(rec.form).get("stage", 1))), 1, MonsterLogic.stage_for_level(rec.family, lvl))
+	var mon := rec.duplicate()
+	mon.level = lvl
+	mon.stage = st
+	mon.form = DataDB.form_for_stage(rec.family, st)
+	p().monsters.erase(server_id)
+	var id := _id("L")
+	state.listings[id] = {"id": id, "seller_id": p().id, "seller_name": p().name, "kind": "monster", "currency": "diamonds",
+		"monster": mon, "price": price, "created_at": now()}
+	return _ok({"listing": state.listings[id], "wallet": wallet()})
+
+
 func market_buy(listing_id: String) -> Dictionary:
 	var l: Dictionary = state.listings.get(listing_id, {})
 	if l.is_empty():
 		return _err("Listagem não existe mais")
 	if l.seller_id == p().id:
 		return _err("Você não pode comprar sua própria listagem")
+	if l.kind == "monster":
+		if int(p().get("diamonds", 0)) < int(l.price):
+			return _err("Diamantes insuficientes")
+		p().diamonds = int(p().diamonds) - int(l.price)
+		state.listings.erase(listing_id)
+		var rec: Dictionary = l.monster.duplicate()
+		rec.starter = false
+		rec.converted = false
+		p().monsters[rec.server_id] = rec
+		return _ok({"monster": rec, "item": {}, "essence_type": "", "amount": 0, "wallet": wallet()})
 	if int(p().gold) < int(l.price):
 		return _err("Ouro insuficiente")
 	# transação atômica: tudo ou nada
@@ -1043,8 +1197,11 @@ func market_cancel(listing_id: String) -> Dictionary:
 	if l.is_empty() or l.seller_id != p().id:
 		return _err("Listagem inválida")
 	state.listings.erase(listing_id)
-	var res := {"item": {}, "essence_type": "", "amount": 0}
-	if l.kind == "item":
+	var res := {"item": {}, "essence_type": "", "amount": 0, "monster": {}}
+	if l.kind == "monster":
+		p().monsters[l.monster.server_id] = l.monster
+		res.monster = l.monster
+	elif l.kind == "item":
 		p().items[l.item.uid] = l.item
 		res.item = l.item
 	else:
@@ -1068,8 +1225,9 @@ func market_my() -> Dictionary:
 
 # ------------------------------------------------------------------ debug
 
-func debug_grant(gold: int, essences: Dictionary) -> Dictionary:
+func debug_grant(gold: int, essences: Dictionary, diamonds := 0) -> Dictionary:
 	p().gold = int(p().gold) + gold
+	p().diamonds = int(p().get("diamonds", 0)) + diamonds
 	for t in essences:
 		p().essences[t] = int(p().essences.get(t, 0)) + int(essences[t])
 	return _ok({"wallet": wallet()})

@@ -1,5 +1,15 @@
 # Resumo da entrega — Bestiário Idle
 
+## Revisão 5 — o que mudou (diamantes, bônus, Market de monstros)
+| Pedido | Como ficou | Como testar |
+|---|---|---|
+| Diamantes só por dinheiro real | 6 pacotes (4,99 → 99,99), primeira compra em dobro; compra validada no servidor | Hub → Diamantes (no APK de teste a compra é simulada) |
+| Monstros no Market só por diamantes | Aba "Monstros (diamantes)" com filtros por tipo, qualidade e shiny; vender a partir do Depot (taxa 10%) | Market → Vender → Monstros |
+| Bônus | 2x XP, 2x Shiny, 2x Recrutamento, 2x Drop, 2x Ouro: 8 h por diamantes ou 15 min por anúncio; pacote com todos | Hub → Bônus / botão Bônus na caça |
+| Tutorial com shiny | Um shiny de demonstração aparece e é explicado — não pode ser recrutado (com recado para os exploiters) | Perfil novo ou Ajustes → Rever tutorial |
+| Altar: entender o ganho | Antes de aprimorar: "Ganho: Defesa 48 → 55 (+7)"; depois, resumo com o que melhorou e quem usa o item; Estrela e Treino mostram antes → depois | Altar → Aprimorar itens |
+
+
 ## Revisão 4 — o que mudou (visual definitivo, ouro, tutorial)
 | Pedido | Como ficou | Como testar |
 |---|---|---|
@@ -73,7 +83,7 @@ Botão discreto **dbg** no canto inferior esquerdo (acima do painel de ações):
 - **Velocidade do tempo**: x1, x10, x100 (o combate roda mais passos; o servidor mock acompanha o relógio).
 - **Simular 8h offline agora**.
 - **Forçar**: próximo shiny, próximo recrutamento, próximo drop Raro/Épico/Lendário/Mítico, drop Incomum.
-- **Recursos**: +100k ouro, +1000 de cada Essência; **desbloquear todas as hunts e desafios**; recrutar 3; **recrutar 1 shiny**; **restaurar entradas do Chefe Diário**; **Marcos: +500 abates nas formas da hunt atual**.
+- **Recursos**: +100k ouro, +1000 de cada Essência; **desbloquear todas as hunts e desafios**; recrutar 3; **recrutar 1 shiny**; **restaurar entradas do Chefe Diário**; **Marcos: +500 abates nas formas da hunt atual**; **+1000 diamantes** (só no servidor mock).
 - **Spawnar monstros** (5 de uma vez, para testar ser cercado e desempenho).
 - **Trocar bioma** do mapa atual (todos os 28 biomas).
 - **Exportar spritesheets placeholder** (modelos PNG para o artista).

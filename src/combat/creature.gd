@@ -9,6 +9,7 @@ var world  # HuntWorld
 var is_player := false
 var is_boss := false
 var is_summon := false
+var demo := false  # shiny de demonstração do tutorial: não luta, não dá recompensa, não recruta
 var form_id := ""
 var display_name := ""
 var level := 1

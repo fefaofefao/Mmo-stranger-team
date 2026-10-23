@@ -17,6 +17,7 @@ func build() -> void:
 		["skull", Loc.t("Desafios"), "challenges", ""], ["paw", Loc.t("Grupo"), "party", ""], ["chest", Loc.t("Depot"), "depot", ""],
 		["bag", Loc.t("Inventário"), "inventory", ""], ["shop", Loc.t("Loja"), "shop", ""], ["scales", Loc.t("Market"), "market", ""],
 		["altar", Loc.t("Altar"), "altar", ""], ["book", Loc.t("Coleção"), "collection", ""], ["trophy", Loc.t("Rankings"), "rankings", ""],
+		["boost", Loc.t("Bônus"), "boosts", ""], ["diamond", Loc.t("Diamantes"), "diamonds", ""],
 		["gear", Loc.t("Ajustes"), "settings", ""],
 	]
 	for it in items:
@@ -24,6 +25,8 @@ func build() -> void:
 		var badge := ""
 		if target == "daily":
 			badge = _daily_badge
+		elif target == "boosts" and Game.active_boosts() > 0:
+			badge = "%d" % Game.active_boosts()
 		g.add_child(UI.tile_button(it[0], it[1], func(): main.goto(target), 60, Vector2(214, 128), it[3], badge))
 	if _daily_badge == "":
 		_load_daily()
