@@ -25,7 +25,7 @@ const iso = (s: number) => new Date(s * 1000).toISOString();
 type Ctx = { uid: string; user: any; userClient: any; player: any; dirty: Record<string, any> };
 
 function wallet(p: any) {
-  return { gold: Number(p.gold), essences: p.essences ?? {}, diamonds: Number(p.diamonds ?? 0) };
+  return { gold: Number(p.gold), essences: p.essences ?? {}, diamonds: Number(p.diamonds ?? 0), no_ads: !!p.no_ads };
 }
 
 // ---- bônus temporários (players.boosts = {tipo: fim em segundos unix})
@@ -467,6 +467,13 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     if (dup) return err("Compra já creditada");
     const v = await verifyPurchase(pr.id, token);
     if (!v.ok) return err(v.error ?? "Compra não confirmada");
+    if (pr.kind === "no_ads") {
+      // não consumível: só libera o direito, não conta como compra de diamantes
+      const { error: e2 } = await admin.from("iap_purchases").insert({ token, owner: ctx.uid, product: pr.id, diamonds: 0 });
+      if (e2) return err("Compra já creditada");
+      set(ctx, "no_ads", true);
+      return ok({ diamonds_gained: 0, no_ads: true, first_bonus: false, wallet: wallet(ctx.player) });
+    }
     let amount = pr.diamonds + (pr.bonus ?? 0);
     const first = Number(ctx.player.purchases ?? 0) === 0;
     if (first) amount += Math.round(pr.diamonds * (D.iap.first_purchase_bonus ?? 0));

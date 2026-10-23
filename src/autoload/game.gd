@@ -84,7 +84,7 @@ func _notification(what: int) -> void:
 func new_save() -> Dictionary:
 	var s := {
 		"version": SAVE_VERSION, "device_id": "dev_%x%x" % [rng.randi(), rng.randi()], "created_at": GameClock.now(),
-		"saved_at": 0.0, "playtime": 0.0, "player_name": "", "gold": 0, "diamonds": 0, "essences": {},
+		"saved_at": 0.0, "playtime": 0.0, "player_name": "", "gold": 0, "diamonds": 0, "no_ads": false, "essences": {},
 		"monsters": {}, "party": [], "items": {}, "inventory_cap": int(DataDB.config.inventory.base_cap),
 		"collection": {}, "challenges": {}, "current_hunt": "", "ai_behavior": "focus",
 		"boosts": {}, "settings": {"auto_sell_comum": false, "auto_sell_incomum": false, "zoom": 2.0,
@@ -259,6 +259,7 @@ func _apply_wallet(w: Dictionary) -> void:
 		return
 	save.gold = int(w.get("gold", save.gold))
 	save.diamonds = int(w.get("diamonds", save.get("diamonds", 0)))
+	save.no_ads = bool(w.get("no_ads", save.get("no_ads", false)))
 	var es: Dictionary = w.get("essences", {})
 	for t in es:
 		save.essences[t] = int(es[t])
@@ -776,7 +777,10 @@ func credit_purchase(product_id: String, token: String) -> Dictionary:
 	var r := await Backend.request("iap_purchase", {"product": product_id, "token": token})
 	if r.get("ok", false):
 		_apply_wallet(r.wallet)
-		feed.emit(Loc.t("+%d diamantes!") % int(r.diamonds_gained), Color("#7fe8ff"))
+		if r.get("no_ads", false):
+			feed.emit(Loc.t("Sem anúncios ativado! Obrigado pelo apoio!"), Color("#7fe8ff"))
+		else:
+			feed.emit(Loc.t("+%d diamantes!") % int(r.diamonds_gained), Color("#7fe8ff"))
 		save_local()
 	return r
 

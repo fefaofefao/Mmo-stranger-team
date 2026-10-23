@@ -180,3 +180,8 @@ Registro das decisões tomadas sem consulta (modo autônomo), com o motivo.
 | R44 | **Mais monstros selvagens com mais monstros em campo**: densidade × 1,45 com 2 em campo e × 1,9 com 3 (além da densidade maior dos Mundos 2 e 3). O mesmo fator entra no modelo de abates/hora (offline e anti-trapaça, GDScript e Edge Function). Com isso o fim de jogo ficou mais rápido; `xp.late_slope` 0,026 → 0,034 devolve o 210 a ~1.115 h (o 300 ficou em ~3.050 h). | Pedido. |
 | R45 | **Câmera**: com 2+ monstros em campo aparece o botão de câmera no mapa; cada toque passa para o próximo monstro vivo (o nome dele fica dourado no HUD). Se o seguido cair, a câmera vai para outro e volta quando ele renascer. | Pedido. |
 | R46 | **Tela inicial nova**: cena noturna em tela cheia (céu estrelado, lua com halo, montanhas em camadas, vila, torre do altar, colina), vagalumes, logo grande com contorno e sombra flutuando, os 9 iniciais desfilando na colina com animação de caminhada (um deles shiny), botão Jogar pulsando e idiomas embaixo. | "A tela inicial precisa melhorar drasticamente." |
+
+## Revisão 7 (abas do Mundo 1, Sem anúncios)
+- As abas do Mundo 1 são calculadas pelo nível da hunt na tela (não mudam os dados): ≤40 Iniciante, ≤70 Intermediário, resto Avançado. A Fronteira (80–105) entra em Avançado, pois leva ao Chefe de Mundo do 110. As hunts "mistas" caem na faixa do seu nível.
+- "Sem anúncios" remove só os interstitials (os únicos anúncios forçados). O banner fica, como pedido, e os premiados continuam como escolha do jogador para ganhar bônus de 15 min.
+- É um direito permanente da conta no servidor (`no_ads`), não um item local: vale em qualquer aparelho com a mesma conta. Não conta como "primeira compra" para não queimar o dobro de diamantes.

@@ -78,6 +78,8 @@ func hide_banner() -> void:
 
 ## Interstitial: no máximo 1 a cada N minutos e nunca em desafio ou no resumo offline.
 func maybe_interstitial() -> void:
+	if Game.save.get("no_ads", false):
+		return  # comprou "Sem anúncios" (o banner continua)
 	if context in ["challenge", "offline_summary"]:
 		return
 	var now := Time.get_ticks_msec() / 1000.0
@@ -91,6 +93,8 @@ func maybe_interstitial() -> void:
 
 
 func can_interstitial_now() -> bool:
+	if Game.save.get("no_ads", false):
+		return false
 	var now := Time.get_ticks_msec() / 1000.0
 	return not context in ["challenge", "offline_summary"] and now - _last_interstitial >= float(DataDB.config.ads.interstitial_min_seconds)
 

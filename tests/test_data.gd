@@ -77,3 +77,17 @@ func test_challenges() -> void:
 		elif int(h.world) == 3:
 			check(int(h.requires_challenge) == 210 and h.theme == "astral", "Mundo 3 pede o Chefe 210")
 	check(KillRate.density_mult(3) > KillRate.density_mult(2) and KillRate.density_mult(2) > KillRate.density_mult(1), "mais monstros em campo = mais selvagens")
+
+
+func test_world1_tabs() -> void:
+	var HS = load("res://src/ui/screens/hunt_select_screen.gd")
+	var counts := {}
+	for h in DataDB.hunt_list:
+		var c: String = HS._cat_of(h)
+		counts[c] = int(counts.get(c, 0)) + 1
+		if int(h.world) == 1:
+			var lvl := int(h.level)
+			check(c == ("iniciante" if lvl <= 40 else ("intermediario" if lvl <= 70 else "avancado")), "aba por nível %s" % h.id)
+	for c in ["iniciante", "intermediario", "avancado", "mundo2", "mundo3"]:
+		check(int(counts.get(c, 0)) > 0, "aba %s com hunts" % c)
+	check(counts.size() == 5, "só 3 abas no Mundo 1 + Mundos 2 e 3")

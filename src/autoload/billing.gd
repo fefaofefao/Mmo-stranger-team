@@ -43,8 +43,9 @@ func buy(product_id: String) -> Dictionary:
 	if pr.is_empty():
 		return {"ok": false, "error": Loc.t("Produto inválido")}
 	if simulated:
-		var go: bool = await UIDialog.confirm(_overlay, Loc.t("Compra de teste"),
-			Loc.t("%d diamantes por %s.") % [int(pr.diamonds) + int(pr.get("bonus", 0)), price_text(pr)] + "\n\n" + Loc.t("[Modo simulado: sem Google Play Billing nenhuma cobrança é feita]"),
+		var what := Loc.t("Sem anúncios por %s.") % price_text(pr) if pr.get("kind", "") == "no_ads" \
+			else Loc.t("%d diamantes por %s.") % [int(pr.diamonds) + int(pr.get("bonus", 0)), price_text(pr)]
+		var go: bool = await UIDialog.confirm(_overlay, Loc.t("Compra de teste"), what + "\n\n" + Loc.t("[Modo simulado: sem Google Play Billing nenhuma cobrança é feita]"),
 			Loc.t("Comprar"), Loc.t("Cancelar"))
 		if not go:
 			return {"ok": false, "error": "", "cancelled": true}
@@ -96,5 +97,9 @@ func _on_purchases_updated(purchases: Array) -> void:
 		var token: String = pu.get("purchase_token", "")
 		var r: Dictionary = await Game.credit_purchase(skus[0], token)
 		if r.get("ok", false) or r.get("error", "") == "Compra já creditada":
-			plugin.consumePurchase(token)
+			if DataDB.iap_product(skus[0]).get("kind", "") == "no_ads":
+				if not pu.get("is_acknowledged", false):
+					plugin.acknowledgePurchase(token)  # não consumível: fica com o jogador
+			else:
+				plugin.consumePurchase(token)
 		purchase_finished.emit(r.get("ok", false), r)

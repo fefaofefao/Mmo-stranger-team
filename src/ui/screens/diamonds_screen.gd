@@ -22,14 +22,40 @@ func build() -> void:
 		b.add_child(UI.label(Loc.t("[Modo de teste: compras simuladas, sem cobrança]"), 15, UI.C_BAD))
 	var sc := UI.scroll(8)
 	b.add_child(sc[0])
+	for pr in Billing.products():
+		if pr.get("kind", "") == "no_ads":
+			sc[1].add_child(_no_ads_card(pr))
 	var g := UI.grid(2, 8)
 	g.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	sc[1].add_child(g)
 	for pr in Billing.products():
-		g.add_child(_pack(pr))
+		if pr.get("kind", "") != "no_ads":
+			g.add_child(_pack(pr))
 	sc[1].add_child(UI.label(Loc.t("Pagamento processado pelo Google Play. Diamantes não podem ser trocados por ouro nem por dinheiro."), 14, UI.C_MUTED, true))
 	if not Billing.prices_updated.is_connected(rebuild):
 		Billing.prices_updated.connect(rebuild)
+
+
+## "Sem anúncios": compra única que remove os anúncios em tela cheia (o banner continua).
+func _no_ads_card(pr: Dictionary) -> Control:
+	var owned: bool = Game.save.get("no_ads", false)
+	var p := UI.card(not owned)
+	var h := UI.hbox(10)
+	p.add_child(h)
+	h.add_child(UI.icon("lock" if not owned else "check", 52))
+	var col := UI.vbox(2)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	h.add_child(col)
+	col.add_child(UI.label(Loc.t("Sem anúncios"), 22, UI.C_GOLD))
+	col.add_child(UI.label(Loc.t("Remove os anúncios em tela cheia para sempre. O banner continua e os anúncios premiados (bônus de 15 min) seguem opcionais."), 15, UI.C_MUTED, true))
+	if owned:
+		h.add_child(UI.pill(Loc.t("Ativo"), UI.C_GOOD, 18))
+	else:
+		var pid: String = pr.id
+		var bt := UI.button(Billing.price_text(pr), func(): _buy(pid), 20, 58, "primary")
+		bt.custom_minimum_size = Vector2(170, 58)
+		h.add_child(bt)
+	return p
 
 
 func _pack(pr: Dictionary) -> Control:
@@ -59,7 +85,9 @@ func _pack(pr: Dictionary) -> Control:
 
 func _buy(pid: String) -> void:
 	var r: Dictionary = await Billing.buy(pid)
-	if r.get("ok", false):
+	if r.get("ok", false) and r.get("no_ads", false):
+		toast(Loc.t("Sem anúncios ativado! Obrigado pelo apoio!"), UI.C_GOOD, "check")
+	elif r.get("ok", false):
 		toast(Loc.t("+%s diamantes! Obrigado pelo apoio!") % UI.fmt(r.diamonds_gained), Color("#7fe8ff"), "diamond")
 		Game.save.purchases = int(Game.save.get("purchases", 0)) + 1
 	elif str(r.get("error", "")) != "":

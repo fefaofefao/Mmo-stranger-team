@@ -1,7 +1,8 @@
 extends Screen
 ## Seleção de hunts com estimativa de abates/XP por hora para o grupo atual.
 
-const CATS := ["filhote", "adolescente", "adulto", "mista", "fronteira", "mundo2", "mundo3"]
+## Abas: Mundo 1 dividido por nível (Iniciante até 40, Intermediário até 70, Avançado até 110), depois Mundos 2 e 3.
+const CATS := ["iniciante", "intermediario", "avancado", "mundo2", "mundo3"]
 var tab := -1
 var type_filter := ""
 
@@ -10,15 +11,15 @@ func build() -> void:
 	var b := make_layout(Loc.t("Hunts"), "map")
 	if tab < 0:
 		var cur: Dictionary = DataDB.hunts.get(Game.save.current_hunt, {})
-		tab = maxi(0, CATS.find(cur.get("category", "filhote")))
+		tab = maxi(0, CATS.find(_cat_of(cur))) if not cur.is_empty() else 0
 	# mundos (cada um com o seu foco) e, no Mundo 1, as categorias
-	var world := 3 if tab == 6 else (2 if tab == 5 else 1)
+	var world := 3 if tab == 4 else (2 if tab == 3 else 1)
 	var wrow := UI.hbox(6)
 	b.add_child(wrow)
 	for wi in 3:
 		var wn := wi + 1
 		var wl := Loc.t("Mundo %d") % wn
-		var wb := UI.button(wl, func(): tab = [0, 5, 6][wn - 1]; rebuild(), 19, 58, "tab_on" if world == wn else "tab")
+		var wb := UI.button(wl, func(): tab = [0, 3, 4][wn - 1]; rebuild(), 19, 58, "tab_on" if world == wn else "tab")
 		wb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		if not Game.world_unlocked(wn):
 			wb.icon = Icons.tex("lock")
@@ -26,8 +27,8 @@ func build() -> void:
 			wb.add_theme_constant_override("icon_max_width", 26)
 		wrow.add_child(wb)
 	if world == 1:
-		b.add_child(tabs([Loc.t("Filhotes"), Loc.t("Adolesc."), Loc.t("Adultos"), Loc.t("Mistas"), Loc.t("Fronteira")], tab, func(i): tab = i; rebuild()))
-	var focus: String = [Loc.t("Mundo 1 · níveis 1 a 110 · 1 monstro em campo"), Loc.t("Mundo 2 (Abismo) · 110 a 210 · 2 monstros em campo · mais inimigos"), Loc.t("Mundo 3 (Reino Astral) · 210+ · 3 monstros em campo · hordas")][world - 1]
+		b.add_child(tabs([Loc.t("Iniciante"), Loc.t("Intermediário"), Loc.t("Avançado")], tab, func(i): tab = i; rebuild()))
+	var focus: String = [Loc.t("Mundo 1 · níveis 1 a 110 · 1 monstro em campo · Iniciante até 40, Intermediário até 70, Avançado até 110"), Loc.t("Mundo 2 (Abismo) · 110 a 210 · 2 monstros em campo · mais inimigos"), Loc.t("Mundo 3 (Reino Astral) · 210+ · 3 monstros em campo · hordas")][world - 1]
 	b.add_child(UI.label(focus, 15, UI.C_MUTED, true))
 	b.add_child(_type_filter())
 	var fighters := Game.fighter_stats()
@@ -49,11 +50,19 @@ func build() -> void:
 	var rec := Game.recommended_hunt()
 	var shown := 0
 	for h in DataDB.hunt_list:
-		if h.category == cat and (type_filter == "" or h.types.has(type_filter)):
+		if _cat_of(h) == cat and (type_filter == "" or h.types.has(type_filter)):
 			list.add_child(_hunt_row(h, fighters, main_lvl, rec))
 			shown += 1
 	if shown == 0 and not locked_world:
 		list.add_child(empty_note(Loc.t("Nenhuma hunt de %s nesta aba. Tente outra aba ou tire o filtro.") % DataDB.type_name(type_filter), "map"))
+
+
+## Aba de uma hunt: Mundo 1 vai pela faixa de nível, os outros mundos pela categoria.
+static func _cat_of(h: Dictionary) -> String:
+	if int(h.get("world", 1)) != 1:
+		return h.get("category", "mundo2")
+	var lvl := int(h.get("level", 1))
+	return "iniciante" if lvl <= 40 else ("intermediario" if lvl <= 70 else "avancado")
 
 
 ## Barra com os 9 tipos: tocar filtra as hunts que têm monstros daquele tipo.

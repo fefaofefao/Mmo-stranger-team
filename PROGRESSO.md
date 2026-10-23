@@ -103,3 +103,9 @@ Legenda: [x] concluído · [~] concluído com fallback (ver PENDENCIAS.md)
 - [x] Botão de câmera para acompanhar outro monstro
 - [x] Tela inicial redesenhada
 - [x] Recalibragem (late_slope 0,034), testes (7.511 asserções), smoke, paridade, traduções, screenshots, APK
+
+## Revisão 7 — abas do Mundo 1 e "Sem anúncios"
+- Mundo 1 com só 3 abas por faixa de nível: **Iniciante** (até 40), **Intermediário** (até 70) e **Avançado** (até 110, inclui a Fronteira). Mundos 2 e 3 sem mudança.
+- Produto **Sem anúncios** (US$ 4,99, não consumível): remove os anúncios em tela cheia; o banner continua e os anúncios premiados seguem opcionais. Card no topo da loja de Diamantes, com selo "Ativo" após a compra.
+- Servidor (mock + Edge Function) grava `players.no_ads` e devolve no `wallet`; migration `20261026000007_no_ads.sql`. Não gasta o bônus de primeira compra de diamantes.
+- Testes: abas por nível e compra do Sem anúncios.

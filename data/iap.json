@@ -1,5 +1,5 @@
 {
- "_comentario": "Produtos de dinheiro real (Google Play Billing, tipo 'inapp' consumível). Crie no Play Console com os MESMOS ids. 'price' é só o texto mostrado quando a loja do Google ainda não respondeu (o jogo usa o preço localizado da Play Store). Diamantes só entram por compra real ou venda de monstros no Market.",
+ "_comentario": "Produtos de dinheiro real (Google Play Billing, tipo 'inapp' consumível). Crie no Play Console com os MESMOS ids. 'price' é só o texto mostrado quando a loja do Google ainda não respondeu (o jogo usa o preço localizado da Play Store). Diamantes só entram por compra real ou venda de monstros no Market. O produto 'no_ads' é NÃO consumível (crie como produto único no Play Console): remove os anúncios em tela cheia; o banner continua e os anúncios premiados seguem opcionais.",
  "first_purchase_bonus": 1.0,
  "products": [
   {
@@ -43,6 +43,14 @@
    "bonus": 4000,
    "price": "US$ 99,99",
    "tag": "Melhor valor"
+  },
+  {
+   "id": "no_ads",
+   "kind": "no_ads",
+   "diamonds": 0,
+   "bonus": 0,
+   "price": "US$ 4,99",
+   "tag": ""
   }
  ]
 }
