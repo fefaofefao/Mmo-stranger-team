@@ -23,16 +23,16 @@ estrelas no principal a cada 30 níveis (máx. 5). Sem boost de 2x XP.
 | 50 | 19.4h | Cidadela Alta (Nv 49) | 1009 | 780.0k | 1 | 42 | 0.0% / 1.0% / 15.0% / 1.0% |
 | 60 | 31.3h | Caverna Distante (Nv 55) | 1015 | 917.1k | 1 | 52 | 0.0% / 1.0% / 17.7% / 1.0% |
 | 80 | 61.4h | Caverna Azulada (Nv 73) | 1213 | 1.61M | 1 | 83 | 0.0% / 1.0% / 22.2% / 1.0% |
-| 90 | 86.5h | Cripta Larga (Nv 79) | 1099 | 1.62M | 1 | 89 | 0.0% / 1.0% / 23.1% / 1.0% |
-| 100 | 113.8h | Abismo · Ruínas Energizadas III (Nv 100) | 1305 | 2.70M | 1 | 119 | 0.0% / 5.5% / 23.1% / 3.2% |
-| 110 | 153.3h | Abismo · Ruínas Energizadas III (Nv 100) | 1344 | 2.78M | 1 | 123 | 0.0% / 5.5% / 24.0% / 3.2% |
-| 130 | 237.4h | Abismo · Deserto de Cinzas III (Nv 130) | 1751 | 5.47M | 2 | 170 | 3.0% / 7.8% / 24.0% / 9.2% |
-| 150 | 362.8h | Abismo · Cordilheira Ventosa I (Nv 150) | 1780 | 6.74M | 2 | 190 | 3.0% / 9.2% / 24.0% / 9.2% |
-| 180 | 654.8h | Abismo · Deserto de Cinzas III (Nv 180) | 1891 | 9.16M | 2 | 207 | 3.0% / 9.2% / 25.8% / 9.2% |
-| 210 | 1109.7h | Abismo · Cordilheira Ventosa I (Nv 210) | 1908 | 11.38M | 2 | 213 | 3.0% / 12.2% / 25.8% / 9.2% |
-| 240 | 1660.0h | Abismo · Brejo Sombrio II (Nv 240) | 2309 | 16.49M | 3 | 232 | 3.0% / 13.0% / 27.6% / 9.2% |
-| 270 | 2431.6h | Abismo · Picos Montanhosos II (Nv 270) | 2327 | 19.48M | 3 | 245 | 6.0% / 13.0% / 27.6% / 9.2% |
-| 300 | 3463.4h | Abismo · Planalto da Tempestade III (Nv 300) | 2365 | 22.83M | 3 | 245 | 6.0% / 13.0% / 27.6% / 9.2% |
+| 90 | 86.3h | Fronteira · Vale do Crepúsculo I (Nv 85) | 1060 | 1.72M | 1 | 100 | 0.0% / 1.0% / 23.1% / 1.0% |
+| 100 | 120.5h | Fronteira · Floresta Densa II (Nv 100) | 1157 | 2.45M | 1 | 130 | 0.0% / 2.5% / 23.1% / 5.5% |
+| 110 | 167.4h | Fronteira · Tempestade Luminosa II (Nv 105) | 1158 | 2.62M | 1 | 134 | 0.0% / 2.5% / 23.1% / 5.5% |
+| 130 | 247.8h | Abismo · Deserto de Cinzas III (Nv 130) | 2142 | 6.68M | 2 | 169 | 3.0% / 4.8% / 23.1% / 9.2% |
+| 150 | 370.6h | Abismo · Cordilheira Ventosa I (Nv 150) | 2155 | 8.16M | 2 | 199 | 3.0% / 8.5% / 23.1% / 9.2% |
+| 180 | 660.3h | Abismo · Deserto de Cinzas III (Nv 180) | 2323 | 11.25M | 2 | 217 | 3.0% / 8.5% / 24.9% / 9.2% |
+| 210 | 1124.1h | Abismo · Tempestade Luminosa II (Nv 200) | 2299 | 12.84M | 2 | 223 | 3.0% / 11.5% / 24.9% / 9.2% |
+| 240 | 1586.8h | Astral · Tundra III (Nv 240) | 3539 | 25.27M | 3 | 253 | 9.0% / 11.5% / 24.9% / 9.2% |
+| 270 | 2214.6h | Astral · Cordilheira Ventosa I (Nv 270) | 3554 | 29.76M | 3 | 262 | 9.0% / 11.5% / 27.6% / 9.2% |
+| 300 | 3066.3h | Astral · Ruínas Energizadas III (Nv 300) | 3550 | 34.50M | 3 | 269 | 9.0% / 11.5% / 27.6% / 10.0% |
 
 ## Inicial: Marolinho
 
@@ -47,16 +47,16 @@ estrelas no principal a cada 30 níveis (máx. 5). Sem boost de 2x XP.
 | 50 | 20.4h | Planície Eterna (Nv 45) | 1174 | 800.9k | 1 | 52 | 1.0% / 12.5% / 0.6% / 0.0% |
 | 60 | 31.2h | Encosta Perdida (Nv 54) | 1190 | 1.04M | 1 | 57 | 1.0% / 14.8% / 0.6% / 0.0% |
 | 80 | 62.1h | Chaminé Bravia (Nv 72) | 1247 | 1.60M | 1 | 72 | 1.0% / 20.0% / 0.6% / 0.0% |
-| 90 | 86.9h | Templo Alto (Nv 78) | 1166 | 1.61M | 1 | 84 | 1.0% / 20.8% / 0.6% / 0.0% |
-| 100 | 113.0h | Abismo · Campo de Lava II (Nv 90) | 1496 | 2.66M | 1 | 95 | 1.0% / 21.5% / 0.6% / 2.2% |
-| 110 | 163.8h | Abismo · Campo de Lava II (Nv 90) | 1526 | 1.75M | 1 | 98 | 1.0% / 22.2% / 0.6% / 3.0% |
-| 130 | 244.2h | Abismo · Deserto de Cinzas III (Nv 130) | 1824 | 5.68M | 2 | 139 | 4.0% / 22.2% / 0.6% / 9.0% |
-| 150 | 365.7h | Abismo · Cordilheira Ventosa I (Nv 150) | 1827 | 6.90M | 2 | 161 | 4.0% / 22.2% / 0.6% / 9.0% |
-| 180 | 651.2h | Abismo · Deserto de Cinzas III (Nv 180) | 1943 | 9.39M | 2 | 188 | 7.0% / 22.2% / 0.6% / 9.0% |
-| 210 | 1096.3h | Abismo · Cordilheira Ventosa I (Nv 210) | 1938 | 11.54M | 2 | 190 | 7.0% / 23.0% / 0.6% / 9.0% |
-| 240 | 1643.1h | Abismo · Brejo Sombrio II (Nv 240) | 2332 | 16.62M | 3 | 216 | 7.0% / 23.0% / 4.2% / 9.0% |
-| 270 | 2398.1h | Abismo · Picos Montanhosos II (Nv 270) | 2355 | 20.22M | 3 | 228 | 7.0% / 23.0% / 4.2% / 12.0% |
-| 300 | 3397.7h | Abismo · Planalto da Tempestade III (Nv 300) | 2376 | 23.51M | 3 | 253 | 10.0% / 23.8% / 11.4% / 12.0% |
+| 90 | 86.4h | Fronteira · Cordilheira Ventosa I (Nv 80) | 1201 | 1.78M | 1 | 87 | 1.0% / 20.8% / 0.6% / 0.0% |
+| 100 | 119.3h | Fronteira · Floresta Densa II (Nv 100) | 1214 | 2.54M | 1 | 118 | 5.5% / 20.8% / 2.4% / 4.5% |
+| 110 | 164.9h | Fronteira · Tempestade Luminosa II (Nv 105) | 1218 | 2.73M | 1 | 125 | 5.5% / 20.8% / 2.4% / 4.5% |
+| 130 | 241.5h | Abismo · Deserto de Cinzas III (Nv 130) | 2265 | 7.00M | 2 | 162 | 7.0% / 20.8% / 2.4% / 8.2% |
+| 150 | 360.1h | Abismo · Cordilheira Ventosa I (Nv 150) | 2229 | 8.36M | 2 | 189 | 7.0% / 20.8% / 2.4% / 8.2% |
+| 180 | 643.7h | Abismo · Deserto de Cinzas III (Nv 180) | 2402 | 11.53M | 2 | 213 | 10.0% / 20.8% / 2.4% / 8.2% |
+| 210 | 1096.7h | Abismo · Deserto de Cinzas III (Nv 200) | 2369 | 13.11M | 2 | 216 | 10.0% / 23.0% / 2.4% / 8.2% |
+| 240 | 1552.4h | Astral · Cordilheira Ventosa I (Nv 240) | 3609 | 25.54M | 3 | 236 | 13.0% / 23.0% / 2.4% / 8.2% |
+| 270 | 2175.3h | Astral · Cordilheira Ventosa I (Nv 270) | 3630 | 30.11M | 3 | 245 | 13.0% / 23.0% / 2.4% / 8.2% |
+| 300 | 3014.2h | Astral · Cordilheira Ventosa I (Nv 300) | 3624 | 34.90M | 3 | 246 | 13.0% / 23.0% / 2.4% / 9.0% |
 
 ## Inicial: Potrilume
 
@@ -71,16 +71,16 @@ estrelas no principal a cada 30 níveis (máx. 5). Sem boost de 2x XP.
 | 50 | 20.5h | Lodaçal Velho (Nv 42) | 1110 | 714.0k | 1 | 49 | 0.5% / 0.5% / 0.0% / 3.5% |
 | 60 | 32.0h | Mata Brilhante (Nv 52) | 1170 | 1.00M | 1 | 55 | 0.5% / 0.5% / 0.0% / 3.5% |
 | 80 | 62.0h | Cripta Larga (Nv 79) | 1146 | 1.73M | 1 | 71 | 0.5% / 0.5% / 0.0% / 3.5% |
-| 90 | 82.3h | Abismo · Fontes Termais I (Nv 90) | 1306 | 2.35M | 1 | 80 | 2.0% / 2.0% / 0.0% / 3.5% |
-| 100 | 108.3h | Abismo · Vale do Crepúsculo I (Nv 100) | 1336 | 2.80M | 1 | 96 | 2.8% / 3.8% / 0.0% / 4.5% |
-| 110 | 146.3h | Abismo · Vale do Crepúsculo I (Nv 100) | 1375 | 2.88M | 1 | 102 | 3.5% / 3.8% / 0.0% / 4.5% |
-| 130 | 231.6h | Abismo · Tempestade Luminosa II (Nv 130) | 1741 | 5.35M | 2 | 136 | 5.8% / 6.8% / 0.0% / 7.5% |
-| 150 | 359.9h | Abismo · Cordilheira Ventosa I (Nv 150) | 1762 | 6.57M | 2 | 170 | 6.5% / 9.8% / 0.0% / 7.5% |
-| 180 | 657.7h | Abismo · Deserto de Cinzas III (Nv 180) | 1889 | 9.00M | 2 | 182 | 6.5% / 9.8% / 0.0% / 7.5% |
-| 210 | 1118.2h | Abismo · Cordilheira Ventosa I (Nv 210) | 1900 | 11.31M | 2 | 192 | 9.5% / 10.5% / 0.0% / 9.0% |
-| 240 | 1670.2h | Abismo · Brejo Sombrio II (Nv 240) | 2332 | 16.62M | 3 | 205 | 9.5% / 13.5% / 0.0% / 9.0% |
-| 270 | 2438.9h | Abismo · Picos Montanhosos II (Nv 270) | 2324 | 19.42M | 3 | 229 | 12.5% / 13.5% / 3.6% / 9.0% |
-| 300 | 3475.8h | Abismo · Planalto da Tempestade III (Nv 300) | 2366 | 22.78M | 3 | 247 | 12.5% / 13.5% / 14.4% / 9.0% |
+| 90 | 85.4h | Fronteira · Vale do Crepúsculo I (Nv 85) | 1093 | 1.82M | 1 | 81 | 0.5% / 0.5% / 0.0% / 3.5% |
+| 100 | 118.7h | Fronteira · Floresta Densa II (Nv 100) | 1141 | 2.44M | 1 | 100 | 0.5% / 2.8% / 0.0% / 6.5% |
+| 110 | 162.3h | Fronteira · Floresta Sombria I (Nv 105) | 1215 | 2.81M | 1 | 110 | 3.5% / 2.8% / 0.0% / 8.0% |
+| 130 | 241.9h | Abismo · Tempestade Luminosa II (Nv 130) | 2142 | 6.65M | 2 | 137 | 5.8% / 5.8% / 0.0% / 8.8% |
+| 150 | 366.1h | Abismo · Cordilheira Ventosa I (Nv 150) | 2126 | 8.01M | 2 | 172 | 6.5% / 8.8% / 0.0% / 8.8% |
+| 180 | 659.0h | Abismo · Deserto de Cinzas III (Nv 180) | 2316 | 11.17M | 2 | 185 | 6.5% / 8.8% / 0.0% / 8.8% |
+| 210 | 1121.2h | Abismo · Vale do Crepúsculo I (Nv 200) | 2336 | 12.99M | 2 | 198 | 9.5% / 11.8% / 0.0% / 8.8% |
+| 240 | 1585.7h | Astral · Tundra III (Nv 240) | 3520 | 25.02M | 3 | 237 | 9.5% / 11.8% / 7.2% / 8.8% |
+| 270 | 2219.3h | Astral · Cordilheira Ventosa I (Nv 270) | 3529 | 29.41M | 3 | 261 | 9.5% / 11.8% / 14.4% / 8.8% |
+| 300 | 3075.2h | Astral · Ruínas Energizadas III (Nv 300) | 3570 | 34.54M | 3 | 262 | 9.5% / 11.8% / 14.4% / 9.5% |
 
 ## Comparação entre iniciais (horas de jogo acumuladas)
 
@@ -95,16 +95,16 @@ estrelas no principal a cada 30 níveis (máx. 5). Sem boost de 2x XP.
 | 50 | 19.4h | 20.4h | 20.5h |
 | 60 | 31.3h | 31.2h | 32.0h |
 | 80 | 61.4h | 62.1h | 62.0h |
-| 90 | 86.5h | 86.9h | 82.3h |
-| 100 | 113.8h | 113.0h | 108.3h |
-| 110 | 153.3h | 163.8h | 146.3h |
-| 130 | 237.4h | 244.2h | 231.6h |
-| 150 | 362.8h | 365.7h | 359.9h |
-| 180 | 654.8h | 651.2h | 657.7h |
-| 210 | 1109.7h | 1096.3h | 1118.2h |
-| 240 | 1660.0h | 1643.1h | 1670.2h |
-| 270 | 2431.6h | 2398.1h | 2438.9h |
-| 300 | 3463.4h | 3397.7h | 3475.8h |
+| 90 | 86.3h | 86.4h | 85.4h |
+| 100 | 120.5h | 119.3h | 118.7h |
+| 110 | 167.4h | 164.9h | 162.3h |
+| 130 | 247.8h | 241.5h | 241.9h |
+| 150 | 370.6h | 360.1h | 366.1h |
+| 180 | 660.3h | 643.7h | 659.0h |
+| 210 | 1124.1h | 1096.7h | 1121.2h |
+| 240 | 1586.8h | 1552.4h | 1585.7h |
+| 270 | 2214.6h | 2175.3h | 2219.3h |
+| 300 | 3066.3h | 3014.2h | 3075.2h |
 
 ## Tempo de calendário estimado (Fogarito)
 
@@ -116,17 +116,17 @@ estrelas no principal a cada 30 níveis (máx. 5). Sem boost de 2x XP.
 | 16 | 1.1h | 0 | 0 |
 | 35 | 8.3h | 1 | 0 |
 | 80 | 61.4h | 7 | 4 |
-| 110 | 153.3h | 19 | 9 |
-| 150 | 362.8h | 44 | 21 |
-| 210 | 1109.7h | 135 | 64 |
-| 240 | 1660.0h | 202 | 95 |
-| 300 | 3463.4h | 422 | 199 |
+| 110 | 167.4h | 20 | 10 |
+| 150 | 370.6h | 45 | 21 |
+| 210 | 1124.1h | 137 | 65 |
+| 240 | 1586.8h | 194 | 91 |
+| 300 | 3066.3h | 374 | 176 |
 
-## Desafios com o combate real (tools/challenge_sim.gd, com bônus típicos de Marcos no nível)
+## Desafios e Chefes de Mundo com o combate real (tools/challenge_sim.gd)
 
-Chefes reajustados em +0,3% (nível 10) a +8% (nível 90) de Vida e Ataque para compensar os Marcos de Caça típicos de cada faixa. 2 lutas por caso.
+Desafios: 1 monstro, bônus típicos de Marcos. Chefes de Mundo: grupo de 2 (nível 110) ou 3 (nível 210) monstros de qualidade 20, sem treino; 'um fraco' = um deles com 60% do nível. Meta: grupo completo vence na maioria das vezes; grupo com um monstro fraco quase nunca.
 
-| Desafio | Nível do grupo | Inicial (relação de tipo) | Vitórias | Tempo médio |
+| Desafio | Nível do grupo | Grupo / inicial | Vitórias | Tempo médio |
 |---|---|---|---|---|
 | c10 | 13 | Breuzinho (vantagem) | 2/2 | 45s |
 | c10 | 13 | Brotilho (neutro) | 0/2 | - |
@@ -134,51 +134,59 @@ Chefes reajustados em +0,3% (nível 10) a +8% (nível 90) de Vida e Ataque para 
 | c10 | 18 | Breuzinho (vantagem) | 2/2 | 24s |
 | c10 | 18 | Brotilho (neutro) | 2/2 | 37s |
 | c10 | 18 | Fogarito (desvantagem) | 2/2 | 51s |
-| c20 | 23 | Marolinho (vantagem) | 2/2 | 54s |
-| c20 | 23 | Tatuzito (neutro) | 2/2 | 66s |
+| c20 | 23 | Marolinho (vantagem) | 2/2 | 55s |
+| c20 | 23 | Tatuzito (neutro) | 2/2 | 65s |
 | c20 | 23 | Picolino (desvantagem) | 0/2 | - |
-| c20 | 28 | Marolinho (vantagem) | 2/2 | 40s |
-| c20 | 28 | Tatuzito (neutro) | 2/2 | 47s |
+| c20 | 28 | Marolinho (vantagem) | 2/2 | 39s |
+| c20 | 28 | Tatuzito (neutro) | 2/2 | 48s |
 | c20 | 28 | Picolino (desvantagem) | 2/2 | 73s |
 | c30 | 33 | Picolino (vantagem) | 2/2 | 42s |
 | c30 | 33 | Brisinho (neutro) | 0/2 | - |
 | c30 | 33 | Tatuzito (desvantagem) | 0/2 | - |
-| c30 | 38 | Picolino (vantagem) | 2/2 | 30s |
+| c30 | 38 | Picolino (vantagem) | 2/2 | 31s |
 | c30 | 38 | Brisinho (neutro) | 2/2 | 42s |
-| c30 | 38 | Tatuzito (desvantagem) | 2/2 | 62s |
+| c30 | 38 | Tatuzito (desvantagem) | 2/2 | 63s |
 | c40 | 43 | Brotilho (vantagem) | 2/2 | 49s |
-| c40 | 43 | Potrilume (neutro) | 2/2 | 68s |
+| c40 | 43 | Potrilume (neutro) | 2/2 | 67s |
 | c40 | 43 | Lãmpadinha (desvantagem) | 2/2 | 98s |
-| c40 | 48 | Brotilho (vantagem) | 2/2 | 44s |
-| c40 | 48 | Potrilume (neutro) | 2/2 | 63s |
-| c40 | 48 | Lãmpadinha (desvantagem) | 2/2 | 90s |
-| c50 | 53 | Fogarito (vantagem) | 2/2 | 48s |
-| c50 | 53 | Lãmpadinha (neutro) | 0/2 | - |
+| c40 | 48 | Brotilho (vantagem) | 2/2 | 43s |
+| c40 | 48 | Potrilume (neutro) | 2/2 | 62s |
+| c40 | 48 | Lãmpadinha (desvantagem) | 1/2 | 88s |
+| c50 | 53 | Fogarito (vantagem) | 2/2 | 47s |
+| c50 | 53 | Lãmpadinha (neutro) | 1/2 | 68s |
 | c50 | 53 | Brotilho (desvantagem) | 0/2 | - |
-| c50 | 58 | Fogarito (vantagem) | 2/2 | 41s |
-| c50 | 58 | Lãmpadinha (neutro) | 1/2 | 64s |
+| c50 | 58 | Fogarito (vantagem) | 2/2 | 42s |
+| c50 | 58 | Lãmpadinha (neutro) | 2/2 | 63s |
 | c50 | 58 | Brotilho (desvantagem) | 0/2 | - |
-| c60 | 63 | Tatuzito (vantagem) | 2/2 | 55s |
-| c60 | 63 | Breuzinho (neutro) | 0/2 | - |
+| c60 | 63 | Tatuzito (vantagem) | 2/2 | 54s |
+| c60 | 63 | Breuzinho (neutro) | 1/2 | 81s |
 | c60 | 63 | Brisinho (desvantagem) | 0/2 | - |
 | c60 | 68 | Tatuzito (vantagem) | 2/2 | 50s |
-| c60 | 68 | Breuzinho (neutro) | 2/2 | 75s |
+| c60 | 68 | Breuzinho (neutro) | 1/2 | 73s |
 | c60 | 68 | Brisinho (desvantagem) | 0/2 | - |
-| c70 | 73 | Lãmpadinha (vantagem) | 2/2 | 55s |
-| c70 | 73 | Marolinho (neutro) | 2/2 | 78s |
+| c70 | 73 | Lãmpadinha (vantagem) | 2/2 | 60s |
+| c70 | 73 | Marolinho (neutro) | 1/2 | 82s |
 | c70 | 73 | Potrilume (desvantagem) | 0/2 | - |
 | c70 | 78 | Lãmpadinha (vantagem) | 2/2 | 46s |
-| c70 | 78 | Marolinho (neutro) | 2/2 | 67s |
+| c70 | 78 | Marolinho (neutro) | 2/2 | 63s |
 | c70 | 78 | Potrilume (desvantagem) | 0/2 | - |
-| c80 | 83 | Brisinho (vantagem) | 2/2 | 34s |
-| c80 | 83 | Fogarito (neutro) | 1/2 | 49s |
+| c80 | 83 | Brisinho (vantagem) | 2/2 | 35s |
+| c80 | 83 | Fogarito (neutro) | 0/2 | - |
 | c80 | 83 | Breuzinho (desvantagem) | 0/2 | - |
 | c80 | 88 | Brisinho (vantagem) | 2/2 | 33s |
-| c80 | 88 | Fogarito (neutro) | 1/2 | 51s |
+| c80 | 88 | Fogarito (neutro) | 2/2 | 49s |
 | c80 | 88 | Breuzinho (desvantagem) | 0/2 | - |
-| c90 | 93 | Potrilume (vantagem) | 2/2 | 33s |
-| c90 | 93 | Picolino (neutro) | 2/2 | 54s |
-| c90 | 93 | Marolinho (desvantagem) | 1/2 | 72s |
+| c90 | 93 | Potrilume (vantagem) | 2/2 | 32s |
+| c90 | 93 | Picolino (neutro) | 2/2 | 58s |
+| c90 | 93 | Marolinho (desvantagem) | 1/2 | 70s |
 | c90 | 98 | Potrilume (vantagem) | 2/2 | 31s |
-| c90 | 98 | Picolino (neutro) | 2/2 | 51s |
-| c90 | 98 | Marolinho (desvantagem) | 1/2 | 67s |
+| c90 | 98 | Picolino (neutro) | 2/2 | 53s |
+| c90 | 98 | Marolinho (desvantagem) | 0/2 | - |
+| wb110 | 112 | 2 monstros (completo) | 2/4 | 57s |
+| wb110 | 118 | 2 monstros (completo) | 3/4 | 59s |
+| wb110 | 112 | 2 monstros (um fraco) | 0/4 | - |
+| wb110 | 118 | 2 monstros (um fraco) | 0/4 | - |
+| wb210 | 212 | 3 monstros (completo) | 1/4 | 48s |
+| wb210 | 218 | 3 monstros (completo) | 3/4 | 56s |
+| wb210 | 212 | 3 monstros (um fraco) | 0/4 | - |
+| wb210 | 218 | 3 monstros (um fraco) | 0/4 | - |

@@ -1,6 +1,6 @@
 # Bestiário Idle
 
-RPG idle de monstros para Android, com visual em tiles 32x32 inspirado em Tibia (só o visual), combate 100% automático em mapa, grupo de até 3 monstros, 135 formas, Mundo 2 até o nível 300, ranking online, market entre jogadores e AdMob.
+RPG idle de monstros para Android, com visual em tiles 32x32 inspirado em Tibia (só o visual), combate 100% automático em mapa, grupo de até 3 monstros, 135 formas, 3 mundos (até o nível 300) com Chefes de Mundo, ranking online, market entre jogadores e AdMob.
 
 - Engine: **Godot 4.3 stable** (GDScript), renderer *GL Compatibility*.
 - Backend: **Supabase** (Auth anônima + Google, Postgres com RLS, Edge Function) — com **servidor mock local** que roda o jogo inteiro sem credenciais.
@@ -35,12 +35,12 @@ xvfb-run -s "-screen 0 1280x1400x24" godot --path . --rendering-driver opengl3 -
 
 ```
 data/                 balanceamento em JSON (edite aqui, sem mexer no código)
-  config.json           fórmulas, curva de XP, raridades, Mundo 2, anti-trapaça, market, ads...
+  config.json           fórmulas, curva de XP, raridades, mundos gerados (world1x, world2, world3), anti-trapaça, market, ads...
   types.json            ciclo de tipos (ordem e multiplicadores)
   families.json         45 famílias x 3 estágios (nomes, descrições, atributos, habilidades)
   abilities.json        63 habilidades (7 por tipo)
   biomes.json           paletas e estilos de geração dos 28 biomas
-  hunts_world1.json     144 hunts do Mundo 1 (Mundo 2 é gerado pelo config.json)
+  hunts_world1.json     144 hunts do Mundo 1 (Fronteira, Mundo 2 e Mundo 3 são gerados pelo config.json)
   challenges.json       Desafios 10..90 (adicione entradas para >90)
   items.json            bases de itens (slot x tipo x tier) e afixos
   ads.json              ÚNICO arquivo com IDs do AdMob
@@ -151,7 +151,7 @@ A base do quadro fica alinhada à base do tile. Os `form_id` estão em `data/fam
 
 ### Tilesets
 Formato novo (512x128, 16x4 tiles): linha 0 chão (0-7) e decorações (8-15); linha 1 transições para a trilha; linha 2 transições para a massa do bioma (água, lava, rocha...) pela máscara de cantos (1 = sup.esq, 2 = sup.dir, 4 = inf.esq, 8 = inf.dir); linha 3 massa cheia (0-3) e corrupção (4-7). Objetos em pé: `<bioma>_prop0..2.png`. Prévia de todos os biomas: `tools/map_preview.gd` → `docs/maps_preview.png`.
-Salve `assets/tilesets/<bioma>.png` nesse formato; o Mundo 2 aplica a paleta corrompida automaticamente. Os ids dos biomas estão em `data/biomes.json`. Debug → "Exportar spritesheets placeholder" gera modelos de todos os biomas para o artista.
+Salve `assets/tilesets/<bioma>.png` nesse formato; os Mundos 2 e 3 aplicam suas paletas (Abismo e Astral, em `config.themes`) automaticamente. Os ids dos biomas estão em `data/biomes.json`. Debug → "Exportar spritesheets placeholder" gera modelos de todos os biomas para o artista.
 
 ### Hub
 `assets/ui/hub.png` substitui a ilustração do Hub/título.

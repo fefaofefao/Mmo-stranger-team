@@ -363,7 +363,7 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
       return ok({ won: false, cooldown: D.challenge_fail_cooldown });
     }
     const seconds = Number(a.seconds ?? 0);
-    if (seconds < C.anti_cheat.challenge_min_seconds) return err("Tempo de vitória implausível");
+    if (seconds < L.challengeMinTime(c, await partyUpperStats(ctx, a.party ?? []))) return err("Tempo de vitória implausível");
     if ((a.party?.[0]?.level ?? 1) > ctx.player.validated_level + 10) return err("Nível não validado");
     const first = !rec.cleared;
     rec.cleared = true;

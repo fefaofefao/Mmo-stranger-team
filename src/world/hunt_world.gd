@@ -45,6 +45,7 @@ var boss_timers := {}
 var boss_phase := 0
 var wipe_times: Array = []
 var headless := false
+var _density := 16
 var max_steps_per_frame := 400
 
 var _accum := 0.0
@@ -107,12 +108,14 @@ func setup_hunt(p_hunt: Dictionary, biome_override := "") -> void:
 	biome_id = biome_override if biome_override != "" else hunt.biome
 	corrupted = hunt.get("corrupted", false)
 	var sz := Vector2i(int(hunt.map_size[0]), int(hunt.map_size[1]))
-	map = MapGenerator.generate(biome_id, sz, int(hunt.seed), corrupted, int(hunt.density) + 8)
+	_density = int(round(float(hunt.density) * KillRate.density_mult(field_wanted())))
+	map = MapGenerator.generate(biome_id, sz, int(hunt.seed), corrupted, _density + 8)
+	map["theme"] = hunt.get("theme", "")
 	_build_world()
 	_spawn_party(map.start)
 	slots.clear()
 	var spawns: Array = map.spawns
-	for i in int(hunt.density):
+	for i in _density:
 		slots.append({"cell": spawns[i % spawns.size()], "timer": 0.3 + i * 0.12, "creature": null})
 
 
@@ -191,7 +194,7 @@ func _build_world() -> void:
 		TileFactory.paint(map, ground, deco_layer, entities, int(map.get("seed", 1)))
 		ambient = AmbientFx.new()
 		add_child(ambient)
-		ambient.setup(self, camera, biome_id, corrupted)
+		ambient.setup(self, camera, biome_id, corrupted, map.get("theme", ""))
 	party.clear()
 	fallen.clear()
 	participants.clear()
@@ -320,6 +323,42 @@ func _ensure_field() -> void:
 				break
 
 
+## Câmera: segue o monstro escolhido pelo jogador (cam_uid) enquanto ele estiver em campo.
+var cam_uid := ""
+
+
+func _pick_camera_target() -> void:
+	var first: Creature = null
+	for c in party:
+		if not is_instance_valid(c) or not c.alive:
+			continue
+		if c.mon_uid == cam_uid:
+			_cam_target = c
+			return
+		if first == null:
+			first = c
+	if first:
+		_cam_target = first
+
+
+## Passa a câmera para o próximo monstro vivo em campo. Retorna o monstro seguido.
+func cycle_camera() -> Creature:
+	var alive_list: Array = []
+	for c in party:
+		if is_instance_valid(c) and c.alive:
+			alive_list.append(c)
+	if alive_list.is_empty():
+		return null
+	var i := alive_list.find(_cam_target)
+	_cam_target = alive_list[(i + 1) % alive_list.size()]
+	cam_uid = _cam_target.mon_uid
+	return _cam_target
+
+
+func camera_target_uid() -> String:
+	return _cam_target.mon_uid if _cam_target and is_instance_valid(_cam_target) else ""
+
+
 func _make_creature(form_id: String, level: int, stats: Dictionary, player: bool, shiny: bool) -> Creature:
 	var c := Creature.new()
 	entities.add_child(c)
@@ -410,6 +449,8 @@ func _process(delta: float) -> void:
 		_accum = 0.0
 	if not headless:
 		fx.update_fx(delta * min(sim_speed(), 3.0))
+		if _cam_target == null or not is_instance_valid(_cam_target) or not _cam_target.alive or _cam_target.get_parent() != entities:
+			_pick_camera_target()
 		if _cam_target and is_instance_valid(_cam_target):
 			camera.position = _cam_target.interp_position(interp_alpha())
 	_ui_timer += delta
@@ -737,7 +778,7 @@ func _team_revive() -> void:
 	for c in party:
 		fx.add_effect("heal", c.position, Color(1, 1, 0.6), 0, 0.8)
 	if not party.is_empty():
-		_cam_target = party[0]
+		_pick_camera_target()
 
 
 func revive_all_now() -> void:

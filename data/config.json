@@ -92,7 +92,7 @@
   "kills_a": 2.9,
   "kills_p": 1.5,
   "late_start": 80,
-  "late_slope": 0.026,
+  "late_slope": 0.034,
   "kill_base": 4,
   "kill_q": 1.35,
   "low_level_penalty_start": 10,
@@ -123,7 +123,12 @@
   "engaged_enemies": 1.6,
   "ability_dps_bonus": 0.35,
   "extra_fighter_travel_mult": 0.85,
-  "max_kills_per_hour": 4000
+  "max_kills_per_hour": 4000,
+  "density_by_fighters": [
+   1.0,
+   1.45,
+   1.9
+  ]
  },
  "rarities": [
   {
@@ -279,16 +284,16 @@
   "gold_cost_per_tier": 50
  },
  "world2": {
-  "start": 90,
-  "end": 300,
+  "start": 110,
+  "end": 200,
   "step": 10,
   "hunts_per_level": 3,
-  "unlock_challenge": 80,
+  "unlock_challenge": 110,
   "map_size": [
    64,
    64
   ],
-  "density": 30,
+  "density": 34,
   "respawn": 8.0,
   "types_per_hunt": 3,
   "monsters_per_hunt": 4,
@@ -301,7 +306,17 @@
   "rarity_mult": 1.5,
   "gold_mult": 1.5,
   "xp_mult": 1.0,
-  "mods_ramp_levels": 30
+  "mods_ramp_levels": 30,
+  "prefix": {
+   "pt_BR": "Abismo",
+   "en": "Abyss",
+   "es": "Abismo"
+  },
+  "category": "mundo2",
+  "theme": "abyss",
+  "recruit": false,
+  "world": 2,
+  "stage": 3
  },
  "corruption": {
   "tint": "#4a1a6a",
@@ -650,5 +665,95 @@
    }
   },
   "bundle_price": 550
+ },
+ "world1x": {
+  "_comentario": "Fronteira do Mundo 1 (80 → 105): hunts geradas que levam o jogador até o Chefe de Mundo no 110.",
+  "world": 1,
+  "start": 80,
+  "end": 105,
+  "step": 5,
+  "hunts_per_level": 2,
+  "map_size": [
+   48,
+   48
+  ],
+  "density": 20,
+  "respawn": 6.0,
+  "types_per_hunt": 2,
+  "monsters_per_hunt": 3,
+  "seed": 8080,
+  "rarity_mult": 1.2,
+  "gold_mult": 1.2,
+  "xp_mult": 1.0,
+  "recruit": true,
+  "recruit_mult": 0.8,
+  "category": "fronteira",
+  "theme": "",
+  "stage": 3,
+  "prefix": {
+   "pt_BR": "Fronteira",
+   "en": "Frontier",
+   "es": "Frontera"
+  }
+ },
+ "world3": {
+  "_comentario": "Mundo 3 (Reino Astral, 210 → 300): liberado pelo Chefe de Mundo do 210. Mais monstros por mapa e inimigos mais fortes.",
+  "world": 3,
+  "start": 210,
+  "end": 300,
+  "step": 10,
+  "hunts_per_level": 3,
+  "unlock_challenge": 210,
+  "map_size": [
+   72,
+   72
+  ],
+  "density": 44,
+  "respawn": 7.0,
+  "types_per_hunt": 3,
+  "monsters_per_hunt": 5,
+  "seed": 7070,
+  "enemy_mods": {
+   "hp": 0.6,
+   "atk": 0.64,
+   "def": 0.78
+  },
+  "mods_ramp_levels": 20,
+  "rarity_mult": 2.0,
+  "gold_mult": 1.9,
+  "xp_mult": 1.0,
+  "recruit": false,
+  "category": "mundo3",
+  "theme": "astral",
+  "stage": 3,
+  "prefix": {
+   "pt_BR": "Astral",
+   "en": "Astral",
+   "es": "Astral"
+  }
+ },
+ "themes": {
+  "abyss": {
+   "tint": "#4a1a6a",
+   "tint_amount": 0.35,
+   "darken": 0.25,
+   "light": [
+    0.86,
+    0.76,
+    0.96
+   ],
+   "particles": "wisp"
+  },
+  "astral": {
+   "tint": "#2a3a9a",
+   "tint_amount": 0.32,
+   "darken": 0.08,
+   "light": [
+    0.88,
+    0.9,
+    1.0
+   ],
+   "particles": "twinkle"
+  }
  }
 }

@@ -208,6 +208,18 @@ def diamond():
     return i
 
 
+def camera():
+    i = Icon()
+    i.rect(3, 9, 26, 18, "#5a6478", 3)
+    i.rect(10, 5.5, 9, 5, "#5a6478", 1.5)
+    i.circle(16, 18, 7, "#2a3040", 0)
+    i.circle(16, 18, 5.2, "#58a8ff")
+    i.circle(16, 18, 2.4, "#1a2a50", 0)
+    i.shine(14, 16, 1.4, 1, 220)
+    i.rect(22.5, 11.5, 4, 2.5, "#ffd24a", 0.6, 0.1)
+    return i
+
+
 def boost():
     i = Icon()
     i.circle(16, 16, 13, "#8a4ae0")
@@ -694,7 +706,7 @@ def t_sombra():
 
 
 ICONS = {
-    "coin": coin, "gem": gem, "diamond": diamond, "boost": boost, "sword": sword, "shield": shield, "map": map_, "skull": skull, "paw": paw,
+    "coin": coin, "gem": gem, "diamond": diamond, "boost": boost, "camera": camera, "sword": sword, "shield": shield, "map": map_, "skull": skull, "paw": paw,
     "chest": chest, "bag": bag, "shop": shop, "scales": scales, "altar": altar, "book": book,
     "trophy": trophy, "gear": gear, "star": star, "star_empty": star_empty, "lock": lock, "play": play,
     "crown": crown, "clock": clock, "back": back, "heart": heart, "plus": plus, "minus": minus,

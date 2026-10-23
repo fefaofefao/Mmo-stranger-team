@@ -1195,7 +1195,14 @@ func challenge_level_cleared(level: int) -> bool:
 
 
 func world2_unlocked() -> bool:
-	return save.debug_unlock_all or challenge_level_cleared(int(DataDB.config.world2.unlock_challenge))
+	return world_unlocked(2)
+
+
+## Mundo 2 e 3 são liberados pelos Chefes de Mundo (110 e 210).
+func world_unlocked(n: int) -> bool:
+	if n <= 1 or save.debug_unlock_all:
+		return true
+	return challenge_level_cleared(int(DataDB.config["world%d" % n].unlock_challenge))
 
 
 func hunt_lock_reason(h: Dictionary) -> String:
@@ -1220,6 +1227,9 @@ func challenge_lock_reason(c: Dictionary) -> String:
 		return Loc.t("Vença o Desafio %d") % prev
 	if main_level() < int(c.level) - 5:
 		return Loc.t("Requer nível %d") % (int(c.level) - 5)
+	var mf := int(c.get("min_fighters", 1))
+	if fighting_monsters().size() < mf:
+		return Loc.t("Requer %d monstros em campo") % mf
 	var cd := challenge_cooldown(c.id)
 	if cd > 0:
 		return Loc.t("Aguarde %ds") % int(ceil(cd))

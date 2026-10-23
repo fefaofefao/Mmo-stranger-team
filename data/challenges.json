@@ -425,7 +425,7 @@
     },
     "item_rarity": "lendario"
    },
-   "unlocks": "world2",
+   "unlocks": "",
    "map_size": [
     26,
     26
@@ -489,6 +489,126 @@
     26
    ],
    "seed": 1090
+  },
+  {
+   "id": "wb110",
+   "level": 110,
+   "name": {
+    "pt_BR": "Gorilamonte, Guardião do Mundo 1",
+    "en": "Gorilamonte, Guardian of World 1",
+    "es": "Gorilamonte, Guardián del Mundo 1"
+   },
+   "boss_form": "terra_5_3",
+   "type": "terra",
+   "biome": "caverna_rochosa",
+   "boss_level": 113,
+   "hp_mult": 110.0,
+   "atk_mult": 1.1,
+   "def_mult": 1.1,
+   "scale": 2.1,
+   "world_boss": true,
+   "phases": [
+    {
+     "hp_below": 0.5,
+     "atk_mult": 1.3,
+     "spd_mult": 1.2,
+     "say": {
+      "pt_BR": "Fase 2: o chefe se enfurece!",
+      "en": "Phase 2: the boss is enraged!",
+      "es": "¡Fase 2: el jefe se enfurece!"
+     }
+    }
+   ],
+   "mechanics": {
+    "summon": {
+     "form": "terra_3_3",
+     "every": 14,
+     "count": 2,
+     "level_offset": 6
+    },
+    "aoe": {
+     "every": 7,
+     "count": 5,
+     "radius": 1,
+     "dmg_pct": 0.14,
+     "telegraph": 1.4
+    }
+   },
+   "time_limit": 300,
+   "min_fighters": 2,
+   "rewards": {
+    "gold": 165000,
+    "essence": {
+     "terra": 880
+    },
+    "item_rarity": "lendario"
+   },
+   "unlocks": "world2",
+   "map_size": [
+    30,
+    30
+   ],
+   "seed": 5110
+  },
+  {
+   "id": "wb210",
+   "level": 210,
+   "name": {
+    "pt_BR": "Krakenoite, Guardião do Abismo",
+    "en": "Krakenoite, Guardian of the Abyss",
+    "es": "Krakenoite, Guardián del Abismo"
+   },
+   "boss_form": "sombra_5_3",
+   "type": "sombra",
+   "biome": "brejo_sombrio",
+   "boss_level": 213,
+   "hp_mult": 180.0,
+   "atk_mult": 1.3,
+   "def_mult": 1.1,
+   "scale": 2.1,
+   "world_boss": true,
+   "phases": [
+    {
+     "hp_below": 0.5,
+     "atk_mult": 1.3,
+     "spd_mult": 1.2,
+     "say": {
+      "pt_BR": "Fase 2: o chefe se enfurece!",
+      "en": "Phase 2: the boss is enraged!",
+      "es": "¡Fase 2: el jefe se enfurece!"
+     }
+    }
+   ],
+   "mechanics": {
+    "summon": {
+     "form": "sombra_4_3",
+     "every": 13,
+     "count": 2,
+     "level_offset": 6
+    },
+    "aoe": {
+     "every": 6,
+     "count": 6,
+     "radius": 1,
+     "dmg_pct": 0.14,
+     "telegraph": 1.3
+    }
+   },
+   "time_limit": 300,
+   "min_fighters": 3,
+   "rewards": {
+    "gold": 315000,
+    "essence": {
+     "sombra": 1680
+    },
+    "item_rarity": "lendario"
+   },
+   "unlocks": "world3",
+   "map_size": [
+    30,
+    30
+   ],
+   "seed": 5210
   }
  ]
 }

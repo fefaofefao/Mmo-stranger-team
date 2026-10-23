@@ -180,14 +180,34 @@ func _run() -> void:
 	var dlg = main.dialog(Loc.t("Bem-vindo de volta!"), "Fogarito +3 níveis\n1.234 abates\n+45.6k ouro", [Loc.t("Dobrar ▶"), Loc.t("Coletar")], "chest")
 	await shot("dialogo")
 	dlg._choose(1)
+	await G.debug_set_level(150)
+	await G.set_current_hunt("w2_150_1")
+	hs.load_current_hunt()
+	main.goto("hunt")
+	G.time_scale = 3.0
+	await frames(200)
+	G.time_scale = 1.0
+	await shot("mundo2_abismo")
 	await G.debug_set_level(215)
-	await G.set_current_hunt("w2_210_1")
+	await G.set_current_hunt("w3_210_1")
 	hs.load_current_hunt()
 	main.goto("hunt")
 	G.time_scale = 3.0
 	await frames(240)
 	G.time_scale = 1.0
-	await shot("mundo2_corrompido")
+	hs._cycle_camera()
+	await frames(30)
+	await shot("mundo3_astral")
+	main.goto("hunts")
+	main.current.tab = 6
+	main.current.rebuild()
+	await shot("hunts_mundo3")
+	main.goto("challenges")
+	await frames(3)
+	for scn in main.current.find_children("*", "ScrollContainer", true, false):
+		scn.scroll_vertical = 100000
+	await frames(3)
+	await shot("desafios_chefes_de_mundo")
 	await G.debug_set_level(45)
 	hs.world.refresh_party()
 	hs.start_challenge(DataDB.challenge_for_level(40))

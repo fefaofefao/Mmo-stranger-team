@@ -20,11 +20,15 @@ const LIQUID := ["water", "lava", "cloud"]
 const PROP_CHANCE := {"tree": 0.85, "rock": 0.5, "ice": 0.55, "crystal": 0.6, "coral": 0.6, "pillar": 0.0, "tomb": 0.25}
 
 static var _cache := {}
+static var _theme := "abyss"
 
 
 ## {tileset, props: Array[Texture2D], style, liquid, deco_style, biome}
-static func terrain(biome_id: String, corrupted := false) -> Dictionary:
-	var key := biome_id + ("_c" if corrupted else "")
+static func terrain(biome_id: String, corrupted := false, theme := "") -> Dictionary:
+	if corrupted and theme == "":
+		theme = "abyss"
+	_theme = theme
+	var key := biome_id + ("_c" + theme if corrupted else "")
 	if _cache.has(key):
 		return _cache[key]
 	var b: Dictionary = DataDB.biomes.get(biome_id, DataDB.biomes.values()[0])
@@ -82,7 +86,7 @@ static func prop_images(biome_id: String, corrupted := false) -> Array:
 # ------------------------------------------------------------------ cores e ruído
 
 static func _corrupt_color(c: Color) -> Color:
-	var cc: Dictionary = DataDB.config.get("corruption", {})
+	var cc: Dictionary = DataDB.config.get("themes", {}).get(_theme, DataDB.config.get("corruption", {}))
 	var tint := Color(cc.get("tint", "#4a1a6a"))
 	var out := c.lerp(tint, float(cc.get("tint_amount", 0.35))).darkened(float(cc.get("darken", 0.25)))
 	out.a = c.a
@@ -512,7 +516,7 @@ static func _shade_and_outline(img: Image, outline: Color, shade := true) -> voi
 
 ## Monta o mapa em duas camadas + props. Retorna os nós de props criados.
 static func paint(map: Dictionary, ground: TileMapLayer, deco: TileMapLayer, props_parent: Node2D, seed_value: int) -> void:
-	var ter := terrain(map.biome, map.get("corrupted", false))
+	var ter := terrain(map.biome, map.get("corrupted", false), map.get("theme", ""))
 	ground.tile_set = ter.tileset
 	deco.tile_set = ter.tileset
 	var sz: Vector2i = map.size

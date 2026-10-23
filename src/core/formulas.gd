@@ -44,9 +44,11 @@ static func enemy_stats(form_id: String, level: int, world := 1, shiny := false)
 	var m1: Dictionary = c().enemy_mods
 	var t := 0.0
 	var m2: Dictionary = m1
-	if world == 2:
-		# o Mundo 2 endurece aos poucos (rampa), para não virar um muro entre 90 e 110
-		var w2: Dictionary = c().world2
+	if world >= 2:
+		# cada mundo endurece aos poucos (rampa a partir do anterior), sem virar um muro
+		var w2: Dictionary = c().world2 if world == 2 else c().world3
+		if world == 3:
+			m1 = c().world2.get("enemy_mods", m1)
 		m2 = w2.get("enemy_mods", m1)
 		t = clampf(float(level - int(w2.start)) / float(w2.get("mods_ramp_levels", 30)), 0.0, 1.0)
 	for k in ["hp", "atk", "def"]:

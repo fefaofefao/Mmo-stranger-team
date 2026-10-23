@@ -39,6 +39,7 @@ var m_icon: TextureRect
 var _m_form := ""
 var _m_dirty := true
 var nav_row: HBoxContainer
+var cam_btn: Button
 var feed_ref: Control
 
 
@@ -144,6 +145,13 @@ func _build() -> void:
 	zbox.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	zbox.position = Vector2(-84, 10)
 	vp_container.add_child(zbox)
+	cam_btn = UI.icon_button("swap", "", _cycle_camera, 20, 60)
+	cam_btn.custom_minimum_size = Vector2(68, 60)
+	cam_btn.icon = Icons.tex("camera")
+	cam_btn.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	cam_btn.modulate = Color(1, 1, 1, 0.9)
+	cam_btn.visible = false
+	cam_btn.tooltip_text = Loc.t("Trocar câmera")
 	for z in [["plus", 0.5], ["minus", -0.5]]:
 		var dz: float = z[1]
 		var b := UI.icon_button(z[0], "", func(): _set_zoom(zoom + dz), 20, 60)
@@ -151,6 +159,7 @@ func _build() -> void:
 		b.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		b.modulate = Color(1, 1, 1, 0.85)
 		zbox.add_child(b)
+	zbox.add_child(cam_btn)
 	# aviso de time caído
 	var dc := CenterContainer.new()
 	dc.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -229,6 +238,13 @@ func _build_mastery(parent: Control) -> void:
 	row.add_child(m_icon)
 	for c in [row, col, r1, r2]:
 		_ignore_mouse(c)
+
+
+func _cycle_camera() -> void:
+	var c: Creature = world.cycle_camera()
+	if c:
+		main.toast(Loc.t("Câmera: %s") % c.display_name, UI.C_INFO, "camera")
+	_update_hud_values()
 
 
 func _on_mastery_progress(form_id: String) -> void:
@@ -464,6 +480,8 @@ func _on_boss_finished(won: bool, seconds: float) -> void:
 				parts.append("%s: %s" % [DataDB.rarity_name(it.rarity), ItemLogic.display_name(it)])
 			if r.get("unlocks", "") == "world2" and r.get("first", false):
 				parts.append("\n" + Loc.t("MUNDO 2 DESBLOQUEADO!"))
+			elif r.get("unlocks", "") == "world3" and r.get("first", false):
+				parts.append("\n" + Loc.t("MUNDO 3 DESBLOQUEADO!"))
 			elif r.get("first", false):
 				parts.append("\n" + Loc.t("Novo bloco de hunts desbloqueado!"))
 			text = "\n".join(parts)
@@ -625,6 +643,12 @@ func _update_hud_values() -> void:
 			r.hp.value = 1.0
 			r.status.text = Loc.t("Reserva")
 			r.status.add_theme_color_override("font_color", UI.C_MUTED)
+	# câmera: com 2+ monstros em campo dá para escolher quem acompanhar
+	if is_instance_valid(cam_btn):
+		cam_btn.visible = world.alive_on_field() >= 2
+		var followed := world.camera_target_uid()
+		for rr in hud_rows:
+			rr.name.add_theme_color_override("font_color", UI.C_GOLD if rr.uid == followed and cam_btn.visible else UI.C_TEXT)
 	var revive := world.team_revive_remaining()
 	down_panel.visible = mode == "hunt" and revive > 0.0
 	if down_panel.visible:

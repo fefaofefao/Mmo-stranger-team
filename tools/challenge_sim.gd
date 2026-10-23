@@ -45,6 +45,53 @@ func _typical_mastery(level: int) -> Dictionary:
 	return b
 
 
+## Chefe de Mundo: grupo de N monstros "comuns" (qualidade 20, sem treino, estrelas e equipamento
+## típicos do nível). Precisa vencer com o grupo completo e perder se um deles estiver fraco.
+func _world_boss(world, c: Dictionary) -> void:
+	var n := int(c.get("min_fighters", 2))
+	var fams := ["agua_2", "fogo_3", "planta_2", "terra_2", "eletrico_2", "luz_2"]
+	var reps := 4
+	for case in ["completo", "um fraco"]:
+		for off in [2, 8]:
+			var lvl: int = int(c.level) + int(off)
+			var wins := 0
+			var tsum := 0.0
+			for rep in reps:
+				var mons := {}
+				var party: Array = []
+				var items := {}
+				for i in n:
+					var lv: int = lvl if (case == "completo" or i < n - 1) else int(lvl * 0.6)
+					var fam: String = fams[(i + rep) % fams.size()]
+					var m := MonsterLogic.create(fam, lv, false, "sim%d" % i, "", 20)
+					m.stars = mini(5, int(lv / 25))
+					var gear := _gear_for(lv)
+					for uid in gear:
+						var it: Dictionary = gear[uid]
+						it.uid = "%s_%d" % [uid, i]
+						items[it.uid] = it
+						m.equip[ItemLogic.base(it).slot] = it.uid
+					mons[m.uid] = m
+					party.append(m.uid)
+				G.save.items = items
+				G.save.monsters = mons
+				G.save.party = party
+				G._bonus_cache = _typical_mastery(lvl)
+				world.setup_challenge(c)
+				var done := [false, false, 0.0]
+				var cb := func(won, sec): done[0] = true; done[1] = won; done[2] = sec
+				world.challenge_finished.connect(cb)
+				var steps := 0
+				while not done[0] and steps < 8000:
+					world.step(0.05)
+					steps += 1
+				world.challenge_finished.disconnect(cb)
+				if done[1]:
+					wins += 1
+					tsum += done[2]
+			print("%s | %d | %d monstros (%s) | %d/%d | %s" % [c.id, lvl, n, case, wins, reps, ("%.0fs" % (tsum / wins)) if wins > 0 else "-"])
+
+
 func _run() -> void:
 	G = root.get_node("Game")
 	var world = load("res://src/world/hunt_world.gd").new()
@@ -57,12 +104,16 @@ func _run() -> void:
 		if a.is_valid_int():
 			min_level = int(a)
 	for c in DataDB.challenges:
+		if c.get("world_boss", false):
+			if min_level <= int(c.level):
+				_world_boss(world, c)
+			continue
 		if int(c.level) < min_level:
 			continue
 		var bt: String = c.type
 		var cases := [["vantagem", TypeChart.weak_against(bt)], ["neutro", DataDB.type_ids[(DataDB.type_index[bt] + 3) % 9]], ["desvantagem", TypeChart.strong_against(bt)]]
 		for off in [3, 8]:
-			var lvl: int = int(c.level) + off
+			var lvl: int = int(c.level) + int(off)
 			for cs in cases:
 				# atacante 'vantagem' = tipo forte contra o chefe
 				var atk_type: String = cs[1]

@@ -1,5 +1,16 @@
 # Resumo da entrega — Bestiário Idle
 
+## Revisão 6 — o que mudou
+| Pedido | Como ficou | Como testar |
+|---|---|---|
+| Boss do nível 20 bugou | Vitória rápida de time forte agora é aceita (tempo mínimo calculado pela força do grupo) | Debug → nível 300 → Desafio 20 |
+| Tela inicial | Cena noturna animada, logo grande, iniciais desfilando, vagalumes | Abrir o jogo |
+| Câmera entre monstros | Botão de câmera no mapa com 2+ em campo | Debug → nível 110 ou 210 |
+| Mais monstros selvagens com 2/3 em campo | ×1,45 com 2 e ×1,9 com 3, além da densidade maior dos Mundos 2 e 3 | Hunts do Mundo 2/3 |
+| Mundo 1 até 110 · Mundo 2 até 210 · Mundo 3 depois | Fronteira 80–105 no Mundo 1; Abismo 110–200; Reino Astral 210–300 | Hunts → Mundo 1/2/3 |
+| Chefe para liberar o mundo | Chefes de Mundo no 110 (2 monstros) e 210 (3 monstros), não recrutáveis, "prova de força" | Desafios (fim da lista) |
+
+
 ## Revisão 5 — o que mudou (diamantes, bônus, Market de monstros)
 | Pedido | Como ficou | Como testar |
 |---|---|---|
@@ -100,14 +111,14 @@ Botão discreto **dbg** no canto inferior esquerdo (acima do painel de ações):
 Todos em `data/*.json` (sem recompilar nada; para o servidor real, rode `tools/export_server_data.gd` e faça o deploy da função).
 
 1. **Ritmo do início** (`config.xp.early_levels` 15 e `early_mult_start` 0,14): nível 10 em ~20 min, 16 em ~1 h. Para ainda mais rápido, 0,10; o resto da curva usa `kills_a` (2,9).
-2. **Mundo 1 → 80** (~65 h de caça ≈ 1 semana casual): para alongar/encurtar mexa em `kills_a`; para mexer só no endgame use `late_slope` (0,026).
+2. **Mundo 1 → 80** (~65 h de caça ≈ 1 semana casual): para alongar/encurtar mexa em `kills_a`; para mexer só no endgame use `late_slope` (0,034).
 3. **210 em ~1.150 h** (≈2 a 4,5 meses): ajuste `late_slope` (+0,005 ≈ +15% de tempo no endgame).
 4. **Dificuldade das hunts**: `enemy_mods` (HP 0,42 / ATQ 0,55 / DEF 0,7). Se o monstro morrer demais nas hunts recomendadas, baixe ATQ para 0,5.
 5. **Mundo 2**: `world2.enemy_mods` e `mods_ramp_levels` (30) controlam a transição 90→120; `world2.density` (30) e `respawn` (8 s) controlam o ritmo.
 6. **Desafios**: `challenges.json` → `hp_mult`/`atk_mult` por chefe. O 50 e o 60 ficaram justos para tipos neutros; o 90 é propositalmente o mais difícil. Teste com `tools/challenge_sim.gd -- 50`.
 7. **Drops** (`rarities[].chance`): reduzidos na revisão 2 (Comum 1/80). Se o Market ficar vazio, suba Raro/Épico antes dos comuns.
 13. **Qualidade** (`quality.exponent` 1,8): maior = qualidades altas mais raras. **Chefe Diário** (`daily_boss`): `hp_mult` 22, `gold_kills` 120, chances de item.
-14. **Marcos de Caça** (`mastery`): `per_point` de cada tipo e os limites `tiers`. Se o fim de jogo ficar rápido demais, suba `xp.late_slope` (hoje 0,026).
+14. **Marcos de Caça** (`mastery`): `per_point` de cada tipo e os limites `tiers`. Se o fim de jogo ficar rápido demais, suba `xp.late_slope` (hoje 0,034).
 8. **Recrutamento** 0,2%: dá ~2 recrutas por hora de caça. Para colecionadores, 0,3%; para escassez, 0,1%.
 9. **Essência/Estrelas**: a 5ª estrela (1.500) exige ~40 monstros adultos trocados; se ficar pesado, baixe para 1.000.
 10. **Aprimoramento**: chances do +6 ao +10 (75/60/45/30/20%). Para um market mais aquecido, reduza o +9/+10.

@@ -30,6 +30,12 @@ static func enemy_profile(hunt: Dictionary) -> Dictionary:
 	return acc
 
 
+## Mais monstros em campo = mais monstros selvagens no mapa (mantém o grupo sempre ocupado).
+static func density_mult(fighting: int) -> float:
+	var arr: Array = DataDB.config.killrate.get("density_by_fighters", [1.0])
+	return float(arr[clampi(fighting - 1, 0, arr.size() - 1)])
+
+
 ## fighters: Array de stats (MonsterLogic.compute_stats) dos monstros que lutam no mapa.
 ## Retorna {kills_per_hour, ttk, cycle, deaths_per_hour, dps}
 static func estimate(fighters: Array, hunt: Dictionary) -> Dictionary:
@@ -53,7 +59,7 @@ static func estimate(fighters: Array, hunt: Dictionary) -> Dictionary:
 		party_hp += f.hp
 		party_def += f.def / fighters.size()
 	var ttk = e.hp / max(dps, 0.001)
-	var density := float(hunt.get("density", 16))
+	var density := float(hunt.get("density", 16)) * density_mult(fighters.size())
 	var travel := float(kr.travel_seconds) * sqrt(16.0 / max(4.0, density))
 	travel *= pow(float(kr.extra_fighter_travel_mult), fighters.size() - 1)
 	var cycle = ttk + travel

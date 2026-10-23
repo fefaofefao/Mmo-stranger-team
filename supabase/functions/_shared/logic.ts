@@ -57,9 +57,11 @@ export function rawStats(formId: string, level: number, shiny = false, quality =
 export function enemyStats(formId: string, level: number, world = 1) {
   const s: any = rawStats(formId, level);
   const m1 = C.enemy_mods;
-  const m2 = world === 2 ? (C.world2.enemy_mods ?? m1) : m1;
-  const t = world === 2 ? Math.min(1, Math.max(0, (level - C.world2.start) / (C.world2.mods_ramp_levels ?? 30))) : 0;
-  for (const k of ["hp", "atk", "def"]) s[k] *= m1[k] + (m2[k] - m1[k]) * t;
+  const w = world === 3 ? C.world3 : C.world2;
+  const base = world === 3 ? (C.world2.enemy_mods ?? m1) : m1;
+  const m2 = world >= 2 ? (w.enemy_mods ?? base) : m1;
+  const t = world >= 2 ? Math.min(1, Math.max(0, (level - w.start) / (w.mods_ramp_levels ?? 30))) : 0;
+  for (const k of ["hp", "atk", "def"]) s[k] *= base[k] + (m2[k] - base[k]) * t;
   return s;
 }
 
@@ -185,7 +187,9 @@ export function estimateKills(fighters: any[], hunt: any) {
     partyDef += f.def / fighters.length;
   }
   const ttk = e.hp / Math.max(dps, 0.001);
-  const travel = kr.travel_seconds * Math.sqrt(16 / Math.max(4, hunt.density ?? 16)) * Math.pow(kr.extra_fighter_travel_mult, fighters.length - 1);
+  const dm = kr.density_by_fighters ?? [1];
+  const density = (hunt.density ?? 16) * dm[Math.min(dm.length - 1, Math.max(0, fighters.length - 1))];
+  const travel = kr.travel_seconds * Math.sqrt(16 / Math.max(4, density)) * Math.pow(kr.extra_fighter_travel_mult, fighters.length - 1);
   let cycle = ttk + travel;
   const enemyDps = expectedDamage(e.atk, partyDef, 1, incoming, cb.crit_chance) / enemyAttackInterval(e.spd);
   const engaged = kr.engaged_enemies * (1 + 0.15 * (fighters.length - 1));
@@ -356,4 +360,15 @@ export function rollShop(level: number) {
     out.push({ item: createItem(bid, rar, true), price: shopItemPrice(D.item_bases[bid].level, rar), sold: false });
   }
   return out;
+}
+
+// tempo mínimo plausível de vitória num Desafio (espelho de ServerLogic.challenge_min_time)
+export function challengeMinTime(c: any, upper: any[]): number {
+  const b = enemyStats(c.boss_form, c.boss_level, 1);
+  const hp = b.hp * c.hp_mult;
+  const bdef = b.def * (c.def_mult ?? 1);
+  let dps = 0;
+  for (const s of upper) dps += expectedDamage(s.atk, bdef, 1, D.strong_mult, 1) / attackInterval(s.spd) * 2.5;
+  if (dps <= 0) return C.anti_cheat.challenge_min_seconds;
+  return Math.min(C.anti_cheat.challenge_min_seconds, Math.max(0.5, hp / dps));
 }

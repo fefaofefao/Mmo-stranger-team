@@ -212,3 +212,22 @@ func test_daily_boss() -> void:
 	check(r2.ok and not r2.won and float(r2.fraction) < 0.5, "vitória implausível vira derrota parcial")
 	_adv(srv, 86400.0)
 	check(int(srv.daily_boss_status(30).used) == 0, "entradas renovam no dia seguinte")
+
+
+func test_challenge_fast_win_by_strong_team() -> void:
+	# time nível 300 vence o Desafio 20 em 1 s: plausível (antes era recusado com "tempo implausível")
+	var srv := _srv()
+	srv.register_starter("fogo_1")
+	var sid: String = srv.p().monsters.keys()[0]
+	srv.debug_set_validated_level(300)
+	var strong := [{"server_id": sid, "family": "fogo_1", "stage": 3, "level": 300}]
+	var r := srv.claim_challenge("c20", true, 1.0, strong)
+	check(r.ok and r.won, "time forte vence em 1 s (%s)" % str(r.get("error", "")))
+	# time fraco no nível do desafio não vence em 1 s
+	var srv2 := _srv()
+	srv2.register_starter("fogo_1")
+	var sid2: String = srv2.p().monsters.keys()[0]
+	srv2.debug_set_validated_level(20)
+	var weak := [{"server_id": sid2, "family": "fogo_1", "stage": 2, "level": 22}]
+	check(not srv2.claim_challenge("c20", true, 1.0, weak).ok, "time no nível do desafio não vence em 1 s")
+	check(srv2.claim_challenge("c20", true, 40.0, weak).ok, "vitória em 40 s aceita")

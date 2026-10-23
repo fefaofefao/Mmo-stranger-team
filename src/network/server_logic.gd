@@ -411,7 +411,7 @@ func claim_challenge(challenge_id: String, won: bool, seconds: float, party: Arr
 	if not won:
 		rec.last_fail = t
 		return _ok({"won": false, "cooldown": DataDB.challenge_fail_cooldown})
-	if seconds < float(DataDB.config.anti_cheat.challenge_min_seconds):
+	if seconds < challenge_min_time(c, party):
 		return _err("Tempo de vitória implausível")
 	var main_level := int(party[0].get("level", 1)) if not party.is_empty() else 1
 	if main_level > int(p().validated_level) + 10:
@@ -442,6 +442,21 @@ func claim_challenge(challenge_id: String, won: bool, seconds: float, party: Arr
 		items.append(it)
 	return _ok({"won": true, "first": first, "gold_gained": gold, "essence_gained": ess, "items": items,
 		"best": rec.best, "wallet": wallet(), "unlocks": c.get("unlocks", "")})
+
+
+## Tempo mínimo plausível para vencer um chefe com o grupo informado: vida do chefe dividida pelo
+## dano máximo que esse grupo poderia causar (atributos limitados pelo servidor, vantagem de tipo e
+## crítico sempre). Um time muito acima do nível pode vencer em segundos — e está tudo bem.
+func challenge_min_time(c: Dictionary, party: Array) -> float:
+	var boss_st := Formulas.enemy_stats(c.boss_form, int(c.boss_level), 1)
+	var hp := float(boss_st.hp) * float(c.hp_mult)
+	var bdef := float(boss_st.def) * float(c.get("def_mult", 1.0))
+	var dps := 0.0
+	for s in _party_upper_stats(party):
+		dps += Formulas.expected_damage(s.atk, bdef, 1.0, DataDB.strong_mult, 1.0) / Formulas.attack_interval(s.spd) * 2.5
+	if dps <= 0.0:
+		return float(DataDB.config.anti_cheat.challenge_min_seconds)
+	return clampf(hp / dps, 0.5, float(DataDB.config.anti_cheat.challenge_min_seconds))
 
 
 func challenge_status() -> Dictionary:

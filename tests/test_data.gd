@@ -60,5 +60,20 @@ func test_challenges() -> void:
 		lv.append(int(c.level))
 		check(DataDB.forms.has(c.boss_form), "boss existe")
 		check(DataDB.biomes.has(c.biome), "bioma do boss existe")
-	check(lv == [10, 20, 30, 40, 50, 60, 70, 80, 90], "desafios 10..90")
-	check(DataDB.challenge_for_level(80).unlocks == "world2", "desafio 80 abre o Mundo 2")
+	check(lv == [10, 20, 30, 40, 50, 60, 70, 80, 90, 110, 210], "desafios 10..90 + Chefes de Mundo 110 e 210")
+	check(DataDB.challenge_for_level(110).unlocks == "world2", "Chefe de Mundo 110 abre o Mundo 2")
+	check(DataDB.challenge_for_level(210).unlocks == "world3", "Chefe de Mundo 210 abre o Mundo 3")
+	check(int(DataDB.challenge_for_level(110).min_fighters) == 2 and int(DataDB.challenge_for_level(210).min_fighters) == 3, "chefes de mundo pedem 2 e 3 monstros")
+	# mundos: Fronteira até o 110, Mundo 2 de 110 a 200, Mundo 3 de 210 em diante
+	var by_world := {1: [], 2: [], 3: []}
+	for h in DataDB.hunt_list:
+		by_world[int(h.world)].append(int(h.level))
+	check(by_world[1].max() >= 105 and by_world[1].max() < 110, "Mundo 1 vai até perto do 110")
+	check(by_world[2].min() == 110 and by_world[2].max() == 200, "Mundo 2: 110 a 200")
+	check(by_world[3].min() == 210 and by_world[3].max() == 300, "Mundo 3: 210 a 300")
+	for h in DataDB.hunt_list:
+		if int(h.world) == 2:
+			check(int(h.requires_challenge) == 110 and not h.recruit, "Mundo 2 pede o Chefe 110 e não recruta")
+		elif int(h.world) == 3:
+			check(int(h.requires_challenge) == 210 and h.theme == "astral", "Mundo 3 pede o Chefe 210")
+	check(KillRate.density_mult(3) > KillRate.density_mult(2) and KillRate.density_mult(2) > KillRate.density_mult(1), "mais monstros em campo = mais selvagens")

@@ -94,3 +94,12 @@ Legenda: [x] concluído · [~] concluído com fallback (ver PENDENCIAS.md)
 - [x] Tutorial com shiny de demonstração não recrutável
 - [x] Altar e telas de evolução mostram antes → depois
 - [x] Mock + Edge Function + migration 20261025000006, testes (7.412 asserções), smoke, paridade, traduções, screenshots, APK
+
+## Revisão 6 — mundos e Chefes de Mundo
+- [x] Bug do Desafio 20 (vitória rápida de time forte recusada)
+- [x] Mundo 1 até o 110 (Fronteira 80–105), Mundo 2 110–200, Mundo 3 (Reino Astral) 210–300
+- [x] Chefes de Mundo no 110 e no 210 (não recrutáveis), calibrados para exigir 2 e 3 monstros
+- [x] Mais monstros selvagens com 2/3 em campo (mundo e modelo de abates)
+- [x] Botão de câmera para acompanhar outro monstro
+- [x] Tela inicial redesenhada
+- [x] Recalibragem (late_slope 0,034), testes (7.511 asserções), smoke, paridade, traduções, screenshots, APK

@@ -20,6 +20,8 @@ func build() -> void:
 		var hr := UI.hbox(6)
 		v.add_child(hr)
 		hr.add_child(UI.pill(Loc.t("Nv %d") % int(c.level), UI.C_GOLD, 15))
+		if c.get("world_boss", false):
+			hr.add_child(UI.pill(Loc.t("Chefe de Mundo"), Color("#ff7a5a"), 15))
 		var nl := UI.label(DataDB.challenge_name(c), 20, UI.C_GOLD if rec.get("cleared", false) else UI.C_TEXT)
 		nl.clip_text = true
 		nl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -39,9 +41,13 @@ func build() -> void:
 		tr.add_child(ml)
 		v.add_child(tr)
 		var rw: Dictionary = c.rewards
-		var rl := UI.label(Loc.t("Recompensa: %s ouro, Essência e item %s") % [UI.fmt(rw.gold), DataDB.rarity_name(rw.item_rarity)] + (" · " + Loc.t("abre o MUNDO 2") if c.get("unlocks", "") == "world2" else ""), 15, UI.C_TEXT, true)
+		var rl := UI.label(Loc.t("Recompensa: %s ouro, Essência e item %s") % [UI.fmt(rw.gold), DataDB.rarity_name(rw.item_rarity)] + (" · " + Loc.t("abre o MUNDO 2") if c.get("unlocks", "") == "world2" else (" · " + Loc.t("abre o MUNDO 3") if c.get("unlocks", "") == "world3" else "")), 15, UI.C_TEXT, true)
 		rl.custom_minimum_size.x = 100
 		v.add_child(rl)
+		if c.get("world_boss", false):
+			var wl := UI.label(Loc.t("Prova de força do mundo: precisa de %d monstros fortes em campo. Não pode ser recrutado.") % int(c.get("min_fighters", 2)), 15, Color("#ffb08a"), true)
+			wl.custom_minimum_size.x = 100
+			v.add_child(wl)
 		# linha de ação: estado à esquerda, botão à direita (sempre dentro da tela)
 		var ar := UI.hbox(8)
 		v.add_child(ar)

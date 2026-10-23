@@ -1,7 +1,7 @@
 extends Screen
 ## Seleção de hunts com estimativa de abates/XP por hora para o grupo atual.
 
-const CATS := ["filhote", "adolescente", "adulto", "mista", "mundo2"]
+const CATS := ["filhote", "adolescente", "adulto", "mista", "fronteira", "mundo2", "mundo3"]
 var tab := -1
 var type_filter := ""
 
@@ -11,7 +11,24 @@ func build() -> void:
 	if tab < 0:
 		var cur: Dictionary = DataDB.hunts.get(Game.save.current_hunt, {})
 		tab = maxi(0, CATS.find(cur.get("category", "filhote")))
-	b.add_child(tabs([Loc.t("Filhotes"), Loc.t("Adolesc."), Loc.t("Adultos"), Loc.t("Mistas"), Loc.t("Mundo 2")], tab, func(i): tab = i; rebuild()))
+	# mundos (cada um com o seu foco) e, no Mundo 1, as categorias
+	var world := 3 if tab == 6 else (2 if tab == 5 else 1)
+	var wrow := UI.hbox(6)
+	b.add_child(wrow)
+	for wi in 3:
+		var wn := wi + 1
+		var wl := Loc.t("Mundo %d") % wn
+		var wb := UI.button(wl, func(): tab = [0, 5, 6][wn - 1]; rebuild(), 19, 58, "tab_on" if world == wn else "tab")
+		wb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		if not Game.world_unlocked(wn):
+			wb.icon = Icons.tex("lock")
+			wb.expand_icon = true
+			wb.add_theme_constant_override("icon_max_width", 26)
+		wrow.add_child(wb)
+	if world == 1:
+		b.add_child(tabs([Loc.t("Filhotes"), Loc.t("Adolesc."), Loc.t("Adultos"), Loc.t("Mistas"), Loc.t("Fronteira")], tab, func(i): tab = i; rebuild()))
+	var focus: String = [Loc.t("Mundo 1 · níveis 1 a 110 · 1 monstro em campo"), Loc.t("Mundo 2 (Abismo) · 110 a 210 · 2 monstros em campo · mais inimigos"), Loc.t("Mundo 3 (Reino Astral) · 210+ · 3 monstros em campo · hordas")][world - 1]
+	b.add_child(UI.label(focus, 15, UI.C_MUTED, true))
 	b.add_child(_type_filter())
 	var fighters := Game.fighter_stats()
 	var main_lvl := Game.main_level()
@@ -24,8 +41,10 @@ func build() -> void:
 	var sc := UI.scroll(8)
 	b.add_child(sc[0])
 	var list: VBoxContainer = sc[1]
-	if tab == 4 and not Game.world2_unlocked():
-		list.add_child(empty_note(Loc.t("O Mundo 2 é desbloqueado ao vencer o Desafio de nível 80: biomas corrompidos, grupos mistos, sem recrutamento e drops exclusivos."), "lock"))
+	var locked_world := world >= 2 and not Game.world_unlocked(world)
+	if locked_world:
+		list.add_child(empty_note(Loc.t("O Mundo 2 é liberado ao derrotar o Chefe de Mundo do nível 110 (Desafios). Biomas do Abismo, mais monstros por mapa, sem recrutamento e drops exclusivos.") if world == 2
+			else Loc.t("O Mundo 3 é liberado ao derrotar o Chefe de Mundo do nível 210 (Desafios). Reino Astral, hordas de monstros e os melhores drops."), "lock"))
 	var cat: String = CATS[tab]
 	var rec := Game.recommended_hunt()
 	var shown := 0
@@ -33,7 +52,7 @@ func build() -> void:
 		if h.category == cat and (type_filter == "" or h.types.has(type_filter)):
 			list.add_child(_hunt_row(h, fighters, main_lvl, rec))
 			shown += 1
-	if shown == 0 and not (tab == 4 and not Game.world2_unlocked()):
+	if shown == 0 and not locked_world:
 		list.add_child(empty_note(Loc.t("Nenhuma hunt de %s nesta aba. Tente outra aba ou tire o filtro.") % DataDB.type_name(type_filter), "map"))
 
 

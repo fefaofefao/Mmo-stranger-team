@@ -38,13 +38,15 @@ var particles: CPUParticles2D
 var modulate_node: CanvasModulate
 
 
-func setup(world: Node2D, camera: Camera2D, biome_id: String, corrupted: bool) -> void:
+func setup(world: Node2D, camera: Camera2D, biome_id: String, corrupted: bool, theme := "") -> void:
 	var cfg: Array = BIOMES.get(biome_id, ["dust", Color.WHITE])
 	var kind: String = cfg[0]
 	var light: Color = cfg[1]
 	if corrupted:
-		kind = "wisp"
-		light = light * Color(0.86, 0.76, 0.96)
+		var th: Dictionary = DataDB.config.get("themes", {}).get(theme if theme != "" else "abyss", {})
+		kind = th.get("particles", "wisp")
+		var l: Array = th.get("light", [0.86, 0.76, 0.96])
+		light = light * Color(l[0], l[1], l[2])
 	modulate_node = CanvasModulate.new()
 	modulate_node.color = light
 	world.add_child(modulate_node)

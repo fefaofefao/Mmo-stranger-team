@@ -27,7 +27,7 @@ func _initialize() -> void:
 	for l in [1, 2, 5, 9, 10, 11, 50, 80, 120, 210, 299]:
 		out.xp[str(l)] = Formulas.xp_to_next(l)
 		out.gold[str(l)] = Formulas.gold_for_kill(l)
-	for hid in ["w1_s1_agua_1", "w1_s3_fogo_2", "w1_mix_pantano", "w2_150_1", "w2_250_2"]:
+	for hid in ["w1_s1_agua_1", "w1_s3_fogo_2", "w1_mix_pantano", "w1x_95_1", "w2_150_1", "w3_250_2"]:
 		var h: Dictionary = DataDB.hunts[hid]
 		var lvl := int(h.level)
 		var m := MonsterLogic.create("fogo_1", lvl + 2, false, "x")

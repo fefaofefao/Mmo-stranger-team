@@ -510,6 +510,14 @@ BOSSES = [
 ]
 PHASE_SAY = L("Fase 2: o chefe se enfurece!", "Phase 2: the boss is enraged!", "¡Fase 2: el jefe se enfurece!")
 
+# Chefes de Mundo: provas de força que liberam o mundo seguinte. Não são recrutáveis.
+WORLD_BOSSES = [
+    (110, L("Gorilamonte, Guardião do Mundo 1", "Gorilamonte, Guardian of World 1", "Gorilamonte, Guardián del Mundo 1"), "terra_5_3", "caverna_rochosa", "world2",
+     {"summon": {"form": "terra_3_3", "every": 14, "count": 2, "level_offset": 6}, "aoe": {"every": 7, "count": 5, "radius": 1, "dmg_pct": 0.14, "telegraph": 1.4}}),
+    (210, L("Krakenoite, Guardião do Abismo", "Krakenoite, Guardian of the Abyss", "Krakenoite, Guardián del Abismo"), "sombra_5_3", "brejo_sombrio", "world3",
+     {"summon": {"form": "sombra_4_3", "every": 13, "count": 2, "level_offset": 6}, "aoe": {"every": 6, "count": 6, "radius": 1, "dmg_pct": 0.14, "telegraph": 1.3}}),
+]
+
 
 def gen_challenges():
     prev = {}
@@ -527,7 +535,23 @@ def gen_challenges():
             "phases": [{"hp_below": 0.5, "atk_mult": 1.3, "spd_mult": 1.2, "say": PHASE_SAY}],
             "mechanics": mech, "time_limit": 240,
             "rewards": {"gold": 500 * lvl, "essence": {t: 40 * lvl // 10}, "item_rarity": reward_rarity},
-            "unlocks": ("world2" if lvl == 80 else ""), "map_size": [26, 26], "seed": 1000 + lvl,
+            "unlocks": "", "map_size": [26, 26], "seed": 1000 + lvl,
+        }
+        old = prev.get(c["id"])
+        if old:
+            for k in ("hp_mult", "atk_mult", "def_mult", "mechanics"):
+                if k in old:
+                    c[k] = old[k]
+        out.append(c)
+    for lvl, name, form, biome, unlock, mech in WORLD_BOSSES:
+        t = form.split("_")[0]
+        c = {
+            "id": "wb%d" % lvl, "level": lvl, "name": name, "boss_form": form, "type": t, "biome": biome,
+            "boss_level": lvl + 3, "hp_mult": 60.0, "atk_mult": 0.6, "def_mult": 1.1, "scale": 2.1, "world_boss": True,
+            "phases": [{"hp_below": 0.5, "atk_mult": 1.3, "spd_mult": 1.2, "say": PHASE_SAY}],
+            "mechanics": mech, "time_limit": 300, "min_fighters": 2 if lvl == 110 else 3,
+            "rewards": {"gold": 1500 * lvl, "essence": {t: 80 * lvl // 10}, "item_rarity": "lendario"},
+            "unlocks": unlock, "map_size": [30, 30], "seed": 5000 + lvl,
         }
         old = prev.get(c["id"])
         if old:

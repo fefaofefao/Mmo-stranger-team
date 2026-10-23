@@ -120,22 +120,23 @@ static func load_all() -> void:
 		h["world"] = 1
 		hunts[h.id] = h
 		hunt_list.append(h)
-	for h in generate_world2_hunts():
+	for h in generate_world_hunts("world1x") + generate_world_hunts("world2") + generate_world_hunts("world3"):
 		hunts[h.id] = h
 		hunt_list.append(h)
 	loaded = true
 
 
-## Mundo 2 é gerado a partir de config.world2 (escalável sem editar JSON de hunts).
-static func generate_world2_hunts() -> Array:
-	var w2: Dictionary = config.get("world2", {})
+## Hunts geradas por configuração (Fronteira do Mundo 1, Mundo 2 e Mundo 3), sem editar JSON de hunts.
+static func generate_world_hunts(key: String) -> Array:
+	var w2: Dictionary = config.get(key, {})
 	var out: Array = []
 	if w2.is_empty():
 		return out
+	var world := int(w2.get("world", 2))
 	var lvl := int(w2.start)
 	var adults: Dictionary = {}
 	for f in form_list:
-		if f.stage == 3:
+		if f.stage == int(w2.get("stage", 3)):
 			if not adults.has(f.type):
 				adults[f.type] = []
 			adults[f.type].append(f.form_id)
@@ -158,13 +159,18 @@ static func generate_world2_hunts() -> Array:
 				var arr: Array = adults[tid2]
 				var fid: String = arr[rng.randi_range(0, arr.size() - 1)]
 				monsters.append({"form": fid, "weight": 1})
+			var req := int(w2.get("unlock_challenge", 0))
+			if req == 0:
+				req = mini(90, int(floor(lvl / 10.0)) * 10)  # Fronteira: blocos dos Desafios 80 e 90
+			var theme: String = w2.get("theme", "")
 			var h := {
-				"id": "w2_%d_%d" % [lvl, k], "name": _w2_name(biomes[biome].name, _roman(k + 1)),
-				"world": 2, "category": "mundo2", "level": lvl, "unlock_level": max(80, lvl - 5),
-				"requires_challenge": int(w2.unlock_challenge), "biome": biome, "corrupted": true, "types": types,
+				"id": "%s_%d_%d" % ["w2" if key == "world2" else ("w3" if key == "world3" else "w1x"), lvl, k],
+				"name": _w2_name(biomes[biome].name, _roman(k + 1), w2.get("prefix", {})),
+				"world": world, "category": w2.get("category", "mundo2"), "level": lvl, "unlock_level": maxi(1, lvl - 5),
+				"requires_challenge": req, "biome": biome, "corrupted": theme != "", "theme": theme, "types": types,
 				"monsters": monsters, "density": int(w2.density), "respawn": float(w2.respawn),
-				"map_size": w2.map_size, "seed": int(w2.seed) * 1000 + lvl * 10 + k, "recruit": false,
-				"recruit_mult": 0.0, "xp_mult": float(w2.get("xp_mult", 1.0)), "gold_mult": float(w2.gold_mult),
+				"map_size": w2.map_size, "seed": int(w2.seed) * 1000 + lvl * 10 + k, "recruit": bool(w2.get("recruit", false)),
+				"recruit_mult": float(w2.get("recruit_mult", 0.0)), "xp_mult": float(w2.get("xp_mult", 1.0)), "gold_mult": float(w2.gold_mult),
 				"rarity_mult": float(w2.rarity_mult), "drops": world2_drops(types, lvl),
 			}
 			out.append(h)
@@ -172,9 +178,9 @@ static func generate_world2_hunts() -> Array:
 	return out
 
 
-static func _w2_name(bname, roman: String) -> Dictionary:
+static func _w2_name(bname, roman: String, pref: Dictionary = {}) -> Dictionary:
 	var out := {}
-	var prefix := {"pt_BR": "Abismo", "en": "Abyss", "es": "Abismo"}
+	var prefix := pref if not pref.is_empty() else {"pt_BR": "Abismo", "en": "Abyss", "es": "Abismo"}
 	for l in Loc.LANGS:
 		var b := str(bname.get(l, bname.get("pt_BR", ""))) if bname is Dictionary else str(bname)
 		out[l] = "%s · %s %s" % [prefix[l], b, roman]
