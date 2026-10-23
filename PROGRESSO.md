@@ -77,3 +77,12 @@ Legenda: [x] concluído · [~] concluído com fallback (ver PENDENCIAS.md)
 - [x] Marcos de Caça (6 marcos por forma, bônus por tipo) na hunt e na Coleção, contados no servidor (mock + Edge Function + migration)
 - [x] Recalibragem (curva final e chefes) com simulação e combate real
 - [x] Testes (7.316 asserções), smoke test, paridade GDScript × TypeScript, screenshots PT/EN/ES, APK
+
+## Revisão 4 — visual definitivo, ouro e tutorial
+- [x] Arte final dos 135 monstros + shiny (luz volumétrica, contorno colorido)
+- [x] Mapas: chão texturizado, trilhas, transições orgânicas (água, lava, céu, rocha, mata, muralhas), objetos com altura e sombra
+- [x] Clima por bioma (partículas), luz ambiente, vinheta, barras de vida novas
+- [x] Loja rotativa de 5 itens (raros muito caros) com troca paga
+- [x] Treino de monstros com ouro, com brilho em +5/+10/+15
+- [x] Tutorial inicial e dica única por área do Hub
+- [x] Mock + Edge Function + migration 20261024000005, testes (7.367 asserções), paridade, traduções, screenshots, APK

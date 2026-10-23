@@ -132,12 +132,41 @@ func goto(name: String, params: Dictionary = {}, push := true) -> void:
 		hunt_screen.visible = false
 		hunt_screen.set_map_rendering(false)
 	scr.open(self, params)
+	_maybe_tip(name)
 	if name in ["title", "starter"]:
 		Ads.hide_banner()
 	else:
 		Ads.show_banner()
 	if name == "hub":
 		Ads.maybe_interstitial()
+
+
+## Explicação curta que aparece só na primeira visita a cada área do Hub.
+func _maybe_tip(name: String) -> void:
+	var tips := {
+		"hub": ["house", Loc.t("Hub"), Loc.t("Daqui você chega a todas as áreas do jogo. Toque em Caçar para voltar ao mapa a qualquer momento.")],
+		"hunts": ["map", Loc.t("Hunts"), Loc.t("Cada hunt tem um bioma, monstros e nível. A etiqueta mostra o risco para o seu grupo e a estimativa de abates e XP por hora. Use a barra de elementos para filtrar.")],
+		"party": ["paw", Loc.t("Grupo"), Loc.t("Até 3 monstros. Só o primeiro luta até o nível 110; depois 2, e no 210 os 3. Se um cair, o próximo entra. A reserva também ganha XP.")],
+		"monster": ["bolt", Loc.t("Monstro"), Loc.t("Equipe itens, compre Estrelas com Essência e Treine com ouro: cada treino dá +Ataque e +Defesa, e em +5, +10 e +15 o monstro ganha um brilho especial.")],
+		"depot": ["chest", Loc.t("Depot"), Loc.t("Monstros recrutados ficam aqui. Coloque no grupo, troque no Altar ou guarde para a Coleção. Itens guardados também ficam aqui.")],
+		"altar": ["altar", Loc.t("Altar de Essências"), Loc.t("Troque monstros por Essência do tipo deles (qualidade alta rende mais) e aprimore itens. Dá para trocar vários de uma vez.")],
+		"collection": ["book", Loc.t("Coleção"), Loc.t("Todas as 135 formas. Os Marcos de Caça de cada espécie dão bônus permanentes para a conta inteira — o resumo fica no topo.")],
+		"inventory": ["bag", Loc.t("Inventário"), Loc.t("Equipe, trave, guarde no Depot ou venda (inclusive em lote). Itens travados nunca são vendidos por engano.")],
+		"shop": ["shop", Loc.t("Loja"), Loc.t("5 ofertas que mudam a cada 6 horas — às vezes aparece um Épico ou Lendário (bem caros!). Você pode pagar em ouro para trocar as ofertas.")],
+		"market": ["scales", Loc.t("Market"), Loc.t("Compre e venda com outros jogadores de todos os idiomas. Itens Raros ou melhores e Essências podem ser negociados.")],
+		"rankings": ["trophy", Loc.t("Rankings"), Loc.t("Compare nível, coleção, shinies, estrelas e tempos de Desafio — no geral e na semana.")],
+		"challenges": ["skull", Loc.t("Desafios"), Loc.t("Chefes com mecânicas especiais. Vencer libera novas hunts e dá recompensas garantidas. Leve monstros com vantagem de tipo!")],
+		"daily": ["crown", Loc.t("Chefe Diário"), Loc.t("Um chefe novo por dia e 3 entradas. Quanto mais dano, mais ouro e Essência; vencer garante um item Raro ou melhor.")],
+	}
+	if not tips.has(name) or not Game.has_starter():
+		return
+	var seen: Dictionary = Game.save.settings.get("tips_seen", {})
+	if seen.get(name, false):
+		return
+	seen[name] = true
+	Game.save.settings.tips_seen = seen
+	var t: Array = tips[name]
+	dialog(t[1], t[2], [Loc.t("Entendi")], t[0])
 
 
 func _close_current() -> void:

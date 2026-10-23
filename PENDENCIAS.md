@@ -13,7 +13,7 @@ O jogo roda completo sem nenhum destes itens (servidor mock + anúncios simulado
    npm i -g supabase
    supabase login
    supabase link --project-ref SEU_PROJECT_REF
-   supabase db push          # inclui as migrations 20261022000003 (qualidade + Chefe Diário) e 20261023000004 (Marcos de Caça)
+   supabase db push          # inclui as migrations 20261022000003 (qualidade + Chefe Diário) 20261023000004 (Marcos de Caça) e 20261024000005 (loja rotativa e treino)
    godot --headless --path . -s tools/export_server_data.gd
    supabase functions deploy game
    ```

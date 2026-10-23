@@ -62,7 +62,7 @@ func _build(title: String, current: Dictionary) -> void:
 		var card := UI.card()
 		var row := UI.hbox(10)
 		card.add_child(row)
-		row.add_child(UI.portrait_frame(MonsterLogic.form_id(m), bool(m.shiny), 56))
+		row.add_child(UI.monster_frame(m, 56))
 		var col := UI.vbox(2)
 		col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(col)

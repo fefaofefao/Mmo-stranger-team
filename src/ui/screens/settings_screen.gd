@@ -20,6 +20,12 @@ func build() -> void:
 			main.hunt_screen = null
 			rebuild(), 20, 60, "tab_on" if Loc.locale == l else "tab")))
 	v.add_child(UI.label(Loc.t("O Market é o mesmo para todos os idiomas."), 16, UI.C_MUTED, true))
+	v.add_child(UI.icon_button("book", Loc.t("Rever tutorial e dicas"), func():
+		Game.save.settings.tutorial_done = false
+		Game.save.settings.tips_seen = {}
+		Game.save.settings.tutorial_force = true
+		toast(Loc.t("O tutorial aparece na próxima caçada."), UI.C_GOOD, "check")
+		main.goto("hunt"), 19, 60))
 	v.add_child(UI.section(Loc.t("Conta"), "user"))
 	var card := UI.card()
 	v.add_child(card)

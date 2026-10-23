@@ -124,16 +124,18 @@ export function masteryBonuses(killsByForm: Record<string, number>): Record<stri
   return out;
 }
 
-export function computeStats(familyId: string, stage: number, level: number, stars: number, shiny: boolean, quality = 0, bonuses: Record<string, number> = {}) {
+export function computeStats(familyId: string, stage: number, level: number, stars: number, shiny: boolean, quality = 0, bonuses: Record<string, number> = {}, train = 0) {
   const fid = `${familyId}_${stage}`;
   const raw = rawStats(fid, level, shiny, quality);
+  const tAD = 1 + C.train.atk_def_per_level * train;
+  const tHP = 1 + C.train.hp_per_level * train;
   const starMult = 1 + C.stars.stat_bonus_per_star * stars;
   let up = 0;
   for (const s of C.stars.ability_upgrade_stars) if (stars >= s) up++;
   const b = (k: string) => bonuses[k] ?? 0;
   return {
-    type: D.families[familyId].type, hp: raw.hp * starMult * (1 + b("hp_pct") / 100), atk: raw.atk * starMult * (1 + b("atk_pct") / 100),
-    def: raw.def * starMult * (1 + b("def_pct") / 100), spd: raw.spd * (1 + 0.02 * stars) * (1 + b("spd_pct") / 100),
+    type: D.families[familyId].type, hp: raw.hp * starMult * tHP * (1 + b("hp_pct") / 100), atk: raw.atk * starMult * tAD * (1 + b("atk_pct") / 100),
+    def: raw.def * starMult * tAD * (1 + b("def_pct") / 100), spd: raw.spd * (1 + 0.02 * stars) * (1 + b("spd_pct") / 100),
     crit: C.combat.crit_chance + b("crit") / 100, lifesteal: 0, type_dmg: {} as Record<string, number>,
     ability_power_mult: 1 + C.stars.ability_power_per_upgrade * up, ability_cd_mult: 1 - C.stars.ability_cd_per_upgrade * up,
   };
@@ -324,4 +326,34 @@ export function dailyBossDef(day: number, level: number) {
   const lvl = Math.min(Math.max(level, 5), C.max_level);
   const st = enemyStats(form, lvl, 1);
   return { form, type: D.forms[form].type, level: lvl, day, hp: st.hp * cfg.hp_mult, def: st.def * cfg.def_mult };
+}
+
+// ---- treino de monstros e loja rotativa (espelho de src/core/formulas.gd)
+export const trainCost = (cur: number, accountLevel: number) =>
+  Math.round(goldForKill(Math.max(1, accountLevel)) * C.train.cost_kills * Math.pow(C.train.cost_growth, cur));
+export const shopItemPrice = (itemLevel: number, rarity: string) =>
+  Math.round(goldForKill(Math.max(1, itemLevel)) * (C.shop.price_kills[rarity] ?? 60));
+export const shopRefreshCost = (accountLevel: number, refreshes: number) =>
+  Math.round(goldForKill(Math.max(1, accountLevel)) * C.shop.refresh_kills * Math.pow(C.shop.refresh_growth, refreshes));
+export const shopPeriod = (t: number) => Math.floor(t / (C.shop.rotation_hours * 3600));
+
+export function rollShop(level: number) {
+  const pool = Object.keys(D.item_bases).filter((b) => {
+    const x = D.item_bases[b];
+    return !x.world2_only && x.level <= level + 5 && x.level >= level - C.shop.level_window;
+  });
+  const p = pool.length ? pool : Object.keys(D.item_bases).filter((b) => D.item_bases[b].level <= 10 && !D.item_bases[b].world2_only);
+  const total = C.shop.rarity_weights.reduce((a: number, w: any) => a + w[1], 0);
+  const out: any[] = [];
+  for (let i = 0; i < C.shop.slots; i++) {
+    let r = rand() * total;
+    let rar = "comum";
+    for (const w of C.shop.rarity_weights) {
+      r -= w[1];
+      if (r <= 0) { rar = w[0]; break; }
+    }
+    const bid = p[Math.floor(rand() * p.length)];
+    out.push({ item: createItem(bid, rar, true), price: shopItemPrice(D.item_bases[bid].level, rar), sold: false });
+  }
+  return out;
 }

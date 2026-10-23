@@ -1,5 +1,17 @@
 # Resumo da entrega — Bestiário Idle
 
+## Revisão 4 — o que mudou (visual definitivo, ouro, tutorial)
+| Pedido | Como ficou | Como testar |
+|---|---|---|
+| Revisar todo o visual: monstros | 270 folhas finais (135 formas + shiny) com luz volumétrica, sombra fria, luz quente e contorno colorido — mesma "mão" em todos | Qualquer hunt / Coleção (`docs/sprites_preview.png`) |
+| Mapas | Chão texturizado, trilhas, margens de água com espuma, lava com crosta, penhascos com sombra, muralhas de tijolo, árvores/rochas/cristais/colunas em pé com sombra (monstros passam atrás) | `docs/maps_preview.png` |
+| Elementos visuais | Clima por bioma (brasas, neve, pétalas, vagalumes, faíscas, bolhas...), luz ambiente, vinheta, barras de vida novas | Caça |
+| Mais usos para o ouro | **Loja rotativa** (5 ofertas a cada 6 h, Raro ≈ 1,5 h de ouro, Épico ≈ 5 h, Lendário ≈ 20 h; trocar ofertas custa ouro) e **Treino** de monstros | Hub → Loja; Monstro → Treino |
+| Aprimorar monstros com brilho | Treino até +15: +4% Ataque e Defesa e +2% Vida por nível; brilho em +5, intenso em +10, radiante dourado em +15 | Monstro → Treinar (debug: +100k ouro) |
+| Tutorial | 6 passos na primeira caçada com destaque de cada área; "Pular" | Perfil novo (ou Ajustes → Rever tutorial) |
+| Explicação única por aba | Dica na primeira visita a cada área do Hub | Abra qualquer aba pela 1ª vez |
+
+
 ## Revisão 3 — o que mudou (segundo pedido de melhorias)
 | Pedido | Como ficou | Como testar |
 |---|---|---|

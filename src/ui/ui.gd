@@ -479,6 +479,68 @@ static func portrait(form_id: String, shiny := false, size := 64.0) -> TextureRe
 	return tex(SpriteFactory.portrait(form_id, shiny), size)
 
 
+## Cor do brilho de treino (1 = brilho do tipo, 2 = intenso, 3 = radiante dourado).
+static func glow_color(type_id: String, tier: int) -> Color:
+	if tier >= 3:
+		return Color(1.0, 0.86, 0.45)
+	var c := DataDB.type_color(type_id).lightened(0.25 if tier == 1 else 0.45)
+	return c
+
+
+static var _glow_tex: Texture2D
+
+
+static func glow_texture() -> Texture2D:
+	if _glow_tex == null:
+		var g := GradientTexture2D.new()
+		g.fill = GradientTexture2D.FILL_RADIAL
+		g.fill_from = Vector2(0.5, 0.5)
+		g.fill_to = Vector2(1.0, 0.5)
+		var gr := Gradient.new()
+		gr.set_color(0, Color(1, 1, 1, 0.95))
+		gr.set_color(1, Color(1, 1, 1, 0))
+		gr.add_point(0.45, Color(1, 1, 1, 0.45))
+		g.gradient = gr
+		g.width = 64
+		g.height = 64
+		_glow_tex = g
+	return _glow_tex
+
+
+## Retrato de um monstro do jogador: moldura + aura pulsante quando treinado (+5/+10/+15).
+static func monster_frame(m: Dictionary, size := 72.0) -> Control:
+	var frame := portrait_frame(MonsterLogic.form_id(m), bool(m.get("shiny", false)), size)
+	var tier := MonsterLogic.glow_tier(m)
+	if tier == 0:
+		return frame
+	var holder := Control.new()
+	holder.custom_minimum_size = frame.get_combined_minimum_size()
+	holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var aura := TextureRect.new()
+	aura.texture = glow_texture()
+	aura.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	aura.stretch_mode = TextureRect.STRETCH_SCALE
+	aura.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var grow := 0.22 + 0.14 * tier
+	aura.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	aura.offset_left = -size * grow
+	aura.offset_top = -size * grow
+	aura.offset_right = size * grow
+	aura.offset_bottom = size * grow
+	var col := glow_color(MonsterLogic.type_of(m), tier)
+	aura.modulate = Color(col.r, col.g, col.b, 0.9)
+	var mat := CanvasItemMaterial.new()
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	aura.material = mat
+	holder.add_child(aura)
+	frame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	holder.add_child(frame)
+	var tw := aura.create_tween().set_loops()
+	tw.tween_property(aura, "modulate:a", 0.55 + 0.12 * tier, 0.9).set_trans(Tween.TRANS_SINE)
+	tw.tween_property(aura, "modulate:a", 1.0, 0.9).set_trans(Tween.TRANS_SINE)
+	return holder
+
+
 ## Retrato dentro de uma moldura com fundo da cor do tipo.
 static func portrait_frame(form_id: String, shiny := false, size := 72.0, seen := true) -> Control:
 	var p := PanelContainer.new()

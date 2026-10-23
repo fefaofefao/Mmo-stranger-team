@@ -64,7 +64,7 @@ static func generate(biome_id: String, size: Vector2i, seed_value: int, corrupte
 					t = rng.randi_range(0, 2)
 				tiles[p] = t
 	var spawns := _pick_spawns(size, solid, start, rng, spawn_count)
-	return {"size": size, "solid": solid, "tiles": tiles, "spawns": spawns, "start": start, "biome": biome_id, "corrupted": corrupted}
+	return {"size": size, "solid": solid, "tiles": tiles, "spawns": spawns, "start": start, "biome": biome_id, "corrupted": corrupted, "seed": seed_value}
 
 
 static func _gen_open(size: Vector2i, rng: RandomNumberGenerator, solid: Dictionary) -> void:

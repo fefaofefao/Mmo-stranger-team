@@ -212,6 +212,7 @@ func refresh_profile() -> void:
 		if not rec.is_empty():
 			m.stars = int(rec.get("stars", 0))
 			m.quality = int(rec.get("quality", m.get("quality", 0)))
+			m.train = int(rec.get("train", m.get("train", 0)))
 	# Marcos: o servidor guarda os abates validados (recupera progresso após reinstalar sem nuvem)
 	var srv_mastery: Dictionary = r.get("mastery", {})
 	for fid in srv_mastery:
@@ -639,6 +640,51 @@ func convert_monsters(uids: Array) -> Dictionary:
 	monsters_changed.emit()
 	inventory_changed.emit()
 	return {"ok": true, "converted": done, "failed": fails, "totals": totals}
+
+
+## Treino com ouro (+Ataque/Defesa/Vida; brilho em +5/+10/+15). O servidor cobra e registra.
+func train_monster(uid: String) -> Dictionary:
+	var m := monster(uid)
+	if m.is_empty():
+		return {"ok": false, "error": Loc.t("Monstro inválido")}
+	var before := MonsterLogic.glow_tier(m)
+	var r := await Backend.request("train_monster", {"server_id": m.server_id})
+	if not r.get("ok", false):
+		return r
+	m.train = int(r.train)
+	_apply_wallet(r.wallet)
+	r["new_glow"] = MonsterLogic.glow_tier(m) > before
+	monsters_changed.emit()
+	party_changed.emit()
+	return r
+
+
+func train_cost(m: Dictionary) -> int:
+	return Formulas.train_cost(int(m.get("train", 0)), main_level())
+
+
+func shop_status() -> Dictionary:
+	var r := await Backend.request("shop_status")
+	if r.get("ok", false):
+		_apply_wallet(r.wallet)
+	return r
+
+
+func shop_buy(slot: int) -> Dictionary:
+	if inv_count() >= inv_cap():
+		return {"ok": false, "error": Loc.t("Inventário cheio")}
+	var r := await Backend.request("shop_buy", {"slot": slot})
+	if r.get("ok", false):
+		_apply_wallet(r.wallet)
+		add_item(r.item, false)
+	return r
+
+
+func shop_refresh() -> Dictionary:
+	var r := await Backend.request("shop_refresh")
+	if r.get("ok", false):
+		_apply_wallet(r.wallet)
+	return r
 
 
 func buy_star(uid: String) -> Dictionary:

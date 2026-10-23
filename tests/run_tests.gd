@@ -21,6 +21,7 @@ func _initialize() -> void:
 		preload("res://tests/test_data.gd"),
 		preload("res://tests/test_world.gd"),
 		preload("res://tests/test_mastery.gd"),
+		preload("res://tests/test_economy.gd"),
 	]
 	for s in suites:
 		var inst = s.new()

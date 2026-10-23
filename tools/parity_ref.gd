@@ -5,7 +5,7 @@ extends SceneTree
 
 func _initialize() -> void:
 	DataDB.load_all()
-	var out := {"xp": {}, "gold": {}, "kills": {}, "essence": [], "reach": [], "daily": [], "quality": [], "mastery": []}
+	var out := {"xp": {}, "gold": {}, "kills": {}, "essence": [], "reach": [], "daily": [], "quality": [], "mastery": [], "train": []}
 	for d in [[20000, 40], [20001, 150], [20123, 300]]:
 		var b := ServerLogic.daily_boss_def(d[0], d[1])
 		out.daily.append({"in": d, "form": b.form, "hp": b.hp})
@@ -17,6 +17,13 @@ func _initialize() -> void:
 		var mm2 := MonsterLogic.create("terra_1", 90, false, "mm", "", 40)
 		mm2.stage = 3
 		out.mastery.append({"in": kb, "b": b, "stats": MonsterLogic.compute_stats(mm2, {}, b)})
+	for tr in [0, 4, 15]:
+		var mt := MonsterLogic.create("gelo_3", 120, false, "t", "", 70)
+		mt.stage = 3
+		mt.train = tr
+		var stt := MonsterLogic.compute_stats(mt)
+		out.train.append({"t": tr, "hp": stt.hp, "atk": stt.atk, "def": stt.def, "cost": Formulas.train_cost(tr, 133),
+			"shop": Formulas.shop_item_price(77, "epico"), "refresh": Formulas.shop_refresh_cost(50, 2)})
 	for l in [1, 2, 5, 9, 10, 11, 50, 80, 120, 210, 299]:
 		out.xp[str(l)] = Formulas.xp_to_next(l)
 		out.gold[str(l)] = Formulas.gold_for_kill(l)

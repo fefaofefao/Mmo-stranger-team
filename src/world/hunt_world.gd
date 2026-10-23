@@ -24,6 +24,8 @@ var nav := GridNav.new()
 var rng := RandomNumberGenerator.new()
 
 var ground: TileMapLayer
+var deco_layer: TileMapLayer
+var ambient: AmbientFx
 var corpses_node: Node2D
 var entities: Node2D
 var fx: FxLayer
@@ -76,6 +78,9 @@ func _build_nodes() -> void:
 	ground = TileMapLayer.new()
 	ground.name = "Ground"
 	add_child(ground)
+	deco_layer = TileMapLayer.new()
+	deco_layer.name = "Deco"
+	add_child(deco_layer)
 	corpses_node = Node2D.new()
 	corpses_node.name = "Corpses"
 	add_child(corpses_node)
@@ -182,9 +187,11 @@ func boss_damage_fraction() -> float:
 func _build_world() -> void:
 	_build_nodes()
 	nav.setup(map.size, map.solid)
-	ground.tile_set = TileFactory.tileset(biome_id, corrupted)
-	for c in map.tiles:
-		ground.set_cell(c, 0, Vector2i(int(map.tiles[c]), 0))
+	if not headless:
+		TileFactory.paint(map, ground, deco_layer, entities, int(map.get("seed", 1)))
+		ambient = AmbientFx.new()
+		add_child(ambient)
+		ambient.setup(self, camera, biome_id, corrupted)
 	party.clear()
 	fallen.clear()
 	participants.clear()
@@ -529,18 +536,17 @@ func _update_projectiles(dt: float) -> void:
 	var arr: Array = fx.projectiles
 	while i < arr.size():
 		var p: Dictionary = arr[i]
-		var dst: Creature = p.dst
-		if not is_instance_valid(dst) or not dst.alive:
+		if not is_instance_valid(p.dst) or not p.dst.alive:
 			arr.remove_at(i)
 			continue
+		var dst: Creature = p.dst
 		var to: Vector2 = dst.position + Vector2(0, -8)
 		var dir: Vector2 = to - p.pos
 		var stepd: float = p.speed * dt
 		if dir.length() <= stepd:
 			arr.remove_at(i)
-			var src: Creature = p.src if is_instance_valid(p.src) else null
-			if src:
-				deal_damage(src, dst, p.power, p.ability)
+			if is_instance_valid(p.src):
+				deal_damage(p.src, dst, p.power, p.ability)
 			var cb: Callable = p.on_hit
 			if cb.is_valid():
 				cb.call()

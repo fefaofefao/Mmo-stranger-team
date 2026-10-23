@@ -110,14 +110,18 @@ static func compute_stats(m: Dictionary, items_by_uid: Dictionary = {}, bonuses:
 	var eq := equipment_stats(m, items_by_uid)
 	var up := ability_upgrades(m)
 	var cb: Dictionary = DataDB.config.combat
+	var tr := int(m.get("train", 0))
+	var tc: Dictionary = DataDB.config.train
+	var t_ad := 1.0 + float(tc.atk_def_per_level) * tr
+	var t_hp := 1.0 + float(tc.hp_per_level) * tr
 	var atk_pct := float(eq.get("atk_pct", 0.0)) + float(bonuses.get("atk_pct", 0.0))
 	var s := {
 		"form_id": fid,
 		"type": type_of(m),
 		"level": int(m.level),
-		"hp": (raw.hp * star_mult + float(eq.get("hp", 0.0))) * (1.0 + (float(eq.get("hp_pct", 0.0)) + float(bonuses.get("hp_pct", 0.0))) / 100.0),
-		"atk": (raw.atk * star_mult + float(eq.get("atk", 0.0))) * (1.0 + atk_pct / 100.0),
-		"def": (raw.def * star_mult + float(eq.get("def", 0.0))) * (1.0 + (float(eq.get("def_pct", 0.0)) + float(bonuses.get("def_pct", 0.0))) / 100.0),
+		"hp": (raw.hp * star_mult * t_hp + float(eq.get("hp", 0.0))) * (1.0 + (float(eq.get("hp_pct", 0.0)) + float(bonuses.get("hp_pct", 0.0))) / 100.0),
+		"atk": (raw.atk * star_mult * t_ad + float(eq.get("atk", 0.0))) * (1.0 + atk_pct / 100.0),
+		"def": (raw.def * star_mult * t_ad + float(eq.get("def", 0.0))) * (1.0 + (float(eq.get("def_pct", 0.0)) + float(bonuses.get("def_pct", 0.0))) / 100.0),
 		"spd": raw.spd * (1.0 + 0.02 * stars) * (1.0 + (float(eq.get("spd_pct", 0.0)) + float(bonuses.get("spd_pct", 0.0))) / 100.0),
 		"rng": raw.rng,
 		"crit": float(cb.crit_chance) + (float(eq.get("crit", 0.0)) + float(bonuses.get("crit", 0.0))) / 100.0,
@@ -129,6 +133,7 @@ static func compute_stats(m: Dictionary, items_by_uid: Dictionary = {}, bonuses:
 		"ability_cd_mult": (1.0 - float(DataDB.config.stars.ability_cd_per_upgrade) * up) * (1.0 - float(eq.get("cdr", 0.0)) / 100.0),
 		"abilities": form(m).get("abilities", []),
 		"style": form(m).get("style", "melee"),
+		"train": tr,
 	}
 	return s
 
@@ -168,3 +173,13 @@ static func set_level(m: Dictionary, level: int) -> void:
 	m.level = clampi(level, 1, int(DataDB.config.max_level))
 	m.xp = 0.0
 	m.stage = max(int(m.stage), stage_for_level(m.family, int(m.level)))
+
+
+## Brilho do treino: 0 = nenhum, 1 = brilho (+5), 2 = intenso (+10), 3 = radiante (+15).
+static func glow_tier(m: Dictionary) -> int:
+	var t := int(m.get("train", 0))
+	var g := 0
+	for lv in DataDB.config.train.glow_levels:
+		if t >= int(lv):
+			g += 1
+	return g

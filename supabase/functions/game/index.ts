@@ -73,7 +73,7 @@ async function partyUpperStats(ctx: Ctx, party: any[]) {
     if (!D.families[fam]) continue;
     const lvl = Math.min(pm.level ?? 1, ctx.player.validated_level + 10);
     const stage = Math.max(L.stageForLevel(fam, lvl), pm.stage ?? 1);
-    const s: any = L.computeStats(fam, Math.min(stage, 3), lvl, rec?.stars ?? 0, rec?.shiny ?? false, rec?.quality ?? 100, mastery(ctx));
+    const s: any = L.computeStats(fam, Math.min(stage, 3), lvl, rec?.stars ?? 0, rec?.shiny ?? false, rec?.quality ?? 100, mastery(ctx), rec?.train ?? 0);
     s.hp *= allowance; s.atk *= allowance; s.def *= allowance; s.spd *= 1.25; s.crit += 0.1;
     out.push(s);
   }
@@ -157,6 +157,17 @@ async function bulkKills(ctx: Ctx, hunt: any, kills: number, goldPct: number) {
     }
   }
   return ok({ kills, kills_by_form: byForm, gold_gained: gold, items, recruits, shinies, wallet: wallet(ctx.player) });
+}
+
+// loja rotativa: estado por jogador (players.shop), renovado a cada período
+function shopState(ctx: Ctx) {
+  const per = L.shopPeriod(nowS());
+  let st = ctx.player.shop ?? {};
+  if (st.period !== per) {
+    st = { period: per, refreshes: 0, slots: L.rollShop(ctx.player.validated_level) };
+    set(ctx, "shop", st);
+  }
+  return st;
 }
 
 function dailyState(ctx: Ctx) {
@@ -386,6 +397,45 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
       if (r.ok) totals[r.essence_type] = (totals[r.essence_type] ?? 0) + r.amount;
     }
     return ok({ results, totals, wallet: wallet(ctx.player) });
+  },
+  async train_monster(ctx, a) {
+    const { data: rec } = await admin.from("monsters").select("*").eq("server_id", a.server_id).eq("owner", ctx.uid).maybeSingle();
+    if (!rec || rec.converted) return err("Monstro inválido");
+    const cur = rec.train ?? 0;
+    if (cur >= C.train.max) return err("Treino no máximo");
+    const cost = L.trainCost(cur, ctx.player.validated_level);
+    if (Number(ctx.player.gold) < cost) return err("Ouro insuficiente");
+    const { data: upd } = await admin.from("monsters").update({ train: cur + 1 }).eq("server_id", rec.server_id).eq("train", cur).select("train");
+    if (!upd?.length) return err("Tente novamente");
+    addGold(ctx, -cost);
+    return ok({ train: cur + 1, cost, wallet: wallet(ctx.player) });
+  },
+  async shop_status(ctx) {
+    const st = shopState(ctx);
+    const hours = C.shop.rotation_hours * 3600;
+    return ok({ slots: st.slots, ends_at: (st.period + 1) * hours, server_time: nowS(),
+      refresh_cost: L.shopRefreshCost(ctx.player.validated_level, st.refreshes), wallet: wallet(ctx.player) });
+  },
+  async shop_buy(ctx, a) {
+    const st = shopState(ctx);
+    const s = st.slots[a.slot];
+    if (!s) return err("Item inválido");
+    if (s.sold) return err("Já vendido");
+    if (Number(ctx.player.gold) < s.price) return err("Ouro insuficiente");
+    addGold(ctx, -s.price);
+    s.sold = true;
+    set(ctx, "shop", st);
+    return ok({ item: s.item, wallet: wallet(ctx.player) });
+  },
+  async shop_refresh(ctx) {
+    const st = shopState(ctx);
+    const cost = L.shopRefreshCost(ctx.player.validated_level, st.refreshes);
+    if (Number(ctx.player.gold) < cost) return err("Ouro insuficiente");
+    addGold(ctx, -cost);
+    st.refreshes += 1;
+    st.slots = L.rollShop(ctx.player.validated_level);
+    set(ctx, "shop", st);
+    return actions.shop_status(ctx, {});
   },
   async buy_star(ctx, a) {
     const { data: rec } = await admin.from("monsters").select("*").eq("server_id", a.server_id).eq("owner", ctx.uid).maybeSingle();

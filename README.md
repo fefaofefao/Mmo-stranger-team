@@ -130,6 +130,12 @@ Regras implementadas: banner fixo no rodapé **fora do mapa** (o mapa fica num S
 ## 6. Substituir sprites e tilesets (sem mexer em código)
 
 ### Monstros
+A arte atual dos monstros já é a versão final gerada (`assets/sprites/monsters/*.png`). Para regerar depois de mudar formatos/cores em `src/art/sprite_factory.gd`:
+```bash
+godot --headless --path . -s tools/export_raw_sprites.gd -- /tmp/raw_sprites
+python3 tools/shade_sprites.py /tmp/raw_sprites      # luz, sombra e contorno colorido
+godot --headless --path . --import
+```
 Salve `assets/sprites/monsters/<form_id>.png` (ex.: `fogo_1_2.png`). Opcional: `<form_id>_shiny.png` (senão a versão shiny é gerada recolorindo a arte).
 
 Layout do spritesheet: **10 colunas x 4 linhas**, quadros de qualquer tamanho igual (32, 48, 64 px...):
@@ -144,15 +150,14 @@ Layout do spritesheet: **10 colunas x 4 linhas**, quadros de qualquer tamanho ig
 A base do quadro fica alinhada à base do tile. Os `form_id` estão em `data/families.json` (`stages[].form_id`). Para ter um modelo, use o menu de debug → *Exportar spritesheets placeholder* (gera todos os PNG em `user://placeholder_art/`).
 
 ### Tilesets
-Salve `assets/tilesets/<bioma>.png` com **10 tiles de 32x32 em uma linha** (320x32):
-`0-2` chão, `3` chão com detalhe, `4-5` obstáculo/parede, `6-7` decoração andável, `8` decoração corrompida, `9` borda/abismo.
-Opcional `<bioma>_corrupted.png` para o Mundo 2 (senão a paleta corrompida é aplicada automaticamente). Os ids dos biomas estão em `data/biomes.json`.
+Formato novo (512x128, 16x4 tiles): linha 0 chão (0-7) e decorações (8-15); linha 1 transições para a trilha; linha 2 transições para a massa do bioma (água, lava, rocha...) pela máscara de cantos (1 = sup.esq, 2 = sup.dir, 4 = inf.esq, 8 = inf.dir); linha 3 massa cheia (0-3) e corrupção (4-7). Objetos em pé: `<bioma>_prop0..2.png`. Prévia de todos os biomas: `tools/map_preview.gd` → `docs/maps_preview.png`.
+Salve `assets/tilesets/<bioma>.png` nesse formato; o Mundo 2 aplica a paleta corrompida automaticamente. Os ids dos biomas estão em `data/biomes.json`. Debug → "Exportar spritesheets placeholder" gera modelos de todos os biomas para o artista.
 
 ### Hub
 `assets/ui/hub.png` substitui a ilustração do Hub/título.
 
 ### Ícones da interface
-Os 50 ícones ficam em `assets/ui/icons/<nome>.png` (64x64), gerados por `python3 tools/gen_icons.py --sheet` (prévia em `docs/icons_preview.png`). Substitua qualquer PNG pelo seu (mesmo nome, qualquer tamanho quadrado) e rode `godot --headless --path . --import`. Sem o PNG, o jogo usa a versão pixel art 12x12 de `src/art/icons.gd`. Os sprites placeholder de monstros usam quadro de 56 px (filhote 25, jovem 34, adulto 45 px de altura).
+Os 50 ícones ficam em `assets/ui/icons/<nome>.png` (64x64), gerados por `python3 tools/gen_icons.py --sheet` (prévia em `docs/icons_preview.png`). Substitua qualquer PNG pelo seu (mesmo nome, qualquer tamanho quadrado) e rode `godot --headless --path . --import`. Sem o PNG, o jogo usa a versão pixel art 12x12 de `src/art/icons.gd`.
 
 ## 7. Ajustar o balanceamento
 

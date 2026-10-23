@@ -38,6 +38,8 @@ var m_earned: Label
 var m_icon: TextureRect
 var _m_form := ""
 var _m_dirty := true
+var nav_row: HBoxContainer
+var feed_ref: Control
 
 
 func _init() -> void:
@@ -115,6 +117,23 @@ func _build() -> void:
 	vp_container.add_child(viewport)
 	world = HuntWorld.new()
 	viewport.add_child(world)
+	# vinheta suave nas bordas do mapa
+	var vg := GradientTexture2D.new()
+	vg.fill = GradientTexture2D.FILL_RADIAL
+	vg.fill_from = Vector2(0.5, 0.5)
+	vg.fill_to = Vector2(1.05, 1.05)
+	var gr := Gradient.new()
+	gr.set_color(0, Color(0, 0, 0, 0))
+	gr.set_color(1, Color(0, 0, 0, 0.55))
+	gr.add_point(0.55, Color(0, 0, 0, 0))
+	vg.gradient = gr
+	var vig := TextureRect.new()
+	vig.texture = vg
+	vig.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	vig.stretch_mode = TextureRect.STRETCH_SCALE
+	vig.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	vig.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	vp_container.add_child(vig)
 	world.kill_reward.connect(_on_kill_reward)
 	world.suggest_easier.connect(_on_suggest_easier)
 	world.challenge_finished.connect(_on_boss_finished)
@@ -155,11 +174,13 @@ func _build() -> void:
 	var bv := UI.vbox(8)
 	bottom.add_child(bv)
 	var feed_panel := UI.panel("inset")
+	feed_ref = feed_panel
 	feed_panel.custom_minimum_size = Vector2(0, 122)
 	bv.add_child(feed_panel)
 	feed_box = UI.vbox(0)
 	feed_panel.add_child(feed_box)
 	var nav := UI.hbox(6)
+	nav_row = nav
 	bv.add_child(nav)
 	nav.add_child(UI.tile_button("house", Loc.t("Hub"), func(): main.goto("hub"), 36, Vector2(0, 92)))
 	nav.add_child(UI.tile_button("map", Loc.t("Hunts"), func(): main.goto("hunts"), 36, Vector2(0, 92)))
@@ -291,6 +312,35 @@ func on_show() -> void:
 	set_map_rendering(true)
 	refresh_hud()
 	_refresh_daily_badge()
+	if not Game.save.settings.get("tutorial_done", false) and Game.has_starter() and mode == "hunt" and (Game.main_level() <= 5 or Game.save.settings.get("tutorial_force", false)):
+		Game.save.settings.tutorial_force = false
+		Game.save.settings.tutorial_done = true
+		_run_tutorial.call_deferred()
+
+
+## Tutorial curto da primeira caçada (aparece uma vez; dá para rever em Ajustes).
+func _run_tutorial() -> void:
+	await get_tree().create_timer(1.2).timeout
+	if not visible:
+		Game.save.settings.tutorial_done = false
+		return
+	var steps := [
+		{"title": Loc.t("Bem-vindo, domador!"), "icon": "paw", "target": vp_container,
+			"text": Loc.t("Seu monstro caça sozinho: anda pelo mapa, ataca e usa habilidades. Você cuida da estratégia: onde caçar, quem leva no grupo e como fortalecê-lo.")},
+		{"title": Loc.t("Seu grupo"), "icon": "heart", "target": hud_box,
+			"text": Loc.t("Vida e XP de cada monstro. Toque num deles para trocar por outro do Depot. No nível 110 dois monstros lutam juntos; no 210, três.")},
+		{"title": Loc.t("Marcos de Caça"), "icon": "trophy", "target": mastery_panel,
+			"text": Loc.t("Cada abate conta para os Marcos daquela espécie. Cada elemento dá um bônus permanente: Água dá Vida, Fogo dá Ataque, Planta dá XP, Vento dá sorte de drop e assim por diante.")},
+		{"title": Loc.t("Drops e recrutas"), "icon": "egg", "target": feed_ref,
+			"text": Loc.t("Aqui aparecem itens, níveis e recrutas. Todo abate pode recrutar o monstro derrotado, com qualidade de 0 a 100%. Shinies são raríssimos e muito mais fortes!")},
+		{"title": Loc.t("Tudo a um toque"), "icon": "house", "target": nav_row,
+			"text": Loc.t("Hub: Grupo, Loja, Altar, Market e mais. Hunts: escolha onde caçar. Chefe: 3 lutas por dia. 2x XP: um anúncio opcional dobra a XP por 30 minutos.")},
+		{"title": Loc.t("Mesmo longe, progresso"), "icon": "clock", "target": null,
+			"text": Loc.t("Feche o jogo quando quiser: seu grupo continua caçando por até 8 horas e você recebe tudo ao voltar. Boa caçada!")},
+	]
+	var t := Tutorial.run(main.overlay, steps)
+	await t.finished
+	Game.save_local()
 
 
 func _refresh_daily_badge() -> void:
@@ -448,7 +498,7 @@ func rebuild_hud() -> void:
 		var row := UI.hbox(8)
 		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		tap.add_child(row)
-		row.add_child(UI.portrait_frame(MonsterLogic.form_id(m), bool(m.shiny), 40))
+		row.add_child(UI.monster_frame(m, 40))
 		var col := UI.vbox(2)
 		col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(col)

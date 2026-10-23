@@ -325,7 +325,42 @@
   "listing_days": 7
  },
  "shop": {
-  "price_mult": 3.0
+  "_comentario": "Loja rotativa: 5 itens por rodada, novos a cada rotation_hours (ou atualizando com ouro). Preço = ouro de N abates no nível do item (raros caros de propósito: são o grande destino do ouro).",
+  "price_mult": 3.0,
+  "slots": 5,
+  "rotation_hours": 6,
+  "rarity_weights": [
+   [
+    "comum",
+    38
+   ],
+   [
+    "incomum",
+    32
+   ],
+   [
+    "raro",
+    20
+   ],
+   [
+    "epico",
+    8
+   ],
+   [
+    "lendario",
+    2
+   ]
+  ],
+  "price_kills": {
+   "comum": 60,
+   "incomum": 160,
+   "raro": 1400,
+   "epico": 5000,
+   "lendario": 20000
+  },
+  "refresh_kills": 150,
+  "refresh_growth": 1.6,
+  "level_window": 25
  },
  "ads": {
   "interstitial_min_seconds": 300,
@@ -565,5 +600,18 @@
     }
    }
   }
+ },
+ "train": {
+  "_comentario": "Treino de monstros com ouro: cada nível +atk_def_per_level de Ataque e Defesa e +hp_per_level de Vida. Custo = ouro de cost_kills abates no nível validado do principal × cost_growth^nível. Brilho a partir de glow_levels.",
+  "max": 15,
+  "atk_def_per_level": 0.04,
+  "hp_per_level": 0.02,
+  "cost_kills": 40,
+  "cost_growth": 1.42,
+  "glow_levels": [
+   5,
+   10,
+   15
+  ]
  }
 }

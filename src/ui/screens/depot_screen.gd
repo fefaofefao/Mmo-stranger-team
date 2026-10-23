@@ -16,7 +16,7 @@ func build() -> void:
 			var p := UI.card(bool(m.shiny))
 			var row := UI.hbox(8)
 			p.add_child(row)
-			row.add_child(UI.portrait_frame(MonsterLogic.form_id(m), bool(m.shiny), 60))
+			row.add_child(UI.monster_frame(m, 60))
 			var v := UI.vbox(3)
 			v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			row.add_child(v)

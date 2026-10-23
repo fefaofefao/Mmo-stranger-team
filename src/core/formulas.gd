@@ -140,3 +140,19 @@ static func move_speed(spd: float) -> float:
 
 static func enemy_move_speed(spd: float) -> float:
 	return float(c().combat.enemy_move_speed) * max(spd, 10.0) / 100.0
+
+
+## Custo em ouro do próximo nível de Treino de um monstro (cur = nível atual de treino).
+static func train_cost(cur: int, account_level: int) -> int:
+	var t: Dictionary = DataDB.config.train
+	return int(round(gold_for_kill(maxi(1, account_level)) * float(t.cost_kills) * pow(float(t.cost_growth), cur)))
+
+
+## Preço de um item da loja rotativa.
+static func shop_item_price(item_level: int, rarity: String) -> int:
+	return int(round(gold_for_kill(maxi(1, item_level)) * float(DataDB.config.shop.price_kills.get(rarity, 60))))
+
+
+static func shop_refresh_cost(account_level: int, refreshes: int) -> int:
+	var s: Dictionary = DataDB.config.shop
+	return int(round(gold_for_kill(maxi(1, account_level)) * float(s.refresh_kills) * pow(float(s.refresh_growth), refreshes)))

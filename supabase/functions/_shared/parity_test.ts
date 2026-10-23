@@ -33,5 +33,12 @@ for (const m of ref.mastery) {
   const st = L.computeStats("terra_1", 3, 90, 0, false, 40, b);
   for (const k of ["hp", "atk", "def", "spd", "crit"]) near((st as any)[k], m.stats[k], 1e-3, `stats com marcos ${k}`);
 }
+for (const t of ref.train) {
+  const st = L.computeStats("gelo_3", 3, 120, 0, false, 70, {}, t.t);
+  for (const k of ["hp", "atk", "def"]) near((st as any)[k], t[k], 1e-3, `treino +${t.t} ${k}`);
+  near(L.trainCost(t.t, 133), t.cost, 0.5, `custo treino +${t.t}`);
+  near(L.shopItemPrice(77, "epico"), t.shop, 0.5, "preço loja");
+  near(L.shopRefreshCost(50, 2), t.refresh, 0.5, "custo atualizar loja");
+}
 console.log(fails ? `${fails} falhas` : "paridade GDScript x TypeScript OK");
 if (fails) Deno.exit(1);

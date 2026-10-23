@@ -37,6 +37,11 @@ func _run() -> void:
 	B = root.get_node("Backend")
 	G.load_local()
 	G.save.settings.consent_answered = true
+	G.save.settings.tutorial_done = true
+	var all_tips := {}
+	for k in ["hub", "hunts", "party", "monster", "depot", "altar", "collection", "inventory", "shop", "market", "rankings", "challenges", "daily"]:
+		all_tips[k] = true
+	G.save.settings.tips_seen = all_tips
 	var lang := "pt_BR"
 	for a in OS.get_cmdline_user_args():
 		if a in ["pt_BR", "en", "es"]:
@@ -61,7 +66,14 @@ func _run() -> void:
 	await frames(400)
 	G.time_scale = 1.0
 	await shot("hunt_mapa")
+	hs._run_tutorial()
+	await frames(100)
+	await shot("tutorial")
+	for ch in main.overlay.get_children():
+		if ch is Tutorial:
+			ch._finish()
 	await G.debug_set_level(40)
+	G.main_monster().train = 15
 	await B.request("debug_force", {"recruit": 2})
 	await G.set_current_hunt("w1_s3_fogo_2")
 	G.save.debug_unlock_all = true
@@ -99,6 +111,16 @@ func _run() -> void:
 	await shot("grupo")
 	main.goto("monster", {"uid": G.main_monster().uid})
 	await shot("monstro")
+	main.goto("shop")
+	await frames(20)
+	await shot("loja")
+	G.save.settings.tips_seen.erase("depot")
+	main.goto("depot")
+	await frames(5)
+	await shot("dica_depot")
+	for ch in main.overlay.get_children():
+		if ch is UIDialog:
+			ch._choose(0)
 	main.goto("collection")
 	await shot("colecao")
 	# itens e monstros no Depot para mostrar as ações em lote

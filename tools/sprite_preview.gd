@@ -14,7 +14,8 @@ func _initialize() -> void:
 		for f in DataDB.form_list:
 			if f.type != t:
 				continue
-			var img := SpriteFactory._frame_image(f.form_id, false, SpriteFactory.DIR_DOWN, 0)
+			var img := SpriteFactory.sheet(f.form_id, false).get_image().get_region(Rect2i(0, 0, 56, 56))
+			img.convert(Image.FORMAT_RGBA8)
 			img.resize(cell, cell, Image.INTERPOLATE_NEAREST)
 			out.blend_rect(img, Rect2i(0, 0, cell, cell), Vector2i(col * cell, ti * cell))
 			col += 1
@@ -24,7 +25,8 @@ func _initialize() -> void:
 	var a := Image.create(10 * 56 * 2, forms.size() * 2 * 56 * 2, false, Image.FORMAT_RGBA8)
 	a.fill(Color("#2a2a30"))
 	for i in forms.size():
-		var sh := SpriteFactory.generate_sheet(forms[i], i == 3)
+		var sh := SpriteFactory.sheet(forms[i], i == 3).get_image()
+		sh.convert(Image.FORMAT_RGBA8)
 		for row in [0, 2]:
 			var r := sh.get_region(Rect2i(0, row * 56, 560, 56))
 			r.resize(1120, 112, Image.INTERPOLATE_NEAREST)

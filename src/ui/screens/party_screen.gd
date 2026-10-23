@@ -43,7 +43,7 @@ func _slot(i: int, party: Array, fighting: int) -> Control:
 		row.add_child(UI.small_button(Loc.t("Adicionar"), func(): _pick(i, {}), "primary"))
 		return p
 	var m: Dictionary = party[i]
-	row.add_child(UI.portrait_frame(MonsterLogic.form_id(m), bool(m.shiny), 72))
+	row.add_child(UI.monster_frame(m, 72))
 	var v := UI.vbox(3)
 	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(v)
@@ -55,6 +55,8 @@ func _slot(i: int, party: Array, fighting: int) -> Control:
 	r1.add_child(UI.pill(Loc.t("Nv %d") % int(m.level), UI.C_GOLD, 15))
 	r1.add_child(UI.type_badge(MonsterLogic.type_of(m), 15))
 	r1.add_child(UI.quality_badge(m, 15))
+	if int(m.get("train", 0)) > 0:
+		r1.add_child(UI.pill("+%d" % int(m.train), Color("#f4c542"), 15))
 	var r2 := UI.hbox(6)
 	v.add_child(r2)
 	r2.add_child(UI.stars(int(m.stars), 18))

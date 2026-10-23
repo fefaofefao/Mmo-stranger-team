@@ -87,7 +87,55 @@ func setup(p_world, p_form: String, p_level: int, p_stats: Dictionary, p_player:
 	sprite.centered = true
 	add_child(sprite)
 	set_size_scale(1.0)
+	_setup_glow()
 	_update_frame()
+
+
+var aura: Sprite2D
+var _glow_tier := 0
+
+
+## Brilho do treino (+5/+10/+15): aura pulsante atrás do monstro e faíscas subindo.
+func _setup_glow() -> void:
+	var tr := int(stats.get("train", 0))
+	_glow_tier = 0
+	for lv in DataDB.config.train.glow_levels:
+		if tr >= int(lv):
+			_glow_tier += 1
+	if _glow_tier == 0:
+		return
+	var col := UI.glow_color(type_id, _glow_tier)
+	aura = Sprite2D.new()
+	aura.texture = UI.glow_texture()
+	aura.modulate = Color(col.r, col.g, col.b, 0.5)
+	var mat := CanvasItemMaterial.new()
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	aura.material = mat
+	aura.position = Vector2(0, sprite.position.y + frame_h * 0.12)
+	aura.scale = Vector2.ONE * (0.75 + 0.18 * _glow_tier)
+	add_child(aura)
+	move_child(aura, 0)
+	if _glow_tier >= 2:
+		var pt := CPUParticles2D.new()
+		pt.amount = 6 if _glow_tier == 2 else 12
+		pt.lifetime = 1.2
+		pt.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+		pt.emission_rect_extents = Vector2(10, 6)
+		pt.position = Vector2(0, -4)
+		pt.direction = Vector2.UP
+		pt.spread = 15
+		pt.initial_velocity_min = 10
+		pt.initial_velocity_max = 22
+		pt.gravity = Vector2.ZERO
+		pt.scale_amount_min = 1.0
+		pt.scale_amount_max = 2.0
+		pt.color = col.lightened(0.3)
+		var ramp := Gradient.new()
+		ramp.set_color(0, Color(1, 1, 1, 1))
+		ramp.set_color(1, Color(1, 1, 1, 0))
+		pt.color_ramp = ramp
+		pt.material = mat
+		add_child(pt)
 
 
 func set_size_scale(s: float) -> void:
@@ -205,6 +253,9 @@ func revive_at(c: Vector2i) -> void:
 
 func _process(delta: float) -> void:
 	_anim_t += delta
+	if aura:
+		aura.visible = alive
+		aura.modulate.a = 0.38 + 0.12 * _glow_tier + 0.18 * sin(_anim_t * 3.0)
 	if world:
 		position = interp_position(world.interp_alpha())
 	if moving:
@@ -261,14 +312,19 @@ func _draw() -> void:
 	var h := 4.0 if not is_boss else 6.0
 	var x := -w / 2.0
 	var y := minf(top, -18.0)
-	draw_rect(Rect2(x - 1, y - 1, w + 2, h + 2), Color(0, 0, 0, 0.85))
 	var r := hp_ratio()
-	var col := Color(0.2, 0.85, 0.25)
+	var col := Color(0.3, 0.88, 0.3)
 	if not is_player:
-		col = Color(0.9, 0.2, 0.2) if r > 0.3 else Color(0.6, 0.05, 0.05)
+		col = Color(0.92, 0.25, 0.22) if r > 0.3 else Color(0.7, 0.08, 0.08)
 	elif r < 0.3:
-		col = Color(0.95, 0.75, 0.1)
+		col = Color(0.98, 0.78, 0.15)
+	# moldura escura, fundo, preenchimento com brilho no topo
+	draw_rect(Rect2(x - 1, y - 1, w + 2, h + 2), Color(0.06, 0.04, 0.03, 0.9))
+	draw_rect(Rect2(x, y, w, h), Color(0.22, 0.16, 0.14, 0.9))
 	draw_rect(Rect2(x, y, w * r, h), col)
+	draw_rect(Rect2(x, y, w * r, 1), col.lightened(0.45))
+	if is_player and party_index == 0:
+		draw_rect(Rect2(x - 1, y - 1, w + 2, h + 2), Color(1, 0.85, 0.35, 0.9), false, 1.0)
 	if is_boss:
 		var font := ThemeDB.fallback_font
 		draw_string_outline(font, Vector2(-60, y - 4), display_name, HORIZONTAL_ALIGNMENT_CENTER, 120, 9, 3, Color.BLACK)

@@ -141,6 +141,7 @@ func _party_upper_stats(party: Array) -> Array:
 		var m := MonsterLogic.create(fam_id, lvl, bool(rec.get("shiny", false)), "tmp", "", int(rec.get("quality", 100)))
 		m.stage = maxi(int(m.stage), int(pm.get("stage", 1)))
 		m.stars = int(rec.get("stars", 0))
+		m.train = int(rec.get("train", 0))
 		var s := MonsterLogic.compute_stats(m, {}, _mastery())
 		s.hp *= allowance
 		s.atk *= allowance
@@ -619,6 +620,103 @@ func npc_sell_many(items: Array) -> Dictionary:
 			sold.append(str(it.get("uid", "")))
 			gold += int(r.gold_gained)
 	return _ok({"sold": sold, "gold_gained": gold, "wallet": wallet()})
+
+
+# ------------------------------------------------------------------ treino de monstros (ouro)
+
+func train_monster(server_id: String) -> Dictionary:
+	var rec: Dictionary = p().monsters.get(server_id, {})
+	if rec.is_empty() or rec.get("converted", false):
+		return _err("Monstro inválido")
+	var cur := int(rec.get("train", 0))
+	if cur >= int(DataDB.config.train.max):
+		return _err("Treino no máximo")
+	var cost := Formulas.train_cost(cur, int(p().validated_level))
+	if int(p().gold) < cost:
+		return _err("Ouro insuficiente")
+	p().gold = int(p().gold) - cost
+	rec.train = cur + 1
+	return _ok({"train": cur + 1, "cost": cost, "wallet": wallet()})
+
+
+# ------------------------------------------------------------------ loja rotativa
+
+func shop_period(t: float) -> int:
+	return int(floor(t / (float(DataDB.config.shop.rotation_hours) * 3600.0)))
+
+
+func _shop_state() -> Dictionary:
+	var per := shop_period(now())
+	var st: Dictionary = p().get("shop", {})
+	if int(st.get("period", -1)) != per:
+		st = {"period": per, "refreshes": 0, "slots": _roll_shop()}
+		p().shop = st
+	return st
+
+
+## Sorteia os itens da loja perto do nível validado do jogador (raridade por peso).
+func _roll_shop() -> Array:
+	var cfg: Dictionary = DataDB.config.shop
+	var lvl := int(p().validated_level)
+	var pool: Array = []
+	for bid in DataDB.item_bases:
+		var b: Dictionary = DataDB.item_bases[bid]
+		if b.get("world2_only", false):
+			continue
+		if int(b.level) <= lvl + 5 and int(b.level) >= lvl - int(cfg.level_window):
+			pool.append(bid)
+	if pool.is_empty():
+		for bid in DataDB.item_bases:
+			if int(DataDB.item_bases[bid].level) <= 10 and not DataDB.item_bases[bid].get("world2_only", false):
+				pool.append(bid)
+	var total := 0.0
+	for w in cfg.rarity_weights:
+		total += float(w[1])
+	var out: Array = []
+	for i in int(cfg.slots):
+		var r := rng.randf() * total
+		var rar := "comum"
+		for w in cfg.rarity_weights:
+			r -= float(w[1])
+			if r <= 0.0:
+				rar = w[0]
+				break
+		var bid: String = pool[rng.randi_range(0, pool.size() - 1)]
+		var it := ItemLogic.create(bid, rar, rng, true, _id("l"))
+		out.append({"item": it, "price": Formulas.shop_item_price(int(DataDB.item_bases[bid].level), rar), "sold": false})
+	return out
+
+
+func shop_status() -> Dictionary:
+	var st := _shop_state()
+	var hours := float(DataDB.config.shop.rotation_hours) * 3600.0
+	return _ok({"slots": st.slots, "ends_at": (int(st.period) + 1) * hours, "server_time": now(),
+		"refresh_cost": Formulas.shop_refresh_cost(int(p().validated_level), int(st.refreshes)), "wallet": wallet()})
+
+
+func shop_buy(slot: int) -> Dictionary:
+	var st := _shop_state()
+	if slot < 0 or slot >= st.slots.size():
+		return _err("Item inválido")
+	var s: Dictionary = st.slots[slot]
+	if s.sold:
+		return _err("Já vendido")
+	if int(p().gold) < int(s.price):
+		return _err("Ouro insuficiente")
+	p().gold = int(p().gold) - int(s.price)
+	s.sold = true
+	return _ok({"item": s.item, "wallet": wallet()})
+
+
+func shop_refresh() -> Dictionary:
+	var st := _shop_state()
+	var cost := Formulas.shop_refresh_cost(int(p().validated_level), int(st.refreshes))
+	if int(p().gold) < cost:
+		return _err("Ouro insuficiente")
+	p().gold = int(p().gold) - cost
+	st.refreshes = int(st.refreshes) + 1
+	st.slots = _roll_shop()
+	return shop_status()
 
 
 func npc_buy(base_id: String) -> Dictionary:

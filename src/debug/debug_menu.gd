@@ -170,6 +170,8 @@ func _export_art() -> void:
 		SpriteFactory.generate_sheet(f.form_id).save_png("user://placeholder_art/monsters/%s.png" % f.form_id)
 	for b in DataDB.biomes:
 		TileFactory.generate_atlas(b).save_png("user://placeholder_art/tilesets/%s.png" % b)
+		for i in 3:
+			TileFactory.generate_prop(b, i).save_png("user://placeholder_art/tilesets/%s_prop%d.png" % [b, i])
 	main.toast("Exportado para %s" % ProjectSettings.globalize_path("user://placeholder_art"))
 
 

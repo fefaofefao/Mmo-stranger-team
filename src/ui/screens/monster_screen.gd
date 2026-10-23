@@ -23,7 +23,7 @@ func build() -> void:
 	v.add_child(head)
 	var hr := UI.hbox(12)
 	head.add_child(hr)
-	hr.add_child(UI.portrait_frame(fid, bool(m.shiny), 132))
+	hr.add_child(UI.monster_frame(m, 132))
 	var hv := UI.vbox(4)
 	hv.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hr.add_child(hv)
@@ -80,6 +80,33 @@ func build() -> void:
 		var sb := UI.icon_button("star", Loc.t("Adicionar estrela · %d de %d Essência de %s") % [cost, have, DataDB.type_name(t)], _buy_star, 19, 64, "primary")
 		sb.disabled = have < cost
 		v.add_child(sb)
+	# treino com ouro
+	v.add_child(UI.section(Loc.t("Treino"), "bolt"))
+	var tc: Dictionary = DataDB.config.train
+	var tr := int(m.get("train", 0))
+	var tcard := UI.card(MonsterLogic.glow_tier(m) > 0)
+	v.add_child(tcard)
+	var tv := UI.vbox(6)
+	tcard.add_child(tv)
+	var trow := UI.hbox(8)
+	tv.add_child(trow)
+	var tl := UI.label(Loc.t("Treino +%d/%d") % [tr, int(tc.max)], 22, UI.C_GOLD)
+	tl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	trow.add_child(tl)
+	var gt := MonsterLogic.glow_tier(m)
+	if gt > 0:
+		trow.add_child(UI.pill([Loc.t("Brilho"), Loc.t("Brilho intenso"), Loc.t("Radiante")][gt - 1], UI.glow_color(fam.type, gt), 16))
+	var tb := UI.bar(float(tr) / float(tc.max), Color("#f4c542"), 300, 12)
+	tb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	tv.add_child(tb)
+	tv.add_child(UI.label(Loc.t("Atual: +%d%% Ataque e Defesa, +%d%% Vida. Brilho em +%d, intenso em +%d e radiante em +%d.") % [
+		int(round(float(tc.atk_def_per_level) * tr * 100)), int(round(float(tc.hp_per_level) * tr * 100)),
+		int(tc.glow_levels[0]), int(tc.glow_levels[1]), int(tc.glow_levels[2])], 16, UI.C_MUTED, true))
+	if tr < int(tc.max):
+		var tcost := Game.train_cost(m)
+		var tbtn := UI.icon_button("coin", Loc.t("Treinar (+%d%% ATQ/DEF) · %s") % [int(round(float(tc.atk_def_per_level) * 100)), UI.fmt(tcost)], _train, 19, 64, "primary")
+		tbtn.disabled = Game.save.gold < tcost
+		tv.add_child(tbtn)
 	# equipamentos
 	v.add_child(UI.section(Loc.t("Equipamentos"), "bag"))
 	for s in DataDB.item_slots:
@@ -164,6 +191,19 @@ func _item_picker(v: VBoxContainer, m: Dictionary) -> void:
 			eb.text = Loc.t("Nv %d") % int(b.level)
 		row.add_child(eb)
 		pv.add_child(row)
+
+
+func _train() -> void:
+	var r: Dictionary = await Game.train_monster(uid)
+	if r.get("ok", false):
+		var m := Game.monster(uid)
+		if r.get("new_glow", false):
+			toast(Loc.t("%s ganhou um novo brilho!") % MonsterLogic.display_name(m), UI.C_GOLD, "sparkle")
+		else:
+			toast(Loc.t("Treino +%d!") % int(r.train), UI.C_GOOD, "bolt")
+	else:
+		toast(Loc.t(r.get("error", "Falhou")), UI.C_BAD)
+	rebuild()
 
 
 func _buy_star() -> void:

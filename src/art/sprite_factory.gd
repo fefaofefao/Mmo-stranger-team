@@ -23,6 +23,8 @@ const SIZES := [25.0, 34.0, 45.0]
 
 static var _cache := {}
 static var _portrait_cache := {}
+## true = gera quadros "crus" (sem contorno nem brilhos) para o acabamento de tools/shade_sprites.py
+static var raw_mode := false
 
 
 static func sheet(form_id: String, shiny := false) -> Texture2D:
@@ -178,6 +180,8 @@ static func _frame_image(form_id: String, shiny: bool, dir: int, col: int) -> Im
 			"golem": _golem(ctx)
 			"spirit": _spirit(ctx)
 			_: _blob(ctx)
+	if raw_mode:
+		return img
 	_outline(img, pal.outline)
 	if shiny and p.dead == 0:
 		_sparkles(img, col + dir * 3)
