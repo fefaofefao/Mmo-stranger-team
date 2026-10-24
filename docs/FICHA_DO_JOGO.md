@@ -9,7 +9,7 @@
 | Idiomas | Português, Inglês, Espanhol (Market único entre idiomas) |
 | Visual | Pixel art em tiles 32x32 inspirado em Tibia |
 | Status | APK de debug pronto; ainda não publicado (sem métricas reais) |
-| Monetização | Compras no app (diamantes + Sem anúncios) e AdMob (banner, tela cheia, premiado) |
+| Monetização | Compras no app (diamantes) e AdMob (banner e premiados opcionais) |
 
 ---
 
@@ -113,7 +113,7 @@ O jogo ainda não tem dados reais de retenção. Abaixo estão os mecanismos que
 
 | ID | O que faz | Preço |
 |---|---|---|
-| `no_ads` | Remove os anúncios em tela cheia para sempre. O banner continua e os premiados seguem opcionais. Fica salvo na conta. | US$ 4,99 |
+| `no_ads` | **Oculto da loja.** Removia os anúncios em tela cheia, que foram tirados do jogo. Pronto no servidor caso volte com outra função. | US$ 4,99 |
 
 **Onde os diamantes são gastos**
 
@@ -138,13 +138,14 @@ Todas as compras são validadas no servidor pela API do Google Play, e o mesmo t
 
 **Status:** os IDs de teste do Google estão em `data/ads.json`. É preciso trocar pelos IDs reais antes de publicar.
 
-| Formato | Onde aparece | Frequência | Remove com "Sem anúncios"? |
-|---|---|---|---|
-| **Banner** | Rodapé de todas as telas (exceto tela inicial e escolha do inicial) | Sempre visível | Não |
-| **Tela cheia** | Ao abrir o Hub | No máximo 1 a cada 5 min; nunca em desafio nem no resumo offline | **Sim** |
-| **Premiado:** Bônus de 15 min | Tela de Bônus (XP, shiny, recrutamento, drop, ouro) | Opcional; soma até 120 min acumulados por bônus | Não (é opcional) |
-| **Premiado:** dobrar recompensa offline | Resumo ao voltar ao jogo | Opcional, 1 por retorno | Não (é opcional) |
-| **Premiado:** reviver instantâneo | Na caça, quando o monstro cai | Opcional | Não (é opcional) |
+| Formato | Onde aparece | Frequência |
+|---|---|---|
+| **Banner** | Rodapé de todas as telas (exceto tela inicial e escolha do inicial) | Sempre visível |
+| **Premiado:** Bônus de 15 min | Tela de Bônus (XP, shiny, recrutamento, drop, ouro) | Opcional; soma até 120 min acumulados por bônus |
+| **Premiado:** dobrar recompensa offline | Resumo ao voltar ao jogo | Opcional, 1 por retorno |
+| **Premiado:** reviver instantâneo | Na caça, quando o monstro cai | Opcional |
+
+**Sem anúncio em tela cheia (interstitial):** foi removido de propósito para favorecer a retenção. Todo anúncio além do banner é escolha do jogador, em troca de recompensa.
 
 **Configuração**
 - Consentimento (personalizado ou não) é perguntado na primeira abertura.

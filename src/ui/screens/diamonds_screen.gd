@@ -23,7 +23,7 @@ func build() -> void:
 	var sc := UI.scroll(8)
 	b.add_child(sc[0])
 	for pr in Billing.products():
-		if pr.get("kind", "") == "no_ads":
+		if pr.get("kind", "") == "no_ads" and not pr.get("hidden", false):
 			sc[1].add_child(_no_ads_card(pr))
 	var g := UI.grid(2, 8)
 	g.size_flags_horizontal = Control.SIZE_EXPAND_FILL

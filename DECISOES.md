@@ -185,3 +185,6 @@ Registro das decisões tomadas sem consulta (modo autônomo), com o motivo.
 - As abas do Mundo 1 são calculadas pelo nível da hunt na tela (não mudam os dados): ≤40 Iniciante, ≤70 Intermediário, resto Avançado. A Fronteira (80–105) entra em Avançado, pois leva ao Chefe de Mundo do 110. As hunts "mistas" caem na faixa do seu nível.
 - "Sem anúncios" remove só os interstitials (os únicos anúncios forçados). O banner fica, como pedido, e os premiados continuam como escolha do jogador para ganhar bônus de 15 min.
 - É um direito permanente da conta no servidor (`no_ads`), não um item local: vale em qualquer aparelho com a mesma conta. Não conta como "primeira compra" para não queimar o dobro de diamantes.
+
+## Revisão 9
+- Nenhum anúncio forçado além do banner: todo vídeo é escolha do jogador em troca de recompensa. O "Sem anúncios" foi ocultado com `hidden: true` em vez de apagado, para poder voltar com outra função sem mexer no servidor.

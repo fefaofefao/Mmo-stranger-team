@@ -114,3 +114,7 @@ Legenda: [x] concluído · [~] concluído com fallback (ver PENDENCIAS.md)
 - Tela do monstro: a lista de itens abre logo abaixo do slot escolhido (amuleto, garra, armadura, relíquia) e a tela não pula mais para o topo ao trocar/equipar/tirar.
 - Hub: qualidade do monstro (ex.: "Qualidade 74% Ótimo", na cor da faixa) embaixo do nome e nível.
 - `docs/FICHA_DO_JOGO.md`: resumo do jogo, retenção, produtos e AdMob para o artefato de jogos.
+
+## Revisão 9 — sem anúncio em tela cheia
+- Removido o interstitial ao abrir o Hub (foco em retenção). Ficam o banner e os premiados opcionais (bônus de 15 min, dobrar offline, reviver).
+- Produto "Sem anúncios" oculto da loja (não teria mais efeito); servidor e cliente continuam prontos caso ele volte.

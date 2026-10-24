@@ -140,8 +140,7 @@ func goto(name: String, params: Dictionary = {}, push := true) -> void:
 		Ads.hide_banner()
 	else:
 		Ads.show_banner()
-	if name == "hub":
-		Ads.maybe_interstitial()
+	# sem anúncio em tela cheia ao abrir o Hub: foco em retenção (ficam o banner e os premiados opcionais)
 
 
 ## Explicação curta que aparece só na primeira visita a cada área do Hub.
