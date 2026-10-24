@@ -251,7 +251,7 @@ func show_offline_summary(s: Dictionary) -> void:
 		lines.append(Loc.t("Recrutado: %s%s (qualidade %d%%)") % ["✦ " if rec.shiny else "", DataDB.form_name(rec.form), int(rec.get("quality", 0))])
 	if int(s.get("shinies", 0)) > 0:
 		lines.append(Loc.t("Shinies encontrados: %d") % int(s.shinies))
-	var d := dialog(Loc.t("Bem-vindo de volta!"), "\n".join(lines), [Loc.t("Dobrar ▶"), Loc.t("Coletar")], "chest")
+	var d := dialog(Loc.t("Bem-vindo de volta!"), "\n".join(lines), [Loc.t("Dobrar (VIP)") if Game.save.get("vip", false) else Loc.t("Dobrar ▶"), Loc.t("Coletar")], "chest")
 	var choice: int = await d.chosen
 	Ads.context = ""
 	if choice == 0:

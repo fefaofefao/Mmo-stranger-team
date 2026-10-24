@@ -705,7 +705,28 @@ def t_sombra():
     return i
 
 
+def stats():
+    i = Icon()
+    i.rect(3, 4, 26, 24, "#3a3428", 3)
+    i.rect(7, 17, 4.5, 8, "#5fd06a", 0.8)
+    i.rect(13.75, 11, 4.5, 14, "#58a8ff", 0.8)
+    i.rect(20.5, 7, 4.5, 18, "#ffd24a", 0.8)
+    i.shine(9, 19, 1, 2, 120)
+    return i
+
+
+def vip():
+    i = Icon()
+    i.circle(16, 16, 13, "#7a2ad0")
+    i.circle(16, 16, 10.5, "#a65cff", 0.2)
+    i.poly([(8, 20), (7, 11), (12, 15), (16, 8), (20, 15), (25, 11), (24, 20)], "#ffd24a", 0.25)
+    i.rect(8, 21, 16, 3.5, "#ffb030", 0.8)
+    i.shine(12, 11, 2, 1.5, 120)
+    return i
+
+
 ICONS = {
+    "stats": stats, "vip": vip,
     "coin": coin, "gem": gem, "diamond": diamond, "boost": boost, "camera": camera, "sword": sword, "shield": shield, "map": map_, "skull": skull, "paw": paw,
     "chest": chest, "bag": bag, "shop": shop, "scales": scales, "altar": altar, "book": book,
     "trophy": trophy, "gear": gear, "star": star, "star_empty": star_empty, "lock": lock, "play": play,

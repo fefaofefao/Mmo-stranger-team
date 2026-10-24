@@ -188,3 +188,7 @@ Registro das decisões tomadas sem consulta (modo autônomo), com o motivo.
 
 ## Revisão 9
 - Nenhum anúncio forçado além do banner: todo vídeo é escolha do jogador em troca de recompensa. O "Sem anúncios" foi ocultado com `hidden: true` em vez de apagado, para poder voltar com outra função sem mexer no servidor.
+
+## Revisão 10
+- O Passe VIP reaproveita o produto não consumível do antigo "Sem anúncios" (a migration ainda não tinha ido para produção, então foi renomeada para `vip`). O limite de 120 min acumulados por bônus vale também para o VIP, para não quebrar o valor dos bônus de 8 h por diamantes.
+- O status da caça fica só no cliente (é informativo) e mede tempo de jogo com o mapa aberto, para a média por hora refletir a hunt de verdade.

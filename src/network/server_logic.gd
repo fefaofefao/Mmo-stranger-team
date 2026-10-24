@@ -55,7 +55,7 @@ func _err(msg: String) -> Dictionary:
 
 
 func wallet() -> Dictionary:
-	return {"gold": int(p().gold), "essences": p().essences.duplicate(), "diamonds": int(p().get("diamonds", 0)), "no_ads": bool(p().get("no_ads", false))}
+	return {"gold": int(p().gold), "essences": p().essences.duplicate(), "diamonds": int(p().get("diamonds", 0)), "vip": bool(p().get("vip", false))}
 
 
 static func week_id(t: float) -> int:
@@ -664,10 +664,10 @@ func iap_purchase(product_id: String, token: String) -> Dictionary:
 	if p().iap_tokens.has(token):
 		return _err("Compra já creditada")
 	p().iap_tokens[token] = true
-	if pr.get("kind", "") == "no_ads":
+	if pr.get("kind", "") == "vip":
 		# não consumível: só libera o direito, não conta como compra de diamantes
-		p().no_ads = true
-		return _ok({"diamonds_gained": 0, "no_ads": true, "first_bonus": false, "wallet": wallet()})
+		p().vip = true
+		return _ok({"diamonds_gained": 0, "vip": true, "first_bonus": false, "wallet": wallet()})
 	var amount := int(pr.diamonds) + int(pr.get("bonus", 0))
 	var first := int(p().get("purchases", 0)) == 0
 	if first:

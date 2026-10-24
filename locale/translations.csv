@@ -538,9 +538,21 @@ Iniciante,Beginner,Principiante
 Intermediário,Intermediate,Intermedio
 Avançado,Advanced,Avanzado
 "Mundo 1 · níveis 1 a 110 · 1 monstro em campo · Iniciante até 40, Intermediário até 70, Avançado até 110","World 1 · levels 1 to 110 · 1 monster on the field · Beginner up to 40, Intermediate up to 70, Advanced up to 110","Mundo 1 · niveles 1 a 110 · 1 monstruo en campo · Principiante hasta 40, Intermedio hasta 70, Avanzado hasta 110"
-Sem anúncios,No ads,Sin anuncios
 Ativo,Active,Activo
-Remove os anúncios em tela cheia para sempre. O banner continua e os anúncios premiados (bônus de 15 min) seguem opcionais.,Removes full-screen ads forever. The banner stays and rewarded ads (15-min bonuses) remain optional.,Elimina los anuncios a pantalla completa para siempre. El banner se mantiene y los anuncios con recompensa (bonos de 15 min) siguen siendo opcionales.
-Sem anúncios ativado! Obrigado pelo apoio!,No ads activated! Thanks for the support!,¡Sin anuncios activado! ¡Gracias por el apoyo!
-Sem anúncios por %s.,No ads for %s.,Sin anuncios por %s.
 Qualidade %s,Quality %s,Calidad %s
+Status da caça,Hunt status,Estado de la caza
+Monstros caçados,Monsters hunted,Monstruos cazados
+XP ganho,XP gained,XP ganada
+Itens dropados,Items dropped,Objetos obtenidos
+Shinies encontrados,Shinies found,Shinies encontrados
+Monstros recrutados,Monsters recruited,Monstruos reclutados
+Conta só a caça com o mapa aberto (sem o ganho offline). Zera ao trocar de hunt.,Counts only hunting with the map open (no offline gains). Resets when you change hunts.,Cuenta solo la caza con el mapa abierto (sin ganancias offline). Se reinicia al cambiar de zona.
+%s/h,%s/h,%s/h
+%d shiny,%d shiny,%d shiny
+Passe VIP,VIP Pass,Pase VIP
+"Para sempre: todas as recompensas de anúncio sem assistir o vídeo (bônus de 15 min, dobrar ganho offline, reviver na hora). O banner continua.","Forever: every ad reward without watching the video (15-min bonuses, double offline gains, instant revive). The banner stays.","Para siempre: todas las recompensas de anuncios sin ver el video (bonos de 15 min, duplicar ganancias offline, revivir al instante). El banner se mantiene."
+Passe VIP ativado! Obrigado pelo apoio!,VIP Pass activated! Thanks for the support!,¡Pase VIP activado! ¡Gracias por el apoyo!
+Passe VIP por %s.,VIP Pass for %s.,Pase VIP por %s.
+VIP · %d min,VIP · %d min,VIP · %d min
+Dobrar (VIP),Double (VIP),Duplicar (VIP)
+VIP,VIP,VIP

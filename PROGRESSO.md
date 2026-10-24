@@ -118,3 +118,8 @@ Legenda: [x] concluído · [~] concluído com fallback (ver PENDENCIAS.md)
 ## Revisão 9 — sem anúncio em tela cheia
 - Removido o interstitial ao abrir o Hub (foco em retenção). Ficam o banner e os premiados opcionais (bônus de 15 min, dobrar offline, reviver).
 - Produto "Sem anúncios" oculto da loja (não teria mais efeito); servidor e cliente continuam prontos caso ele volte.
+
+## Revisão 10 — Passe VIP e status da caça
+- **Passe VIP** (`vip_pass`, US$ 4,99, não consumível): recompensas dos anúncios premiados sem assistir o vídeo (bônus de 15 min, dobrar offline, reviver). Banner continua. Substitui o "Sem anúncios" (servidor grava `players.vip`; migration `20261026000007_vip_pass.sql`).
+- **Status da caça**: botão com ícone de gráfico na tela de caça abre um painel ao vivo com tempo, monstros caçados (e por hora), XP, ouro, itens dropados (por raridade), shinies encontrados e monstros recrutados. Zera ao trocar de hunt; não conta o ganho offline.
+- Novos ícones `stats` e `vip`.

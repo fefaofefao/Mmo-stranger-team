@@ -440,6 +440,8 @@ func _process(delta: float) -> void:
 	if map.is_empty():
 		return
 	_accum += delta * sim_speed()
+	if mode == "hunt" and Game != null:
+		Game.hunt_session_tick(delta * sim_speed())
 	var steps := 0
 	while _accum >= STEP and steps < max_steps_per_frame:
 		_accum -= STEP

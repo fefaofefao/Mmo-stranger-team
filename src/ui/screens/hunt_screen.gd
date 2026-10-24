@@ -40,6 +40,7 @@ var _m_form := ""
 var _m_dirty := true
 var nav_row: HBoxContainer
 var cam_btn: Button
+var stats_btn: Button
 var feed_ref: Control
 
 
@@ -160,6 +161,12 @@ func _build() -> void:
 		b.modulate = Color(1, 1, 1, 0.85)
 		zbox.add_child(b)
 	zbox.add_child(cam_btn)
+	stats_btn = UI.icon_button("stats", "", func(): HuntStatsPanel.open(main), 20, 60)
+	stats_btn.custom_minimum_size = Vector2(68, 60)
+	stats_btn.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	stats_btn.modulate = Color(1, 1, 1, 0.9)
+	stats_btn.tooltip_text = Loc.t("Status da caça")
+	zbox.add_child(stats_btn)
 	# aviso de time caído
 	var dc := CenterContainer.new()
 	dc.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -264,6 +271,7 @@ func _update_mastery() -> void:
 	if not is_instance_valid(mastery_panel):
 		return
 	mastery_panel.visible = mode == "hunt"
+	stats_btn.visible = mode == "hunt"
 	if mode != "hunt" or not _m_dirty:
 		return
 	_m_dirty = false

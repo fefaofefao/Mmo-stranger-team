@@ -100,6 +100,11 @@ func _run() -> void:
 	hs.world.debug_spawn("planta_3_3", 6)
 	await frames(90)
 	await shot("hunt_cercado")
+	var sp = load("res://src/ui/hunt_stats_panel.gd").open(main)
+	await frames(10)
+	await shot("hunt_status")
+	sp.queue_free()
+	await frames(2)
 	await G.debug_grant(250000, 800)
 	main.goto("hub")
 	await shot("hub")
@@ -207,7 +212,7 @@ func _run() -> void:
 	await frames(30)
 	await shot("mundo3_astral")
 	main.goto("hunts")
-	main.current.tab = 6
+	main.current.tab = 4
 	main.current.rebuild()
 	await shot("hunts_mundo3")
 	main.goto("challenges")

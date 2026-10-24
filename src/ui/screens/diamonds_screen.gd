@@ -23,31 +23,31 @@ func build() -> void:
 	var sc := UI.scroll(8)
 	b.add_child(sc[0])
 	for pr in Billing.products():
-		if pr.get("kind", "") == "no_ads" and not pr.get("hidden", false):
-			sc[1].add_child(_no_ads_card(pr))
+		if pr.get("kind", "") == "vip" and not pr.get("hidden", false):
+			sc[1].add_child(_vip_card(pr))
 	var g := UI.grid(2, 8)
 	g.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	sc[1].add_child(g)
 	for pr in Billing.products():
-		if pr.get("kind", "") != "no_ads":
+		if pr.get("kind", "") != "vip":
 			g.add_child(_pack(pr))
 	sc[1].add_child(UI.label(Loc.t("Pagamento processado pelo Google Play. Diamantes não podem ser trocados por ouro nem por dinheiro."), 14, UI.C_MUTED, true))
 	if not Billing.prices_updated.is_connected(rebuild):
 		Billing.prices_updated.connect(rebuild)
 
 
-## "Sem anúncios": compra única que remove os anúncios em tela cheia (o banner continua).
-func _no_ads_card(pr: Dictionary) -> Control:
-	var owned: bool = Game.save.get("no_ads", false)
+## Passe VIP: compra única; as recompensas dos anúncios premiados saem sem assistir o vídeo.
+func _vip_card(pr: Dictionary) -> Control:
+	var owned: bool = Game.save.get("vip", false)
 	var p := UI.card(not owned)
 	var h := UI.hbox(10)
 	p.add_child(h)
-	h.add_child(UI.icon("lock" if not owned else "check", 52))
+	h.add_child(UI.icon("vip", 56))
 	var col := UI.vbox(2)
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	h.add_child(col)
-	col.add_child(UI.label(Loc.t("Sem anúncios"), 22, UI.C_GOLD))
-	col.add_child(UI.label(Loc.t("Remove os anúncios em tela cheia para sempre. O banner continua e os anúncios premiados (bônus de 15 min) seguem opcionais."), 15, UI.C_MUTED, true))
+	col.add_child(UI.label(Loc.t("Passe VIP"), 22, UI.C_GOLD))
+	col.add_child(UI.label(Loc.t("Para sempre: todas as recompensas de anúncio sem assistir o vídeo (bônus de 15 min, dobrar ganho offline, reviver na hora). O banner continua."), 15, UI.C_MUTED, true))
 	if owned:
 		h.add_child(UI.pill(Loc.t("Ativo"), UI.C_GOOD, 18))
 	else:
@@ -85,8 +85,8 @@ func _pack(pr: Dictionary) -> Control:
 
 func _buy(pid: String) -> void:
 	var r: Dictionary = await Billing.buy(pid)
-	if r.get("ok", false) and r.get("no_ads", false):
-		toast(Loc.t("Sem anúncios ativado! Obrigado pelo apoio!"), UI.C_GOOD, "check")
+	if r.get("ok", false) and r.get("vip", false):
+		toast(Loc.t("Passe VIP ativado! Obrigado pelo apoio!"), UI.C_GOOD, "vip")
 	elif r.get("ok", false):
 		toast(Loc.t("+%s diamantes! Obrigado pelo apoio!") % UI.fmt(r.diamonds_gained), Color("#7fe8ff"), "diamond")
 		Game.save.purchases = int(Game.save.get("purchases", 0)) + 1

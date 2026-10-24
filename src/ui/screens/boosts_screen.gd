@@ -66,7 +66,8 @@ func _card(k: String, cfg: Dictionary) -> Control:
 	var bd := UI.icon_button("diamond", "%s · %dh" % [UI.fmt(kc.price), int(cfg.diamond_hours)], func(): _buy(k, int(kc.price)), 17, 54, "primary")
 	bd.custom_minimum_size = Vector2(170, 54)
 	bc.add_child(bd)
-	var ba := UI.icon_button("play", Loc.t("Anúncio · %d min") % int(cfg.ad_minutes), func(): _ad(k), 17, 54, "ad")
+	var vip: bool = Game.save.get("vip", false)
+	var ba := UI.icon_button("vip" if vip else "play", (Loc.t("VIP · %d min") if vip else Loc.t("Anúncio · %d min")) % int(cfg.ad_minutes), func(): _ad(k), 17, 54, "ad")
 	ba.custom_minimum_size = Vector2(170, 54)
 	bc.add_child(ba)
 	return p

@@ -23,22 +23,24 @@ func test_iap_purchase() -> void:
 	check(int(r2.diamonds_gained) == 1100 and not r2.first_bonus, "pacote com bônus, sem dobro")
 	check(int(srv.wallet().diamonds) == 2100, "saldo somado")
 	for pr in DataDB.iap.products:
-		if pr.get("kind", "") == "no_ads":
+		if pr.get("kind", "") == "vip":
 			continue
 		check(int(pr.diamonds) > 0 and str(pr.id).begins_with("diamonds_"), "produto %s configurado" % pr.id)
 
 
-func test_no_ads() -> void:
+func test_vip_pass() -> void:
 	var srv := _srv()
-	var pr := DataDB.iap_product("no_ads")
-	check(pr.get("price", "") == "US$ 4,99" and int(pr.diamonds) == 0, "Sem anúncios a US$ 4,99, sem diamantes")
-	check(not bool(srv.wallet().no_ads), "começa com anúncios")
-	var r := srv.iap_purchase("no_ads", "sim_na1")
-	check(r.ok and r.no_ads and bool(r.wallet.no_ads), "Sem anúncios ativado")
+	var pr := DataDB.iap_product("vip_pass")
+	check(pr.get("price", "") == "US$ 4,99" and int(pr.diamonds) == 0, "Passe VIP a US$ 4,99, sem diamantes")
+	check(not bool(srv.wallet().vip), "começa sem VIP")
+	var r := srv.iap_purchase("vip_pass", "sim_na1")
+	check(r.ok and r.vip and bool(r.wallet.vip), "Passe VIP ativado")
 	check(int(srv.wallet().diamonds) == 0, "não dá diamantes")
-	check(not srv.iap_purchase("no_ads", "sim_na1").ok, "token não pode ser reusado")
+	check(not srv.iap_purchase("vip_pass", "sim_na1").ok, "token não pode ser reusado")
 	var r2 := srv.iap_purchase("diamonds_500", "sim_na2")
-	check(r2.first_bonus, "Sem anúncios não gasta o dobro da primeira compra de diamantes")
+	check(r2.first_bonus, "Passe VIP não gasta o dobro da primeira compra de diamantes")
+	var boosted := srv.boost_ad("xp")
+	check(boosted.ok, "bônus de anúncio continua funcionando para o VIP")
 
 
 func test_boosts() -> void:

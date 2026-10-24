@@ -242,6 +242,29 @@ func _run() -> void:
 		if k.get("ticket", "") == "" and k.form == demo.form_id and false:
 			found = true
 	check(not found, "demo sem ticket de shiny")
+	# status da caça: conta abates/XP/shiny da hunt atual e zera ao trocar de hunt
+	print("-- status da caça")
+	var hid: String = G.save.current_hunt
+	var hh: Dictionary = DataDB.hunts[hid]
+	var hk0 := int(G.hunt_session_stats().kills)
+	G.on_kill(hh, hh.monsters[0].form, int(hh.level), "", true, [])
+	G.hunt_session_tick(60.0)
+	var hst: Dictionary = G.hunt_session_stats()
+	check(int(hst.kills) == hk0 + 1 and float(hst.xp) > 0.0 and int(hst.shinies) >= 1, "status conta abate, XP e shiny")
+	check(float(hst.kills_per_hour) > 0.0 and float(hst.seconds) >= 60.0, "status calcula média por hora")
+	var other := ""
+	for h2 in DataDB.hunt_list:
+		if h2.id != hid and int(h2.world) == 1:
+			other = h2.id
+			break
+	await G.set_current_hunt(other)
+	check(int(G.hunt_session_stats().kills) == 0 and float(G.hunt_session_stats().seconds) == 0.0, "status zera ao trocar de hunt")
+	G.save.current_hunt = hid
+	# Passe VIP: anúncio premiado sai sem vídeo
+	G.save.vip = true
+	var okv: bool = await root.get_node("Ads").show_rewarded("teste")
+	check(okv, "VIP ganha a recompensa do anúncio na hora")
+	G.save.vip = false
 	G.save_local()
 	print("\n==== smoke test: %d falhas ====" % failures)
 	quit(1 if failures > 0 else 0)

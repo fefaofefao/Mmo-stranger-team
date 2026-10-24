@@ -84,7 +84,7 @@ func _notification(what: int) -> void:
 func new_save() -> Dictionary:
 	var s := {
 		"version": SAVE_VERSION, "device_id": "dev_%x%x" % [rng.randi(), rng.randi()], "created_at": GameClock.now(),
-		"saved_at": 0.0, "playtime": 0.0, "player_name": "", "gold": 0, "diamonds": 0, "no_ads": false, "essences": {},
+		"saved_at": 0.0, "playtime": 0.0, "player_name": "", "gold": 0, "diamonds": 0, "vip": false, "essences": {},
 		"monsters": {}, "party": [], "items": {}, "inventory_cap": int(DataDB.config.inventory.base_cap),
 		"collection": {}, "challenges": {}, "current_hunt": "", "ai_behavior": "focus",
 		"boosts": {}, "settings": {"auto_sell_comum": false, "auto_sell_incomum": false, "zoom": 2.0,
@@ -259,7 +259,7 @@ func _apply_wallet(w: Dictionary) -> void:
 		return
 	save.gold = int(w.get("gold", save.gold))
 	save.diamonds = int(w.get("diamonds", save.get("diamonds", 0)))
-	save.no_ads = bool(w.get("no_ads", save.get("no_ads", false)))
+	save.vip = bool(w.get("vip", save.get("vip", false)))
 	var es: Dictionary = w.get("essences", {})
 	for t in es:
 		save.essences[t] = int(es[t])
@@ -317,9 +317,15 @@ func flush_claims() -> void:
 	_apply_wallet(r.get("wallet", {}))
 	for it in r.get("items", []):
 		add_item(it)
+		if hunt_id == save.current_hunt:
+			_hs_item(it)
 		feed.emit("%s: %s" % [DataDB.rarity_name(it.rarity), ItemLogic.display_name(it)], DataDB.rarity_color(it.rarity))
 	for rec in r.get("recruits", []):
 		add_recruit(rec)
+		if hunt_id == save.current_hunt:
+			_hs().recruits = int(_hs().recruits) + 1
+			if rec.get("shiny", false):
+				_hs().shiny_recruits = int(_hs().shiny_recruits) + 1
 
 
 func claim_offline() -> Dictionary:
@@ -777,8 +783,8 @@ func credit_purchase(product_id: String, token: String) -> Dictionary:
 	var r := await Backend.request("iap_purchase", {"product": product_id, "token": token})
 	if r.get("ok", false):
 		_apply_wallet(r.wallet)
-		if r.get("no_ads", false):
-			feed.emit(Loc.t("Sem anúncios ativado! Obrigado pelo apoio!"), Color("#7fe8ff"))
+		if r.get("vip", false):
+			feed.emit(Loc.t("Passe VIP ativado! Obrigado pelo apoio!"), Color("#7fe8ff"))
 		else:
 			feed.emit(Loc.t("+%d diamantes!") % int(r.diamonds_gained), Color("#7fe8ff"))
 		save_local()
@@ -815,6 +821,38 @@ func mark_seen(form_id: String) -> void:
 
 ## Chamado pelo mundo a cada inimigo derrotado numa hunt.
 ## Retorna {xp: Array, drop: Dictionary}
+# ================================================================ status da caça atual
+## Contadores da hunt atual (zeram ao trocar de hunt). Só tempo e abates com o mapa aberto, sem offline.
+var hunt_session := {}
+
+
+func _hs() -> Dictionary:
+	if hunt_session.get("hunt", "") != save.current_hunt:
+		hunt_session = {"hunt": save.current_hunt, "seconds": 0.0, "kills": 0, "xp": 0.0, "gold": 0,
+			"items": 0, "items_by_rarity": {}, "shinies": 0, "recruits": 0, "shiny_recruits": 0}
+	return hunt_session
+
+
+func hunt_session_tick(seconds: float) -> void:
+	_hs().seconds = float(_hs().seconds) + seconds
+
+
+func _hs_item(it: Dictionary) -> void:
+	var s := _hs()
+	s.items = int(s.items) + 1
+	s.items_by_rarity[it.rarity] = int(s.items_by_rarity.get(it.rarity, 0)) + 1
+
+
+## Cópia dos contadores com as médias por hora.
+func hunt_session_stats() -> Dictionary:
+	var s: Dictionary = _hs().duplicate(true)
+	var h := maxf(float(s.seconds), 1.0) / 3600.0
+	s.kills_per_hour = float(s.kills) / h
+	s.xp_per_hour = float(s.xp) / h
+	s.gold_per_hour = float(s.gold) / h
+	return s
+
+
 func on_kill(hunt: Dictionary, form_id: String, level: int, ticket: String, shiny: bool, participants: Array = []) -> Dictionary:
 	var c := _coll(form_id)
 	_add_form_kills(form_id, 1)
@@ -824,6 +862,12 @@ func on_kill(hunt: Dictionary, form_id: String, level: int, ticket: String, shin
 	var bonus: float = monster_stats(party[0]).xp_pct if not party.is_empty() else float(account_bonuses().xp_pct)
 	var base := Formulas.xp_for_kill(level) * float(hunt.get("xp_mult", 1.0)) * xp_boost_mult()
 	var shares := PartyLogic.split_xp(party, base, level, bonus, participants)
+	var hs := _hs()
+	hs.kills = int(hs.kills) + 1
+	for x in shares:
+		hs.xp = float(hs.xp) + float(x)
+	if shiny:
+		hs.shinies = int(hs.shinies) + 1
 	var fc_before := PartyLogic.fighting_count(main_level(), party.size())
 	for i in party.size():
 		var ev := MonsterLogic.add_xp(party[i], shares[i])
@@ -841,7 +885,11 @@ func on_kill(hunt: Dictionary, form_id: String, level: int, ticket: String, shin
 			drop = it
 		elif add_item(it, false):
 			drop = it
-	pending_gold += int(Formulas.gold_for_kill(level) * float(hunt.get("gold_mult", 1.0)) * boost_mult("gold"))
+		if not drop.is_empty():
+			_hs_item(drop)
+	var g := int(Formulas.gold_for_kill(level) * float(hunt.get("gold_mult", 1.0)) * boost_mult("gold"))
+	pending_gold += g
+	hs.gold = int(hs.gold) + g
 	pending_kills.append({"hunt": hunt.id, "form": form_id, "level": level, "ticket": ticket})
 	if pending_kills.size() > 600:
 		pending_kills = pending_kills.slice(pending_kills.size() - 600)

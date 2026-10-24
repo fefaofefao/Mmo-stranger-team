@@ -9,7 +9,7 @@
 | Idiomas | Português, Inglês, Espanhol (Market único entre idiomas) |
 | Visual | Pixel art em tiles 32x32 inspirado em Tibia |
 | Status | APK de debug pronto; ainda não publicado (sem métricas reais) |
-| Monetização | Compras no app (diamantes) e AdMob (banner e premiados opcionais) |
+| Monetização | Compras no app (diamantes + Passe VIP) e AdMob (banner e premiados opcionais) |
 
 ---
 
@@ -71,6 +71,7 @@ O jogo ainda não tem dados reais de retenção. Abaixo estão os mecanismos que
 
 **Motivos para voltar no dia seguinte (D1)**
 - **Ganho offline:** até 8 h, com 90% de eficiência. Um anúncio premiado dobra a recompensa.
+- **Status da caça:** painel na tela de caça com abates, médias por hora, XP, ouro, itens, shinies e recrutas da hunt atual; dá a sensação de progresso medível e ajuda a comparar hunts.
 - **Chefe Diário:** 3 entradas por dia, reiniciadas no dia UTC.
 - **Loja:** troca os itens a cada 6 h.
 
@@ -109,11 +110,11 @@ O jogo ainda não tem dados reais de retenção. Abaixo estão os mecanismos que
 | `diamonds_6500` | 5.000 | +1.500 (30%) | 6.500 | US$ 49,99 |
 | `diamonds_14000` | 10.000 | +4.000 (40%, "Melhor valor") | 14.000 | US$ 99,99 |
 
-**Sem anúncios:** não consumível.
+**Passe VIP:** não consumível, compra única.
 
 | ID | O que faz | Preço |
 |---|---|---|
-| `no_ads` | **Oculto da loja.** Removia os anúncios em tela cheia, que foram tirados do jogo. Pronto no servidor caso volte com outra função. | US$ 4,99 |
+| `vip_pass` | Para sempre: todas as recompensas de anúncio premiado saem sem assistir o vídeo (bônus de 15 min, dobrar ganho offline, reviver na hora). O banner continua. Fica salvo na conta e não gasta o dobro da primeira compra de diamantes. | US$ 4,99 |
 
 **Onde os diamantes são gastos**
 
@@ -144,6 +145,8 @@ Todas as compras são validadas no servidor pela API do Google Play, e o mesmo t
 | **Premiado:** Bônus de 15 min | Tela de Bônus (XP, shiny, recrutamento, drop, ouro) | Opcional; soma até 120 min acumulados por bônus |
 | **Premiado:** dobrar recompensa offline | Resumo ao voltar ao jogo | Opcional, 1 por retorno |
 | **Premiado:** reviver instantâneo | Na caça, quando o monstro cai | Opcional |
+
+Quem tem o **Passe VIP** recebe as recompensas dos premiados sem ver o vídeo (o limite de 120 min por bônus continua). O banner aparece para todos.
 
 **Sem anúncio em tela cheia (interstitial):** foi removido de propósito para favorecer a retenção. Todo anúncio além do banner é escolha do jogador, em troca de recompensa.
 
