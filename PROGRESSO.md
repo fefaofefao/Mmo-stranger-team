@@ -109,3 +109,8 @@ Legenda: [x] concluído · [~] concluído com fallback (ver PENDENCIAS.md)
 - Produto **Sem anúncios** (US$ 4,99, não consumível): remove os anúncios em tela cheia; o banner continua e os anúncios premiados seguem opcionais. Card no topo da loja de Diamantes, com selo "Ativo" após a compra.
 - Servidor (mock + Edge Function) grava `players.no_ads` e devolve no `wallet`; migration `20261026000007_no_ads.sql`. Não gasta o bônus de primeira compra de diamantes.
 - Testes: abas por nível e compra do Sem anúncios.
+
+## Revisão 8 — equipamentos, qualidade no Hub e ficha do jogo
+- Tela do monstro: a lista de itens abre logo abaixo do slot escolhido (amuleto, garra, armadura, relíquia) e a tela não pula mais para o topo ao trocar/equipar/tirar.
+- Hub: qualidade do monstro (ex.: "Qualidade 74% Ótimo", na cor da faixa) embaixo do nome e nível.
+- `docs/FICHA_DO_JOGO.md`: resumo do jogo, retenção, produtos e AdMob para o artefato de jogos.

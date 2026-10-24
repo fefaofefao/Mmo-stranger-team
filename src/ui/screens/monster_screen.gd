@@ -3,6 +3,8 @@ extends Screen
 
 var uid := ""
 var choosing_slot := ""
+var _scroll: ScrollContainer
+var _keep_scroll := -1
 
 const SLOT_ICONS := {"amuleto": "heart", "garra": "sword", "armadura": "chest", "reliquia": "gem"}
 
@@ -16,7 +18,11 @@ func build() -> void:
 		return
 	var sc := UI.scroll(10)
 	b.add_child(sc[0])
+	_scroll = sc[0]
 	var v: VBoxContainer = sc[1]
+	if _keep_scroll >= 0:
+		_restore_scroll.call_deferred(_keep_scroll)
+		_keep_scroll = -1
 	var fid := MonsterLogic.form_id(m)
 	var fam: Dictionary = DataDB.families[m.family]
 	var head := UI.panel("panel_gold")
@@ -119,8 +125,8 @@ func build() -> void:
 	v.add_child(UI.section(Loc.t("Equipamentos"), "bag"))
 	for s in DataDB.item_slots:
 		v.add_child(_slot_row(m, s))
-	if choosing_slot != "":
-		_item_picker(v, m)
+		if choosing_slot == s.id:
+			_item_picker(v, m)  # lista logo abaixo do slot escolhido
 	# habilidades
 	v.add_child(UI.section(Loc.t("Habilidades (usadas pela IA)"), "bolt"))
 	var kinds := {"strike": Loc.t("golpe forte"), "bolt": Loc.t("projétil"), "burst": Loc.t("área ao redor"), "blast": Loc.t("explosão no alvo"),
@@ -159,9 +165,9 @@ func _slot_row(m: Dictionary, s: Dictionary) -> Control:
 	l.clip_text = true
 	col.add_child(l)
 	var sid: String = s.id
-	row.add_child(UI.small_button(Loc.t("Trocar"), func(): choosing_slot = sid; rebuild()))
+	row.add_child(UI.small_button(Loc.t("Trocar"), func(): choosing_slot = "" if choosing_slot == sid else sid; _rebuild_here()))
 	if not it.is_empty():
-		row.add_child(UI.small_button(Loc.t("Tirar"), func(): Game.unequip(uid, sid); rebuild()))
+		row.add_child(UI.small_button(Loc.t("Tirar"), func(): Game.unequip(uid, sid); _rebuild_here()))
 	return p
 
 
@@ -173,7 +179,7 @@ func _item_picker(v: VBoxContainer, m: Dictionary) -> void:
 	var top := UI.hbox()
 	pv.add_child(top)
 	top.add_child(UI.expand(UI.label(Loc.t("Escolher: %s") % ItemLogic.slot_name(choosing_slot), 22, UI.C_GOLD)))
-	top.add_child(UI.small_button(Loc.t("Fechar"), func(): choosing_slot = ""; rebuild()))
+	top.add_child(UI.small_button(Loc.t("Fechar"), func(): choosing_slot = ""; _rebuild_here()))
 	var items: Array = []
 	for it in Game.inv_items():
 		if ItemLogic.base(it).slot == choosing_slot:
@@ -186,6 +192,7 @@ func _item_picker(v: VBoxContainer, m: Dictionary) -> void:
 		var row := UI.hbox(6)
 		var desc := ItemLogic.describe(it, MonsterLogic.type_of(m))
 		var l := UI.label("%s\n%s" % [ItemLogic.display_name(it), " · ".join(desc.slice(1, 4))], 17, DataDB.rarity_color(it.rarity), true)
+		l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(l)
 		var iu: String = it.uid
 		var eb := UI.small_button(Loc.t("Equipar"), func():
@@ -193,12 +200,24 @@ func _item_picker(v: VBoxContainer, m: Dictionary) -> void:
 			if not r.ok:
 				toast(r.error, UI.C_BAD)
 			choosing_slot = ""
-			rebuild(), "primary")
+			_rebuild_here(), "primary")
 		eb.disabled = int(b.level) > int(m.level)
 		if eb.disabled:
 			eb.text = Loc.t("Nv %d") % int(b.level)
 		row.add_child(eb)
 		pv.add_child(row)
+
+
+## Reconstrói a tela mantendo a rolagem (trocar equipamento não pode pular para o topo).
+func _rebuild_here() -> void:
+	_keep_scroll = _scroll.scroll_vertical if is_instance_valid(_scroll) else -1
+	rebuild()
+
+
+func _restore_scroll(pos: int) -> void:
+	await get_tree().process_frame
+	if is_instance_valid(_scroll):
+		_scroll.scroll_vertical = pos
 
 
 func _train() -> void:

@@ -116,6 +116,14 @@ func _run() -> void:
 	await shot("grupo")
 	main.goto("monster", {"uid": G.main_monster().uid})
 	await shot("monstro")
+	var ms = main.current
+	await frames(3)
+	ms._scroll.scroll_vertical = 900
+	await frames(3)
+	ms.choosing_slot = "garra"
+	ms._rebuild_here()
+	await frames(6)
+	await shot("monstro_trocar_equip")
 	main.goto("shop")
 	await frames(20)
 	await shot("loja")

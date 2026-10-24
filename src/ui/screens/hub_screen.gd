@@ -95,7 +95,13 @@ func _showcase() -> Control:
 		var tag := UI.panel("chip")
 		tag.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		var tl := UI.label("%s · %s" % [MonsterLogic.display_name(m), Loc.t("Nv %d") % int(m.level)], 17 if i == 0 else 15, UI.C_GOLD if i == 0 else UI.C_TEXT)
-		tag.add_child(tl)
+		tl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		var tv := UI.vbox(0)
+		tv.add_child(tl)
+		var ql := UI.label(Loc.t("Qualidade %s") % MonsterLogic.quality_text(m), 15 if i == 0 else 13, MonsterLogic.quality_color(m))
+		ql.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		tv.add_child(ql)
+		tag.add_child(tv)
 		col.add_child(tag)
 	var info := UI.panel("chip")
 	info.position = Vector2(8, 8)
