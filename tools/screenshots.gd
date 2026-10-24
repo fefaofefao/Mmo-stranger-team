@@ -139,6 +139,17 @@ func _run() -> void:
 	for ch in main.overlay.get_children():
 		if ch is UIDialog:
 			ch._choose(0)
+	await frames(3)
+	var demo_forms := [["agua_1_1", 34, false], ["fogo_2_2", 88, false], ["planta_1_1", 12, false], ["eletrico_3_2", 97, true], ["gelo_1_3", 61, false], ["sombra_2_1", 45, false]]
+	for k in demo_forms.size():
+		var df: Array = demo_forms[k]
+		if DataDB.forms.has(df[0]):
+			var dm: Dictionary = G.add_recruit({"server_id": "shot_dep_%d" % k, "form": df[0], "shiny": df[2], "quality": df[1]}, false)
+			dm.level = 5 + k * 7
+	main.current.sort_by = "quality"
+	main.current.rebuild()
+	await frames(5)
+	await shot("depot_ordenado")
 	main.goto("collection")
 	await shot("colecao")
 	# itens e monstros no Depot para mostrar as ações em lote

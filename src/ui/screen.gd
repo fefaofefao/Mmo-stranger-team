@@ -111,3 +111,37 @@ func empty_note(text: String, icon_name := "sparkle") -> Control:
 	h.add_child(UI.label(text, 20, UI.C_MUTED, true))
 	p.add_child(h)
 	return p
+
+
+## Barra com "Todos" + os 9 tipos. Tocar num tipo filtra; tocar de novo volta para "Todos". cb(tipo ou "").
+func type_filter_bar(current: String, cb: Callable) -> Control:
+	var row := UI.hbox(4)
+	var all := UI.button(Loc.t("Todos"), func(): cb.call(""), 16, 58, "tab_on" if current == "" else "tab")
+	all.custom_minimum_size = Vector2(84, 58)
+	row.add_child(all)
+	for t in DataDB.type_ids:
+		var tid: String = t
+		var on := current == tid
+		var b := UI.button("", func(): cb.call("" if on else tid), 16, 58, "tab_on" if on else "tab")
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		b.custom_minimum_size = Vector2(0, 58)
+		b.tooltip_text = DataDB.type_name(tid)
+		var ic := UI.icon("t_" + tid, 38)
+		ic.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		ic.offset_left = 4
+		ic.offset_right = -4
+		ic.offset_top = 6
+		ic.offset_bottom = -6
+		if current != "" and not on:
+			ic.modulate = Color(1, 1, 1, 0.45)
+		b.add_child(ic)
+		if on:
+			var sb := StyleBoxFlat.new()
+			sb.bg_color = DataDB.type_color(tid).darkened(0.55)
+			sb.border_color = DataDB.type_color(tid)
+			sb.set_border_width_all(3)
+			sb.set_corner_radius_all(6)
+			for st in ["normal", "hover", "pressed", "focus"]:
+				b.add_theme_stylebox_override(st, sb)
+		row.add_child(b)
+	return row

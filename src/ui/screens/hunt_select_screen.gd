@@ -30,7 +30,7 @@ func build() -> void:
 		b.add_child(tabs([Loc.t("Iniciante"), Loc.t("Intermediário"), Loc.t("Avançado")], tab, func(i): tab = i; rebuild()))
 	var focus: String = [Loc.t("Mundo 1 · níveis 1 a 110 · 1 monstro em campo · Iniciante até 40, Intermediário até 70, Avançado até 110"), Loc.t("Mundo 2 (Abismo) · 110 a 210 · 2 monstros em campo · mais inimigos"), Loc.t("Mundo 3 (Reino Astral) · 210+ · 3 monstros em campo · hordas")][world - 1]
 	b.add_child(UI.label(focus, 15, UI.C_MUTED, true))
-	b.add_child(_type_filter())
+	b.add_child(type_filter_bar(type_filter, func(t): type_filter = t; rebuild()))
 	var fighters := Game.fighter_stats()
 	var main_lvl := Game.main_level()
 	var info := UI.hbox(8)
@@ -63,40 +63,6 @@ static func _cat_of(h: Dictionary) -> String:
 		return h.get("category", "mundo2")
 	var lvl := int(h.get("level", 1))
 	return "iniciante" if lvl <= 40 else ("intermediario" if lvl <= 70 else "avancado")
-
-
-## Barra com os 9 tipos: tocar filtra as hunts que têm monstros daquele tipo.
-func _type_filter() -> Control:
-	var row := UI.hbox(4)
-	var all := UI.button(Loc.t("Todos"), func(): type_filter = ""; rebuild(), 16, 58, "tab_on" if type_filter == "" else "tab")
-	all.custom_minimum_size = Vector2(84, 58)
-	row.add_child(all)
-	for t in DataDB.type_ids:
-		var tid: String = t
-		var on := type_filter == tid
-		var b := UI.button("", func(): type_filter = "" if type_filter == tid else tid; rebuild(), 16, 58, "tab_on" if on else "tab")
-		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		b.custom_minimum_size = Vector2(0, 58)
-		b.tooltip_text = DataDB.type_name(tid)
-		var ic := UI.icon("t_" + tid, 38)
-		ic.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		ic.offset_left = 4
-		ic.offset_right = -4
-		ic.offset_top = 6
-		ic.offset_bottom = -6
-		if type_filter != "" and not on:
-			ic.modulate = Color(1, 1, 1, 0.45)
-		b.add_child(ic)
-		if on:
-			var sb := StyleBoxFlat.new()
-			sb.bg_color = DataDB.type_color(tid).darkened(0.55)
-			sb.border_color = DataDB.type_color(tid)
-			sb.set_border_width_all(3)
-			sb.set_corner_radius_all(6)
-			for st in ["normal", "hover", "pressed", "focus"]:
-				b.add_theme_stylebox_override(st, sb)
-		row.add_child(b)
-	return row
 
 
 func _hunt_row(h: Dictionary, fighters: Array, main_lvl: int, rec: Dictionary) -> Control:
