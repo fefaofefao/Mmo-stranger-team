@@ -201,7 +201,7 @@ func _convert(uid: String) -> void:
 	var val := EssenceLogic.essence_value(m)
 	if not await main.confirm(Loc.t("Trocar monstro"), Loc.t("Trocar %s (Nv %d, qualidade %d%%) por %d Essência de %s?\nEle fica registrado na Coleção.") % [MonsterLogic.display_name(m), int(m.level), int(m.get("quality", 0)), val, DataDB.type_name(MonsterLogic.type_of(m))]):
 		return
-	if m.shiny and not await main.confirm(Loc.t("ATENÇÃO: SHINY"), Loc.t("Este monstro é SHINY (1 em 5000)! Tem certeza ABSOLUTA? Não há como desfazer."), Loc.t("Trocar mesmo"), Loc.t("Cancelar")):
+	if m.shiny and not await main.confirm(Loc.t("ATENÇÃO: SHINY"), Loc.t("Este monstro é SHINY! Tem certeza ABSOLUTA? Não há como desfazer."), Loc.t("Trocar mesmo"), Loc.t("Cancelar")):
 		return
 	busy = true
 	var r: Dictionary = await Game.convert_monster(uid)

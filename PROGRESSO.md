@@ -126,3 +126,8 @@ Legenda: [x] concluído · [~] concluído com fallback (ver PENDENCIAS.md)
 
 ## Revisão 11 — Depot com filtro e ordenação
 - Depot de monstros: filtro por tipo (mesma barra das Hunts, agora compartilhada em `Screen.type_filter_bar`) e ordenação por Nível, Raridade (shiny primeiro, depois qualidade) ou Recentes.
+
+## Revisão 12 — shinies mais frequentes
+- Shiny agora aparece ~1 a cada 7–8 min de caça: chance por monstro por mundo (`shiny_chance_by_world` = 1/139, 1/278, 1/444), ajustada aos abates/h de cada mundo. Antes era 1/5000 (~1 a cada 5 h).
+- Recrutar shiny segue raro: `shiny_recruit_mult` 10 → 3 (0,6% por shiny no Mundo 1, ~1 a cada 20 h de caça ativa).
+- Mock, Edge Function (`shinyChance`) e textos (tutorial, Altar) atualizados; teste de taxa por mundo.

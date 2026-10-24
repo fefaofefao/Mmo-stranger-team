@@ -60,9 +60,11 @@
    }
   ]
  },
- "shiny_chance": 0.0002,
+ "shiny_chance": 0.0072,
+ "_shiny_chance_comentario": "Chance de shiny por monstro, por mundo (1, 2, 3). Calibrada para ~1 shiny a cada 7-8 min de caça: Mundo 1 ~1.050 abates/h, Mundo 2 ~2.200/h, Mundo 3 ~3.550/h. shiny_chance (Mundo 1) é o padrão para desafios.",
+ "shiny_chance_by_world": [0.0072, 0.0036, 0.00225],
  "recruit_chance": 0.002,
- "shiny_recruit_mult": 10,
+ "shiny_recruit_mult": 3,
  "recruit_level": 1,
  "enemy_mods": {
   "hp": 0.42,

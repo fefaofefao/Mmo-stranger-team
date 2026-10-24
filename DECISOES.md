@@ -192,3 +192,7 @@ Registro das decisões tomadas sem consulta (modo autônomo), com o motivo.
 ## Revisão 10
 - O Passe VIP reaproveita o produto não consumível do antigo "Sem anúncios" (a migration ainda não tinha ido para produção, então foi renomeada para `vip`). O limite de 120 min acumulados por bônus vale também para o VIP, para não quebrar o valor dos bônus de 8 h por diamantes.
 - O status da caça fica só no cliente (é informativo) e mede tempo de jogo com o mapa aberto, para a média por hora refletir a hunt de verdade.
+
+## Revisão 12
+- Shiny por tempo, não por abate: como os Mundos 2 e 3 matam 2–3× mais por hora, a chance por monstro é dividida por mundo para manter ~1 shiny a cada 7–8 min em todo o jogo.
+- Com 40× mais encontros, o multiplicador de recrutamento de shiny caiu de 10× para 3×; sem isso viriam ~4 shinies recrutados por dia de jogo ativo e eles perderiam valor (inclusive no Market por diamantes).

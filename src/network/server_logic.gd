@@ -185,7 +185,7 @@ func request_spawn_tickets(hunt_id: String, n: int) -> Dictionary:
 		if t - float(p().tickets[k].t) > 3600.0 * 6:
 			p().tickets.erase(k)
 	var out: Array = []
-	var shiny_ch := float(DataDB.config.shiny_chance) * boost_mult("shiny")
+	var shiny_ch := Formulas.shiny_chance(DataDB.hunts.get(hunt_id, {})) * boost_mult("shiny")
 	for i in n:
 		var shiny := rng.randf() < shiny_ch
 		if int(debug_force.get("shiny", 0)) > 0:
@@ -380,7 +380,7 @@ func _grant_bulk_kills(hunt: Dictionary, kills: int, gold_pct: float, window_sta
 			var it := ItemLogic.create(base_id, r.id, rng, false, _id("s"))
 			p().items[it.uid] = it
 			items.append(it)
-	var shinies := LootTable.binomial(kills, float(DataDB.config.shiny_chance) * float(bm.call("shiny")), rng)
+	var shinies := LootTable.binomial(kills, Formulas.shiny_chance(hunt) * float(bm.call("shiny")), rng)
 	var recruits: Array = []
 	if int(hunt.get("world", 1)) == 1 and hunt.get("recruit", true):
 		var ch := float(DataDB.config.recruit_chance) * float(hunt.get("recruit_mult", 1.0)) * (1.0 + float(mb.recruit_pct) / 100.0) * float(bm.call("recruit"))

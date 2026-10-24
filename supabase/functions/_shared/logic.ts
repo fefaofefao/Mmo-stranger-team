@@ -372,3 +372,10 @@ export function challengeMinTime(c: any, upper: any[]): number {
   if (dps <= 0) return C.anti_cheat.challenge_min_seconds;
   return Math.min(C.anti_cheat.challenge_min_seconds, Math.max(0.5, hp / dps));
 }
+
+// chance de um monstro selvagem nascer shiny nesta hunt (por mundo: ~1 a cada 7-8 min de caça)
+export function shinyChance(hunt: any): number {
+  const by: number[] = C.shiny_chance_by_world ?? [];
+  const w = Number(hunt?.world ?? 1);
+  return w >= 1 && w <= by.length ? by[w - 1] : C.shiny_chance;
+}

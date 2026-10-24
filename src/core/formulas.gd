@@ -158,3 +158,12 @@ static func shop_item_price(item_level: int, rarity: String) -> int:
 static func shop_refresh_cost(account_level: int, refreshes: int) -> int:
 	var s: Dictionary = DataDB.config.shop
 	return int(round(gold_for_kill(maxi(1, account_level)) * float(s.refresh_kills) * pow(float(s.refresh_growth), refreshes)))
+
+
+## Chance de um monstro selvagem nascer shiny nesta hunt (por mundo: ~1 a cada 7-8 min de caça).
+static func shiny_chance(hunt: Dictionary) -> float:
+	var by: Array = DataDB.config.get("shiny_chance_by_world", [])
+	var w := int(hunt.get("world", 1))
+	if w >= 1 and w <= by.size():
+		return float(by[w - 1])
+	return float(DataDB.config.shiny_chance)

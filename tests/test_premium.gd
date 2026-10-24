@@ -132,3 +132,21 @@ func test_monster_market() -> void:
 			break
 		srv.get_meta("clock").v += 60.0
 	check(sold and int(srv.wallet().diamonds) == 900, "vendido: recebe 90% em diamantes")
+
+
+func test_shiny_rate() -> void:
+	# ~1 shiny a cada 7-8 min no ritmo típico de abates de cada mundo
+	var kph := {1: 1050.0, 2: 2200.0, 3: 3550.0}
+	for w in kph:
+		var h := {"world": w}
+		var minutes: float = 60.0 / (float(kph[w]) * Formulas.shiny_chance(h))
+		check(minutes >= 6.5 and minutes <= 9.0, "Mundo %d: 1 shiny a cada %.1f min" % [w, minutes])
+	var hid: String = DataDB.hunt_list[0].id
+	var n := 0
+	for i in 40:
+		var srv := _srv()
+		for t in srv.request_spawn_tickets(hid, 100).tickets:
+			if t.shiny:
+				n += 1
+	var rate := n / 4000.0
+	check(rate > 0.0035 and rate < 0.012, "tickets do servidor com shiny na taxa do Mundo 1 (%.4f)" % rate)

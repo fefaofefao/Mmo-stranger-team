@@ -349,14 +349,13 @@ func _run_tutorial() -> void:
 		Game.save.settings.tutorial_done = false
 		return
 	var demo: Creature = world.spawn_demo_shiny()
-	var one_in := int(round(1.0 / float(DataDB.config.shiny_chance)))
 	var steps := [
 		{"title": Loc.t("Bem-vindo, domador!"), "icon": "paw", "target": vp_container,
 			"text": Loc.t("Seu monstro caça sozinho: anda pelo mapa, ataca e usa habilidades. Você cuida da estratégia: onde caçar, quem leva no grupo e como fortalecê-lo.")},
 		{"title": Loc.t("Seu grupo"), "icon": "heart", "target": hud_box,
 			"text": Loc.t("Vida e XP de cada monstro. Toque num deles para trocar por outro do Depot. No nível 110 dois monstros lutam juntos; no 210, três.")},
 		{"title": Loc.t("Olha, um SHINY!"), "icon": "sparkle", "target": func(): return _creature_rect(demo),
-			"text": Loc.t("Shinies têm cores raras e brilham: são 50%% mais fortes e sempre vêm com qualidade de 50 a 100%%. Aparece mais ou menos 1 a cada %s monstros — e dá para recrutar!") % UI.fmt(one_in)
+			"text": Loc.t("Shinies têm cores raras e brilham: são 50% mais fortes e sempre vêm com qualidade de 50 a 100%. Aparece mais ou menos 1 a cada 7 ou 8 minutos de caça — e dá para recrutar (é raro!).")
 				+ "\n\n" + Loc.t("Mas ESTE aqui é só de demonstração e não pode ser recrutado, tá, Exploiter? Ele é ator contratado, tem agente e já avisou que não faz cena de captura.")},
 		{"title": Loc.t("Marcos de Caça"), "icon": "trophy", "target": mastery_panel,
 			"text": Loc.t("Cada abate conta para os Marcos daquela espécie. Cada elemento dá um bônus permanente: Água dá Vida, Fogo dá Ataque, Planta dá XP, Vento dá sorte de drop e assim por diante.")},

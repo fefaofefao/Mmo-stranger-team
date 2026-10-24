@@ -20,7 +20,7 @@ O jogador escolhe 1 de 9 monstros iniciais e caça automaticamente em mapas chei
 **Conteúdo**
 - **135 formas de monstro:** 45 famílias × 3 estágios (filhote → adolescente → adulto), em 9 tipos elementais com ciclo de vantagens.
 - **Qualidade de 0 a 100%:** sorteada ao recrutar (Comum, Bom, Ótimo, Perfeito). Dá até +30% de atributos.
-- **Shiny:** chance de 1 em 5.000. Tem visual especial, qualidade mínima de 50% e rende 50× mais essência.
+- **Shiny:** aparece cerca de 1 a cada 7–8 minutos de caça em qualquer mundo (a chance por monstro cai nos Mundos 2 e 3, que têm mais abates por hora). Recrutar um é raro (cerca de 1 a cada 20 h de caça ativa no Mundo 1). Tem visual especial, qualidade mínima de 50% e rende 50× mais essência no Altar.
 - **Nível máximo 300**, em 3 mundos:
 
 | Mundo | Níveis | Monstros em campo | Como libera |

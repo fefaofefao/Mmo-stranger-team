@@ -202,7 +202,7 @@ async function bulkKills(ctx: Ctx, hunt: any, kills: number, goldPct: number, wi
     const n = L.binomial(kills, r.chance * (hunt.rarity_mult ?? 1) * (1 + mb.drop_pct / 100) * bm("drop"));
     for (let i = 0; i < Math.min(n, 50); i++) items.push(await insertItem(ctx, L.createItem(L.pickBase(hunt.drops), r.id, false)));
   }
-  const shinies = L.binomial(kills, C.shiny_chance * bm("shiny"));
+  const shinies = L.binomial(kills, L.shinyChance(hunt) * bm("shiny"));
   const recruits: any[] = [];
   if (hunt.world === 1 && hunt.recruit) {
     const ch = C.recruit_chance * (hunt.recruit_mult ?? 1) * (1 + mb.recruit_pct / 100) * bm("recruit");
@@ -279,7 +279,7 @@ const actions: Record<string, (ctx: Ctx, a: any) => Promise<any>> = {
     const n = Math.min(100, Math.max(1, a.n ?? 20));
     if (!D.hunts[a.hunt]) return err("Hunt inválida");
     const rows = [];
-    for (let i = 0; i < n; i++) rows.push({ id: L.newId("t"), owner: ctx.uid, hunt: a.hunt, shiny: L.rand() < C.shiny_chance * boostMult(ctx, "shiny"), used: false });
+    for (let i = 0; i < n; i++) rows.push({ id: L.newId("t"), owner: ctx.uid, hunt: a.hunt, shiny: L.rand() < L.shinyChance(D.hunts[a.hunt]) * boostMult(ctx, "shiny"), used: false });
     await admin.from("spawn_tickets").insert(rows);
     return ok({ tickets: rows.map((r) => ({ id: r.id, shiny: r.shiny })) });
   },
